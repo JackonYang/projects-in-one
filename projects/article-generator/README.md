@@ -1,6 +1,6 @@
 # article-generator
 
- framework。可以快速开发一套新的自动写文章流程。
+framework, 用于快速开发一套新的自动写文章流程。
 
 ## 核心思路
 
