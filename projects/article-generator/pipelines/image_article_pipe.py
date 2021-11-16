@@ -1,0 +1,2 @@
+class ImageArticlePipe(object):
+    pass

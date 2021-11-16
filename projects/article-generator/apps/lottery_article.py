@@ -1,4 +1,6 @@
 import json
+from pipelines import pipeline_manager
+from pipelines.image_article_pipe import ImageArticlePipe
 
 lotterys = [
     {
@@ -12,14 +14,18 @@ lotterys = [
     },
 ]
 
+
 def run(kwargs):
     tasks = trans_kwargs(kwargs)
-    print(json.dumps(tasks, indent=4, ensure_ascii=False))
+    rsp = pipeline_manager.run(tasks)
+
+    print(json.dumps(rsp, indent=4, ensure_ascii=False))
 
     return {
         'err_no': 0,
         'status': 'ok',
         'kwargs': kwargs,
+        'response': rsp,
     }
 
 
@@ -35,7 +41,8 @@ def trans_kwargs(kwargs):
         if src_url.startswith('http'):
             # valid
             tasks.append({
-                'key': l_key,
+                'pipeline': ImageArticlePipe,
+                'lottery_key': l_key,
                 'src_url': src_url,
                 'title': title,
             })
