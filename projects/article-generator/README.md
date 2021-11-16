@@ -9,8 +9,8 @@ TODO
 
 ## 版本记录
 
-1. 支持彩票文章
-2. 支持 nature 文章
+1. WIP 支持彩票文章
+2. Pending 支持 nature 文章
 
 
 ## Usage Notes
@@ -19,4 +19,9 @@ dev env setup:
 
 ```bash
 pip3 install -r requirements.txt
+```
+
+run all tests
+```bash
+python3 main.py
 ```
