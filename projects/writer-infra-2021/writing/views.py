@@ -9,7 +9,7 @@ from rest_framework.response import Response
 from django.template.response import TemplateResponse
 from django.shortcuts import redirect
 
-from utils.shell_runner import get_cmd_stdout
+from third_party.article_generator.apps import lottery_article
 
 logger = logging.getLogger(__name__)
 
@@ -120,6 +120,8 @@ def task_run(request):
 
     for k, v in task_args_dict.items():
         task_args_data[k]['value'] = v
+
+    lottery_article.run(task_args_dict)
 
     return redirect('task_home')
 
