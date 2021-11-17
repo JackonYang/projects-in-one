@@ -1,19 +1,13 @@
-import re
+from configs import template_dir
 
 
 def run(tasks):
+    articles = []
     for task in tasks:
-        print('run: %s' % task['lottery_key'])
+        pipe_class = task['pipeline']
+        template_name = task['template_name']
+        task_info = task['task_info']
+        articles.append(
+            pipe_class(template_dir, template_name, task_info).run())
 
-    return []
-
-continuous_spaces = [
-    re.compile(r'\s+', re.DOTALL),
-]
-
-
-def clean_spaces(text):
-    for ptn in continuous_spaces:
-        text = ptn.sub(' ', text)
-
-    return text
+    return articles

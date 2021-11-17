@@ -1,4 +1,9 @@
-import json
+"""
+一个端到端的应用。
+包括：文章撰写、上传
+"""
+import copy
+
 from pipelines import pipeline_manager
 from pipelines.image_article_pipe import ImageArticlePipe
 
@@ -17,34 +22,31 @@ lotterys = [
 
 def run(kwargs):
     tasks = trans_kwargs(kwargs)
-    rsp = pipeline_manager.run(tasks)
+    articles = pipeline_manager.run(tasks)
 
-    print(json.dumps(rsp, indent=4, ensure_ascii=False))
-
-    return {
-        'err_no': 0,
-        'status': 'ok',
-        'kwargs': kwargs,
-        'response': rsp,
-    }
+    # TODO: upload articles
+    return articles
 
 
 def trans_kwargs(kwargs):
     tasks = []
 
-    for l in lotterys:
-        l_key = l['key']
+    for lottery_info in lotterys:
+        l_key = lottery_info['key']
 
         src_url = kwargs.get('url-%s' % l_key, '')
         title = kwargs.get('title-%s' % l_key, '')
 
-        if src_url.startswith('http'):
-            # valid
+        if src_url.startswith('http'):  # valid
             tasks.append({
                 'pipeline': ImageArticlePipe,
-                'lottery_key': l_key,
-                'src_url': src_url,
-                'title': title,
+                'template_name': 'trans_nphoton_tmpl.html',
+                'task_info': {
+                    'lottery_key': l_key,
+                    'lottery_info': copy.deepcopy(lottery_info),
+                    'src_url': src_url,
+                    'title': title,
+                },
             })
 
     return tasks

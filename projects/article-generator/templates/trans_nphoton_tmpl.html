@@ -1,0 +1,125 @@
+<p style="text-align: center;"><img class="rich_pages " data-ratio="0.4266666666666667" data-s="300,640"
+        data-src="https://mmbiz.qpic.cn/mmbiz_png/NUvrHLI7rOsDGW7JDpmFSXGEbIxPWI1zAibndY86LcteJJtREOTM4SxZUzMVM0EmRtuSqaNZOS20Px4grwn65jA/640?wx_fmt=png"
+        data-type="png" data-w="900"
+        style="width: 677px !important; height: auto !important; visibility: visible !important;" _width="677px"
+        src="https://mmbiz.qpic.cn/mmbiz_png/NUvrHLI7rOsDGW7JDpmFSXGEbIxPWI1zAibndY86LcteJJtREOTM4SxZUzMVM0EmRtuSqaNZOS20Px4grwn65jA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+        crossorigin="anonymous" data-fail="0"></p>
+
+{#
+<section style="width: 18rem;border:none;border-style:none;margin:0.5rem auto;" id="shifu_imi_009" donone="shifuMouseDownPayStyle(&#39;shifu_imi_009&#39;)">
+    <section style="width: 100%;">
+        <section style=" margin: 10px 0%; text-align: center;  box-sizing: border-box; ">
+            <section style="width: 20px; height: 20px;
+background-color:rgb(134,162,223);
+opacity: 0.8;
+box-sizing: border-box;" class="ipaiban-bg"></section>
+            <section style="margin: -10px 0px; padding: 0px 10px; display: inline-block; vertical-align: top; width: 100%; box-sizing: border-box;">
+                <section style="
+padding: 10px;
+background-color:rgb(134,162,223);
+opacity: 0.9;
+box-sizing: border-box;" class="ipaiban-bg">
+                    <section style=" margin: 10px 0% 0px;  box-sizing: border-box; color:#fff;">
+                        <section style="text-align: justify; font-size: 0.875rem; line-height: 1.6rem; padding: 0px 10px; 
+box-sizing: border-box;letter-spacing: 1px;">
+                            <p style="clear: none; white-space: normal; box-sizing: border-box;">
+                                追踪顶级期刊文献，
+                            </p>
+                            <p style="clear: none; white-space: normal; box-sizing: border-box;">
+                                欣赏前沿科技魅力，
+                            </p>
+                            <p style="clear: none; white-space: normal; box-sizing: border-box;">
+                                开阔学术思维视野。
+                            </p>
+                            <p style="clear: none; white-space: normal; box-sizing: border-box; text-align: right;">
+                                <span style="text-align: right;">—— 光学前沿</span>
+                            </p>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section style="width: 20px; height: 20px; float: right;
+background-color: rgb(134,162,223);
+opacity: 0.8;
+box-sizing: border-box;" class="ipaiban-bg"></section>
+            <section style="clear: both; box-sizing: border-box;"></section>
+        </section>
+    </section>
+</section>
+#}
+
+<section id="shifu_c_030" donone="shifuMouseDownCard(&#39;shifu_c_030&#39;)"
+    label="Copyright Reserved by PLAYHUDONG." style="border-style: none;border:0;margin: 1em 0; padding: 0">
+    <section style="margin-left: 1em; line-height: 1.4">
+        <span class="wihudong"
+            style="padding: 3px 8px; border-radius: 4px; color: rgb(255, 255, 255); font-size: 1em; background-color: rgb(70, 118, 217); font-family: inherit; font-style: normal; font-weight: inherit; text-align: inherit; text-decoration: inherit;">
+            {{ year_issue }}期
+        </span>
+        &nbsp; &nbsp; &nbsp; &nbsp;<span style="padding: 3px 8px; margin-left: 4px; border-radius: 1.2em; color: rgb(255, 255, 255);
+    font-size: 1em; line-height: 1.2; background-color: rgb(204, 204, 204); font-family:
+        inherit; font-style: normal; font-weight: inherit; text-align: inherit; text-decoration:
+        inherit; border-color: rgb(249, 110, 87);">目录</span>
+    </section>
+    <section class="color"
+        style="margin-top: -11px; padding: 22px 16px 16px; border: 1px solid rgb(70, 118, 217); color: rgb(51, 51, 51);">
+        {% for section, titles in paper_titles %}
+            <h3 style="font-size: 1.5em; font-weight: bold; color: rgb(70, 118, 217);"> {{ section }} </h3>
+            {% for t in titles %}
+            <p style="word-break: break-all;">
+                <span style="font-size: 1em;"> {{ t['seq'] }}. {{ t['title_cn'] }} </span>
+                <span style="font-size: 0.8em;"> ({{ t['title'] }}) </span>
+            </p>
+            {% endfor %}
+        {% endfor %}
+    </section>
+</section>
+
+<section style="text-align: justify; word-break: normal;">
+{% for p in papers %}
+<section style="white-space: normal; font-size: 16px; color: rgb(0, 0, 0);">
+
+    <h2 style="font-size: 18px; font-weight: bolder; color: rgb(70, 118, 217); margin: 20px auto;">
+        {{ loop.index }}. {{ p['title_atifical_translation'] }}
+    </h2>
+
+    <p style="text-indent: 2em;">
+        {{ p['abstract_atifical_translation'] }}
+    </p>
+    <img class="rich_pages js_insertlocalimg" data-ratio="0.8195592286501377" data-s="300,640"
+        src="{{ p['image'] }}"
+        data-type="jpeg" data-w="726" style="margin: 20px auto;"></img>
+    <p>
+        {{ p['citation_text'] }}
+    </p>
+    <p style="text-align: left; word-break: all;">
+        论文链接：<a href="{{ p['doi_url'] }}"> {{ p['doi_url'] }} </a>
+    </p>
+    <p style="font-size: 12px; color: rgb(136, 136, 136); margin: 10px auto;">
+        {{ p['abstract'] }}
+    </p>
+    <div style="text-align: center; margin: 30px auto 40px;">
+        <!-- <div style="text-align: center; width: 40px;">
+            <img src="https://mmbiz.qpic.cn/mmbiz_gif/NUvrHLI7rOv31ZPydgdtkIaOQvGI9blA8Pbk9TC8IPVfXwpxA1wpq8ZLNAeImxiaeB8ibcMNT5hjFcpS4Shj87EQ/0?wx_fmt=gif"
+            style="width: 10px"></img>
+        </div> -->
+        <hr style="border-style: solid;border-width: 1px 0 0;border-color: rgba(0,0,0,0.1);-webkit-transform-origin: 0 0;-webkit-transform: scale(1, 0.5);transform-origin: 0 0;transform: scale(1, 0.5);">
+    </div>
+</section>
+{% endfor %}
+</section>
+
+<!-- <section style="width:100%;text-align: center;font-size: 1rem;letter-spacing: 6px;overflow: hidden;color: #373737;white-space: nowrap;">
+    <p style="margin:0">
+        》》》》》》》》》》》》》》》》
+    </p>
+</section> -->
+<p style="text-align: center;">
+    <img data-s="300,640" data-type="png" class="rich_pages"
+    src="https://mmbiz.qpic.cn/mmbiz_png/NUvrHLI7rOvKST56ic8RVc9k5BAqOeEib8CvgRjDbZluheago12BaSZibDT3S4w0J1U8kOlGkibhibqdmyoyHfjCVng/0?wx_fmt=png"
+    style="" data-ratio="0.9966996699669967" data-w="303"></img>
+</p>
+<p style="text-align: center;">​
+    <span>🐱🐱🐱</span>
+    请关注我们
+    <span>🐱🐱🐱</span>
+</p>
