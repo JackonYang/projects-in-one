@@ -7,3 +7,13 @@
 | [writer-infra-2021](projects/writer-infra-2021/) | website | 根据模版，帮助用户自动写文章，自动发布文章 |
 | [article-generator](projects/article-generator/) | framework | 用于快速开发一套每天自动写文章的系统 |
 | [wechat-mp-driver](projects/wechat-mp-driver/) | SDK | 更易用的微信公众号 API |
+
+# Notes
+
+## 敏感数据
+
+主要是用户名、密码等。都放在单独的 private repo 里。
+
+```bash
+bash scripts/setup-private-data.sh
+```

@@ -1,5 +1,7 @@
 # .gitignore by JackonYang
 
+.private-data
+
 
 # hexo
 db.json
