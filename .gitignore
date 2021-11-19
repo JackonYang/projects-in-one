@@ -1,5 +1,6 @@
 # .gitignore by JackonYang
 
+.jcache-data
 .private-data
 
 
