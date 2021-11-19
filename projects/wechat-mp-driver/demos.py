@@ -25,7 +25,7 @@ def demo_upload_articles():
             'thumb_media_id': 'kydwHY6c4LpYQ6QJIoazsO8R5Ofmp_2IfRd1pSHDQjQ',
         },
     ]
-    return upload_articles(appid, secret, article_list)
+    return upload_articles(article_list, appid, secret)
 
 
 def test_all():

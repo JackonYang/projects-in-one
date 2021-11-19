@@ -12,7 +12,7 @@ def test_conn(appid, secret):
 
 
 # https://developers.weixin.qq.com/doc/offiaccount/Draft_Box/Add_draft.html
-def upload_articles(appid, secret, article_list):
+def upload_articles(article_list, appid, secret):
     client = WeChatClient(appid, secret)
 
     if not isinstance(article_list, (list, tuple)):
