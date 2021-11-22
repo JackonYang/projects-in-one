@@ -1,6 +1,6 @@
 import json
 
-from apps import lottery_article
+from .apps import lottery_article
 
 
 def test_all():

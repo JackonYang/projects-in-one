@@ -1,7 +1,9 @@
-env_file='../../.private-data/article-generator.env'
+cd ..
+
+env_file='../../.private-data/article_generator.env'
 
 if [ -f "$env_file" ]; then
-    env $(cat $env_file | xargs) python3 main.py
+    env $(cat $env_file | xargs) python3 -m article_generator.main
 else
-    python3 main.py
+    python3 -m article_generator.main
 fi

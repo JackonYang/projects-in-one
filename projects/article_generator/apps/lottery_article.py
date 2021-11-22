@@ -5,10 +5,10 @@
 import os
 import copy
 
-from pipelines import pipeline_manager
-from pipelines.image_article_pipe import ImageArticlePipe
+from ..pipelines import pipeline_manager
+from ..pipelines.image_article_pipe import ImageArticlePipe
 
-from uploaders.api import (
+from ..uploaders.api import (
     upload_articles,
 )
 

@@ -1,4 +1,4 @@
-from third_party.wechat_mp_driver.api import upload_articles
+from ..third_party.wechat_mp_driver.api import upload_articles
 
 
 def upload_to_wechat_mp(article_list, params_dict):

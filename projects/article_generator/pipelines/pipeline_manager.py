@@ -1,4 +1,4 @@
-from configs import template_dir
+from ..configs import template_dir
 
 
 def run(tasks):
