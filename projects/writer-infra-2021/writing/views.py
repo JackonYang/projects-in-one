@@ -10,7 +10,7 @@ from rest_framework.response import Response
 from django.template.response import TemplateResponse
 from django.shortcuts import redirect
 
-from third_party.article_generator.apps import lottery_article
+from article_generator.apps import lottery_article
 
 logger = logging.getLogger(__name__)
 
