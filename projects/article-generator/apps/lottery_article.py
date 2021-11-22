@@ -50,6 +50,7 @@ def trans_kwargs(kwargs):
                 'pipeline': ImageArticlePipe,
                 'template_name': 'trans_nphoton_tmpl.html',
                 'task_info': {
+                    'article_key': 'art_%s' % l_key,
                     'lottery_key': l_key,
                     'lottery_info': copy.deepcopy(lottery_info),
                     'src_url': src_url,
