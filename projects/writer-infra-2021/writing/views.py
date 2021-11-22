@@ -2,6 +2,7 @@
 import time
 import logging
 import copy
+import os
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -121,7 +122,18 @@ def task_run(request):
     for k, v in task_args_dict.items():
         task_args_data[k]['value'] = v
 
-    lottery_article.run(task_args_dict)
+    appid = os.environ.get('WECHAT_MP_APPID', 'default_appid')
+    secret = os.environ.get('WECHAT_MP_SECRET', 'default_secret')
+
+    upload_params = {
+        'platform': 'wechat-mp',
+        'params_dict': {
+            'appid': appid,
+            'secret': secret,
+        }
+    }
+
+    lottery_article.run(task_args_dict, upload_params)
 
     return redirect('task_home')
 
