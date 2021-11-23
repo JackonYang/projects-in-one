@@ -3,12 +3,17 @@ import os
 
 from api import (
     upload_articles,
+    upload_local_image_in_article,
     test_conn,
 )
 
 appid = os.environ.get('WECHAT_MP_APPID', 'default_appid')
 secret = os.environ.get('WECHAT_MP_SECRET', 'default_secret')
 
+DATA_DIR = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)),
+    'demo-data'
+)
 
 def demo_upload_articles():
     article_list = [
@@ -28,10 +33,18 @@ def demo_upload_articles():
     return upload_articles(article_list, appid, secret)
 
 
-def test_all():
-    test_conn(appid, secret)
+def demo_upload_local_image_in_article():
+    image_path = os.path.join(DATA_DIR, 'image-to-upload.jpg')
+    return upload_local_image_in_article(image_path, appid, secret)
 
-    result = demo_upload_articles()
+
+def test_all():
+    # test_conn(appid, secret)
+
+    # result = demo_upload_articles()
+
+    result = demo_upload_local_image_in_article()
+
     print(json.dumps(result, indent=4, ensure_ascii=False))
 
 

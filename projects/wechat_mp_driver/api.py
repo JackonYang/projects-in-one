@@ -30,3 +30,20 @@ def upload_articles(article_list, appid, secret):
         }, indent=4, ensure_ascii=False).encode('utf8')
     )
     return rsp.json()
+
+
+# api: https://developers.weixin.qq.com/doc/offiaccount/Asset_Management/Adding_Permanent_Assets.html
+# 上传图文消息内的图片获取URL
+# 本接口所上传的图片不占用公众号的素材库中图片数量的100000个的限制。图片仅支持jpg/png格式，大小必须在1MB以下。
+def upload_local_image_in_article(image_path, appid, secret):
+    client = WeChatClient(appid, secret)
+
+    url = 'https://api.weixin.qq.com/cgi-bin/media/uploadimg?access_token=' \
+        + client.access_token
+    rsp = requests.post(
+        url=url,
+        files={
+            'media': open(image_path, 'rb'),
+        },
+    )
+    return rsp.json()
