@@ -1,40 +1,34 @@
-import re
 import os
 
-from libs.librequests.api import (
-    download_text,
-    download_binary,
-)
+from crawlers.wechat_mp_images.api import download_images
+from wechat_mp_driver.api import upload_local_image_in_article
+from libs.libcache.api import jcache
 
 from .pipeline_base import PipelineBase
 from ..configs import (
     donwloaded_images_dir,
 )
 
-image_url_ptn = re.compile(r'src="(https://mmbiz.qpic.cn/mmbiz_jpg/.*?)"')
+
+@jcache
+def upload_image_to_mp(image, appid, secret):
+    rsp = upload_local_image_in_article(image, appid, secret)
+    return rsp['url']
 
 
 class ImageArticlePipe(PipelineBase):
     def get_data(self, src_url, article_key, **kwargs):
-        content = download_text(src_url)
-        m = image_url_ptn.findall(content)
-        images = self.download_images(m, article_key)
+        image_paths = download_images(
+            src_url, os.path.join(donwloaded_images_dir, article_key))
+        image_urls = self.upload_images(image_paths[1:-1])
         return {
-            'images': images,
+            'images': image_urls,
         }
 
-    def download_images(self, urls, article_key):
-        image_files = []
-        for idx, url in enumerate(urls):
-            # print('(%s/%s) download %s' % (idx, len(urls), url))
-            content = download_binary(url)
-
-            if not os.path.exists(donwloaded_images_dir):
-                os.makedirs(donwloaded_images_dir)
-            filename = os.path.join(
-                donwloaded_images_dir, '%s-%s.jpg' % (article_key, idx+1))
-            with open(filename, 'wb') as fw:
-                fw.write(content)
-            image_files.append(filename)
-
-        return image_files
+    def upload_images(self, image_paths):
+        img_urls = []
+        for img in image_paths:
+            img_url = upload_image_to_mp(
+                img, **self.kwargs['upload_params']['params_dict'])
+            img_urls.append(img_url)
+        return img_urls

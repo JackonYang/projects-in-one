@@ -26,6 +26,7 @@ class PipelineBase:
         self.template_dir = template_dir
         self.template_name = template_name
         self.task_info = task_info
+        self.kwargs = kwargs
 
     def run(self):
         data = self.get_data(**self.task_info)

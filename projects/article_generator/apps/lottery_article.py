@@ -26,13 +26,13 @@ lotterys = [
 ]
 
 
-def render(article_params):
+def render(article_params, upload_params):
     tasks = trans_kwargs(article_params)
-    return pipeline_manager.run(tasks)
+    return pipeline_manager.run(tasks, upload_params)
 
 
 def run(article_params, upload_params):
-    rendered_articles = render(article_params)
+    rendered_articles = render(article_params, upload_params)
     return upload_articles(rendered_articles, **upload_params)
 
 
