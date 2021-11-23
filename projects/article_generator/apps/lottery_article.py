@@ -5,6 +5,8 @@
 import os
 import copy
 
+from libs.libdate import today
+
 from ..pipelines import pipeline_manager
 from ..pipelines.image_article_pipe import ImageArticlePipe
 
@@ -26,35 +28,33 @@ lotterys = [
 ]
 
 
-def render(article_params, upload_params):
-    tasks = trans_kwargs(article_params)
-    return pipeline_manager.run(tasks, upload_params)
-
-
 def run(article_params, upload_params):
-    rendered_articles = render(article_params, upload_params)
+    tasks = trans_kwargs(article_params, upload_params)
+    rendered_articles = pipeline_manager.run(tasks)
     return upload_articles(rendered_articles, **upload_params)
 
 
-def trans_kwargs(kwargs):
+def trans_kwargs(article_params, upload_params):
     tasks = []
 
     for lottery_info in lotterys:
         l_key = lottery_info['key']
 
-        src_url = kwargs.get('url-%s' % l_key, '')
-        title = kwargs.get('title-%s' % l_key, '')
+        src_url = article_params.get('url-%s' % l_key, '')
+        title = article_params.get('title-%s' % l_key, '')
 
         if src_url.startswith('http'):  # valid
             tasks.append({
                 'pipeline': ImageArticlePipe,
                 'template_name': 'lottery-articles/daily-recommend-%s.html' % l_key,
                 'task_info': {
-                    'article_key': 'art_%s' % l_key,
+                    'article_name': 'art_%s' % l_key,
+                    'article_unique_key': 'art_%s_%s' % (l_key, today()),
                     'lottery_key': l_key,
                     'lottery_info': copy.deepcopy(lottery_info),
                     'src_url': src_url,
                     'title': title,
+                    'upload_params': upload_params,
                 },
             })
 

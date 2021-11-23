@@ -17,18 +17,18 @@ def upload_image_to_mp(image, appid, secret):
 
 
 class ImageArticlePipe(PipelineBase):
-    def get_data(self, src_url, article_key, **kwargs):
-        image_paths = download_images(
-            src_url, os.path.join(donwloaded_images_dir, article_key))
-        image_urls = self.upload_images(image_paths[1:-1])
+    def get_data(self, src_url, article_unique_key, upload_params, **kwargs):
+        image_dir = os.path.join(donwloaded_images_dir, article_unique_key)
+        image_paths = download_images(src_url, image_dir)
+        image_urls = self.upload_images(image_paths[1:-1], upload_params)
         return {
             'images': image_urls,
         }
 
-    def upload_images(self, image_paths):
+    def upload_images(self, image_paths, upload_params):
         img_urls = []
         for img in image_paths:
             img_url = upload_image_to_mp(
-                img, **self.kwargs['upload_params']['params_dict'])
+                img, **upload_params['params_dict'])
             img_urls.append(img_url)
         return img_urls

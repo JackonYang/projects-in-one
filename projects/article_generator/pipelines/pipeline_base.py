@@ -22,11 +22,10 @@ class PipelineBase:
     template_dir = None
     task_info = None
 
-    def __init__(self, template_dir, template_name, task_info, **kwargs):
+    def __init__(self, template_dir, template_name, task_info):
         self.template_dir = template_dir
         self.template_name = template_name
         self.task_info = task_info
-        self.kwargs = kwargs
 
     def run(self):
         data = self.get_data(**self.task_info)
@@ -35,7 +34,7 @@ class PipelineBase:
         if not os.path.exists(output_html_dir):
             os.makedirs(output_html_dir)
         out_filename = os.path.join(
-            output_html_dir, '%s.html' % self.task_info['article_key']
+            output_html_dir, '%s.html' % self.task_info['article_unique_key']
         )
         with open(out_filename, 'w') as fw:
             fw.write(content)
