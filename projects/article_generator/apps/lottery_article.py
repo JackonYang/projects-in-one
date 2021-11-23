@@ -48,7 +48,7 @@ def trans_kwargs(kwargs):
         if src_url.startswith('http'):  # valid
             tasks.append({
                 'pipeline': ImageArticlePipe,
-                'template_name': 'trans_nphoton_tmpl.html',
+                'template_name': 'lottery-articles/daily-recommend-%s.html' % l_key,
                 'task_info': {
                     'article_key': 'art_%s' % l_key,
                     'lottery_key': l_key,
