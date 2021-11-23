@@ -1,6 +1,6 @@
 # .gitignore by JackonYang
 
-donwloaded_images
+output-dir
 .jcache-data
 .private-data
 
