@@ -41,6 +41,7 @@ class PipelineBase:
 
         return {
             'task_info': self.task_info,
+            'info_data': data,
             'content': content,
         }
 

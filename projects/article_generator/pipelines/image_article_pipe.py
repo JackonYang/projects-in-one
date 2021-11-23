@@ -3,6 +3,7 @@ import os
 from crawlers.wechat_mp_images.api import download_images
 from wechat_mp_driver.api import upload_local_image_in_article
 from libs.libcache.api import jcache
+from libs.libdate import today
 
 from .pipeline_base import PipelineBase
 from ..configs import (
@@ -22,6 +23,7 @@ class ImageArticlePipe(PipelineBase):
         image_paths = download_images(src_url, image_dir)
         image_urls = self.upload_images(image_paths[1:-1], upload_params)
         return {
+            'day': today(),
             'images': image_urls,
         }
 
