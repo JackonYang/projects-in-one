@@ -1,6 +1,7 @@
 import re
 import os
 
+from libs.libmd5 import md5_for_text
 from libs.librequests.api import (
     download_text,
     download_binary,
@@ -20,7 +21,8 @@ def download_images(url, output_dir):
 
         if not os.path.exists(output_dir):
             os.makedirs(output_dir)
-        filename = os.path.join(output_dir, 'img-%s.jpg' % (idx+1))
+        url_md5 = md5_for_text(url)
+        filename = os.path.join(output_dir, 'img-%s-url-%s.jpg' % (idx+1, url_md5))
         with open(filename, 'wb') as fw:
             fw.write(content)
         image_files.append(filename)
