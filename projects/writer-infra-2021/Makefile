@@ -3,8 +3,8 @@ PIP?=pip3
 DC?=docker-compose
 
 server:
-	$(PY) manage.py runserver 0.0.0.0:18000
-
+	bash run.sh
+	# $(PY) manage.py runserver 0.0.0.0:18000
 
 debug:
 	$(DC) run --service-ports web /bin/bash
