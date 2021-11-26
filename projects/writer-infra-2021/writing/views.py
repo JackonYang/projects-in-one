@@ -25,7 +25,7 @@ task_tmpls = {}
 task_args_data = {
     'title-k8': {
         'display': '快8 文章题目',
-        'value': '快8 专家推荐与走势图汇总-{day}',
+        'value': '彩百科-今日 快8 推荐汇总-{day}',
         'help': '一般不用改。{day} 会自动替换为今天的日期',
     },
     'url-k8': {
@@ -35,7 +35,7 @@ task_args_data = {
     },
     'title-ssq': {
         'display': '双色球文章题目',
-        'value': '双色球专家推荐与走势图汇总-{day}',
+        'value': '彩百科-今日 双色球 推荐汇总-{day}',
         'help': '一般不用改。{day} 会自动替换为今天的日期',
     },
     'url-ssq': {
@@ -45,7 +45,7 @@ task_args_data = {
     },
     'title-3d': {
         'display': '3D 文章题目',
-        'value': '3D 专家推荐与走势图汇总-{day}',
+        'value': '彩百科-今日 3D 推荐汇总-{day}',
         'help': '一般不用改。{day} 会自动替换为今天的日期',
     },
     'url-3d': {
