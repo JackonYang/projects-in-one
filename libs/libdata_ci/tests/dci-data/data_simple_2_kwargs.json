@@ -1,0 +1,10 @@
+[
+    {
+        "input_obj": "hello",
+        "expect": "world"
+    },
+    {
+        "input_obj": "hello",
+        "expect": 666
+    }
+]

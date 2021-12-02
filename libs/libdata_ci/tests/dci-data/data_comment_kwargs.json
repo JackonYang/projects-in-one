@@ -1,0 +1,12 @@
+[
+    {
+        "#": "this is a class A record",
+        "input_obj": "hello",
+        "expect": "world"
+    },
+    {
+        "#": "this is a class B record",
+        "input_obj": "hello",
+        "expect": 666
+    }
+]
