@@ -54,6 +54,7 @@ def trans_kwargs(article_params, upload_params):
                     'lottery_info': copy.deepcopy(lottery_info),
                     'src_url': src_url,
                     'title': title,
+                    'thumb_image': article_params.get('thumb_image', ''),
                     'upload_params': upload_params,
                     'mp_info': article_params.get('mp_info', {}),
                 },

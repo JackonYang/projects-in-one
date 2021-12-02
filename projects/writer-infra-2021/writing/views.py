@@ -3,6 +3,7 @@ import time
 import logging
 import copy
 import os
+import json
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -11,6 +12,8 @@ from django.template.response import TemplateResponse
 from django.shortcuts import redirect
 
 from article_generator.apps import lottery_article
+
+from configs import resourses_dir
 
 logger = logging.getLogger(__name__)
 
@@ -123,12 +126,14 @@ def run_single_mp(mp_key, task_args_dict):
             'secret': secret,
         }
     }
-
     task_args_dict['mp_info'] = {
         'name': os.environ.get('%s_NAME' % mp_key, 'default_name')
     }
+    task_args_dict['thumb_image'] = os.path.join(
+        resourses_dir, 'images/fucai-logo.jpg')
 
-    lottery_article.run(task_args_dict, upload_params)
+    res = lottery_article.run(task_args_dict, upload_params)
+    print(json.dumps(res, indent=4, ensure_ascii=False))
 
 
 def task_run(request):
