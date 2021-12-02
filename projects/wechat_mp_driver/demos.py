@@ -5,6 +5,7 @@ from api import (
     upload_articles,
     upload_local_image_in_article,
     test_conn,
+    add_material_local_image,
 )
 
 appid = os.environ.get('WECHAT_MP_APPID', 'default_appid')
@@ -38,12 +39,19 @@ def demo_upload_local_image_in_article():
     return upload_local_image_in_article(image_path, appid, secret)
 
 
+def demo_add_material_local_image():
+    image_path = os.path.join(DATA_DIR, 'image-to-upload.jpg')
+    return add_material_local_image(image_path, appid, secret)
+
+
 def test_all():
     # test_conn(appid, secret)
 
     # result = demo_upload_articles()
 
-    result = demo_upload_local_image_in_article()
+    # result = demo_upload_local_image_in_article()
+
+    result = demo_add_material_local_image()
 
     print(json.dumps(result, indent=4, ensure_ascii=False))
 

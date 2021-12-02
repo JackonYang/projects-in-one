@@ -1,6 +1,7 @@
 from wechatpy import WeChatClient
 import requests
 import json
+import os
 
 
 def test_conn(appid, secret):
@@ -44,6 +45,24 @@ def upload_local_image_in_article(image_path, appid, secret):
         url=url,
         files={
             'media': open(image_path, 'rb'),
+        },
+    )
+    return rsp.json()
+
+
+# api: https://developers.weixin.qq.com/doc/offiaccount/Asset_Management/Adding_Permanent_Assets.html
+# 上传永久图片素材，获取 media id
+def add_material_local_image(image_path, appid, secret):
+    client = WeChatClient(appid, secret)
+    url = 'https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=%s&type=image' % client.access_token
+    rsp = requests.post(
+        url=url,
+        files={
+            'media': open(image_path, 'rb'),
+            'description': json.dumps({
+                "title": os.path.basename(image_path),
+                "introduction": 'good',
+            }, indent=4, ensure_ascii=False)
         },
     )
     return rsp.json()
