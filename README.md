@@ -15,5 +15,8 @@
 主要是用户名、密码等。都放在单独的 private repo 里。
 
 ```bash
-bash scripts/setup-private-data.sh
+# setup
+make setup-private-data
+# update data
+make update-private-data
 ```
