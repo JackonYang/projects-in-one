@@ -8,5 +8,11 @@ setup-private-data:
 update-private-data:
 	bash scripts/private-data/update-private-data.sh
 
+setup-all:
+	find . -name requirements.txt | xargs -I{} pip3 install -r {}
 
+test-all:
+	find . -name pytest.ini | xargs -I{} bash scripts/tests/run_test.sh {}
+
+.PHONY: setup-all test-all
 .PHONY: setup-private-data update-private-data

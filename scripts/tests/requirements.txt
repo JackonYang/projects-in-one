@@ -1,0 +1,5 @@
+pytest>=3
+pytest-xdist
+pytest-cov
+# for django
+pytest-django

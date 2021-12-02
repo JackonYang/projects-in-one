@@ -10,6 +10,16 @@
 
 # Notes
 
+## 常用命令
+
+```bash
+# dev env to run all projects & libs
+make setup-all
+
+# test all projects & libs
+make test-all
+```
+
 ## 敏感数据
 
 主要是用户名、密码等。都放在单独的 private repo 里。
@@ -17,6 +27,7 @@
 ```bash
 # setup
 make setup-private-data
+
 # update data
 make update-private-data
 ```

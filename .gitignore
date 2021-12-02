@@ -35,6 +35,8 @@ __pycache__/
 *.so  # C extensions
 pip-log.txt  # Installer logs
 
+# pytests
+.coverage
 
 ### Vim ###
 .ropeproject/*
