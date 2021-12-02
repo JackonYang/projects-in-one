@@ -140,6 +140,10 @@ LOGGING = {
             'level': 'WARNING',
             'handlers': ['libs_warning_file', 'libs_error_file'],
         },
+        'wechatpy': {
+            'level': 'WARNING',
+            'handlers': ['libs_warning_file', 'libs_error_file'],
+        },
     },
     'root': {
         'level': 'DEBUG',
