@@ -1,0 +1,48 @@
+[
+    {
+        "#": "boundary tests",
+        "input_obj": "",
+        "expect": ""
+    },
+    {
+        "#": "boundary tests",
+        "input_obj": null,
+        "expect": null
+    },
+    {
+        "input_obj": "a",
+        "expect": "a"
+    },
+    {
+        "#": "html entity",
+        "input_obj": "&lt;h1>hello</h1>",
+        "expect": "hello"
+    },
+    {
+        "input_obj": "&lt;h1&gt;hello world  &lt;/h1 &gt;",
+        "expect": "hello world"
+    },
+    {
+        "#": "spaces",
+        "input_obj": "<h1> hello  world </h1>",
+        "expect": "hello world"
+    },
+    {
+        "#": "html entity and spaces",
+        "input_obj": "&lt;h1> hello  world </h1 >",
+        "expect": "hello world"
+    },
+    {
+        "input_obj": "&lt;h1 &gt;  hello  world  &lt;/h1  &gt;",
+        "expect": "hello world"
+    },
+    {
+        "#": "spacial case",
+        "input_obj": "&lt; h1 &gt;  hello  world  &lt;/h1  &gt;",
+        "expect": "&lt; h1 &gt; hello world"
+    },
+    {
+        "input_obj": "hello\\@world",
+        "expect": "hello@world"
+    }
+]

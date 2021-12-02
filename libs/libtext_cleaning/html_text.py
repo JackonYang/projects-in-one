@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import bleach
-from html.parser import HTMLParser
+from html import unescape
+# from html.parser import HTMLParser
 
 from .spaces import (
     remove_continuous_spaces,
@@ -11,7 +12,7 @@ from .string_literals import (
 )
 
 
-h = HTMLParser()
+# h = HTMLParser()
 
 tags_cleaner = bleach.Cleaner(
     tags=[],
@@ -26,7 +27,7 @@ def convert_html_to_text(text, merge_continuous_spaces=True):
         return text
 
     # clean html entity first
-    text = h.unescape(text)
+    text = unescape(text)
 
     text = remove_extra_literal_escapes(text)
 

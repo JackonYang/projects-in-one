@@ -1,0 +1,37 @@
+[
+    {
+        "#": "boundary tests",
+        "input_obj": "",
+        "expect": ""
+    },
+    {
+        "#": "boundary tests",
+        "input_obj": null,
+        "expect": null
+    },
+    {
+        "#": "leading spaces",
+        "input_obj": "\t \n<h1>hello world</h1>",
+        "expect": "<h1>hello world</h1>"
+    },
+    {
+        "#": "ending spaces",
+        "input_obj": "<h1>hello world</h1>\n\n\n\t \n",
+        "expect": "<h1>hello world</h1>"
+    },
+    {
+        "#": "middle spaces",
+        "input_obj": "<h1>  \n \t hello  \n\n world \n</h1>",
+        "expect": "<h1> hello world </h1>"
+    },
+    {
+        "#": "mix spaces",
+        "input_obj": "\n\t<h1>  \n \t hello  \n\n world \n</h1>\t\n\t ",
+        "expect": "<h1> hello world </h1>"
+    },
+    {
+        "#": "no spaces",
+        "input_obj": "<li>hello<li>world<li>good",
+        "expect": "<li>hello<li>world<li>good"
+    }
+]

@@ -1,0 +1,20 @@
+[
+    {
+        "#": "boundary tests",
+        "input_obj": "",
+        "expect": ""
+    },
+    {
+        "input_obj": null,
+        "expect": null
+    },
+    {
+        "#": "leading spaces",
+        "input_obj": "\n<h1>hello world</h1>",
+        "expect": "\n<h1>hello world</h1>"
+    },
+    {
+        "input_obj": "hello\\@world",
+        "expect": "hello@world"
+    }
+]
