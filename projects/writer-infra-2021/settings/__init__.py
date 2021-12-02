@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'wsgi.application'
 
 if DEBUG:
     DB_PATH = BASE_DIR
-else:
+else:  # pragma: no cover
     DB_PATH = MISC_ZONE_ROOT
 
 DATABASES = {

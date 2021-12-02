@@ -31,3 +31,15 @@ make setup-private-data
 # update data
 make update-private-data
 ```
+
+## 回归测试
+
+```bash
+# test all projects & libs
+make test-all
+```
+
+Notes:
+
+1. django 的例子，参考 [writer-infra-2021](projects/writer-infra-2021/)
+2. 某一行不统计 coverage: `# pragma: no cover`

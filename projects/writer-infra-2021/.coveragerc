@@ -1,5 +1,6 @@
 [run]
 omit =
     manage.py
+    wsgi.py
     */tests/*
     */test_*.py

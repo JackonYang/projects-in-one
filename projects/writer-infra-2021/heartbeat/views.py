@@ -11,6 +11,10 @@ import socket
 from django_redis import get_redis_connection
 
 # redis = get_redis_connection('monitor')
+global_data = {
+    'hits': 0,
+}
+
 host = socket.gethostname()
 
 start_time = time.time()
@@ -19,14 +23,17 @@ logger = logging.getLogger(__name__)
 
 
 def default_home(request,
-        template_name='home.html'):
+        template_name='home.html'):  # pragma: no cover
 
     # key = 'test:hits:default_home'
     # redis.incr(key)
+    # hits = int(redis.get(key))
+    global_data['hits'] += 1
+    hits = global_data['hits']
 
     context = {
         'hostname': host,
-        # 'hits': int(redis.get(key)),
+        'hits': hits,
         'hits': 1,
     }
 
@@ -51,12 +58,14 @@ def redis_health(request):
     key = 'test:hits:redis_health'
 
     # hits = redis.incr(key)
+    global_data['hits'] += 1
+    hits = global_data['hits']
 
     return Response({
         'startTime': start_time,
         'upTime': time.time() - start_time,
         'status': 'running',
-        # 'mode': 'redis',
+        'mode': 'redis',
         'hostname': host,
-        # 'hits': hits,
+        'hits': hits,
     })

@@ -10,7 +10,7 @@ debug:
 	$(DC) run --service-ports web /bin/bash
 
 test:
-	pytest --cov ./ --cov-report term-missing:skip-covered --capture=no -p no:cacheprovider
+	PYTHONPATH=.. pytest --cov ./ --cov-report term-missing:skip-covered --capture=no -p no:cacheprovider
 
 stage:
 	$(DC) run -p 81:80 production /bin/bash

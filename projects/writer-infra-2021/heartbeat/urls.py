@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-from django.conf.urls import url
+from django.urls import re_path
 
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.heartbeat),
-    url(r'^redis', views.redis_health),
+    re_path(r'^$', views.heartbeat),
+    re_path(r'^redis', views.redis_health),
 ]

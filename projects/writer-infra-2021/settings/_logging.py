@@ -23,12 +23,12 @@ modules = [
     'django',
 ]
 
-if not os.path.exists(LOG_ROOT_DIR):
+if not os.path.exists(LOG_ROOT_DIR):  # pragma: no cover
     os.makedirs(LOG_ROOT_DIR)
 
 for m in modules:
     path = os.path.join(LOG_ROOT_DIR, m)
-    if not os.path.exists(path):
+    if not os.path.exists(path):  # pragma: no cover
         os.makedirs(path)
 
 
