@@ -32,7 +32,7 @@ make setup-private-data
 make update-private-data
 ```
 
-## 回归测试
+## 回归测试 & flake8
 
 ```bash
 # test all projects & libs
@@ -43,3 +43,4 @@ Notes:
 
 1. django 的例子，参考 [writer-infra-2021](projects/writer-infra-2021/)
 2. 某一行不统计 coverage: `# pragma: no cover`
+3. 某一行不检查 flake8: `# noqa F403`

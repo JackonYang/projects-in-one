@@ -8,8 +8,8 @@ from rest_framework.response import Response
 from django.template.response import TemplateResponse
 
 import socket
-from django_redis import get_redis_connection
 
+# from django_redis import get_redis_connection
 # redis = get_redis_connection('monitor')
 global_data = {
     'hits': 0,
@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 
 
 def default_home(request,
-        template_name='home.html'):  # pragma: no cover
+                 template_name='home.html'):  # pragma: no cover
 
     # key = 'test:hits:default_home'
     # redis.incr(key)
@@ -34,7 +34,6 @@ def default_home(request,
     context = {
         'hostname': host,
         'hits': hits,
-        'hits': 1,
     }
 
     logger.info('hits default_home: {hits}'.format(**context))
@@ -55,8 +54,8 @@ def heartbeat(request):
 
 @api_view(['GET'])
 def redis_health(request):
-    key = 'test:hits:redis_health'
 
+    # key = 'test:hits:redis_health'
     # hits = redis.incr(key)
     global_data['hits'] += 1
     hits = global_data['hits']

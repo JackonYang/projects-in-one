@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
-import time
 import logging
 import copy
 import os
 import json
 
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
+# from rest_framework.decorators import api_view
+# from rest_framework.response import Response
 
 from django.template.response import TemplateResponse
 from django.shortcuts import redirect
@@ -69,7 +68,7 @@ task_args_order = [
 
 
 def task_home(request,
-        template_name='task-home.html'):
+              template_name='task-home.html'):
 
     task_args = []
     for i in task_args_order:
@@ -152,7 +151,7 @@ def task_run(request):
 
 
 def task_detail(request, task_id,
-        template_name='task-detail.html'):
+                template_name='task-detail.html'):
     context = {
         'task': task_details[task_id],
     }

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import os
 
-from .constants import *  # noqa F403
-
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DEFAULT_REDIS_CONN = os.environ.get('DEFAULT_REDIS_CONN', 'redis://127.0.0.1:6379/0')
 MONITOR_REDIS_CONN = os.environ.get('MONITOR_REDIS_CONN', 'redis://127.0.0.1:6379/9')
