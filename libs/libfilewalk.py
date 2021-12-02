@@ -4,7 +4,7 @@ import os
 
 
 def walk(root, file_hdlr, ext, ignore=None):
-    if isinstance(ext, basestring):
+    if isinstance(ext, str):
         ext = [pat.strip() for pat in ext.rstrip(', ').lower().split(',')]
 
     def validate_ext(filename):
@@ -27,7 +27,7 @@ def _walk(root, file_hdlr, validate_ext, do_ignore):
 
     # file
     if os.path.isfile(root):
-        return file_hdlr(src_path)
+        return file_hdlr(root)
 
     file_count = 0
     for path_name in do_ignore(os.listdir(root)):
@@ -45,9 +45,9 @@ def exclude(files, patterns):
     @para patterns: list/set/tuple or string separated by ,/os.linesep
 
     """
-    if isinstance(files, basestring):
+    if isinstance(files, str):
         files = [files]
-    if isinstance(patterns, basestring):
+    if isinstance(patterns, str):
         patterns = [pat.strip() for pat in patterns.rstrip(', ').split(',')]
     if not patterns:
         return files
@@ -66,7 +66,7 @@ def has_magic(s):
 
 
 def glob2re(pat):
-    str_end = '\Z'
+    str_end = r'\Z'
     if not has_magic(pat):
         return pat + str_end
     i, n = 0, len(pat)
@@ -100,10 +100,11 @@ def glob2re(pat):
             res = res + re.escape(c)
     return res + str_end
 
+
 if __name__ == '__main__':
 
     def demo_file(filename):
-        print filename
+        print(filename)
         return 1
 
     walk('..', demo_file, '.py', '.git')

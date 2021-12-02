@@ -1,8 +1,9 @@
 # -*- coding: utf-8-*-
-import time
+# import time
 import subprocess
 import os
 import sys
+
 
 def open_file(filename):
     platform_cmd = {

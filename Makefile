@@ -12,7 +12,12 @@ setup-all:
 	find . -name requirements.txt | xargs -I{} pip3 install -r {}
 
 test-all:
+	flake8 .
 	find . -name pytest.ini | xargs -I{} bash scripts/tests/run_test.sh {}
 
-.PHONY: setup-all test-all
+flake8:
+	flake8 .
+
+
+.PHONY: setup-all test-all flake8
 .PHONY: setup-private-data update-private-data
