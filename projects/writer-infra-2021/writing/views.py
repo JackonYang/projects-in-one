@@ -112,6 +112,25 @@ def brief_output(task_id, output):
     return brief
 
 
+def run_single_mp(mp_key, task_args_dict):
+    appid = os.environ.get('WECHAT_MP_APPID_%s' % mp_key, 'default_appid')
+    secret = os.environ.get('WECHAT_MP_SECRET_%s' % mp_key, 'default_secret')
+
+    upload_params = {
+        'platform': 'wechat-mp',
+        'params_dict': {
+            'appid': appid,
+            'secret': secret,
+        }
+    }
+
+    task_args_dict['mp_info'] = {
+        'name': os.environ.get('%s_NAME' % mp_key, 'default_name')
+    }
+
+    lottery_article.run(task_args_dict, upload_params)
+
+
 def task_run(request):
     if request.method != 'POST':
         pass
@@ -122,19 +141,8 @@ def task_run(request):
     for k, v in task_args_dict.items():
         task_args_data[k]['value'] = v
 
-    appid = os.environ.get('WECHAT_MP_APPID', 'default_appid')
-    secret = os.environ.get('WECHAT_MP_SECRET', 'default_secret')
-
-    upload_params = {
-        'platform': 'wechat-mp',
-        'params_dict': {
-            'appid': appid,
-            'secret': secret,
-        }
-    }
-
-    lottery_article.run(task_args_dict, upload_params)
-
+    run_single_mp('MP1', task_args_dict)
+    run_single_mp('MP2', task_args_dict)
     return redirect('task_home')
 
 

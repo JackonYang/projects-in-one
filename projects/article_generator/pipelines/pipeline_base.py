@@ -29,6 +29,7 @@ class PipelineBase:
 
     def run(self):
         data = self.get_data(**self.task_info)
+        data['mp_info'] = self.task_info['mp_info']
         content = self.render(data)
 
         if not os.path.exists(output_html_dir):

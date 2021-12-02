@@ -55,6 +55,7 @@ def trans_kwargs(article_params, upload_params):
                     'src_url': src_url,
                     'title': title,
                     'upload_params': upload_params,
+                    'mp_info': article_params.get('mp_info', {}),
                 },
             })
 
