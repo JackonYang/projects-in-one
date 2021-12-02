@@ -66,3 +66,21 @@ def add_material_local_image(image_path, appid, secret):
         },
     )
     return rsp.json()
+
+
+def get_images(appid, secret):
+    """ return url string """
+    client = WeChatClient(appid, secret)
+    url = 'https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token=' + client.access_token
+    rsp = requests.post(
+        url=url,
+        headers={
+            "Content-Type": "application/json;",
+        },
+        data=json.dumps({
+            "type": "image",
+            "count": 20,
+            "offset": 0
+        })
+    )
+    return rsp.json()
