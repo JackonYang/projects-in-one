@@ -18,6 +18,10 @@ DATA_DIR = os.path.join(
 )
 
 
+def demo_test_conn():
+    test_conn(appid, secret)
+
+
 def demo_upload_articles():
     article_list = [
         {
@@ -51,7 +55,7 @@ def demo_get_images():
 
 
 def test_all():
-    # test_conn(appid, secret)
+    # demo_test_conn()
 
     # result = demo_upload_articles()
 
