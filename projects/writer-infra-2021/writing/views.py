@@ -23,6 +23,7 @@ thread_pool_executor = ThreadPoolExecutor(max_workers=5)
 task_history = []
 task_details = {}
 global_vars = {
+    'notification': '',
     'task_id': 0,
     'task_tmpl_id': 0,
 }
@@ -59,6 +60,11 @@ task_args_data = {
         'value': 'test',
         'help': '要填写。今天没开奖就不填写。原文的网址',
     },
+    'output': {
+        'display': 'output',
+        'value': '',
+        'help': 'readonly',
+    },
 }
 
 task_args_order = [
@@ -82,6 +88,7 @@ def task_home(request,
 
     context = {
         'task_args': task_args,
+        'notification': global_vars['notification'],
         'tasks': [copy.copy(task_details[i]) for i in task_history],
         'task_tmpls': list(task_tmpls.values()),
     }
@@ -109,16 +116,7 @@ def gen_task_tmpl_id():
     return global_vars['task_tmpl_id']
 
 
-def brief_output(task_id, output):
-    lines = output.split('\n')
-    brief = '<br/>'.join(lines[:3])
-    if len(lines) > 3:
-        brief += '... <a href="/writing/tasks/%s"> read more </a>' % task_id
-
-    return brief
-
-
-def run_single_mp(mp_key, task_args_dict):
+def run_single_mp(mp_key, task_args_dict, out):
     appid = os.environ.get('WECHAT_MP_APPID_%s' % mp_key, 'default_appid')
     secret = os.environ.get('WECHAT_MP_SECRET_%s' % mp_key, 'default_secret')
 
@@ -139,6 +137,17 @@ def run_single_mp(mp_key, task_args_dict):
     print(json.dumps(res, indent=4, ensure_ascii=False))
 
 
+def trigger_task(task_id, task_args_dict, on_progress=None, on_done=None):
+    run_single_mp('MP1', task_args_dict, out=lambda x: on_progress(task_id, x))
+    run_single_mp('MP2', task_args_dict, out=lambda x: on_progress(task_id, x))
+
+    on_done(task_id, '已完成')
+
+
+def on_output(task_id, output):
+    global_vars['notification'] = output
+
+
 def task_run(request):
     if request.method != 'POST':
         pass
@@ -149,8 +158,18 @@ def task_run(request):
     for k, v in task_args_dict.items():
         task_args_data[k]['value'] = v
 
-    thread_pool_executor.submit(run_single_mp, 'MP1', task_args_dict)
-    thread_pool_executor.submit(run_single_mp, 'MP2', task_args_dict)
+    task_id = gen_task_id()
+
+    on_output(task_id, '任务已提交，运行中...')
+    thread_pool_executor.submit(trigger_task(
+        task_id, task_args_dict, on_progress=on_output, on_done=on_output))
+
+    task_details[task_id] = {
+        'task_args': copy.deepcopy(qd),
+        'notes': '',
+        'mark': '',
+    }
+    task_history.append(task_id)
 
     return redirect('task_home')
 

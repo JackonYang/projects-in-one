@@ -13,6 +13,10 @@
         文章转写
     </h1>
 
+    <div class="alert alert-primary" role="alert">
+        {{ notification }}
+    </div>
+
     <div>
         {% for tmpl in task_tmpls %}
         <a href="/writing/load-tmpl/{{ tmpl.key }}" class="btn btn-info">{{ tmpl.name }}</a>
