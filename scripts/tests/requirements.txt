@@ -3,3 +3,5 @@ pytest-xdist
 pytest-cov
 # for django
 pytest-django
+
+flake8
