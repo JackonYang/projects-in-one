@@ -78,6 +78,13 @@ task_args_order = [
 ]
 
 
+def get_notifys_str():
+    notifys = global_vars['notification-persist']
+    if global_vars['notification']:
+        notifys.append(global_vars['notification'])
+    return '<br/>'.join(notifys)
+
+
 def task_home(request,
               template_name='task-home.html'):
 
@@ -87,13 +94,9 @@ def task_home(request,
         t['key'] = i
         task_args.append(t)
 
-    notifys = global_vars['notification-persist']
-    if global_vars['notification']:
-        notifys.append(global_vars['notification'])
-
     context = {
         'task_args': task_args,
-        'notification': '<br/>'.join(notifys),
+        'notification': get_notifys_str(),
         'tasks': [copy.copy(task_details[i]) for i in task_history],
         'task_tmpls': list(task_tmpls.values()),
     }
@@ -197,6 +200,15 @@ def task_detail(request, task_id,
                 template_name='task-detail.html'):
     context = {
         'task': task_details[task_id],
+    }
+
+    return TemplateResponse(request, template_name, context)
+
+
+def fetch_notifys(request,
+                template_name='notifys.html'):
+    context = {
+        'notification': get_notifys_str(),
     }
 
     return TemplateResponse(request, template_name, context)
