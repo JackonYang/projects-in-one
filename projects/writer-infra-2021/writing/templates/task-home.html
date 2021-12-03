@@ -13,9 +13,11 @@
         文章转写
     </h1>
 
+    {% if notification %}
     <div class="alert alert-primary" role="alert">
-        {{ notification }}
+        {{ notification|safe }}
     </div>
+    {% endif %}
 
     <div>
         {% for tmpl in task_tmpls %}

@@ -23,6 +23,7 @@ thread_pool_executor = ThreadPoolExecutor(max_workers=5)
 task_history = []
 task_details = {}
 global_vars = {
+    'notification-persist': [],
     'notification': '',
     'task_id': 0,
     'task_tmpl_id': 0,
@@ -86,9 +87,13 @@ def task_home(request,
         t['key'] = i
         task_args.append(t)
 
+    notifys = global_vars['notification-persist']
+    if global_vars['notification']:
+        notifys.append(global_vars['notification'])
+
     context = {
         'task_args': task_args,
-        'notification': global_vars['notification'],
+        'notification': '<br/>'.join(notifys),
         'tasks': [copy.copy(task_details[i]) for i in task_history],
         'task_tmpls': list(task_tmpls.values()),
     }
@@ -117,6 +122,9 @@ def gen_task_tmpl_id():
 
 
 def run_single_mp(mp_key, task_args_dict, out):
+    mp_name = os.environ.get('%s_NAME' % mp_key, 'default_name')
+
+    out('%s 开始上传中，请等待几分钟...' % mp_name, True)
     appid = os.environ.get('WECHAT_MP_APPID_%s' % mp_key, 'default_appid')
     secret = os.environ.get('WECHAT_MP_SECRET_%s' % mp_key, 'default_secret')
 
@@ -128,24 +136,35 @@ def run_single_mp(mp_key, task_args_dict, out):
         }
     }
     task_args_dict['mp_info'] = {
-        'name': os.environ.get('%s_NAME' % mp_key, 'default_name')
+        'name': mp_name,
     }
     task_args_dict['thumb_image'] = os.path.join(
         resourses_dir, 'images/fucai-logo.jpg')
 
     res = lottery_article.run(task_args_dict, upload_params)
-    print(json.dumps(res, indent=4, ensure_ascii=False))
+
+    if 'media_id' not in res:
+        out(json.dumps(res, indent=4, ensure_ascii=False), True)
+    else:
+        out('%s 已上传。media_id: %s' % (mp_name, res['media_id']), True)
 
 
 def trigger_task(task_id, task_args_dict, on_progress=None, on_done=None):
-    run_single_mp('MP1', task_args_dict, out=lambda x: on_progress(task_id, x))
-    run_single_mp('MP2', task_args_dict, out=lambda x: on_progress(task_id, x))
+    run_single_mp('MP1', task_args_dict, out=lambda x, flag: on_progress(task_id, x, flag))
+    run_single_mp('MP2', task_args_dict, out=lambda x, flag: on_progress(task_id, x, flag))
 
-    on_done(task_id, '已完成')
+    on_done(task_id, '已完成', persist=True)
 
 
-def on_output(task_id, output):
-    global_vars['notification'] = output
+def on_output(task_id, output, persist=False, clear=False):
+    if clear:
+        global_vars['notification'] = []
+
+    if persist:
+        global_vars['notification-persist'].append(output)
+        global_vars['notification'] = ''
+    else:
+        global_vars['notification'] = output
 
 
 def task_run(request):
@@ -160,7 +179,7 @@ def task_run(request):
 
     task_id = gen_task_id()
 
-    on_output(task_id, '任务已提交，运行中...')
+    on_output(task_id, '任务已提交，运行中...', clear=True)
     thread_pool_executor.submit(trigger_task(
         task_id, task_args_dict, on_progress=on_output, on_done=on_output))
 
