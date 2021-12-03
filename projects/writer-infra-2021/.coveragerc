@@ -4,6 +4,7 @@ omit =
     wsgi.py
     */tests/*
     */test_*.py
+    utils/log.py
 
 [report]
 exclude_lines =
