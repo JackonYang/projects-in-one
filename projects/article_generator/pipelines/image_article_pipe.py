@@ -15,6 +15,10 @@ from ..configs import (
 @jcache
 def upload_image_to_mp(image, appid, secret):
     rsp = upload_local_image_in_article(image, appid, secret)
+    if 'url' not in rsp:
+        print(rsp)
+        raise ValueError('upload error')
+
     return rsp['url']
 
 
