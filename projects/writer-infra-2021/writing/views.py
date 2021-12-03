@@ -4,6 +4,8 @@ import copy
 import os
 import json
 
+from concurrent.futures import ThreadPoolExecutor
+
 # from rest_framework.decorators import api_view
 # from rest_framework.response import Response
 
@@ -15,6 +17,8 @@ from article_generator.apps import lottery_article
 from configs import resourses_dir
 
 logger = logging.getLogger(__name__)
+
+thread_pool_executor = ThreadPoolExecutor(max_workers=5)
 
 task_history = []
 task_details = {}
@@ -145,8 +149,9 @@ def task_run(request):
     for k, v in task_args_dict.items():
         task_args_data[k]['value'] = v
 
-    run_single_mp('MP1', task_args_dict)
-    run_single_mp('MP2', task_args_dict)
+    thread_pool_executor.submit(run_single_mp, 'MP1', task_args_dict)
+    thread_pool_executor.submit(run_single_mp, 'MP2', task_args_dict)
+
     return redirect('task_home')
 
 
