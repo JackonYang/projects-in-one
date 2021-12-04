@@ -7,7 +7,7 @@ from libs.librequests.api import (
     download_binary,
 )
 
-image_url_ptn = re.compile(r'src="(https://mmbiz.qpic.cn/mmbiz_jpg/.*?)"')
+image_url_ptn = re.compile(r'src="(https://mmbiz.qpic.cn/mmbiz_.*?)"')
 
 
 def download_images(url, output_dir, on_progress_func=None):
