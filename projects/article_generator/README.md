@@ -20,9 +20,10 @@ framework, 用于快速开发一套每天自动写文章的系统。
 
 ## 版本记录
 
-1. WIP 支持彩票文章
-2. Pending 支持 nature 文章
-3. 支持 deep learning model based writing
+- [x] 支持彩票文章
+- [ ] Pipeline 优化，支持多平台上传
+- [ ] Pending 支持 nature 文章
+- [ ] 支持 deep learning model based writing
 
 
 ## Usage Notes

@@ -3,7 +3,7 @@ PIP?=pip3
 DC?=docker-compose
 
 test:
-	PYTHONPATH=.. pytest --cov ./ --cov-report \
+	env `bash load_envs.sh | xargs` PYTHONPATH=.. pytest --cov ./ --cov-report \
 		term-missing:skip-covered --capture=no \
 		-p no:cacheprovider \
 		--cov-fail-under 100

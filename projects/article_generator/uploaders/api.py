@@ -6,7 +6,7 @@ upload_funcs = {
 
 
 def upload_articles(article_list, platform, params_dict):
-    if platform not in upload_funcs:
+    if platform not in upload_funcs:  # pragma: no cover
         raise ValueError('upload to platform[%s] is not supported' % platform)
 
     upload_func = upload_funcs[platform]

@@ -13,7 +13,7 @@ from ..configs import (
 
 
 @jcache
-def upload_image_to_mp(image, appid, secret):
+def upload_image_to_mp(image, appid, secret):  # pragma: no cover
     rsp = upload_local_image_in_article(image, appid, secret)
     if 'url' not in rsp:
         print(rsp)
@@ -32,12 +32,13 @@ class ImageArticlePipe(PipelineBase):
             'images': image_urls,
         }
 
-    def upload_images(self, image_paths, upload_params, on_progress_func):
+    def upload_images(self, image_paths, upload_params, on_progress_func=None):
         img_urls = []
         total = len(image_paths)
         for idx, img in enumerate(image_paths):
             img_url = upload_image_to_mp(
                 img, **upload_params['params_dict'])
             img_urls.append(img_url)
-            on_progress_func('(%s/%s)图片已上传到公众号' % (idx+1, total))
+            if on_progress_func:
+                on_progress_func('(%s/%s)图片已上传到公众号' % (idx+1, total))
         return img_urls

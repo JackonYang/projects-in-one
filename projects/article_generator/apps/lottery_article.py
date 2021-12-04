@@ -2,7 +2,6 @@
 一个端到端的应用。
 包括：文章撰写、上传
 """
-import os
 import copy
 
 from libs.libdate import today
@@ -61,27 +60,3 @@ def trans_kwargs(article_params, upload_params):
             })
 
     return tasks
-
-
-def run_test():
-    article_params = {
-        'title-k8': '快8 专家推荐与走势图汇总-{day}',
-        'url-k8': 'https://mp.weixin.qq.com/s/UshvA-Q74vhADjEfu8uHYw',
-        'title-ssq': '双色球专家推荐与走势图汇总-{day}',
-        'url-ssq': 'test',
-        # 'url-ssq': 'https://mp.weixin.qq.com/s/xFFAYqOevmZxIl8LyA5ASg'
-        'title-3d': '3D 专家推荐与走势图汇总-{day}',
-        'url-3d': 'https://mp.weixin.qq.com/s/fMS5g9ukX9CpTcILWCcRsw'
-    }
-
-    appid = os.environ.get('WECHAT_MP_APPID', 'default_appid')
-    secret = os.environ.get('WECHAT_MP_SECRET', 'default_secret')
-
-    upload_params = {
-        'platform': 'wechat-mp',
-        'params_dict': {
-            'appid': appid,
-            'secret': secret,
-        }
-    }
-    return run(article_params, upload_params)

@@ -13,7 +13,7 @@ def upload_to_wechat_mp(article_list, params_dict):
 
 
 @jcache
-def upload_thumb_image(image, appid, secret):
+def upload_thumb_image(image, appid, secret):  # pragma: no cover
     rsp = add_material_local_image(image, appid, secret)
     return rsp['media_id']
 
@@ -22,7 +22,7 @@ def get_thumb_media_id(thumb_image, params_dict):
     if not os.path.exists(thumb_image):
         return 'kydwHY6c4LpYQ6QJIoazsGOo_hsROPlszVlwLl1SzEQ'
 
-    return upload_thumb_image(thumb_image, **params_dict)
+    return upload_thumb_image(thumb_image, **params_dict)  # pragma: no cover
 
 
 def build_mp_upload_args(orig, params_dict):

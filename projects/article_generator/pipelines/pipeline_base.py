@@ -32,7 +32,7 @@ class PipelineBase:
         data['mp_info'] = self.task_info['mp_info']
         content = self.render(data)
 
-        if not os.path.exists(output_html_dir):
+        if not os.path.exists(output_html_dir):  # pragma: no cover
             os.makedirs(output_html_dir)
         out_filename = os.path.join(
             output_html_dir, '%s.html' % self.task_info['article_unique_key']
