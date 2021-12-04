@@ -28,9 +28,9 @@ lotterys = [
 ]
 
 
-def run(article_params, upload_params):
+def run(article_params, upload_params, on_progress_func=None):
     tasks = trans_kwargs(article_params, upload_params)
-    rendered_articles = pipeline_manager.run(tasks)
+    rendered_articles = pipeline_manager.run(tasks, on_progress_func)
     return upload_articles(rendered_articles, **upload_params)
 
 

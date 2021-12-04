@@ -23,19 +23,21 @@ def upload_image_to_mp(image, appid, secret):
 
 
 class ImageArticlePipe(PipelineBase):
-    def get_data(self, src_url, upload_params, **kwargs):
+    def get_data(self, src_url, upload_params, on_progress_func=None, **kwargs):
         image_dir = os.path.join(donwloaded_images_dir, md5_for_text(src_url))
-        image_paths = download_images(src_url, image_dir)
-        image_urls = self.upload_images(image_paths[1:-1], upload_params)
+        image_paths = download_images(src_url, image_dir, on_progress_func)
+        image_urls = self.upload_images(image_paths[1:-1], upload_params, on_progress_func)
         return {
             'day': today(),
             'images': image_urls,
         }
 
-    def upload_images(self, image_paths, upload_params):
+    def upload_images(self, image_paths, upload_params, on_progress_func):
         img_urls = []
-        for img in image_paths:
+        total = len(image_paths)
+        for idx, img in enumerate(image_paths):
             img_url = upload_image_to_mp(
                 img, **upload_params['params_dict'])
             img_urls.append(img_url)
+            on_progress_func('(%s/%s)图片已上传到公众号' % (idx+1, total))
         return img_urls

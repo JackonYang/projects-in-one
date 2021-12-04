@@ -27,8 +27,8 @@ class PipelineBase:
         self.template_name = template_name
         self.task_info = task_info
 
-    def run(self):
-        data = self.get_data(**self.task_info)
+    def run(self, on_progress_func):
+        data = self.get_data(on_progress_func=on_progress_func, **self.task_info)
         data['mp_info'] = self.task_info['mp_info']
         content = self.render(data)
 
