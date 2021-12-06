@@ -2,6 +2,7 @@ import json
 import os
 
 from api import (
+    get_access_token,
     upload_articles,
     upload_local_image_in_article,
     test_conn,
@@ -54,16 +55,21 @@ def demo_get_images():
     return get_images(appid, secret)
 
 
+def demo_get_access_token():
+    return get_access_token(appid, secret)
+
+
 def test_all():
+    # result = demo_get_access_token()
     # demo_test_conn()
 
     # result = demo_upload_articles()
 
-    # result = demo_upload_local_image_in_article()
+    result = demo_upload_local_image_in_article()
 
     # result = demo_add_material_local_image()
 
-    result = demo_get_images()
+    # result = demo_get_images()
 
     print(json.dumps(result, indent=4, ensure_ascii=False))
 
