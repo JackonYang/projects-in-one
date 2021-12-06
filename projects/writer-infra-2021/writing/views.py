@@ -79,7 +79,7 @@ task_args_order = [
 
 
 def get_notifys_str():
-    notifys = global_vars['notification-persist']
+    notifys = copy.copy(global_vars['notification-persist'])
     if global_vars['notification']:
         notifys.append(global_vars['notification'])
     return '<br/>'.join(notifys)
@@ -144,7 +144,7 @@ def run_single_mp(mp_key, task_args_dict, out):
     task_args_dict['thumb_image'] = os.path.join(
         resourses_dir, 'images/fucai-logo.jpg')
 
-    res = lottery_article.run(task_args_dict, upload_params)
+    res = lottery_article.run(task_args_dict, upload_params, lambda x, info=None: out(x, False))
 
     if 'media_id' not in res:
         out(json.dumps(res, indent=4, ensure_ascii=False), True)
@@ -184,8 +184,9 @@ def task_run(request):
     task_id = gen_task_id()
 
     on_output(task_id, '任务已提交，运行中...', clear=True)
-    thread_pool_executor.submit(trigger_task,
-        task_id, task_args_dict, on_progress=on_output, on_done=on_output)
+    thread_pool_executor.submit(
+        trigger_task, task_id, task_args_dict,
+        on_progress=on_output, on_done=on_output)
 
     task_details[task_id] = {
         'task_args': copy.deepcopy(qd),
@@ -207,7 +208,7 @@ def task_detail(request, task_id,
 
 
 def fetch_notifys(request,
-                template_name='notifys.html'):
+                  template_name='notifys.html'):
     context = {
         'notification': get_notifys_str(),
     }
