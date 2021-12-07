@@ -1,0 +1,6 @@
+[submodule "projects/WebShell"]
+	path = projects/WebShell
+	url = git@github.com:JackonYang/WebShell.git
+[submodule "projects/web-shell"]
+	path = projects/web-shell
+	url = git@github.com:JackonYang/web-shell.git
