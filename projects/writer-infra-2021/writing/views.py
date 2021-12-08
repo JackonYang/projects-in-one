@@ -178,6 +178,10 @@ def trigger_task(task_id, task_args_dict, on_progress=None, on_done=None):
     on_done(task_id, '已完成', persist=True)
 
 
+def trigger_demo_task(task_id, task_args_dict, on_progress=None, on_done=None):
+    on_done(task_id, '已完成', persist=True)
+
+
 def on_output(task_id, output, persist=False, clear=False):
     if clear:
         global_vars['notification-persist'] = []
@@ -230,9 +234,9 @@ def demo_run(request):
     task_id = gen_task_id()
 
     on_output(task_id, '任务已提交，运行中...', clear=True)
-    # thread_pool_executor.submit(
-    #     trigger_task, task_id, task_args_dict,
-    #     on_progress=on_output, on_done=on_output)
+    thread_pool_executor.submit(
+        trigger_demo_task, task_id, task_args_dict,
+        on_progress=on_output, on_done=on_output)
 
     task_details[task_id] = {
         'task_args': copy.deepcopy(qd),
