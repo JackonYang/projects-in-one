@@ -27,7 +27,7 @@
         {% endfor %}
     </div>
 
-    <form action="/writing/run" method="post"> {% csrf_token %}
+    <form action="/writing/demo-run" method="post"> {% csrf_token %}
 
         {% for arg in task_args %}
         <div class="mb-3">

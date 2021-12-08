@@ -217,6 +217,33 @@ def task_run(request):
     return redirect('task_home')
 
 
+def demo_run(request):
+    if request.method != 'POST':
+        pass
+
+    qd = request.POST
+    task_args_dict = {k: qd.get(k) for k in task_args_order}
+
+    for k, v in task_args_dict.items():
+        task_args_data[k]['value'] = v
+
+    task_id = gen_task_id()
+
+    on_output(task_id, '任务已提交，运行中...', clear=True)
+    # thread_pool_executor.submit(
+    #     trigger_task, task_id, task_args_dict,
+    #     on_progress=on_output, on_done=on_output)
+
+    task_details[task_id] = {
+        'task_args': copy.deepcopy(qd),
+        'notes': '',
+        'mark': '',
+    }
+    task_history.append(task_id)
+
+    return redirect('demo_home')
+
+
 def task_detail(request, task_id,
                 template_name='task-detail.html'):
     context = {
