@@ -4,6 +4,8 @@ output-dir
 .jcache-data
 .private-data
 
+media/
+
 
 # hexo
 db.json
