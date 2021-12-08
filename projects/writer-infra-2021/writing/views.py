@@ -241,7 +241,17 @@ def demo_run(request):
     }
     task_history.append(task_id)
 
-    return redirect('demo_home')
+    # return redirect('demo_result')
+    return redirect('/writing/result/%s' % task_id)
+
+
+def demo_result(request, task_id,
+                template_name='demo-result.html'):
+    context = {
+        'task': task_details[task_id],
+    }
+
+    return TemplateResponse(request, template_name, context)
 
 
 def task_detail(request, task_id,
