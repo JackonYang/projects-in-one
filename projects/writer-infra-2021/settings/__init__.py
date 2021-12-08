@@ -158,6 +158,11 @@ STATICFILES_DIRS = (
     os.path.join(MISC_ZONE_ROOT, 'settings/static'),
 )
 
+# Base url to serve media files
+MEDIA_URL = '/media/'
+# Path where media is stored
+MEDIA_ROOT = os.path.join(MISC_ZONE_ROOT, 'media/')
+
 
 # Auth (login)
 
