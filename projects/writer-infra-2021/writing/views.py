@@ -252,7 +252,11 @@ def demo_run(request):
 def demo_result(request, task_id,
                 template_name='demo-result.html'):
     context = {
-        'task': task_details[task_id],
+        'task': task_details.get(task_id),
+        'images': [
+            '/media/fucai-logo.jpg',
+            '/media/fucai-logo.jpg',
+        ]
     }
 
     return TemplateResponse(request, template_name, context)
