@@ -104,6 +104,25 @@ def task_home(request,
     return TemplateResponse(request, template_name, context)
 
 
+def demo_home(request,
+              template_name='demo-home.html'):
+
+    task_args = []
+    for i in task_args_order:
+        t = copy.copy(task_args_data[i])
+        t['key'] = i
+        task_args.append(t)
+
+    context = {
+        'task_args': task_args,
+        'notification': get_notifys_str(),
+        'tasks': [copy.copy(task_details[i]) for i in task_history],
+        'task_tmpls': list(task_tmpls.values()),
+    }
+
+    return TemplateResponse(request, template_name, context)
+
+
 def load_tmpl(request, tmpl_id):
     if tmpl_id in task_tmpls:
         tmpl = task_tmpls[tmpl_id]
