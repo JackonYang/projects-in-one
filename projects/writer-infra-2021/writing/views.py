@@ -262,7 +262,7 @@ def demo_run(request):
     task_history.append(task_id)
 
     # return redirect('demo_result')
-    return redirect('/writing/result/%s' % task_id)
+    return redirect('/writing/in-progress/%s' % task_id)
 
 
 def demo_result(request, task_id,
@@ -286,6 +286,15 @@ def task_detail(request, task_id,
 
 def fetch_notifys(request,
                   template_name='notifys.html'):
+    context = {
+        'notification': get_notifys_str(),
+    }
+
+    return TemplateResponse(request, template_name, context)
+
+
+def in_progress(request, task_id,
+                template_name='in-progress.html'):
     context = {
         'notification': get_notifys_str(),
     }
