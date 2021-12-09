@@ -194,6 +194,7 @@ def trigger_demo_task(task_id, task_args_dict, on_progress=None, on_done=None):
         data.append(info)
 
     task_details[task_id]['result_json'] = data
+    task_details[task_id]['is_done'] = True
     print('res', data)
     on_done(task_id, '已完成', persist=True)
 
@@ -258,6 +259,7 @@ def demo_run(request):
         'task_args': copy.deepcopy(qd),
         'notes': '',
         'mark': '',
+        'is_done': False,
     }
     task_history.append(task_id)
 
@@ -284,8 +286,9 @@ def task_detail(request, task_id,
     return TemplateResponse(request, template_name, context)
 
 
-def fetch_notifys(request,
+def fetch_notifys(request, task_id,
                   template_name='notifys.html'):
+
     context = {
         'notification': get_notifys_str(),
     }
@@ -295,7 +298,14 @@ def fetch_notifys(request,
 
 def in_progress(request, task_id,
                 template_name='in-progress.html'):
+    task_info = task_details.get(task_id, {})
+
+    is_done = task_info['is_done']
+    if is_done:
+        return redirect('/writing/result/%s' % task_id)
+
     context = {
+        'url_get_notifys': '/writing/fetch-notifys/%s' % task_id,
         'notification': get_notifys_str(),
     }
 

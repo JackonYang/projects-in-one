@@ -35,12 +35,15 @@
 
     <script>
     var enable_notify_polling = true;
-    var url_get_notifys = '/writing/fetch-notifys';
+    var url_get_notifys = "{{ url_get_notifys }}";
 
     $().ready(function () {
         //EITHER USE A GLOBAL VAR OR PLACE VAR IN HIDDEN FIELD
         //IF FOR WHATEVER REASON YOU WANT TO STOP POLLING
-        pollServer();
+        // pollServer();
+        window.setTimeout(function () {
+            window.location.reload(true);
+        }, 1000);
     });
 
     function pollServer()

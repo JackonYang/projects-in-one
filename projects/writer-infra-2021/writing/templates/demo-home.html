@@ -13,14 +13,6 @@
         文章转写
     </h1>
 
-    <div id='nitify-info'>
-    {% if notification %}
-    <div class="alert alert-primary" role="alert">
-        {{ notification|safe }}
-    </div>
-    {% endif %}
-    </div>
-
     <div>
         {% for tmpl in task_tmpls %}
         <a href="/writing/load-tmpl/{{ tmpl.key }}" class="btn btn-info">{{ tmpl.name }}</a>
@@ -58,38 +50,6 @@
     <script src="/static/rainbow/dist/rainbow.min.js"></script>
     <script src="/static/rainbow/src/language/generic.js"></script>
     <script src="/static/rainbow/src/language/shell.js"></script>
-
-    <script>
-    var enable_notify_polling = true;
-    var url_get_notifys = '/writing/fetch-notifys';
-
-    $().ready(function () {
-        //EITHER USE A GLOBAL VAR OR PLACE VAR IN HIDDEN FIELD
-        //IF FOR WHATEVER REASON YOU WANT TO STOP POLLING
-        pollServer();
-    });
-
-    function pollServer()
-    {
-        if (enable_notify_polling)
-        {
-            window.setTimeout(function () {
-                $.ajax({
-                    url: url_get_notifys,
-                    type: "GET",
-                    success: function (result) {
-                        //SUCCESS LOGIC
-                        $("div#nitify-info").replaceWith(result);
-                        pollServer();
-                    },
-                    error: function () {
-                        //ERROR HANDLING
-                        pollServer();
-                    }});
-            }, 2500);
-        }
-    }
-    </script>
 
 </body>
 

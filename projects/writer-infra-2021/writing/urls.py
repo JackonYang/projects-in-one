@@ -12,5 +12,5 @@ urlpatterns = [
     path(r'tasks/<int:task_id>', views.task_detail, name='task_detail'),
     path(r'result/<int:task_id>', views.demo_result, name='demo_result'),
     path(r'load-tmpl/<int:tmpl_id>', views.load_tmpl, name='load_tmpl'),
-    path(r'fetch-notifys', views.fetch_notifys, name='fetch_notifys'),
+    path(r'fetch-notifys/<int:task_id>', views.fetch_notifys, name='fetch_notifys'),
 ]
