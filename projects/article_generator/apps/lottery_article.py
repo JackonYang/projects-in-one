@@ -27,13 +27,18 @@ lotterys = [
 ]
 
 
+def run_download(article_params, on_progress_func=None):
+    tasks = trans_kwargs(article_params)
+    return pipeline_manager.run_download(tasks, on_progress_func)
+
+
 def run(article_params, upload_params, on_progress_func=None):
     tasks = trans_kwargs(article_params, upload_params)
     rendered_articles = pipeline_manager.run(tasks, on_progress_func)
     return upload_articles(rendered_articles, **upload_params)
 
 
-def trans_kwargs(article_params, upload_params):
+def trans_kwargs(article_params, upload_params=None):
     tasks = []
 
     for lottery_info in lotterys:

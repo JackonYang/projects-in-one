@@ -23,6 +23,14 @@ def upload_image_to_mp(image, appid, secret):  # pragma: no cover
 
 
 class ImageArticlePipe(PipelineBase):
+    def download_data(self, src_url, on_progress_func=None, **kwargs):
+        image_dir = os.path.join(donwloaded_images_dir, md5_for_text(src_url))
+        image_paths = download_images(src_url, image_dir, on_progress_func)
+        return {
+            'day': today(),
+            'images': image_paths,
+        }
+
     def get_data(self, src_url, upload_params, on_progress_func=None, **kwargs):
         image_dir = os.path.join(donwloaded_images_dir, md5_for_text(src_url))
         image_paths = download_images(src_url, image_dir, on_progress_func)

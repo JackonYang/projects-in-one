@@ -37,3 +37,12 @@ def test_lottery_article_with_progress():
     result = lottery_article.run(article_params, upload_params, on_progress)
     assert 'media_id' in result
     assert len(logs) > 1
+
+
+def test_lottery_article_download():
+    result = lottery_article.run_download(article_params)
+
+    assert len(result) == 2
+    for res in result:
+        assert 'info_data' in res
+        assert len(res['info_data']['images']) > 0
