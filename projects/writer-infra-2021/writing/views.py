@@ -178,7 +178,23 @@ def trigger_task(task_id, task_args_dict, on_progress=None, on_done=None):
     on_done(task_id, '已完成', persist=True)
 
 
+def upload_image(image_paths):
+    return [
+        '/media/fucai-logo.jpg',
+    ]
+
+
 def trigger_demo_task(task_id, task_args_dict, on_progress=None, on_done=None):
+    raw_data = lottery_article.run_download(task_args_dict, lambda x, info=None: on_progress(task_id, x, False))
+
+    data = []
+    for record in raw_data:
+        info = record['info_data']
+        info['image_urls'] = upload_image(info['images'])
+        data.append(info)
+
+    task_details[task_id]['result_json'] = data
+    print('res', data)
     on_done(task_id, '已完成', persist=True)
 
 
@@ -253,10 +269,7 @@ def demo_result(request, task_id,
                 template_name='demo-result.html'):
     context = {
         'task': task_details.get(task_id),
-        'images': [
-            '/media/fucai-logo.jpg',
-            '/media/fucai-logo.jpg',
-        ]
+        'records': task_details.get(task_id, {}).get('result_json'),
     }
 
     return TemplateResponse(request, template_name, context)

@@ -16,12 +16,16 @@
         然后点击预览，查看文章最终效果。
     </p>
 
+    {% for article in records %}
+
     <div class="list-group list-group-flush">
 
-    {% for img in images %}
+    {% for img in article.image_urls %}
     <img src="{{ img }}" class="img-thumbnail" alt="...">
     {% endfor %}
     </div>
+
+    {% endfor %}
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
