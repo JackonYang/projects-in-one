@@ -17,7 +17,7 @@ def check_rsp_error(rsp_json):
     #     'errcode': 40164,
     #     'errmsg': 'invalid ip xxx, not in whitelist rid: xxx'
     # }
-    if 'errcode' in rsp_json:
+    if 'errcode' in rsp_json and rsp_json['errcode'] != 0:
         raise ValueError(str(rsp_json))
 
 
@@ -112,6 +112,22 @@ def get_images(appid, secret):
             "count": 20,
             "offset": 0
         })
+    )
+    rsp_json = rsp.json()
+    check_rsp_error(rsp_json)
+    return rsp_json
+
+
+def freepublish(media_id, appid, secret):
+    url = 'https://api.weixin.qq.com/cgi-bin/freepublish/submit?access_token=%s' % get_access_token(appid, secret)
+    rsp = requests.post(
+        url=url,
+        headers={
+            "Content-Type": "application/json;",
+        },
+        data=json.dumps({
+            'media_id': media_id,
+        }, indent=4, ensure_ascii=False).encode('utf8')
     )
     rsp_json = rsp.json()
     check_rsp_error(rsp_json)
