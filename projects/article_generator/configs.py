@@ -5,6 +5,7 @@ project_root = os.path.dirname(
 )
 
 template_dir = os.path.join(project_root, 'templates')
+resource_dir = os.path.join(project_root, 'resources')
 
 output_dir = os.path.join(project_root, 'output-dir')
 donwloaded_images_dir = os.path.join(output_dir, 'donwloaded-images')

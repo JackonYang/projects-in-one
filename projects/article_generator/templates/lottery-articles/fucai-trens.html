@@ -1,0 +1,102 @@
+<section style="border-width: initial;border-color: initial;border-style: none;margin: 0rem auto;">
+
+<p style="text-align: center;color: rgb(255, 41, 65);font-size: 24px;">
+    👇👇👇每日专家推荐大全
+</p>
+<section class="">
+    <mpprofile class="js_uneditable" data-pluginname="mpprofile" data-id="MzIwNTA3ODc4NA=="
+        data-headimg="http://mmbiz.qpic.cn/mmbiz_png/x1ibO52Orl1ItbtiaUQny4wTk7AQz9oPavDz0F97lvTtUicAaC7VjJtuCSVmanaof6s9SEHOs1v7iaa6Lcv8aMK64g/0?wx_fmt=png"
+        data-nickname="陕西快乐十分" data-alias="fucai114" data-signature="快乐八推荐大全，双色球推荐大全。号码推荐，经验交流" data-from="0"
+        wah-hotarea="click">
+        <!-- profile卡片 -->
+        <div class="appmsg_card_context wx_profile_card js_wx_profile_card js_wx_tap_highlight wx_tap_card"
+            data-id="MzIwNTA3ODc4NA==" data-isban="0" data-index="0" role="link"
+            aria-labelledby="js_wx_profile_nickname js_a11y_comma js_wx_profile_signature js_a11y_comma js_profile_desc js_a11y_comma js_wx_profile_logo">
+            <div class="wx_profile_card_bd" aria-hidden="true">
+                <div class="wx_profile weui-flex">
+                    <div class="wx_profile_hd"> <img class="wx_profile_avatar"
+                            src="http://mmbiz.qpic.cn/mmbiz_png/x1ibO52Orl1ItbtiaUQny4wTk7AQz9oPavDz0F97lvTtUicAaC7VjJtuCSVmanaof6s9SEHOs1v7iaa6Lcv8aMK64g/0?wx_fmt=png"
+                            alt=""> </div>
+                    <div class="wx_profile_bd weui-flex weui-flex__item">
+                        <div class="weui-flex__item"> <strong class="wx_profile_nickname" id="js_wx_profile_nickname">
+                                陕西快乐十分 </strong>
+                            <div class="wx_profile_desc" id="js_wx_profile_signature">快乐八推荐大全，双色球推荐大全。号码推荐，经验交流</div>
+                            <div class="wx_profile_tips" id="js_profile_desc"> <span class="wx_profile_tips_meta"
+                                    id="js_profile_article">70篇原创内容</span>
+                                <!-- <span class="wx_profile_tips_meta" id="js_profile_friends"></span> -->
+                            </div>
+                        </div> <i class="weui-icon-arrow"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="wx_profile_card_ft" aria-hidden="true" id="js_wx_profile_logo">公众号</div>
+        </div>
+    </mpprofile>
+</section>
+
+<p><br></p>
+
+<p>目录导览：</p>
+<ol class="list-paddingleft-2" style="list-style-type: decimal;">
+    {% for group in image_groups %}
+    <li>{{ group.group_info.display }} -- {{ group.image_urls|length }} 图</li>
+    {% endfor %}
+</ol>
+
+<p><br></p>
+
+{% for group in image_groups %}
+    <section 
+        style="width: 98%;border-width: initial;border-color: initial;border-style: none;margin: 0rem auto;"
+        >
+        <section style="text-align: center;">
+            <section style="display: inline-block;">
+                <section style="height:10px;">
+                    <section
+                        style="width: 6px;height: 6px;float: left;box-sizing: border-box;border-top: 3px solid rgb(226, 86, 27);border-left: 3px solid rgb(226, 86, 27);">
+                        <br></section>
+                    <section
+                        style="width: 6px;height: 6px;float: right;box-sizing: border-box;border-top:3px solid rgb(226, 86, 27);border-right: 3px solid rgb(226, 86, 27);">
+                        <br></section>
+                </section>
+                <section
+                    style="padding: 3px 10px;box-sizing: border-box;margin-right: 5px;margin-left: 5px;background-color: rgb(226, 86, 27);margin-top: -3px;">
+                    <section
+                        style="color: rgb(255, 255, 255);letter-spacing: 1px;padding-right: 5px;padding-left: 5px;box-sizing: border-box;font-size: 1rem;">
+                        <p>{{ loop.index }}. {{ group.group_info.display }} -- {{ group.image_urls|length }} 图</p>
+                    </section>
+                </section>
+                <section style="height:10px;">
+                    <section
+                        style="width: 6px;height: 6px;float: left;box-sizing: border-box;border-bottom: 3px solid rgb(226, 86, 27);border-left: 3px solid rgb(226, 86, 27);">
+                        <br></section>
+                    <section
+                        style="width: 6px;height: 6px;float: right;box-sizing: border-box;border-bottom: 3px solid rgb(226, 86, 27);border-right: 3px solid rgb(226, 86, 27);">
+                        <br></section>
+                </section>
+            </section>
+        </section>
+    </section>
+    <p><br></p>
+    <!-- {% for img in group.image_urls %} -->
+    <!-- <section style="display: inline-block;">
+        <img src="{{ img }}" style="display: block;width: 100%;"/>
+    </section> -->
+    <!-- {% endfor %} -->
+    <p>
+        ⚠️左右滑动图片，查看更多{{ group.group_info.display }}，更方便。
+    </p>
+    <section style="margin: 1em auto; line-height: 25.6px; white-space: normal; border: none; text-align: center;">
+        <section style="overflow: hidden;-webkit-overflow-scrolling: touch;">
+            <section style="white-space: nowrap; overflow-x: scroll;">
+                {% for img in group.image_urls %}
+                <section style="display: inline-block;">
+                    <img src="{{ img }}" style="display: block;width: 100%;"/>
+                </section>
+                {% endfor %}
+            </section>
+        </section>
+    </section>
+    <br/>
+
+{% endfor %}

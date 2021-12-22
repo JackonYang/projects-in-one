@@ -30,10 +30,13 @@ def build_mp_upload_args(orig, params_dict):
     info_data = orig['info_data']
     content = orig['content']
 
+    default_digest = '想抄的作业，都在这里了'
+    digest = task_info.get('digest', default_digest).format(**info_data)
+
     data = {
         'title': task_info['title'].format(**info_data),
         'author': '醉风',
-        'digest': '想抄的作业，都在这里了',
+        'digest': digest,
         'content': content,
         'thumb_media_id': get_thumb_media_id(task_info['thumb_image'], params_dict),
         'show_cover_pic': 0,
