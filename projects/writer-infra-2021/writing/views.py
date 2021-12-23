@@ -13,6 +13,7 @@ from django.template.response import TemplateResponse
 from django.shortcuts import redirect
 
 from article_generator.apps import lottery_article
+from article_generator.apps.lottery_articles import trend_article
 
 from configs import resourses_dir
 
@@ -77,6 +78,17 @@ task_args_order = [
     'url-3d',
 ]
 
+trend_table_args = {
+    'title-fc': {
+        'display': '福彩文章题目',
+        'value': '福彩走势图 {month} 月 {day} 日更新（{total_image_count} 张图）',
+        'help': '一般不用改',
+    },
+}
+
+trend_table_args_order = [
+    'title-fc',
+]
 
 def get_notifys_str():
     notifys = copy.copy(global_vars['notification-persist'])
@@ -99,6 +111,24 @@ def task_home(request,
         'notification': get_notifys_str(),
         'tasks': [copy.copy(task_details[i]) for i in task_history],
         'task_tmpls': list(task_tmpls.values()),
+    }
+
+    return TemplateResponse(request, template_name, context)
+
+
+def trend_table(request,
+                template_name='task-home-v2.html'):
+
+    task_args = []
+    for i in trend_table_args_order:
+        t = copy.copy(trend_table_args[i])
+        t['key'] = i
+        task_args.append(t)
+
+    context = {
+        'page_title': '走势图文章生成',
+        'task_args': task_args,
+        'notification': get_notifys_str(),
     }
 
     return TemplateResponse(request, template_name, context)
@@ -178,6 +208,34 @@ def trigger_task(task_id, task_args_dict, on_progress=None, on_done=None):
     on_done(task_id, '已完成', persist=True)
 
 
+def run_single_mp_v2(mp_key, task_args_dict):
+    mp_name = os.environ.get('%s_NAME' % mp_key, 'default_name')
+
+    appid = os.environ.get('WECHAT_MP_APPID_%s' % mp_key, 'default_appid')
+    secret = os.environ.get('WECHAT_MP_SECRET_%s' % mp_key, 'default_secret')
+
+    upload_params = {
+        'platform': 'wechat-mp',
+        'params_dict': {
+            'appid': appid,
+            'secret': secret,
+        }
+    }
+    task_args_dict['mp_info'] = {
+        'name': mp_name,
+    }
+    task_args_dict['thumb_image'] = os.path.join(
+        resourses_dir, 'images/fucai-logo.jpg')
+
+    res = trend_article.run(task_args_dict, upload_params)
+    print(json.dumps(res, indent=4, ensure_ascii=False))
+
+
+def trigger_task_v2(task_id, task_args_dict):
+    # run_single_mp_v2('MP1', task_args_dict)
+    run_single_mp_v2('MP2', task_args_dict)
+
+
 def upload_image(image_paths):
     return [
         '/media/fucai-logo.jpg',
@@ -218,13 +276,16 @@ def task_run(request):
     qd = request.POST
     task_args_dict = {k: qd.get(k) for k in task_args_order}
 
+    for k, v in task_args_dict.items():
+        task_args_data[k]['value'] = v
+
     run_single_mp('MP1', task_args_dict, print)
     run_single_mp('MP2', task_args_dict, print)
 
     return redirect('task_home')
 
 
-def task_run_new(request):
+def task_run_v2(request):
     if request.method != 'POST':
         pass
 
@@ -236,19 +297,17 @@ def task_run_new(request):
 
     task_id = gen_task_id()
 
-    on_output(task_id, '任务已提交，运行中...', clear=True)
     thread_pool_executor.submit(
-        trigger_task, task_id, task_args_dict,
-        on_progress=on_output, on_done=on_output)
+        trigger_task_v2, task_id, task_args_dict)
 
-    task_details[task_id] = {
-        'task_args': copy.deepcopy(qd),
-        'notes': '',
-        'mark': '',
-    }
-    task_history.append(task_id)
+    # task_details[task_id] = {
+    #     'task_args': copy.deepcopy(qd),
+    #     'notes': '',
+    #     'mark': '',
+    # }
+    # task_history.append(task_id)
 
-    return redirect('task_home')
+    return redirect('trend_table')
 
 
 def demo_run(request):
