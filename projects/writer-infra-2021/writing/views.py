@@ -86,14 +86,38 @@ task_args_config_v2 = {
     ns_trend_table: {
         'page_title': '走势图文章生成',
         'args': {
-            'title-fc': {
+            'fc.title': {
                 'display': '福彩文章题目',
                 'value': '福彩走势图 {month} 月 {day} 日更新（{total_image_count} 张图）',
                 'help': '一般不用改',
             },
+            'fc.url_dudu-1': {
+                'display': 'dudu-1 URL',
+                'value': '',
+                'help': '必须填',
+            },
+            'fc.url_dudu-2': {
+                'display': 'dudu-2 URL',
+                'value': '',
+                'help': '必须填',
+            },
+            'fc.url_xiaotian-1': {
+                'display': 'xiaotian-1 URL',
+                'value': '',
+                'help': '必须填',
+            },
+            'fc.url_xiaotian-2': {
+                'display': 'xiaotian-2 URL',
+                'value': '',
+                'help': '必须填',
+            },
         },
         'args_order': [
-            'title-fc',
+            'fc.title',
+            'fc.url_dudu-1',
+            'fc.url_dudu-2',
+            'fc.url_xiaotian-1',
+            'fc.url_xiaotian-2',
         ],
     }
 }

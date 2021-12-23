@@ -9,7 +9,9 @@ app_mapper = {
 
 def run_article_gen_app(app_name, *app_args, **app_kwargs):
     if app_name not in app_mapper:
-        raise ValueError('unsupported article_gen_app: %s ' % app_name)
+        raise ValueError('unsupported article_gen_app: %s' % app_name)
 
-    print('start running app: %s' % app_name)
+    # print('start running app: %s. args: %s, kwargs: %s' % (
+    #         app_name, str(app_args), str(app_kwargs)))
+
     return app_mapper[app_name].run(*app_args, **app_kwargs)
