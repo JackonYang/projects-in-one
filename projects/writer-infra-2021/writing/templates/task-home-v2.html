@@ -23,6 +23,7 @@
 
     <form action="/writing/run-v2" method="post"> {% csrf_token %}
 
+        <input type="hidden" class="form-control" name="orig_app_name" id="orig_app_name" value="{{ orig_app_name }}">
         {% for arg in task_args %}
         <div class="mb-3">
             <label for="{{ arg.key }}" class="form-label"> {{ arg.display }}: </label>

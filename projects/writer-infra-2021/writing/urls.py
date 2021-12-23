@@ -5,7 +5,7 @@ from . import views
 
 urlpatterns = [
     re_path(r'^$', views.task_home, name='task_home'),
-    re_path(r'^zoushitu$', views.trend_table, name='trend_table'),
+    path(r'app/<str:orig_app_name>', views.task_home_v2, name='task_home_v2'),
     re_path(r'^run-v2$', views.task_run_v2, name='task_run_v2'),
     re_path(r'^demo$', views.demo_home, name='demo_home'),
     re_path(r'^run$', views.task_run, name='task_run'),

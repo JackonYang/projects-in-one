@@ -11,6 +11,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 from django.template.response import TemplateResponse
 from django.shortcuts import redirect
+from django.urls import reverse
 
 from article_generator.apps import lottery_article
 from article_generator.apps.lottery_articles import trend_article
@@ -78,17 +79,27 @@ task_args_order = [
     'url-3d',
 ]
 
-trend_table_args = {
-    'title-fc': {
-        'display': '福彩文章题目',
-        'value': '福彩走势图 {month} 月 {day} 日更新（{total_image_count} 张图）',
-        'help': '一般不用改',
-    },
+task_args_config_v2 = {
+    'trend_table': {
+        'page_title': '走势图文章生成',
+        'args': {
+            'title-fc': {
+                'display': '福彩文章题目',
+                'value': '福彩走势图 {month} 月 {day} 日更新（{total_image_count} 张图）',
+                'help': '一般不用改',
+            },
+        },
+        'args_order': [
+            'title-fc',
+        ],
+    }
 }
 
-trend_table_args_order = [
-    'title-fc',
-]
+def format_app_name(orig):
+    if orig == 'zoushitu':
+        return 'trend_table'
+    # default, do nothing
+    return orig
 
 def get_notifys_str():
     notifys = copy.copy(global_vars['notification-persist'])
@@ -116,17 +127,22 @@ def task_home(request,
     return TemplateResponse(request, template_name, context)
 
 
-def trend_table(request,
+def task_home_v2(request, orig_app_name,
                 template_name='task-home-v2.html'):
 
+    app_name = format_app_name(orig_app_name)
+
+    app_config = task_args_config_v2[app_name]
     task_args = []
-    for i in trend_table_args_order:
-        t = copy.copy(trend_table_args[i])
+    for i in app_config['args_order']:
+        t = copy.copy(app_config['args'][i])
         t['key'] = i
         task_args.append(t)
 
     context = {
-        'page_title': '走势图文章生成',
+        'orig_app_name': orig_app_name,
+        'app_name': app_name,
+        'page_title': app_config['page_title'],
         'task_args': task_args,
         'notification': get_notifys_str(),
     }
@@ -208,7 +224,8 @@ def trigger_task(task_id, task_args_dict, on_progress=None, on_done=None):
     on_done(task_id, '已完成', persist=True)
 
 
-def run_single_mp_v2(mp_key, task_args_dict):
+def run_single_mp_v2(mp_key, app_name, task_args_dict):
+    print('run_single_mp_v2: %s' % app_name)
     mp_name = os.environ.get('%s_NAME' % mp_key, 'default_name')
 
     appid = os.environ.get('WECHAT_MP_APPID_%s' % mp_key, 'default_appid')
@@ -227,13 +244,15 @@ def run_single_mp_v2(mp_key, task_args_dict):
     task_args_dict['thumb_image'] = os.path.join(
         resourses_dir, 'images/fucai-logo.jpg')
 
+    print(task_args_dict)
     res = trend_article.run(task_args_dict, upload_params)
     print(json.dumps(res, indent=4, ensure_ascii=False))
 
 
-def trigger_task_v2(task_id, task_args_dict):
+def trigger_task_v2(app_name, task_id, task_args_dict):
     # run_single_mp_v2('MP1', task_args_dict)
-    run_single_mp_v2('MP2', task_args_dict)
+    run_single_mp_v2('MP2', app_name, task_args_dict)
+    # mark task_id done
 
 
 def upload_image(image_paths):
@@ -290,15 +309,21 @@ def task_run_v2(request):
         pass
 
     qd = request.POST
-    task_args_dict = {k: qd.get(k) for k in task_args_order}
 
+    orig_app_name = qd['orig_app_name']
+    app_name = format_app_name(orig_app_name)
+    app_config = task_args_config_v2[app_name]
+
+    task_args_dict = {k: qd.get(k) for k in app_config['args_order']}
+
+    # save user inputs to runtime default args
     for k, v in task_args_dict.items():
-        task_args_data[k]['value'] = v
+        app_config['args'][k]['value'] = v
 
     task_id = gen_task_id()
 
     thread_pool_executor.submit(
-        trigger_task_v2, task_id, task_args_dict)
+        trigger_task_v2, app_name, task_id, task_args_dict)
 
     # task_details[task_id] = {
     #     'task_args': copy.deepcopy(qd),
@@ -307,7 +332,8 @@ def task_run_v2(request):
     # }
     # task_history.append(task_id)
 
-    return redirect('trend_table')
+    return redirect(reverse(
+        'task_home_v2', kwargs={'orig_app_name': orig_app_name}))
 
 
 def demo_run(request):
