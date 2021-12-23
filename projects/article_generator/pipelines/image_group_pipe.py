@@ -31,7 +31,7 @@ def load_images(root):
     data = {}
     for group in os.listdir(root):
         group_path = os.path.join(root, group)
-        if not os.path.isdir(group_path):
+        if not os.path.isdir(group_path):  # pragma: no cover
             continue
         data[group] = []
         for img_path in os.listdir(group_path):
@@ -73,11 +73,11 @@ class ImageGroupPipe(PipelineBase):
                 out_dir = os.path.join(output_root, grp)
                 out_path = os.path.join(output_root, grp, f)
 
-                if not os.path.exists(out_dir):
+                if not os.path.exists(out_dir):  # pragma: no cover
                     os.makedirs(out_dir)
                 shutil.copyfile(cur_path, out_path)
 
-    def get_data(self, src_urls, sorted_group_info, upload_params, **kwargs):
+    def get_data(self, src_urls, sorted_group_info, upload_params, on_progress_func=None, **kwargs):
         raw_image_dir = self.download_images(src_urls)
 
         grouped_image_root = os.path.join(
@@ -86,7 +86,7 @@ class ImageGroupPipe(PipelineBase):
         self.group_image(raw_image_dir, grouped_image_root)
         image_paths = load_images(grouped_image_root)
         image_urls = {
-            g: self.upload_images(paths, upload_params) for g, paths in image_paths.items()
+            g: self.upload_images(paths, upload_params, on_progress_func) for g, paths in image_paths.items()
         }
         images = []
         total_image_count = 0

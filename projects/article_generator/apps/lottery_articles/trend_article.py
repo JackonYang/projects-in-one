@@ -18,11 +18,6 @@ appid = os.environ.get('WECHAT_MP_APPID', 'default_appid')
 secret = os.environ.get('WECHAT_MP_SECRET', 'default_secret')
 
 
-def run_download(article_params, on_progress_func=None):
-    tasks = trans_kwargs(article_params)
-    return pipeline_manager.run_download(tasks, on_progress_func)
-
-
 def run(article_params, upload_params, on_progress_func=None):
     tasks = trans_kwargs(article_params, upload_params)
     rendered_articles = pipeline_manager.run(tasks, on_progress_func)
@@ -51,7 +46,7 @@ def trans_kwargs(article_params, upload_params=None):
     return tasks
 
 
-def run_test():
+def run_test():  # pragma: no cover
     src_urls = [
         ('dudu-1', 'https://mp.weixin.qq.com/s/bRjJAy6-J1pMOIPb4Xo7sQ'),  # 肚肚
         ('dudu-2', 'https://mp.weixin.qq.com/s/nsXV_oZImMViThfCJX2gmA'),  # 肚肚快 8
