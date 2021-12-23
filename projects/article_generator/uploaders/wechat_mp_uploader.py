@@ -5,6 +5,7 @@ from wechat_mp_driver.api import (
     add_material_local_image,
 )
 from libs.libcache.api import jcache
+from ..configs import resource_dir
 
 
 def upload_to_wechat_mp(article_list, params_dict):
@@ -20,7 +21,8 @@ def upload_thumb_image(image, appid, secret):  # pragma: no cover
 
 def get_thumb_media_id(thumb_image, params_dict):
     if not os.path.exists(thumb_image):
-        return 'kydwHY6c4LpYQ6QJIoazsGOo_hsROPlszVlwLl1SzEQ'
+        print('%s not exists. use default' % thumb_image)
+        thumb_image = os.path.join(resource_dir, 'trend_article/fucai-logo.jpg')
 
     return upload_thumb_image(thumb_image, **params_dict)  # pragma: no cover
 
