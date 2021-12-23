@@ -19,6 +19,6 @@ def test_demo_home(client):
 
 
 def test_fetch_notifys(client):
-    response = client.get('/writing/fetch-notifys')
+    response = client.get('/writing/fetch-notifys/1')
 
     assert response.status_code == 200
