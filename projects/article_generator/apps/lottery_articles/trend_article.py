@@ -38,6 +38,7 @@ def trans_kwargs(article_params, upload_params=None):
                 'article_name': 'art_fucai_trends',
                 'article_unique_key': 'art_fucai_trends_%s' % today(),
                 'title': article_params.get('title', ''),
+                'digest': article_params.get('digest', ''),
                 'thumb_image': article_params.get('thumb_image', ''),
                 'upload_params': upload_params,
                 'mp_info': article_params.get('mp_info', {}),
@@ -54,8 +55,8 @@ def run_test():
     src_urls = [
         ('dudu-1', 'https://mp.weixin.qq.com/s/bRjJAy6-J1pMOIPb4Xo7sQ'),  # 肚肚
         ('dudu-2', 'https://mp.weixin.qq.com/s/nsXV_oZImMViThfCJX2gmA'),  # 肚肚快 8
-        ('xiaotian-1', 'https://mp.weixin.qq.com/s/rvWfuF1ieqv1BhE4Dgy33Q'),  # 小田
-        ('xiaotian-2', 'https://mp.weixin.qq.com/s/UntGsLoPSPGHD94YTwszTg'),  # 快 8 走势图
+        ('xiaotian-1', 'https://mp.weixin.qq.com/s/BysZAKyEXhPxdbT6F_UJVA'),  # 小田
+        ('xiaotian-2', 'https://mp.weixin.qq.com/s/xfzFT3eQoybeYp4KDXaomg'),  # 快 8 走势图
     ]
     image_groups = [
         ['group1', {
