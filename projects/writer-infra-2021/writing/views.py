@@ -218,6 +218,19 @@ def task_run(request):
     qd = request.POST
     task_args_dict = {k: qd.get(k) for k in task_args_order}
 
+    run_single_mp('MP1', task_args_dict, print)
+    run_single_mp('MP2', task_args_dict, print)
+
+    return redirect('task_home')
+
+
+def task_run_new(request):
+    if request.method != 'POST':
+        pass
+
+    qd = request.POST
+    task_args_dict = {k: qd.get(k) for k in task_args_order}
+
     for k, v in task_args_dict.items():
         task_args_data[k]['value'] = v
 
