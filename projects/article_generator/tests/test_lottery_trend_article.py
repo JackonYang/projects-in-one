@@ -1,41 +1,18 @@
 import os
 
-from article_generator.apps.lottery_articles import trend_article
+from article_generator.apis import run_article_gen_app
 from article_generator.configs import resource_dir
 
+app_name = 'lottery.trend_table'
 
-src_urls = [
-    ('dudu-1', 'https://mp.weixin.qq.com/s/bRjJAy6-J1pMOIPb4Xo7sQ'),  # 肚肚
-    ('dudu-2', 'https://mp.weixin.qq.com/s/nsXV_oZImMViThfCJX2gmA'),  # 肚肚快 8
-    ('xiaotian-1', 'https://mp.weixin.qq.com/s/BysZAKyEXhPxdbT6F_UJVA'),  # 小田
-    ('xiaotian-2', 'https://mp.weixin.qq.com/s/xfzFT3eQoybeYp4KDXaomg'),  # 快 8 走势图
-]
-image_groups = [
-    ['group1', {
-        'display': '开奖 公告'
-    }],
-    ['group-k8', {
-        'display': '快8 走势图'
-    }],
-    ['group-k8h', {
-        'display': '快8 横版走势图'
-    }],
-    ['group-ssq', {
-        'display': '双色球 走势图'
-    }],
-    ['group-3d', {
-        'display': '3D 走势图'
-    }],
-    ['group-qlc', {
-        'display': '七乐彩 走势图'
-    }],
-]
 article_params = {
-    'src_urls': src_urls,
-    'title': '福彩走势图 {month} 月 {day} 日更新（{total_image_count} 张图）',
+    'fc.url_dudu-1': 'https://mp.weixin.qq.com/s/bRjJAy6-J1pMOIPb4Xo7sQ',  # 肚肚
+    'fc.url_dudu-2': 'https://mp.weixin.qq.com/s/nsXV_oZImMViThfCJX2gmA',  # 肚肚快 8
+    'fc.url_xiaotian-1': 'https://mp.weixin.qq.com/s/BysZAKyEXhPxdbT6F_UJVA',  # 小田
+    'fc.url_xiaotian-2': 'https://mp.weixin.qq.com/s/xfzFT3eQoybeYp4KDXaomg',  # 快 8 走势图
+    'fc.title': '福彩走势图 {month} 月 {day} 日更新（{total_image_count} 张图）',
     'digest': '您的财运 +++500 万！',
-    'thumb_image': os.path.join(resource_dir, 'trend_article/fucai-logo.jpg'),
-    'image_groups': image_groups,
+    'fc.thumb_image': os.path.join(resource_dir, 'trend_article/fucai-logo.jpg'),
 }
 
 appid = os.environ.get('WECHAT_MP_APPID', 'default_appid')
@@ -51,7 +28,7 @@ upload_params = {
 
 
 def test_trend_article_ok():
-    result = trend_article.run(article_params, upload_params)
+    result = run_article_gen_app(app_name, article_params, upload_params)
     assert 'media_id' in result
 
 
@@ -61,6 +38,6 @@ def test_trend_article_with_progress():
     def on_progress(msg, info=None):
         logs.append(msg)
 
-    result = trend_article.run(article_params, upload_params, on_progress)
+    result = run_article_gen_app(app_name, article_params, upload_params, on_progress)
     assert 'media_id' in result
     # assert len(logs) > 1
