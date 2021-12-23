@@ -80,8 +80,10 @@ task_args_order = [
     'url-3d',
 ]
 
+ns_trend_table = 'lottery.trend_table'
+
 task_args_config_v2 = {
-    'trend_table': {
+    ns_trend_table: {
         'page_title': '走势图文章生成',
         'args': {
             'title-fc': {
@@ -119,7 +121,7 @@ task_mng = TaskManager()
 
 def format_app_name(orig):
     if orig == 'zoushitu':
-        return 'trend_table'
+        return ns_trend_table
     # default, do nothing
     return orig
 
