@@ -3,6 +3,7 @@ import logging
 import copy
 import os
 import json
+import traceback
 
 from concurrent.futures import ThreadPoolExecutor
 
@@ -14,7 +15,7 @@ from django.shortcuts import redirect
 from django.urls import reverse
 
 from article_generator.apps import lottery_article
-from article_generator.apps.lottery_articles import trend_article
+from article_generator.apis import run_article_gen_app
 
 from configs import resourses_dir
 
@@ -95,11 +96,33 @@ task_args_config_v2 = {
     }
 }
 
+
+class TaskManager():
+    task_history = []  # id, only
+    task_info = {}
+
+    def add_new_task(self):
+        task_id = gen_task_id()
+        self.task_history.append(task_id)
+        self.task_info[task_id] = {
+            'is_done': False,
+        }
+        return task_id
+
+    def mark_done(self, task_id):
+        self.task_info[task_id]['is_done'] = True
+        print('task done: %s' % task_id)
+
+
+task_mng = TaskManager()
+
+
 def format_app_name(orig):
     if orig == 'zoushitu':
         return 'trend_table'
     # default, do nothing
     return orig
+
 
 def get_notifys_str():
     notifys = copy.copy(global_vars['notification-persist'])
@@ -128,7 +151,7 @@ def task_home(request,
 
 
 def task_home_v2(request, orig_app_name,
-                template_name='task-home-v2.html'):
+                 template_name='task-home-v2.html'):
 
     app_name = format_app_name(orig_app_name)
 
@@ -225,7 +248,6 @@ def trigger_task(task_id, task_args_dict, on_progress=None, on_done=None):
 
 
 def run_single_mp_v2(mp_key, app_name, task_args_dict):
-    print('run_single_mp_v2: %s' % app_name)
     mp_name = os.environ.get('%s_NAME' % mp_key, 'default_name')
 
     appid = os.environ.get('WECHAT_MP_APPID_%s' % mp_key, 'default_appid')
@@ -238,21 +260,26 @@ def run_single_mp_v2(mp_key, app_name, task_args_dict):
             'secret': secret,
         }
     }
+
+    # add more params to task_args_dict
     task_args_dict['mp_info'] = {
         'name': mp_name,
     }
     task_args_dict['thumb_image'] = os.path.join(
         resourses_dir, 'images/fucai-logo.jpg')
 
-    print(task_args_dict)
-    res = trend_article.run(task_args_dict, upload_params)
-    print(json.dumps(res, indent=4, ensure_ascii=False))
+    res = run_article_gen_app(app_name, task_args_dict, upload_params)
+    return res
 
 
 def trigger_task_v2(app_name, task_id, task_args_dict):
-    # run_single_mp_v2('MP1', task_args_dict)
-    run_single_mp_v2('MP2', app_name, task_args_dict)
-    # mark task_id done
+    try:
+        # run_single_mp_v2('MP1', task_args_dict)
+        run_single_mp_v2('MP2', app_name, task_args_dict)
+    except Exception:
+        traceback.print_exc()
+
+    task_mng.mark_done(task_id)
 
 
 def upload_image(image_paths):
@@ -320,17 +347,9 @@ def task_run_v2(request):
     for k, v in task_args_dict.items():
         app_config['args'][k]['value'] = v
 
-    task_id = gen_task_id()
-
+    task_id = task_mng.add_new_task()
     thread_pool_executor.submit(
         trigger_task_v2, app_name, task_id, task_args_dict)
-
-    # task_details[task_id] = {
-    #     'task_args': copy.deepcopy(qd),
-    #     'notes': '',
-    #     'mark': '',
-    # }
-    # task_history.append(task_id)
 
     return redirect(reverse(
         'task_home_v2', kwargs={'orig_app_name': orig_app_name}))
