@@ -25,7 +25,13 @@ image_groups = [
         'display': '快8 走势图'
     }],
     ['group-k8h', {
-        'display': '快8 横版走势图'
+        'display': '快8 走势图-横版',
+    }],
+    ['group-k8-rotated', {
+        'display': '快8 走势图-横屏观看',
+    }],
+    ['group-k8-long', {
+        'display': '快8 走势图-超长版',
     }],
     ['group-ssq', {
         'display': '双色球 走势图'

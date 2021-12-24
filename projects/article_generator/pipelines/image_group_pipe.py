@@ -34,7 +34,7 @@ def load_images(root):
         if not os.path.isdir(group_path):  # pragma: no cover
             continue
         data[group] = []
-        for img_path in os.listdir(group_path):
+        for img_path in sorted(os.listdir(group_path)):
             if img_path.startswith('.'):  # pragma: no cover
                 continue
 
