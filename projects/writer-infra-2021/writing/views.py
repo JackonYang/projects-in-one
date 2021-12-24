@@ -127,17 +127,29 @@ class TaskManager():
     task_history = []  # id, only
     task_info = {}
 
-    def add_new_task(self):
+    def add_new_task(self, **kwargs):
         task_id = gen_task_id()
         self.task_history.append(task_id)
-        self.task_info[task_id] = {
-            'is_done': False,
-        }
+        info = copy.deepcopy(kwargs)
+        info['is_done'] = False
+        self.task_info[task_id] = info
         return task_id
+
+    def get_task_meta(self, task_id):
+        if task_id not in self.task_info:
+            return {}
+
+        return self.task_info[task_id]
 
     def mark_done(self, task_id):
         self.task_info[task_id]['is_done'] = True
         print('task done: %s' % task_id)
+
+    def is_done(self, task_id):
+        if task_id not in self.task_info:
+            return True
+
+        return self.task_info[task_id]['is_done']
 
 
 task_mng = TaskManager()
@@ -377,8 +389,10 @@ def task_run_v2(request):
     thread_pool_executor.submit(
         trigger_task_v2, app_name, task_id, task_args_dict)
 
-    return redirect(reverse(
-        'task_home_v2', kwargs={'orig_app_name': orig_app_name}))
+    return redirect(reverse('in_progress', kwargs={
+        'orig_app_name': orig_app_name,
+        'task_id': task_id,
+    }))
 
 
 def demo_run(request):
@@ -439,13 +453,14 @@ def fetch_notifys(request, task_id,
     return TemplateResponse(request, template_name, context)
 
 
-def in_progress(request, task_id,
+def in_progress(request, orig_app_name, task_id,
                 template_name='in-progress.html'):
-    task_info = task_details.get(task_id, {})
-
-    is_done = task_info['is_done']
+    is_done = task_mng.is_done(task_id)
     if is_done:
-        return redirect('/writing/result/%s' % task_id)
+        # return redirect('/writing/result/%s' % task_id)
+        return redirect(reverse('task_home_v2', kwargs={
+            'orig_app_name': orig_app_name,
+        }))
 
     context = {
         'url_get_notifys': '/writing/fetch-notifys/%s' % task_id,
