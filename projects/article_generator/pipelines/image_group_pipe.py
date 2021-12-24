@@ -98,6 +98,10 @@ class ImageGroupPipe(PipelineBase):
         images = []
         total_image_count = 0
         for key, info in sorted_group_info:
+            if key not in image_urls:
+                print('data of the groups not found: %s' % key)
+                continue
+
             images.append(
                 {
                     'group_key': key,
