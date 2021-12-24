@@ -28,7 +28,7 @@ class FileGroup():
         parts = filename.split('-')
         for p in parts:
             if p.isdigit():
-                return int(p)
+                return str(int(p))
 
         return filename
 

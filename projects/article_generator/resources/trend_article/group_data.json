@@ -1,49 +1,49 @@
 {
     "dudu-1": {
-        "0": "group-ssq",
         "1": "group-ssq",
-        "2": "group-qlc",
-        "3": "group-3d",
-        "4": "group-3d"
+        "2": "group-ssq",
+        "3": "group-qlc",
+        "4": "group-3d",
+        "5": "group-3d"
     },
     "dudu-2": {
-        "0": "group-k8",
         "1": "group-k8",
-        "2": "group-k8h",
+        "2": "group-k8",
         "3": "group-k8h",
-        "4": "group-k8-rotated",
-        "5": "group-k8-rotated"
+        "4": "group-k8h",
+        "5": "group-k8",
+        "6": "group-k8"
     },
     "xiaotian-1": {
-        "0": "group-other",
-        "1": "group-qlc",
-        "2": "group1",
+        "1": "group-other",
+        "10": "group-qlc",
+        "11": "group1",
+        "12": "group-other",
+        "2": "group-other",
         "3": "group-other",
-        "4": "group-other",
-        "5": "group-other",
-        "6": "group-ssq",
-        "7": "group-ssq",
+        "4": "group-ssq",
+        "5": "group-ssq",
+        "6": "group-3d",
+        "7": "group-3d",
         "8": "group-3d",
-        "9": "group-3d",
-        "10": "group-3d",
-        "11": "group-3d"
+        "9": "group-3d"
     },
     "xiaotian-2": {
-        "0": "group-other",
-        "1": "group-k8-long",
-        "2": "group-k8",
-        "3": "group-k8",
+        "1": "group-other",
+        "10": "groupk8-all",
+        "11": "group-k8",
+        "12": "group-k8",
+        "13": "group-k8",
+        "14": "group-k8",
+        "15": "group-other",
+        "16": "group-other",
+        "2": "group-other",
+        "3": "group-other",
         "4": "group-k8",
-        "5": "groupk8-all",
-        "6": "group-other",
-        "7": "group-other",
-        "8": "group-other",
-        "9": "group-other",
-        "10": "group-k8",
-        "11": "group-k8-rotated",
-        "12": "group1",
-        "13": "groupk8-all",
-        "14": "groupk8-all",
-        "15": "group-k8-long"
+        "5": "group-k8",
+        "6": "group1",
+        "7": "groupk8-all",
+        "8": "groupk8-all",
+        "9": "groupk8-all"
     }
 }

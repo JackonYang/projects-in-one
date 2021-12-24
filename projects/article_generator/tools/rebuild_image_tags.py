@@ -9,7 +9,7 @@ from article_generator.configs import (
 
 
 def main():
-    image_root_dir = os.path.join(donwloaded_images_dir, '2d09221473b9abc2af52e730d5248b86')
+    image_root_dir = os.path.join(donwloaded_images_dir, 'd031714d90ae7251a0b41449d43ea0f7')
     raw_dir = os.path.join(image_root_dir, 'raw')
     grouped_dir = os.path.join(image_root_dir, 'grouped')
 
