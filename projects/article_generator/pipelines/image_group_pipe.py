@@ -12,10 +12,10 @@ from libs.libmd5 import md5_for_text
 from .pipeline_base import PipelineBase
 from ..configs import (
     donwloaded_images_dir,
-    resource_dir,
+    image_pipe_group_data_file,
 )
 
-with open(os.path.join(resource_dir, 'trend_article/group_data.json'), 'r') as fr:
+with open(image_pipe_group_data_file, 'r') as fr:
     groups = json.load(fr)
 
 
