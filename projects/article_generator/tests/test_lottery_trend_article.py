@@ -1,7 +1,4 @@
-import os
-
 from article_generator.apis import run_article_gen_app
-from article_generator.configs import resource_dir
 
 from article_generator.apps.lottery_articles.trend_article import (
     article_params,

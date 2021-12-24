@@ -25,6 +25,7 @@ class FileGroup():
                 yield (f, file_path)
 
     def parse_file_feature(self, filename):
+        filename = str(filename)
         parts = filename.split('-')
         for p in parts:
             if p.isdigit():
@@ -32,7 +33,7 @@ class FileGroup():
 
         return filename
 
-    def do_group(self, raw_dir, grouped_dir):
+    def do_group(self, raw_dir, grouped_dir):  # pragma: no cover
         group_data = {}
 
         for src_name, src_dir in self.iter_sub_dirs(raw_dir):

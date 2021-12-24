@@ -113,6 +113,7 @@ def trans_kwargs(article_params, upload_params=None):
 
     return tasks
 
+
 # default params for demo and testing
 article_params = {
     'fc.url_dudu-1': 'https://mp.weixin.qq.com/s/bRjJAy6-J1pMOIPb4Xo7sQ',  # 肚肚
@@ -131,6 +132,7 @@ upload_params = {
         'secret': secret,
     }
 }
+
 
 def run_test():  # pragma: no cover
     return run(article_params, upload_params)
