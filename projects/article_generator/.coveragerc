@@ -4,6 +4,7 @@ omit =
     */test_*.py
     */demo.py
     main.py
+    tools/*
 
 [report]
 exclude_lines =

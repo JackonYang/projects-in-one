@@ -35,6 +35,9 @@ def load_images(root):
             continue
         data[group] = []
         for img_path in os.listdir(group_path):
+            if img_path.startswith('.'):  # pragma: no cover
+                continue
+
             data[group].append(os.path.join(group_path, img_path))
 
     return data
@@ -65,8 +68,12 @@ class ImageGroupPipe(PipelineBase):
 
     def group_image(self, raw_image_dir, output_root):
         for src_group in os.listdir(raw_image_dir):
+            if src_group.startswith('.'):  # pragma: no cover
+                continue
             group_raw_dir = os.path.join(raw_image_dir, src_group)
             for idx, f in enumerate(sorted(os.listdir(group_raw_dir))):
+                if f.startswith('.'):  # pragma: no cover
+                    continue
                 grp = tag_image(src_group, idx)
                 cur_path = os.path.join(group_raw_dir, f)
 

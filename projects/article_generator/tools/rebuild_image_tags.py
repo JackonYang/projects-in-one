@@ -15,6 +15,8 @@ def do_group(raw_dir, grouped_dir):
         subgroup_data = {}
         for idx, f in enumerate(sorted(os.listdir(image_src_dir))):
             # print(idx, f)
+            if f.startswith('.'):
+                continue
             for g in os.listdir(grouped_dir):
                 if os.path.exists(os.path.join(grouped_dir, g, f)):
                     subgroup_data[idx] = g

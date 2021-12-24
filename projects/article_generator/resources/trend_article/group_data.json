@@ -11,8 +11,8 @@
         "1": "group-k8",
         "2": "group-k8h",
         "3": "group-k8h",
-        "4": "group-k8",
-        "5": "group-k8"
+        "4": "group-k8-rotated",
+        "5": "group-k8-rotated"
     },
     "xiaotian-1": {
         "0": "group-other",
@@ -30,20 +30,20 @@
     },
     "xiaotian-2": {
         "0": "group-other",
-        "1": "groupk8-all",
-        "2": "groupk8-all",
-        "3": "groupk8-all",
-        "4": "groupk8-all",
-        "5": "groupk8-all",
+        "1": "group-k8-long",
+        "2": "group-k8",
+        "3": "group-k8",
+        "4": "group-k8",
+        "5": "group-k8-rotated",
         "6": "group-other",
         "7": "group-other",
         "8": "group-other",
         "9": "group-other",
         "10": "group-k8",
-        "11": "group-k8",
+        "11": "group-k8-rotated",
         "12": "group1",
         "13": "groupk8-all",
-        "14": "groupk8-all",
-        "15": "groupk8-all"
+        "14": "group-k8-long",
+        "15": "group-k8-long"
     }
 }
