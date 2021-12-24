@@ -113,26 +113,24 @@ def trans_kwargs(article_params, upload_params=None):
 
     return tasks
 
+# default params for demo and testing
+article_params = {
+    'fc.url_dudu-1': 'https://mp.weixin.qq.com/s/bRjJAy6-J1pMOIPb4Xo7sQ',  # 肚肚
+    'fc.url_dudu-2': 'https://mp.weixin.qq.com/s/nsXV_oZImMViThfCJX2gmA',  # 肚肚快 8
+    'fc.url_xiaotian-1': 'https://mp.weixin.qq.com/s/BysZAKyEXhPxdbT6F_UJVA',  # 小田
+    'fc.url_xiaotian-2': 'https://mp.weixin.qq.com/s/xfzFT3eQoybeYp4KDXaomg',  # 快 8 走势图
+    'fc.title': '福彩走势图 {month} 月 {day} 日更新（{total_image_count} 张图）',
+    'digest': '您的财运 +++500 万！',
+    'fc.thumb_image': os.path.join(resource_dir, 'trend_article/fucai-logo.jpg'),
+}
+
+upload_params = {
+    'platform': 'wechat-mp',
+    'params_dict': {
+        'appid': appid,
+        'secret': secret,
+    }
+}
 
 def run_test():  # pragma: no cover
-    src_urls = [
-        ('dudu-1', 'https://mp.weixin.qq.com/s/bRjJAy6-J1pMOIPb4Xo7sQ'),  # 肚肚
-        ('dudu-2', 'https://mp.weixin.qq.com/s/nsXV_oZImMViThfCJX2gmA'),  # 肚肚快 8
-        ('xiaotian-1', 'https://mp.weixin.qq.com/s/BysZAKyEXhPxdbT6F_UJVA'),  # 小田
-        ('xiaotian-2', 'https://mp.weixin.qq.com/s/xfzFT3eQoybeYp4KDXaomg'),  # 快 8 走势图
-    ]
-
-    article_params = {
-        'src_urls': src_urls,
-        'title': '福彩走势图 {month} 月 {day} 日更新（{total_image_count} 张图）',
-        'digest': '您的财运 +++500 万！',
-        'thumb_image': os.path.join(resource_dir, 'trend_article/fucai-logo.jpg'),
-    }
-    upload_params = {
-        'platform': 'wechat-mp',
-        'params_dict': {
-            'appid': appid,
-            'secret': secret,
-        }
-    }
     return run(article_params, upload_params)
