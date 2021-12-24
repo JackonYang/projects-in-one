@@ -1,5 +1,4 @@
 import os
-import json
 import shutil
 
 from libs.libdate import today, get_day, get_month
@@ -8,23 +7,13 @@ from crawlers.wechat_mp_images.api import download_images
 from wechat_mp_driver.api import upload_local_image_in_article
 from libs.libcache.api import jcache
 from libs.libmd5 import md5_for_text
+from ..tools.file_group import FileGroup
 
 from .pipeline_base import PipelineBase
 from ..configs import (
     donwloaded_images_dir,
     image_pipe_group_data_file,
 )
-
-with open(image_pipe_group_data_file, 'r') as fr:
-    groups = json.load(fr)
-
-
-def tag_image(key, idx):
-    unknown = 'unknown'
-    if key not in groups:
-        return unknown
-
-    return groups[key].get(str(idx), unknown)
 
 
 def load_images(root):
@@ -67,6 +56,8 @@ class ImageGroupPipe(PipelineBase):
         return image_dir
 
     def group_image(self, raw_image_dir, output_root):
+        grouper = FileGroup(image_pipe_group_data_file)
+
         for src_group in os.listdir(raw_image_dir):
             if src_group.startswith('.'):  # pragma: no cover
                 continue
@@ -74,7 +65,7 @@ class ImageGroupPipe(PipelineBase):
             for idx, f in enumerate(sorted(os.listdir(group_raw_dir))):
                 if f.startswith('.'):  # pragma: no cover
                     continue
-                grp = tag_image(src_group, idx)
+                grp = grouper.get_file_group(src_group, f)
                 cur_path = os.path.join(group_raw_dir, f)
 
                 out_dir = os.path.join(output_root, grp)

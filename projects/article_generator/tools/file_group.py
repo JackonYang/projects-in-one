@@ -6,6 +6,12 @@ class FileGroup():
     def __init__(self, data_file):
         self.data_file = data_file
 
+        if os.path.exists(data_file):
+            with open(data_file, 'r') as fr:
+                self.group_data = json.load(fr)
+        else:
+            self.group_data = {}
+
     def iter_sub_dirs(self, root_dir):
         for subdir in os.listdir(root_dir):
             subdir_path = os.path.join(root_dir, subdir)
@@ -44,3 +50,12 @@ class FileGroup():
             json.dump(group_data, fw, indent=4, sort_keys=True)
 
         print('group data saved in: %s' % self.data_file)
+
+    def get_file_group(self, src_name, filename):
+        unknown = 'unknown'
+        if src_name not in self.group_data:
+            return unknown
+
+        file_feature = self.parse_file_feature(filename)
+
+        return self.group_data[src_name].get(file_feature, unknown)
