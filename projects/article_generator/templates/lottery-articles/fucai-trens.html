@@ -1,5 +1,6 @@
 <section style="border-width: initial;border-color: initial;border-style: none;margin: 0rem auto;">
 
+{% if show_tuijian_ad %}
 <p style="text-align: center;color: rgb(255, 41, 65);font-size: 24px;">
     👇👇👇每日专家推荐大全
 </p>
@@ -35,6 +36,7 @@
 </section>
 
 <p><br></p>
+{% endif %}
 
 <p>目录导览：</p>
 <ol class="list-paddingleft-2" style="list-style-type: decimal;">
@@ -83,9 +85,12 @@
         <img src="{{ img }}" style="display: block;width: 100%;"/>
     </section> -->
     <!-- {% endfor %} -->
+    {% if group.image_urls|length > 1 %}
     <p>
         ⚠️左右滑动图片，查看更多{{ group.group_info.display }}，更方便。
     </p>
+    {% endif %}
+
     <section style="margin: 1em auto; line-height: 25.6px; white-space: normal; border: none; text-align: center;">
         <section style="overflow: hidden;-webkit-overflow-scrolling: touch;">
             <section style="white-space: nowrap; overflow-x: scroll;">

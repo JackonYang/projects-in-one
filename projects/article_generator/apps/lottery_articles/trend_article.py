@@ -3,6 +3,7 @@
 包括：文章撰写、上传
 """
 import os
+import copy
 
 from libs.libdate import today
 
@@ -17,10 +18,10 @@ from ...configs import resource_dir
 
 image_groups = [
     ['group1', {
-        'display': '开奖 公告'
+        'display': '开奖 公告',
     }],
     ['group-k8', {
-        'display': '快8 走势图'
+        'display': '快8 走势图',
     }],
     ['group-k8h', {
         'display': '快8 走势图-横版',
@@ -32,13 +33,25 @@ image_groups = [
         'display': '快8 走势图-超长版',
     }],
     ['group-ssq', {
-        'display': '双色球 走势图'
+        'display': '双色球 走势图',
     }],
     ['group-3d', {
-        'display': '3D 走势图'
+        'display': '3D 走势图',
     }],
     ['group-qlc', {
-        'display': '七乐彩 走势图'
+        'display': '七乐彩 走势图',
+    }],
+    ['group-dlt', {
+        'display': '大乐透',
+    }],
+    ['group-p3', {
+        'display': '排列三',
+    }],
+    ['group-p5', {
+        'display': '排列五',
+    }],
+    ['group-qxc', {
+        'display': '七星彩',
     }],
 ]
 
@@ -66,6 +79,8 @@ def split_arg_groups(article_params):
 
     sorted_args = []
     for grp, args in sorted(group_args.items(), key=lambda x: x[0]):
+        args['article_name'] = grp
+        args['article_unique_key'] = '%s_%s' % (grp, today())
         for k, v in no_group_args.items():
             if k not in args:
                 args[k] = v
@@ -88,6 +103,16 @@ def build_src_urls(article_kwargs):
     return src_urls
 
 
+def build_task_info(article_kwargs, upload_params):
+    task_info = copy.deepcopy(article_kwargs)
+    task_info.update({
+        'upload_params': upload_params,
+        'src_urls': build_src_urls(article_kwargs),
+        'sorted_group_info': image_groups,
+    })
+    return task_info
+
+
 def trans_kwargs(article_params, upload_params=None):
     grouped_args = split_arg_groups(article_params)
 
@@ -95,17 +120,7 @@ def trans_kwargs(article_params, upload_params=None):
         {
             'pipeline': ImageGroupPipe,
             'template_name': 'lottery-articles/fucai-trens.html',
-            'task_info': {
-                'article_name': 'art_fucai_trends',
-                'article_unique_key': 'art_fucai_trends_%s' % today(),
-                'title': article_kwargs.get('title', ''),
-                'digest': article_kwargs.get('digest', ''),
-                'thumb_image': article_kwargs.get('thumb_image', ''),
-                'upload_params': upload_params,
-                'mp_info': article_kwargs.get('mp_info', {}),
-                'src_urls': build_src_urls(article_kwargs),
-                'sorted_group_info': image_groups,
-            },
+            'task_info': build_task_info(article_kwargs, upload_params),
         } for article_kwargs in grouped_args
     ]
 
@@ -114,13 +129,21 @@ def trans_kwargs(article_params, upload_params=None):
 
 # default params for demo and testing
 article_params = {
-    'fc.url_dudu-1': 'https://mp.weixin.qq.com/s/bRjJAy6-J1pMOIPb4Xo7sQ',  # 肚肚
-    'fc.url_dudu-2': 'https://mp.weixin.qq.com/s/nsXV_oZImMViThfCJX2gmA',  # 肚肚快 8
-    'fc.url_xiaotian-1': 'https://mp.weixin.qq.com/s/BysZAKyEXhPxdbT6F_UJVA',  # 小田
-    'fc.url_xiaotian-2': 'https://mp.weixin.qq.com/s/xfzFT3eQoybeYp4KDXaomg',  # 快 8 走势图
-    'fc.title': '福彩走势图 {month} 月 {day} 日更新（{total_image_count} 张图）',
+    '01fc.url_dudu-1': 'https://mp.weixin.qq.com/s/bRjJAy6-J1pMOIPb4Xo7sQ',  # 肚肚
+    '01fc.url_dudu-2': 'https://mp.weixin.qq.com/s/nsXV_oZImMViThfCJX2gmA',  # 肚肚快 8
+    '01fc.url_xiaotian-1': 'https://mp.weixin.qq.com/s/BysZAKyEXhPxdbT6F_UJVA',  # 小田
+    '01fc.url_xiaotian-2': 'https://mp.weixin.qq.com/s/xfzFT3eQoybeYp4KDXaomg',  # 快 8 走势图
+    '01fc.title': '福彩走势图 {month} 月 {day} 日更新（{total_image_count} 张图）',
+    '01fc.thumb_image': os.path.join(resource_dir, 'trend_article/fc-trend-cover.png'),
+    '01fc.show_tuijian_ad': True,
+
+    '02tc.url_dudu-tc': 'https://mp.weixin.qq.com/s/h6-P7S5LwzQvZBQY2WvEiw',  # 肚肚体彩
+    '02tc.url_xiaotian-tc': 'https://mp.weixin.qq.com/s/NTjb-rTgQnCgXYkZ9clDNg',  # 小田体彩
+    '02tc.title': '体彩走势图 {month} 月 {day} 日更新（{total_image_count} 张图）',
+    '02tc.thumb_image': os.path.join(resource_dir, 'trend_article/ticai.png'),
+    '02tc.show_tuijian_ad': False,
+
     'digest': '您的财运 +++500 万！',
-    'fc.thumb_image': os.path.join(resource_dir, 'trend_article/fucai-logo.jpg'),
 }
 
 appid = os.environ.get('WECHAT_MP_APPID', 'default_appid')

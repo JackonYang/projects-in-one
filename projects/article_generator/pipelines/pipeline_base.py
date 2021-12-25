@@ -36,7 +36,7 @@ class PipelineBase:
 
     def run(self, log_func):
         data = self.get_data(log_func=log_func, **self.task_info)
-        data['mp_info'] = self.task_info['mp_info']
+        data.update(self.task_info)
         content = self.render(data)
 
         if not os.path.exists(output_html_dir):  # pragma: no cover

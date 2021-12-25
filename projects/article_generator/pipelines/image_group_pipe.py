@@ -90,7 +90,7 @@ class ImageGroupPipe(PipelineBase):
         total_image_count = 0
         for key, info in sorted_group_info:
             if key not in image_urls:
-                log_func('图片分组没有下载到数据: %s' % key)
+                print('no image found in group: %s' % key)
                 continue
 
             images.append(
