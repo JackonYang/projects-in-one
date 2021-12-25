@@ -253,7 +253,9 @@ def trigger_task_v2(app_name, task_id, task_args_dict):
         try:
             run_single_mp_v2(task_id, mp, app_name, task_args_dict)
         except Exception:
-            traceback.print_exc()
+            mp_name = os.environ.get('%s_NAME' % mp, 'default_name')
+            task_mng.add_task_log(task_id, '运行出错。公众号: ' % mp_name)
+            task_mng.add_task_log(task_id, traceback.format_exc())
 
     task_mng.mark_done(task_id)
 
