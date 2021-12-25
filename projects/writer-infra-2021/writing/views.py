@@ -334,11 +334,14 @@ def task_run(request):
     }))
 
 
-def demo_result(request, task_id,
-                template_name='demo-result.html'):
+def task_result(request, orig_app_name, task_id,
+                template_name='task-result.html'):
     context = {
-        'task': task_details.get(task_id),
-        'records': task_details.get(task_id, {}).get('result_json'),
+        'run_again_url': reverse('app_home', kwargs={
+            'orig_app_name': orig_app_name,
+        }),
+        # 'task': task_details.get(task_id),
+        # 'records': task_details.get(task_id, {}).get('result_json'),
     }
 
     return TemplateResponse(request, template_name, context)
@@ -367,9 +370,9 @@ def in_progress(request, orig_app_name, task_id,
                 template_name='in-progress.html'):
     is_done = task_mng.is_done(task_id)
     if is_done:
-        # return redirect('/writing/result/%s' % task_id)
-        return redirect(reverse('app_home', kwargs={
+        return redirect(reverse('task_result', kwargs={
             'orig_app_name': orig_app_name,
+            'task_id': task_id,
         }))
 
     context = {
