@@ -23,30 +23,34 @@ def upload_image_to_mp(image, appid, secret):  # pragma: no cover
 
 
 class ImageArticlePipe(PipelineBase):
-    def download_data(self, src_url, on_progress_func=None, **kwargs):
+    def download_data(self, src_url, log_func=print, **kwargs):
         image_dir = os.path.join(donwloaded_images_dir, md5_for_text(src_url))
-        image_paths = download_images(src_url, image_dir, on_progress_func)
+        image_paths = download_images(src_url, image_dir)
+
+        log_func('%s 张图片下载成功。保存地址: %s' % (
+                len(image_paths), image_dir
+            ))
         return {
             'day': today(),
             'images': image_paths,
         }
 
-    def get_data(self, src_url, upload_params, on_progress_func=None, **kwargs):
+    def get_data(self, src_url, upload_params, log_func=print, **kwargs):
         image_dir = os.path.join(donwloaded_images_dir, md5_for_text(src_url))
-        image_paths = download_images(src_url, image_dir, on_progress_func)
-        image_urls = self.upload_images(image_paths[1:-1], upload_params, on_progress_func)
+        image_paths = download_images(src_url, image_dir)
+        image_urls = self.upload_images(image_paths[1:-1], upload_params, log_func)
         return {
             'day': today(),
             'images': image_urls,
         }
 
-    def upload_images(self, image_paths, upload_params, on_progress_func=None):
+    def upload_images(self, image_paths, upload_params, log_func=print):
         img_urls = []
         total = len(image_paths)
         for idx, img in enumerate(image_paths):
             img_url = upload_image_to_mp(
                 img, **upload_params['params_dict'])
             img_urls.append(img_url)
-            if on_progress_func:
-                on_progress_func('(%s/%s)图片已上传到公众号' % (idx+1, total))
+
+        log_func('图片全部上传公众号成功。共 %s 张' % total)
         return img_urls

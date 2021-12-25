@@ -219,7 +219,7 @@ def run_single_mp_v2(task_id, mp_key, app_name, task_args_dict):
 
     mp_name = os.environ.get('%s_NAME' % mp_key, 'default_name')
 
-    log_func('开始运行')
+    log_func('开始处理公众号<%s>' % mp_name)
 
     appid = os.environ.get('WECHAT_MP_APPID_%s' % mp_key, 'default_appid')
     secret = os.environ.get('WECHAT_MP_SECRET_%s' % mp_key, 'default_secret')
@@ -241,7 +241,7 @@ def run_single_mp_v2(task_id, mp_key, app_name, task_args_dict):
 
     res = run_article_gen_app(app_name, task_args_dict, upload_params, log_func)
 
-    log_func('公众号<%s> 完成!' % mp_name)
+    log_func('公众号<%s> 完成! 处理结果:' % mp_name)
     log_func(json.dumps(res, indent=4, ensure_ascii=False))
     return res
 

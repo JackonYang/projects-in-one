@@ -28,14 +28,14 @@ lotterys = [
 ]
 
 
-def run_download(article_params, on_progress_func=None):
+def run_download(article_params, log_func=print):
     tasks = trans_kwargs(article_params)
-    return pipeline_manager.run_download(tasks, on_progress_func)
+    return pipeline_manager.run_download(tasks, log_func)
 
 
-def run(article_params, upload_params, on_progress_func=None):
+def run(article_params, upload_params, log_func=print):
     tasks = trans_kwargs(article_params, upload_params)
-    rendered_articles = pipeline_manager.run(tasks, on_progress_func)
+    rendered_articles = pipeline_manager.run(tasks, log_func)
     return upload_articles(rendered_articles, **upload_params)
 
 

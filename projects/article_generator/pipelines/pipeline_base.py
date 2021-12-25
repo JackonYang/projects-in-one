@@ -27,15 +27,15 @@ class PipelineBase:
         self.template_name = template_name
         self.task_info = task_info
 
-    def run_download(self, on_progress_func):
-        data = self.download_data(on_progress_func=on_progress_func, **self.task_info)
+    def run_download(self, log_func):
+        data = self.download_data(log_func=log_func, **self.task_info)
         return {
             'task_info': self.task_info,
             'info_data': data,
         }
 
-    def run(self, on_progress_func):
-        data = self.get_data(on_progress_func=on_progress_func, **self.task_info)
+    def run(self, log_func):
+        data = self.get_data(log_func=log_func, **self.task_info)
         data['mp_info'] = self.task_info['mp_info']
         content = self.render(data)
 

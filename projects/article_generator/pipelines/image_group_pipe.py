@@ -43,13 +43,13 @@ def upload_image_to_mp(image, appid, secret):  # pragma: no cover
 
 
 class ImageGroupPipe(PipelineBase):
-    def download_images(self, src_urls, on_progress_func=print, **kwargs):
+    def download_images(self, src_urls, log_func=print, **kwargs):
         image_dir = os.path.join(donwloaded_images_dir, md5_for_text(str(src_urls)), 'raw')
 
         for name, url in src_urls:
             output_dir = os.path.join(image_dir, name)
             images = download_images(url, output_dir)
-            on_progress_func('%s images downloaded, saved in %s' % (
+            log_func('%s 张图片下载成功。保存地址: %s' % (
                 len(images), output_dir
             ))
 
@@ -75,7 +75,7 @@ class ImageGroupPipe(PipelineBase):
                     os.makedirs(out_dir)
                 shutil.copyfile(cur_path, out_path)
 
-    def get_data(self, src_urls, sorted_group_info, upload_params, on_progress_func=print, **kwargs):
+    def get_data(self, src_urls, sorted_group_info, upload_params, log_func=print, **kwargs):
         raw_image_dir = self.download_images(src_urls)
 
         grouped_image_root = os.path.join(
@@ -84,13 +84,13 @@ class ImageGroupPipe(PipelineBase):
         self.group_image(raw_image_dir, grouped_image_root)
         image_paths = load_images(grouped_image_root)
         image_urls = {
-            g: self.upload_images(paths, upload_params, on_progress_func) for g, paths in image_paths.items()
+            g: self.upload_images(paths, upload_params, g, log_func) for g, paths in image_paths.items()
         }
         images = []
         total_image_count = 0
         for key, info in sorted_group_info:
             if key not in image_urls:
-                on_progress_func('data of the groups not found: %s' % key)
+                log_func('图片分组没有下载到数据: %s' % key)
                 continue
 
             images.append(
@@ -109,13 +109,13 @@ class ImageGroupPipe(PipelineBase):
             'total_image_count': total_image_count,
         }
 
-    def upload_images(self, image_paths, upload_params, on_progress_func=None):
+    def upload_images(self, image_paths, upload_params, group_key, log_func=print):
         img_urls = []
         total = len(image_paths)
         for idx, img in enumerate(image_paths):
             img_url = upload_image_to_mp(
                 img, **upload_params['params_dict'])
             img_urls.append(img_url)
-            if on_progress_func:
-                on_progress_func('(%s/%s)图片已上传到公众号' % (idx+1, total))
+
+        log_func('图片成功上传公众号。分组：%s, 共 %s 张' % (group_key, total))
         return img_urls
