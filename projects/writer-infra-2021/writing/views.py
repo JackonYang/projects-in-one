@@ -2,7 +2,6 @@
 import logging
 import copy
 import os
-import json
 import traceback
 
 from concurrent.futures import ThreadPoolExecutor
@@ -205,39 +204,6 @@ def gen_task_id():
     return global_vars['task_id']
 
 
-def gen_task_tmpl_id():
-    global_vars['task_tmpl_id'] += 1
-    return global_vars['task_tmpl_id']
-
-
-def run_single_mp(mp_key, task_args_dict, out):
-    mp_name = os.environ.get('%s_NAME' % mp_key, 'default_name')
-
-    out('%s 开始上传中，请等待几分钟...' % mp_name, True)
-    appid = os.environ.get('WECHAT_MP_APPID_%s' % mp_key, 'default_appid')
-    secret = os.environ.get('WECHAT_MP_SECRET_%s' % mp_key, 'default_secret')
-
-    upload_params = {
-        'platform': 'wechat-mp',
-        'params_dict': {
-            'appid': appid,
-            'secret': secret,
-        }
-    }
-    task_args_dict['mp_info'] = {
-        'name': mp_name,
-    }
-    task_args_dict['thumb_image'] = os.path.join(
-        resourses_dir, 'images/fucai-logo.jpg')
-
-    res = lottery_article.run(task_args_dict, upload_params, lambda x, info=None: out(x, False))
-
-    if 'media_id' not in res:
-        out(json.dumps(res, indent=4, ensure_ascii=False), True)
-    else:
-        out('%s 已上传。media_id: %s' % (mp_name, res['media_id']), True)
-
-
 def run_single_mp_v2(mp_key, app_name, task_args_dict):
     mp_name = os.environ.get('%s_NAME' % mp_key, 'default_name')
 
@@ -273,39 +239,6 @@ def trigger_task_v2(app_name, task_id, task_args_dict):
             traceback.print_exc()
 
     task_mng.mark_done(task_id)
-
-
-def upload_image(image_paths):
-    return [
-        '/media/fucai-logo.jpg',
-    ]
-
-
-def trigger_demo_task(task_id, task_args_dict, on_progress=None, on_done=None):
-    raw_data = lottery_article.run_download(task_args_dict, lambda x, info=None: on_progress(task_id, x, False))
-
-    data = []
-    for record in raw_data:
-        info = record['info_data']
-        info['image_urls'] = upload_image(info['images'])
-        data.append(info)
-
-    task_details[task_id]['result_json'] = data
-    task_details[task_id]['is_done'] = True
-    print('res', data)
-    on_done(task_id, '已完成', persist=True)
-
-
-def on_output(task_id, output, persist=False, clear=False):
-    if clear:
-        global_vars['notification-persist'] = []
-        global_vars['notification'] = ''
-
-    if persist:
-        global_vars['notification-persist'].append(output)
-        global_vars['notification'] = ''
-    else:
-        global_vars['notification'] = output
 
 
 def task_run(request):
