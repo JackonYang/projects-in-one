@@ -13,12 +13,10 @@
         运行中...
     </h1>
 
-    <div id='nitify-info'>
-    {% if notification %}
-    <div class="alert alert-primary" role="alert">
-        {{ notification|safe }}
-    </div>
-    {% endif %}
+    <div id='notify-info'>
+        {% for msg in notifys %}
+            <p>{{ msg }}</p>
+        {% endfor %}
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
@@ -34,8 +32,6 @@
     <script src="/static/rainbow/src/language/shell.js"></script>
 
     <script>
-    var enable_notify_polling = true;
-    var url_get_notifys = "{{ url_get_notifys }}";
 
     $().ready(function () {
         //EITHER USE A GLOBAL VAR OR PLACE VAR IN HIDDEN FIELD
@@ -46,26 +42,28 @@
         }, 1000);
     });
 
-    function pollServer()
-    {
-        if (enable_notify_polling)
-        {
-            window.setTimeout(function () {
-                $.ajax({
-                    url: url_get_notifys,
-                    type: "GET",
-                    success: function (result) {
-                        //SUCCESS LOGIC
-                        $("div#nitify-info").replaceWith(result);
-                        pollServer();
-                    },
-                    error: function () {
-                        //ERROR HANDLING
-                        pollServer();
-                    }});
-            }, 2500);
-        }
-    }
+    // var enable_notify_polling = true;
+    // var url_get_notifys = "{{ url_get_notifys }}";
+    // function pollServer()
+    // {
+    //     if (enable_notify_polling)
+    //     {
+    //         window.setTimeout(function () {
+    //             $.ajax({
+    //                 url: url_get_notifys,
+    //                 type: "GET",
+    //                 success: function (result) {
+    //                     //SUCCESS LOGIC
+    //                     $("div#notify-info").replaceWith(result);
+    //                     pollServer();
+    //                 },
+    //                 error: function () {
+    //                     //ERROR HANDLING
+    //                     pollServer();
+    //                 }});
+    //         }, 2500);
+    //     }
+    // }
     </script>
 
 </body>

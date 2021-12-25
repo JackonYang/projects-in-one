@@ -43,13 +43,13 @@ def upload_image_to_mp(image, appid, secret):  # pragma: no cover
 
 
 class ImageGroupPipe(PipelineBase):
-    def download_images(self, src_urls, on_progress_func=None, **kwargs):
+    def download_images(self, src_urls, on_progress_func=print, **kwargs):
         image_dir = os.path.join(donwloaded_images_dir, md5_for_text(str(src_urls)), 'raw')
 
         for name, url in src_urls:
             output_dir = os.path.join(image_dir, name)
             images = download_images(url, output_dir)
-            print('%s images downloaded, saved in %s' % (
+            on_progress_func('%s images downloaded, saved in %s' % (
                 len(images), output_dir
             ))
 
@@ -75,7 +75,7 @@ class ImageGroupPipe(PipelineBase):
                     os.makedirs(out_dir)
                 shutil.copyfile(cur_path, out_path)
 
-    def get_data(self, src_urls, sorted_group_info, upload_params, on_progress_func=None, **kwargs):
+    def get_data(self, src_urls, sorted_group_info, upload_params, on_progress_func=print, **kwargs):
         raw_image_dir = self.download_images(src_urls)
 
         grouped_image_root = os.path.join(
@@ -90,7 +90,7 @@ class ImageGroupPipe(PipelineBase):
         total_image_count = 0
         for key, info in sorted_group_info:
             if key not in image_urls:
-                print('data of the groups not found: %s' % key)
+                on_progress_func('data of the groups not found: %s' % key)
                 continue
 
             images.append(

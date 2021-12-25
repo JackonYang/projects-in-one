@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import json
 import logging
 import copy
 import os
@@ -130,6 +131,7 @@ task_args_config_v2 = {
 class TaskManager():
     task_history = []  # id, only
     task_info = {}
+    task_logs = {}  # task_id: log_list
 
     def add_new_task(self, **kwargs):
         task_id = gen_task_id()
@@ -144,6 +146,13 @@ class TaskManager():
             return {}
 
         return self.task_info[task_id]
+
+    def add_task_log(self, task_id, msg):
+        self.task_logs.setdefault(task_id, [])
+        self.task_logs[task_id].append(msg)
+    
+    def get_task_logs(self, task_id):
+        return self.task_logs.get(task_id, [])
 
     def mark_done(self, task_id):
         self.task_info[task_id]['is_done'] = True
@@ -204,8 +213,13 @@ def gen_task_id():
     return global_vars['task_id']
 
 
-def run_single_mp_v2(mp_key, app_name, task_args_dict):
+def run_single_mp_v2(task_id, mp_key, app_name, task_args_dict):
+    def log_func(msg):
+        task_mng.add_task_log(task_id, msg)
+
     mp_name = os.environ.get('%s_NAME' % mp_key, 'default_name')
+
+    log_func('开始运行')
 
     appid = os.environ.get('WECHAT_MP_APPID_%s' % mp_key, 'default_appid')
     secret = os.environ.get('WECHAT_MP_SECRET_%s' % mp_key, 'default_secret')
@@ -225,7 +239,10 @@ def run_single_mp_v2(mp_key, app_name, task_args_dict):
     task_args_dict['thumb_image'] = os.path.join(
         resourses_dir, 'images/fucai-logo.jpg')
 
-    res = run_article_gen_app(app_name, task_args_dict, upload_params)
+    res = run_article_gen_app(app_name, task_args_dict, upload_params, log_func)
+
+    log_func('公众号<%s> 完成!' % mp_name)
+    log_func(json.dumps(res, indent=4, ensure_ascii=False))
     return res
 
 
@@ -234,7 +251,7 @@ def trigger_task_v2(app_name, task_id, task_args_dict):
     mps = app_config['mps']
     for mp in mps:
         try:
-            run_single_mp_v2(mp, app_name, task_args_dict)
+            run_single_mp_v2(task_id, mp, app_name, task_args_dict)
         except Exception:
             traceback.print_exc()
 
@@ -258,6 +275,7 @@ def task_run(request):
         app_config['args'][k]['value'] = v
 
     task_id = task_mng.add_new_task()
+    task_mng.add_task_log(task_id, '开始运行')
     thread_pool_executor.submit(
         trigger_task_v2, app_name, task_id, task_args_dict)
 
@@ -273,8 +291,7 @@ def task_result(request, orig_app_name, task_id,
         'run_again_url': reverse('app_home', kwargs={
             'orig_app_name': orig_app_name,
         }),
-        # 'task': task_details.get(task_id),
-        # 'records': task_details.get(task_id, {}).get('result_json'),
+        'notifys': task_mng.get_task_logs(task_id),
     }
 
     return TemplateResponse(request, template_name, context)
@@ -309,8 +326,7 @@ def in_progress(request, orig_app_name, task_id,
         }))
 
     context = {
-        'url_get_notifys': '/writing/fetch-notifys/%s' % task_id,
-        'notification': get_notifys_str(),
+        'notifys': task_mng.get_task_logs(task_id),
     }
 
     return TemplateResponse(request, template_name, context)
