@@ -14,7 +14,6 @@ from django.template.response import TemplateResponse
 from django.shortcuts import redirect
 from django.urls import reverse
 
-from article_generator.apps import lottery_article
 from article_generator.apis import run_article_gen_app
 
 from configs import resourses_dir
@@ -33,58 +32,64 @@ global_vars = {
 }
 task_tmpls = {}
 
-task_args_data = {
-    'title-k8': {
-        'display': '快8 文章题目',
-        'value': '彩百科-今日 快8 推荐汇总-{day}',
-        'help': '一般不用改。{day} 会自动替换为今天的日期',
-    },
-    'url-k8': {
-        'display': '快8 文章网址',
-        'value': 'test',
-        'help': '要填写。今天没开奖就不填写。原文的网址',
-    },
-    'title-ssq': {
-        'display': '双色球文章题目',
-        'value': '彩百科-今日 双色球 推荐汇总-{day}',
-        'help': '一般不用改。{day} 会自动替换为今天的日期',
-    },
-    'url-ssq': {
-        'display': '双色球 文章网址',
-        'value': 'test',
-        'help': '要填写。今天没开奖就不填写。原文的网址',
-    },
-    'title-3d': {
-        'display': '3D 文章题目',
-        'value': '彩百科-今日 3D 推荐汇总-{day}',
-        'help': '一般不用改。{day} 会自动替换为今天的日期',
-    },
-    'url-3d': {
-        'display': '3D 文章网址',
-        'value': 'test',
-        'help': '要填写。今天没开奖就不填写。原文的网址',
-    },
-    'output': {
-        'display': 'output',
-        'value': '',
-        'help': 'readonly',
-    },
-}
-
-task_args_order = [
-    'title-k8',
-    'url-k8',
-    'title-ssq',
-    'url-ssq',
-    'title-3d',
-    'url-3d',
-]
 
 ns_trend_table = 'lottery.trend_table'
+ns_tuijian = 'lottery.tuijian_collection'
 
 task_args_config_v2 = {
+
+    ns_tuijian: {
+        'page_title': '文章生成 -- 每日推荐汇总',
+        'mps': [
+            'MP1',
+            'MP2',
+        ],
+        'args': {
+            'title-k8': {
+                'display': '快8 文章题目',
+                'value': '今日 快8 推荐汇总-{day}',
+                'help': '一般不用改。{day} 会自动替换为今天的日期',
+            },
+            'url-k8': {
+                'display': '快8 文章网址',
+                'value': 'test',
+                'help': '要填写。今天没开奖就不填写。原文的网址',
+            },
+            'title-ssq': {
+                'display': '双色球文章题目',
+                'value': '今日 双色球 推荐汇总-{day}',
+                'help': '一般不用改。{day} 会自动替换为今天的日期',
+            },
+            'url-ssq': {
+                'display': '双色球 文章网址',
+                'value': 'test',
+                'help': '要填写。今天没开奖就不填写。原文的网址',
+            },
+            'title-3d': {
+                'display': '3D 文章题目',
+                'value': '今日 3D 推荐汇总-{day}',
+                'help': '一般不用改。{day} 会自动替换为今天的日期',
+            },
+            'url-3d': {
+                'display': '3D 文章网址',
+                'value': 'test',
+                'help': '要填写。今天没开奖就不填写。原文的网址',
+            },
+        },
+        'args_order': [
+            'title-k8',
+            'url-k8',
+            'title-ssq',
+            'url-ssq',
+            'title-3d',
+            'url-3d',
+        ],
+    },
     ns_trend_table: {
-        'page_title': '走势图文章生成',
+        'page_title': '文章生成 -- 走势图大全',
+        'mps': [
+            'MP2',
+        ],
         'args': {
             'fc.title': {
                 'display': '福彩文章题目',
@@ -119,7 +124,7 @@ task_args_config_v2 = {
             'fc.url_xiaotian-1',
             'fc.url_xiaotian-2',
         ],
-    }
+    },
 }
 
 
@@ -158,6 +163,8 @@ task_mng = TaskManager()
 def format_app_name(orig):
     if orig == 'zoushitu':
         return ns_trend_table
+    elif orig == 'tuijian':
+        return ns_tuijian
     # default, do nothing
     return orig
 
@@ -167,25 +174,6 @@ def get_notifys_str():
     if global_vars['notification']:
         notifys.append(global_vars['notification'])
     return '<br/>'.join(notifys)
-
-
-def task_home(request,
-              template_name='task-home.html'):
-
-    task_args = []
-    for i in task_args_order:
-        t = copy.copy(task_args_data[i])
-        t['key'] = i
-        task_args.append(t)
-
-    context = {
-        'task_args': task_args,
-        'notification': get_notifys_str(),
-        'tasks': [copy.copy(task_details[i]) for i in task_history],
-        'task_tmpls': list(task_tmpls.values()),
-    }
-
-    return TemplateResponse(request, template_name, context)
 
 
 def task_home_v2(request, orig_app_name,
@@ -209,35 +197,6 @@ def task_home_v2(request, orig_app_name,
     }
 
     return TemplateResponse(request, template_name, context)
-
-
-def demo_home(request,
-              template_name='demo-home.html'):
-
-    task_args = []
-    for i in task_args_order:
-        t = copy.copy(task_args_data[i])
-        t['key'] = i
-        task_args.append(t)
-
-    context = {
-        'task_args': task_args,
-        'notification': get_notifys_str(),
-        'tasks': [copy.copy(task_details[i]) for i in task_history],
-        'task_tmpls': list(task_tmpls.values()),
-    }
-
-    return TemplateResponse(request, template_name, context)
-
-
-def load_tmpl(request, tmpl_id):
-    if tmpl_id in task_tmpls:
-        tmpl = task_tmpls[tmpl_id]
-        task_args_data['task_dir']['value'] = tmpl['task_dir']
-        task_args_data['task']['value'] = tmpl['task']
-        task_args_data['output']['value'] = ''
-
-    return redirect('task_home')
 
 
 def gen_task_id():
@@ -278,13 +237,6 @@ def run_single_mp(mp_key, task_args_dict, out):
         out('%s 已上传。media_id: %s' % (mp_name, res['media_id']), True)
 
 
-def trigger_task(task_id, task_args_dict, on_progress=None, on_done=None):
-    run_single_mp('MP1', task_args_dict, out=lambda x, flag: on_progress(task_id, x, flag))
-    run_single_mp('MP2', task_args_dict, out=lambda x, flag: on_progress(task_id, x, flag))
-
-    on_done(task_id, '已完成', persist=True)
-
-
 def run_single_mp_v2(mp_key, app_name, task_args_dict):
     mp_name = os.environ.get('%s_NAME' % mp_key, 'default_name')
 
@@ -312,8 +264,10 @@ def run_single_mp_v2(mp_key, app_name, task_args_dict):
 
 def trigger_task_v2(app_name, task_id, task_args_dict):
     try:
-        # run_single_mp_v2('MP1', task_args_dict)
-        run_single_mp_v2('MP2', app_name, task_args_dict)
+        app_config = task_args_config_v2[app_name]
+        mps = app_config['mps']
+        for mp in mps:
+            run_single_mp_v2(mp, app_name, task_args_dict)
     except Exception:
         traceback.print_exc()
 
@@ -353,22 +307,6 @@ def on_output(task_id, output, persist=False, clear=False):
         global_vars['notification'] = output
 
 
-def task_run(request):
-    if request.method != 'POST':
-        pass
-
-    qd = request.POST
-    task_args_dict = {k: qd.get(k) for k in task_args_order}
-
-    for k, v in task_args_dict.items():
-        task_args_data[k]['value'] = v
-
-    run_single_mp('MP1', task_args_dict, print)
-    run_single_mp('MP2', task_args_dict, print)
-
-    return redirect('task_home')
-
-
 def task_run_v2(request):
     if request.method != 'POST':
         pass
@@ -393,35 +331,6 @@ def task_run_v2(request):
         'orig_app_name': orig_app_name,
         'task_id': task_id,
     }))
-
-
-def demo_run(request):
-    if request.method != 'POST':
-        pass
-
-    qd = request.POST
-    task_args_dict = {k: qd.get(k) for k in task_args_order}
-
-    for k, v in task_args_dict.items():
-        task_args_data[k]['value'] = v
-
-    task_id = gen_task_id()
-
-    on_output(task_id, '任务已提交，运行中...', clear=True)
-    thread_pool_executor.submit(
-        trigger_demo_task, task_id, task_args_dict,
-        on_progress=on_output, on_done=on_output)
-
-    task_details[task_id] = {
-        'task_args': copy.deepcopy(qd),
-        'notes': '',
-        'mark': '',
-        'is_done': False,
-    }
-    task_history.append(task_id)
-
-    # return redirect('demo_result')
-    return redirect('/writing/in-progress/%s' % task_id)
 
 
 def demo_result(request, task_id,
