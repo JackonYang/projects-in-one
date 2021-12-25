@@ -1,30 +1,16 @@
-import os
-from article_generator.apps import lottery_article
+from article_generator.apis import run_article_gen_app
 
-article_params = {
-    'title-k8': '快8 专家推荐与走势图汇总-{day}',
-    'url-k8': 'https://mp.weixin.qq.com/s/shg2HG7X6d-zQKlpWO9b-Q',
-    'title-ssq': '双色球专家推荐与走势图汇总-{day}',
-    'url-ssq': 'test',
-    # 'url-ssq': 'https://mp.weixin.qq.com/s/dbIccKt5YczwS44XHKazJQ'
-    'title-3d': '3D 专家推荐与走势图汇总-{day}',
-    'url-3d': 'https://mp.weixin.qq.com/s/dbIccKt5YczwS44XHKazJQ'
-}
+from article_generator.apps.lottery_articles.tuijian_collection import (
+    article_params,
+    upload_params,
+)
+from article_generator.apps.lottery_articles import tuijian_collection
 
-appid = os.environ.get('WECHAT_MP_APPID', 'default_appid')
-secret = os.environ.get('WECHAT_MP_SECRET', 'default_secret')
-
-upload_params = {
-    'platform': 'wechat-mp',
-    'params_dict': {
-        'appid': appid,
-        'secret': secret,
-    }
-}
+app_name = 'lottery.tuijian_collection'
 
 
 def test_lottery_article_ok():
-    result = lottery_article.run(article_params, upload_params)
+    result = run_article_gen_app(app_name, article_params, upload_params)
     assert 'media_id' in result
 
 
@@ -34,13 +20,13 @@ def test_lottery_article_with_progress():
     def on_progress(msg, info=None):
         logs.append(msg)
 
-    result = lottery_article.run(article_params, upload_params, on_progress)
+    result = run_article_gen_app(app_name, article_params, upload_params, on_progress)
     assert 'media_id' in result
     assert len(logs) > 1
 
 
 def test_lottery_article_download():
-    result = lottery_article.run_download(article_params)
+    result = tuijian_collection.run_download(article_params)
 
     assert len(result) == 2
     for res in result:

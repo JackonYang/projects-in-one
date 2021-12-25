@@ -14,8 +14,6 @@ from ...uploaders.api import (
 )
 from ...configs import resource_dir
 
-appid = os.environ.get('WECHAT_MP_APPID', 'default_appid')
-secret = os.environ.get('WECHAT_MP_SECRET', 'default_secret')
 
 image_groups = [
     ['group1', {
@@ -124,6 +122,9 @@ article_params = {
     'digest': '您的财运 +++500 万！',
     'fc.thumb_image': os.path.join(resource_dir, 'trend_article/fucai-logo.jpg'),
 }
+
+appid = os.environ.get('WECHAT_MP_APPID', 'default_appid')
+secret = os.environ.get('WECHAT_MP_SECRET', 'default_secret')
 
 upload_params = {
     'platform': 'wechat-mp',

@@ -1,9 +1,11 @@
-from article_generator.apps.lottery_articles import trend_article
-from article_generator.apps import lottery_article
+from article_generator.apps.lottery_articles import (
+    trend_article,
+    tuijian_collection,
+)
 
 app_mapper = {
     'lottery.trend_table': trend_article,
-    'lottery.rec_coll': lottery_article,
+    'lottery.tuijian_collection': tuijian_collection,
 }
 
 

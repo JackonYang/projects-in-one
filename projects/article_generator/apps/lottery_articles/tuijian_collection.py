@@ -2,14 +2,15 @@
 一个端到端的应用。
 包括：文章撰写、上传
 """
+import os
 import copy
 
 from libs.libdate import today
 
-from ..pipelines import pipeline_manager
-from ..pipelines.image_article_pipe import ImageArticlePipe
+from ...pipelines import pipeline_manager
+from ...pipelines.image_article_pipe import ImageArticlePipe
 
-from ..uploaders.api import (
+from ...uploaders.api import (
     upload_articles,
 )
 
@@ -65,3 +66,31 @@ def trans_kwargs(article_params, upload_params=None):
             })
 
     return tasks
+
+
+# default params for demo and testing
+
+article_params = {
+    'title-k8': '快8 专家推荐与走势图汇总-{day}',
+    'url-k8': 'https://mp.weixin.qq.com/s/shg2HG7X6d-zQKlpWO9b-Q',
+    'title-ssq': '双色球专家推荐与走势图汇总-{day}',
+    'url-ssq': 'test',
+    # 'url-ssq': 'https://mp.weixin.qq.com/s/dbIccKt5YczwS44XHKazJQ'
+    'title-3d': '3D 专家推荐与走势图汇总-{day}',
+    'url-3d': 'https://mp.weixin.qq.com/s/dbIccKt5YczwS44XHKazJQ'
+}
+
+appid = os.environ.get('WECHAT_MP_APPID', 'default_appid')
+secret = os.environ.get('WECHAT_MP_SECRET', 'default_secret')
+
+upload_params = {
+    'platform': 'wechat-mp',
+    'params_dict': {
+        'appid': appid,
+        'secret': secret,
+    }
+}
+
+
+def run_test():  # pragma: no cover
+    return run(article_params, upload_params)
