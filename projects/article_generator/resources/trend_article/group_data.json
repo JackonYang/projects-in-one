@@ -14,6 +14,16 @@
         "5": "group-k8",
         "6": "group-k8"
     },
+    "dudu-tc": {
+        "1": "group-dlt",
+        "2": "group-dlt",
+        "3": "group-p5",
+        "4": "group-p5",
+        "5": "group-qxc",
+        "6": "group-qxc",
+        "7": "group-p3",
+        "8": "group-p3"
+    },
     "xiaotian-1": {
         "1": "group-other",
         "10": "group-qlc",
@@ -45,5 +55,17 @@
         "7": "groupk8-all",
         "8": "groupk8-all",
         "9": "groupk8-all"
+    },
+    "xiaotian-tc": {
+        "1": "group-other",
+        "10": "group-other",
+        "2": "group-other",
+        "3": "group-other",
+        "4": "group-dlt",
+        "5": "group-p3",
+        "6": "group-p3",
+        "7": "group-p5",
+        "8": "group-qxc",
+        "9": "group1"
     }
 }

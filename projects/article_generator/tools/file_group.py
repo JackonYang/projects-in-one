@@ -1,5 +1,6 @@
 import os
 import json
+import copy
 
 
 class FileGroup():
@@ -34,7 +35,7 @@ class FileGroup():
         return filename
 
     def do_group(self, raw_dir, grouped_dir):  # pragma: no cover
-        group_data = {}
+        group_data = copy.deepcopy(self.group_data)
 
         for src_name, src_dir in self.iter_sub_dirs(raw_dir):
             subgroup_data = {}
