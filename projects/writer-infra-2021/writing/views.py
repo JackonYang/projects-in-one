@@ -150,7 +150,7 @@ class TaskManager():
     def add_task_log(self, task_id, msg):
         self.task_logs.setdefault(task_id, [])
         self.task_logs[task_id].append(msg)
-    
+
     def get_task_logs(self, task_id):
         return self.task_logs.get(task_id, [])
 

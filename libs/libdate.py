@@ -15,6 +15,7 @@ def get_day(hours=8):
     t = datetime.now(timezone(timedelta(hours=hours)))
     return t.day
 
+
 def today(hours=8, formatter='%Y-%m-%d'):
     t = datetime.now(timezone(timedelta(hours=hours)))
     return t.strftime(formatter)
