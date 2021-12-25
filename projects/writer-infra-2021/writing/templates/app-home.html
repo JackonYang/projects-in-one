@@ -21,7 +21,7 @@
     {% endif %}
     </div>
 
-    <form action="/writing/run-v2" method="post"> {% csrf_token %}
+    <form action="{{ task_run_url }}" method="post"> {% csrf_token %}
 
         <input type="hidden" class="form-control" name="orig_app_name" id="orig_app_name" value="{{ orig_app_name }}">
         {% for arg in task_args %}

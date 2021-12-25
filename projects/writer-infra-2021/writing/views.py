@@ -176,8 +176,8 @@ def get_notifys_str():
     return '<br/>'.join(notifys)
 
 
-def task_home_v2(request, orig_app_name,
-                 template_name='task-home-v2.html'):
+def app_home(request, orig_app_name,
+             template_name='app-home.html'):
 
     app_name = format_app_name(orig_app_name)
 
@@ -191,6 +191,7 @@ def task_home_v2(request, orig_app_name,
     context = {
         'orig_app_name': orig_app_name,
         'app_name': app_name,
+        'task_run_url': reverse('task_run'),
         'page_title': app_config['page_title'],
         'task_args': task_args,
         'notification': get_notifys_str(),
@@ -263,13 +264,13 @@ def run_single_mp_v2(mp_key, app_name, task_args_dict):
 
 
 def trigger_task_v2(app_name, task_id, task_args_dict):
-    try:
-        app_config = task_args_config_v2[app_name]
-        mps = app_config['mps']
-        for mp in mps:
+    app_config = task_args_config_v2[app_name]
+    mps = app_config['mps']
+    for mp in mps:
+        try:
             run_single_mp_v2(mp, app_name, task_args_dict)
-    except Exception:
-        traceback.print_exc()
+        except Exception:
+            traceback.print_exc()
 
     task_mng.mark_done(task_id)
 
@@ -307,7 +308,7 @@ def on_output(task_id, output, persist=False, clear=False):
         global_vars['notification'] = output
 
 
-def task_run_v2(request):
+def task_run(request):
     if request.method != 'POST':
         pass
 
@@ -367,7 +368,7 @@ def in_progress(request, orig_app_name, task_id,
     is_done = task_mng.is_done(task_id)
     if is_done:
         # return redirect('/writing/result/%s' % task_id)
-        return redirect(reverse('task_home_v2', kwargs={
+        return redirect(reverse('app_home', kwargs={
             'orig_app_name': orig_app_name,
         }))
 
