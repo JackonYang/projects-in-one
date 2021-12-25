@@ -6,7 +6,7 @@ import copy
 class FileGroup():
     default_alg = 'by_group_file'
 
-    def __init__(self, data_file, image_group_alg):
+    def __init__(self, data_file, image_group_alg=None):
         self.data_file = data_file
         self.image_group_alg = image_group_alg or self.default_alg
 

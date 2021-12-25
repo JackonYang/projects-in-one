@@ -28,7 +28,7 @@ class PipelineBase:
         self.task_info = task_info
 
     def run_download(self, log_func):
-        data = self.download_data(log_func=log_func, **self.task_info)
+        data = self.download_images(log_func=log_func, **self.task_info)
         return {
             'task_info': self.task_info,
             'info_data': data,

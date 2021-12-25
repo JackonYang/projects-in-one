@@ -146,6 +146,6 @@ def run_download(article_params, log_func):
         template_name = task['template_name']
         task_info = task['task_info']
         articles.append(
-            pipe_class(template_dir, template_name, task_info).run_download(log_func))
+            pipe_class(template_dir, template_name, task_info).run_download(log_func=log_func))
 
     return articles

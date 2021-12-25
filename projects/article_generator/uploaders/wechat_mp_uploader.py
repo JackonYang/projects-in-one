@@ -20,7 +20,7 @@ def upload_thumb_image(image, appid, secret):  # pragma: no cover
 
 
 def get_thumb_media_id(thumb_image, params_dict):
-    if not os.path.exists(thumb_image):
+    if not os.path.exists(thumb_image):  # pragma: no cover
         print('%s not exists. use default' % thumb_image)
         thumb_image = os.path.join(resource_dir, 'trend_article/fucai-logo.jpg')
 
