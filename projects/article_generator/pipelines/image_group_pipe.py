@@ -55,17 +55,20 @@ class ImageGroupPipe(PipelineBase):
 
         return image_dir
 
-    def group_image(self, raw_image_dir, output_root):
-        grouper = FileGroup(image_pipe_group_data_file)
+    def group_image(self, raw_image_dir, output_root, image_group_alg):
+        grouper = FileGroup(image_pipe_group_data_file, image_group_alg)
 
         for src_group in os.listdir(raw_image_dir):
             if src_group.startswith('.'):  # pragma: no cover
                 continue
             group_raw_dir = os.path.join(raw_image_dir, src_group)
-            for idx, f in enumerate(sorted(os.listdir(group_raw_dir))):
+
+            group_images = os.listdir(group_raw_dir)
+            group_image_count = len(group_images)
+            for idx, f in enumerate(sorted(group_images)):
                 if f.startswith('.'):  # pragma: no cover
                     continue
-                grp = grouper.get_file_group(src_group, f)
+                grp = grouper.get_file_group(src_group, f, idx, group_image_count)
                 cur_path = os.path.join(group_raw_dir, f)
 
                 out_dir = os.path.join(output_root, grp)
@@ -75,13 +78,13 @@ class ImageGroupPipe(PipelineBase):
                     os.makedirs(out_dir)
                 shutil.copyfile(cur_path, out_path)
 
-    def get_data(self, src_urls, sorted_group_info, upload_params, log_func=print, **kwargs):
+    def get_data(self, src_urls, sorted_group_info, upload_params, image_group_alg=None, log_func=print, **kwargs):
         raw_image_dir = self.download_images(src_urls)
 
         grouped_image_root = os.path.join(
             os.path.dirname(raw_image_dir), 'grouped'
         )
-        self.group_image(raw_image_dir, grouped_image_root)
+        self.group_image(raw_image_dir, grouped_image_root, image_group_alg)
         image_paths = load_images(grouped_image_root)
         image_urls = {
             g: self.upload_images(paths, upload_params, g, log_func) for g, paths in image_paths.items()

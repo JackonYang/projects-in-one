@@ -4,8 +4,11 @@ import copy
 
 
 class FileGroup():
-    def __init__(self, data_file):
+    default_alg = 'by_group_file'
+
+    def __init__(self, data_file, image_group_alg):
         self.data_file = data_file
+        self.image_group_alg = image_group_alg or self.default_alg
 
         if os.path.exists(data_file):
             with open(data_file, 'r') as fr:
@@ -53,7 +56,11 @@ class FileGroup():
 
         print('group data saved in: %s' % self.data_file)
 
-    def get_file_group(self, src_name, filename):
+    def get_file_group(self, *args, **kwargs):
+        group_alg_func = getattr(self, 'group_alg_%s' % self.image_group_alg)
+        return group_alg_func(*args, **kwargs)
+
+    def group_alg_by_group_file(self, src_name, filename, *args, **kwargs):
         unknown = 'unknown'
         if src_name not in self.group_data:
             return unknown
@@ -61,3 +68,9 @@ class FileGroup():
         file_feature = self.parse_file_feature(filename)
 
         return self.group_data[src_name].get(file_feature, unknown)
+
+    def group_alg_drop_head_tail(self, src_name, filename, idx, group_image_count, *args, **kwargs):
+        if idx == 0 or (idx + 1) == group_image_count:
+            return 'other'
+
+        return 'valid'

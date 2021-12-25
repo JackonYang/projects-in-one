@@ -1,3 +1,4 @@
+{% if mp_info.name %}
 <section style="
     border:none;
     border-style: none;
@@ -14,16 +15,18 @@
 
 
 <br/>
-
+{% endif %}
 <p>
-双色球今晚开奖，共 {{ images|length }} 份推荐！
+双色球今晚开奖，共 {{ total_image_count }} 份推荐！
 </p>
 
 <br/>
 <br/>
 
-{% for img in images %}
+{% for group in image_groups %}
+{% for img in group.image_urls %}
 <section style="display: inline-block;">
     <img src="{{ img }}" style="display: block;width: 100%;"/>
 </section>
+{% endfor %}
 {% endfor %}

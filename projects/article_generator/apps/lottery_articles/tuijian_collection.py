@@ -35,7 +35,10 @@ article_params = {
     '03sand.template_name': 'lottery-articles/daily-recommend-3d.html',
 
     'pipeline': ImageGroupPipe,
-    'mp_info': 'anything',
+    'image_group_alg': 'drop_head_tail',
+    'mp_info': {
+        'name': 'anything',
+    },
     'thumb_image': os.path.join(resource_dir, 'trend_article/fucai-logo.jpg'),
 }
 

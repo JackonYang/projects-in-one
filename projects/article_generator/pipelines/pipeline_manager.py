@@ -44,6 +44,9 @@ image_groups = [
     ['group-qxc', {
         'display': '七星彩',
     }],
+    ['valid', {
+        'display': 'valid',
+    }]
 ]
 
 
@@ -88,7 +91,7 @@ def build_src_urls(article_kwargs):
     src_urls = []
 
     for k, v in article_kwargs.items():
-        if k.startswith(prefix):
+        if k.startswith(prefix) and str(v).startswith('http'):  # valid
             src_urls.append([k[prefix_len:], v])
 
     return src_urls
@@ -115,7 +118,12 @@ def trans_kwargs(article_params, upload_params=None):
         } for article_kwargs in grouped_args
     ]
 
-    return tasks
+    valid_tasks = []
+    for t in tasks:
+        # print(t)
+        if len(t['task_info'].get('src_urls', [])) > 0:
+            valid_tasks.append(t)
+    return valid_tasks
 
 
 def gen_article(tasks, log_func):
@@ -130,7 +138,8 @@ def gen_article(tasks, log_func):
     return articles
 
 
-def run_download(tasks, log_func):
+def run_download(article_params, log_func):
+    tasks = trans_kwargs(article_params)
     articles = []
     for task in tasks:
         pipe_class = task['pipeline']

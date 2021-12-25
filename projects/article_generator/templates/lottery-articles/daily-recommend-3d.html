@@ -1,3 +1,4 @@
+{% if mp_info.name %}
 <section style="
     border:none;
     border-style: none;
@@ -13,16 +14,18 @@
 </section>
 
 <br/>
-
+{% endif %}
 <p>
-今天的福彩 3D 推荐来了，共 {{ images|length }} 个！
+今天的福彩 3D 推荐来了，共 {{ total_image_count }} 个！
 </p>
 
 <br/>
 <br/>
 
-{% for img in images %}
+{% for group in image_groups %}
+{% for img in group.image_urls %}
 <section style="display: inline-block;">
     <img src="{{ img }}" style="display: block;width: 100%;"/>
 </section>
+{% endfor %}
 {% endfor %}
