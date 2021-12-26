@@ -79,13 +79,14 @@ class ImageGroupPipe(PipelineBase):
                 shutil.copyfile(cur_path, out_path)
 
     def get_data(self, src_urls, sorted_group_info, upload_params, image_group_alg=None, log_func=print, **kwargs):
-        raw_image_dir = self.download_images(src_urls)
-
+        raw_image_dir = self.download_images(src_urls, log_func)
+        log_func('图片下载成功，开始分组')
         grouped_image_root = os.path.join(
             os.path.dirname(raw_image_dir), 'grouped'
         )
         self.group_image(raw_image_dir, grouped_image_root, image_group_alg)
         image_paths = load_images(grouped_image_root)
+        log_func('图片分组成功，开始上传')
         image_urls = {
             g: self.upload_images(paths, upload_params, g, log_func) for g, paths in image_paths.items()
         }
@@ -119,6 +120,8 @@ class ImageGroupPipe(PipelineBase):
             img_url = upload_image_to_mp(
                 img, **upload_params['params_dict'])
             img_urls.append(img_url)
+            if (idx+1) % 10:
+                log_func('上传中，分组：%s, 进度: %s/%s' % (group_key, idx+1, total))
 
         log_func('图片成功上传公众号。分组：%s, 共 %s 张' % (group_key, total))
         return img_urls
