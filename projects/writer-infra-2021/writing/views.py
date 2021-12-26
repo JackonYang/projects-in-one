@@ -34,6 +34,17 @@ task_tmpls = {}
 ns_trend_table = 'lottery.trend_table'
 ns_tuijian = 'lottery.tuijian_collection'
 
+app_list = [
+    {
+        'key': 'tuijian',
+        'name': '每日专家推荐大全',
+    },
+    {
+        'key': 'zoushitu',
+        'name': '福彩体彩走势图大全',
+    }
+]
+
 task_args_config_v2 = {
 
     ns_tuijian: {
@@ -228,8 +239,6 @@ def run_single_mp_v2(task_id, mp_key, app_name, task_args_dict):
     task_args_dict['mp_info'] = {
         'name': mp_name,
     }
-    task_args_dict['thumb_image'] = os.path.join(
-        resourses_dir, 'images/fucai-logo.jpg')
 
     res = run_article_gen_app(app_name, task_args_dict, upload_params, log_func)
 
@@ -331,6 +340,19 @@ def in_progress(request, orig_app_name, task_id,
 
     context = {
         'notifys': task_mng.get_task_logs(task_id),
+    }
+
+    return TemplateResponse(request, template_name, context)
+
+
+def task_home(request,
+              template_name='task-home.html'):
+    for app in app_list:
+        app['url'] = reverse('app_home', kwargs={
+            'orig_app_name': app['key'],
+        })
+    context = {
+        'app_list': app_list,
     }
 
     return TemplateResponse(request, template_name, context)

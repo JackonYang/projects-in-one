@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-from django.urls import path
+from django.urls import path, re_path
 
 from . import views
 
 urlpatterns = [
-    # re_path(r'^$', views.task_home, name='task_home'),
+    re_path(r'^$', views.task_home, name='task_home'),
     path(r'app/<str:orig_app_name>', views.app_home, name='app_home'),
     path(r'run', views.task_run, name='task_run'),
     path(r'in-progress/<str:orig_app_name>/<int:task_id>', views.in_progress, name='in_progress'),
