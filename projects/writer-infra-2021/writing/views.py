@@ -3,7 +3,6 @@ import json
 import logging
 import copy
 import os
-import traceback
 import time
 
 from concurrent.futures import ThreadPoolExecutor
@@ -16,8 +15,6 @@ from django.shortcuts import redirect
 from django.urls import reverse
 
 from article_generator.apis import run_article_gen_app
-
-from configs import resourses_dir
 
 logger = logging.getLogger(__name__)
 
@@ -222,6 +219,7 @@ def run_single_mp_v2(task_id, mp_key, app_name, task_args_dict):
 
     mp_name = os.environ.get('%s_NAME' % mp_key, 'default_name')
 
+    logger.info('processing mp: %s, mp_name: %s' % (mp_key, mp_name))
     log_func('开始处理公众号<%s>' % mp_name)
 
     appid = os.environ.get('WECHAT_MP_APPID_%s' % mp_key, 'default_appid')
@@ -242,8 +240,10 @@ def run_single_mp_v2(task_id, mp_key, app_name, task_args_dict):
 
     res = run_article_gen_app(app_name, task_args_dict, upload_params, log_func)
 
+    res_str = json.dumps(res, indent=4, ensure_ascii=False)
     log_func('公众号<%s> 完成! 处理结果:' % mp_name)
-    log_func(json.dumps(res, indent=4, ensure_ascii=False))
+    log_func(res_str)
+    logger.info('done. mp: %s, mp_name: %s, res: %s' % (mp_key, mp_name, res_str))
     return res
 
 
@@ -254,9 +254,8 @@ def trigger_task_v2(app_name, task_id, task_args_dict):
         try:
             run_single_mp_v2(task_id, mp, app_name, task_args_dict)
         except Exception:
-            mp_name = os.environ.get('%s_NAME' % mp, 'default_name')
-            task_mng.add_task_log(task_id, '运行出错。公众号: ' % mp_name)
-            task_mng.add_task_log(task_id, traceback.format_exc())
+            logger.exception('run mp %s error' % mp)
+            task_mng.add_task_log(task_id, '运行出错，请联系客服，或重试一下')
 
     task_mng.mark_done(task_id)
 
@@ -279,6 +278,7 @@ def task_run(request):
 
     task_id = task_mng.add_new_task()
     task_mng.add_task_log(task_id, '开始运行')
+    logger.info('submit task: %s. %s' % (task_id, str(task_args_dict)))
     thread_pool_executor.submit(
         trigger_task_v2, app_name, task_id, task_args_dict)
 

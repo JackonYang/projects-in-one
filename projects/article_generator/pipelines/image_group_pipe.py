@@ -1,5 +1,7 @@
 import os
 import shutil
+import logging
+import json
 
 from libs.libdate import today, get_day, get_month
 
@@ -14,6 +16,8 @@ from ..configs import (
     donwloaded_images_dir,
     image_pipe_group_data_file,
 )
+
+logger = logging.getLogger(__name__)
 
 
 def load_images(root):
@@ -36,7 +40,8 @@ def load_images(root):
 def upload_image_to_mp(image, appid, secret):  # pragma: no cover
     rsp = upload_local_image_in_article(image, appid, secret)
     if 'url' not in rsp:
-        print(rsp)
+        logger.error('upload error. rsp: %s' % json.dumps(
+            rsp, indent=4, ensure_ascii=False))
         raise ValueError('upload error')
 
     return rsp['url']
@@ -49,6 +54,7 @@ class ImageGroupPipe(PipelineBase):
         for name, url in src_urls:
             output_dir = os.path.join(image_dir, name)
             images = download_images(url, output_dir)
+            logger.info('succ. %s images downloaded. dir: %s' % (len(images), output_dir))
             log_func('%s 张图片下载成功。保存地址: %s' % (
                 len(images), output_dir
             ))
@@ -85,15 +91,20 @@ class ImageGroupPipe(PipelineBase):
     def get_data(self, src_urls, sorted_group_info, upload_params, image_group_alg=None, log_func=print, **kwargs):
         raw_image_dir = self.download_images(src_urls, log_func)
         log_func('图片下载成功，开始分组')
+        logger.info('image donwloaded. start groupping')
         grouped_image_root = os.path.join(
             os.path.dirname(raw_image_dir), 'grouped'
         )
         self.group_image(raw_image_dir, grouped_image_root, image_group_alg)
+        logger.info('image groupped. start loading for upload')
         image_paths = load_images(grouped_image_root)
         log_func('图片分组成功，开始上传')
+        logger.info('image loaded. start uploading')
         image_urls = {
             g: self.upload_images(paths, upload_params, g, log_func) for g, paths in image_paths.items()
         }
+        logger.info('image uploaded')
+
         images = []
         total_image_count = 0
         for key, info in sorted_group_info:
@@ -124,6 +135,7 @@ class ImageGroupPipe(PipelineBase):
             img_url = upload_image_to_mp(
                 img, **upload_params['params_dict'])
             img_urls.append(img_url)
+            logger.info('(%s/%s) image uploaded. url: %s' % (idx+1, total, img_url))
             if (idx+1) % 20 == 0:  # pragma: no cover
                 log_func('上传中，分组：%s, 进度: %s/%s' % (group_key, idx+1, total))
 

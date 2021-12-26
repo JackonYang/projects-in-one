@@ -1,3 +1,5 @@
+import logging
+
 from article_generator.apps.lottery_articles import (
     trend_article,
     tuijian_collection,
@@ -7,6 +9,8 @@ app_mapper = {
     'lottery.trend_table': trend_article,
     'lottery.tuijian_collection': tuijian_collection,
 }
+
+logger = logging.getLogger(__name__)
 
 
 def run_article_gen_app(app_name, *app_args, **app_kwargs):

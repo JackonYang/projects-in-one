@@ -1,10 +1,13 @@
 import copy
+import logging
 
 from ..configs import template_dir
 from ..uploaders.api import (
     upload_articles,
 )
 from libs.libdate import today
+
+logger = logging.getLogger(__name__)
 
 
 image_groups = [
