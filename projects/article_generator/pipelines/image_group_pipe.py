@@ -65,6 +65,10 @@ class ImageGroupPipe(PipelineBase):
 
             group_images = os.listdir(group_raw_dir)
             group_image_count = len(group_images)
+
+            if os.path.exists(output_root):  # pragma: no cover
+                shutil.rmtree(output_root)
+
             for idx, f in enumerate(sorted(group_images)):
                 if f.startswith('.'):  # pragma: no cover
                     continue
