@@ -45,44 +45,26 @@ task_args_config_v2 = {
             'MP2',
         ],
         'args': {
-            'title-k8': {
-                'display': '快8 文章题目',
-                'value': '今日 快8 推荐汇总-{day}',
-                'help': '一般不用改。{day} 会自动替换为今天的日期',
-            },
-            'url-k8': {
+            '01k8.url_k8': {
                 'display': '快8 文章网址',
-                'value': 'test',
+                'value': '',
                 'help': '要填写。今天没开奖就不填写。原文的网址',
             },
-            'title-ssq': {
-                'display': '双色球文章题目',
-                'value': '今日 双色球 推荐汇总-{day}',
-                'help': '一般不用改。{day} 会自动替换为今天的日期',
-            },
-            'url-ssq': {
+            '02ssq.url_ssq': {
                 'display': '双色球 文章网址',
-                'value': 'test',
+                'value': '',
                 'help': '要填写。今天没开奖就不填写。原文的网址',
             },
-            'title-3d': {
-                'display': '3D 文章题目',
-                'value': '今日 3D 推荐汇总-{day}',
-                'help': '一般不用改。{day} 会自动替换为今天的日期',
-            },
-            'url-3d': {
+            '03sand.url_3d': {
                 'display': '3D 文章网址',
-                'value': 'test',
+                'value': '',
                 'help': '要填写。今天没开奖就不填写。原文的网址',
             },
         },
         'args_order': [
-            'title-k8',
-            'url-k8',
-            'title-ssq',
-            'url-ssq',
-            'title-3d',
-            'url-3d',
+            '01k8.url_k8',
+            '02ssq.url_ssq',
+            '03sand.url_3d',
         ],
     },
     ns_trend_table: {
@@ -91,38 +73,44 @@ task_args_config_v2 = {
             'MP2',
         ],
         'args': {
-            'fc.title': {
-                'display': '福彩文章题目',
-                'value': '福彩走势图 {month} 月 {day} 日更新（{total_image_count} 张图）',
-                'help': '一般不用改',
-            },
-            'fc.url_dudu-1': {
-                'display': 'dudu-1 URL',
+            '01fc.url_dudu-1': {
+                'display': '肚肚-福彩 URL',
                 'value': '',
                 'help': '必须填',
             },
-            'fc.url_dudu-2': {
-                'display': 'dudu-2 URL',
+            '01fc.url_dudu-2': {
+                'display': '肚肚-快8 URL',
                 'value': '',
                 'help': '必须填',
             },
-            'fc.url_xiaotian-1': {
-                'display': 'xiaotian-1 URL',
+            '01fc.url_xiaotian-1': {
+                'display': '小田-福彩 URL',
                 'value': '',
                 'help': '必须填',
             },
-            'fc.url_xiaotian-2': {
-                'display': 'xiaotian-2 URL',
+            '01fc.url_xiaotian-2': {
+                'display': '小田-快8 URL',
+                'value': '',
+                'help': '必须填',
+            },
+            '02tc.url_dudu-tc': {
+                'display': '肚肚-体彩 URL',
+                'value': '',
+                'help': '必须填',
+            },
+            '02tc.url_xiaotian-tc': {
+                'display': '小田-体彩 URL',
                 'value': '',
                 'help': '必须填',
             },
         },
         'args_order': [
-            'fc.title',
-            'fc.url_dudu-1',
-            'fc.url_dudu-2',
-            'fc.url_xiaotian-1',
-            'fc.url_xiaotian-2',
+            '01fc.url_dudu-1',  # 肚肚
+            '01fc.url_dudu-2',  # 肚肚快 8
+            '01fc.url_xiaotian-1',  # 小田
+            '01fc.url_xiaotian-2',  # 快 8 走势图
+            '02tc.url_dudu-tc',  # 肚肚体彩
+            '02tc.url_xiaotian-tc',  # 小田体彩
         ],
     },
 }
