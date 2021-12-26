@@ -4,6 +4,7 @@ import logging
 import copy
 import os
 import traceback
+import time
 
 from concurrent.futures import ThreadPoolExecutor
 
@@ -22,8 +23,6 @@ logger = logging.getLogger(__name__)
 
 thread_pool_executor = ThreadPoolExecutor(max_workers=5)
 
-task_history = []
-task_details = {}
 global_vars = {
     'notification-persist': [],
     'notification': '',
@@ -31,7 +30,6 @@ global_vars = {
     'task_tmpl_id': 0,
 }
 task_tmpls = {}
-
 
 ns_trend_table = 'lottery.trend_table'
 ns_tuijian = 'lottery.tuijian_collection'
@@ -120,6 +118,7 @@ class TaskManager():
     task_history = []  # id, only
     task_info = {}
     task_logs = {}  # task_id: log_list
+    has_new_logs_map = {}  # task_id: true/false
 
     def add_new_task(self, **kwargs):
         task_id = gen_task_id()
@@ -138,8 +137,13 @@ class TaskManager():
     def add_task_log(self, task_id, msg):
         self.task_logs.setdefault(task_id, [])
         self.task_logs[task_id].append(msg)
+        self.has_new_logs_map[task_id] = True
+
+    def has_new_logs(self, task_id):
+        return self.has_new_logs_map.get(task_id, False)
 
     def get_task_logs(self, task_id):
+        self.has_new_logs_map[task_id] = False
         return self.task_logs.get(task_id, [])
 
     def mark_done(self, task_id):
@@ -290,7 +294,7 @@ def task_result(request, orig_app_name, task_id,
 def task_detail(request, task_id,
                 template_name='task-detail.html'):
     context = {
-        'task': task_details[task_id],
+        # 'task': task_details[task_id],
     }
 
     return TemplateResponse(request, template_name, context)
@@ -308,12 +312,22 @@ def fetch_notifys(request, task_id,
 
 def in_progress(request, orig_app_name, task_id,
                 template_name='in-progress.html'):
-    is_done = task_mng.is_done(task_id)
-    if is_done:
-        return redirect(reverse('task_result', kwargs={
-            'orig_app_name': orig_app_name,
-            'task_id': task_id,
-        }))
+    for _ in range(15):
+        is_done = task_mng.is_done(task_id)
+        if is_done:
+            return redirect(reverse('task_result', kwargs={
+                'orig_app_name': orig_app_name,
+                'task_id': task_id,
+            }))
+
+        if task_mng.has_new_logs(task_id):
+            context = {
+                'notifys': task_mng.get_task_logs(task_id),
+            }
+
+            return TemplateResponse(request, template_name, context)
+
+        time.sleep(1)
 
     context = {
         'notifys': task_mng.get_task_logs(task_id),
