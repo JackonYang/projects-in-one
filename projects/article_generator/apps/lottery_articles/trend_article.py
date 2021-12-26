@@ -36,6 +36,7 @@ article_params_tmpl = {
     'template_name': 'lottery-articles/fucai-trens.html',
 }
 
+
 def run(article_params, upload_params, log_func=print):
     params = copy.deepcopy(article_params_tmpl)
     params.update(article_params)
