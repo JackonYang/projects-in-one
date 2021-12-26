@@ -120,7 +120,7 @@ class ImageGroupPipe(PipelineBase):
             img_url = upload_image_to_mp(
                 img, **upload_params['params_dict'])
             img_urls.append(img_url)
-            if (idx+1) % 20 == 0:
+            if (idx+1) % 20 == 0:  # pragma: no cover
                 log_func('上传中，分组：%s, 进度: %s/%s' % (group_key, idx+1, total))
 
         log_func('图片成功上传公众号。分组：%s, 共 %s 张' % (group_key, total))

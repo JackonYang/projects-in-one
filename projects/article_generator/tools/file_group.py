@@ -57,6 +57,9 @@ class FileGroup():
         print('group data saved in: %s' % self.data_file)
 
     def get_file_group(self, *args, **kwargs):
+        if callable(self.image_group_alg):
+            return self.image_group_alg(*args, **kwargs)
+
         group_alg_func = getattr(self, 'group_alg_%s' % self.image_group_alg)
         return group_alg_func(*args, **kwargs)
 
