@@ -4,3 +4,6 @@
 [submodule "projects/web-shell"]
 	path = projects/web-shell
 	url = git@github.com:JackonYang/web-shell.git
+[submodule "projects/bookhub"]
+	path = projects/bookhub
+	url = git@github.com:JackonYang/bookhub.git
