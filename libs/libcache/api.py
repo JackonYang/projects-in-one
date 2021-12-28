@@ -40,7 +40,7 @@ def jcache(f):
 
 
 @jcache
-def add(a, b):
+def add(a, b):  # pragma: no cover
     return a + b
 
 
