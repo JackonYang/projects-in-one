@@ -7,3 +7,9 @@
 [submodule "projects/bookhub"]
 	path = projects/bookhub
 	url = git@github.com:JackonYang/bookhub.git
+[submodule "markdown-coder/money-maker-apps"]
+	path = markdown-coder/money-maker-apps
+	url = git@github.com:JackonYang/money-maker-apps.git
+[submodule "markdown-coder/paper-reading"]
+	path = markdown-coder/paper-reading
+	url = git@github.com:JackonYang/paper-reading.git
