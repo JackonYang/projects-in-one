@@ -3,6 +3,7 @@ import requests
 import json
 import os
 
+from libs.libcache.api import jcache_t
 
 def test_conn(appid, secret):
     client = WeChatClient(appid, secret)
@@ -21,6 +22,7 @@ def check_rsp_error(rsp_json):
         raise ValueError(str(rsp_json))
 
 
+@jcache_t(3600)
 def get_access_token(appid, secret):
     url = 'https://api.weixin.qq.com/cgi-bin/token'
     rsp = requests.get(

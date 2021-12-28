@@ -1,7 +1,7 @@
 import json
 import os
 
-from api import (
+from .api import (
     get_access_token,
     upload_articles,
     upload_local_image_in_article,
@@ -75,9 +75,9 @@ def test_all():
 
     # result = demo_add_material_local_image()
 
-    # result = demo_get_images()
+    result = demo_get_images()
 
-    result = demo_freepublish()
+    # result = demo_freepublish()
 
     print(json.dumps(result, indent=4, ensure_ascii=False))
 
