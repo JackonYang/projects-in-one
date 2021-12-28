@@ -1,7 +1,14 @@
-import os
-import shutil
+import time
 
-from libcache.api import jcache, JCACHE_ROOT_DIR
+from libcache.api import (
+    jcache,
+    jcache_t,
+    write_cache,
+    write_cache_t,
+    cache_key,
+    cache_key_t,
+    clean_cache,
+)
 
 
 @jcache
@@ -9,32 +16,51 @@ def ut_jcache_demo_20211227(a, b):
     return a + b
 
 
-func_cache_dir = os.path.join(JCACHE_ROOT_DIR, 'ut_jcache_demo_20211227')
+@jcache_t(10)
+def ut_jcache_t_demo_20211227(a, b):
+    return a + b
 
 
 def test_jcache_hit():
 
-    if os.path.exists(func_cache_dir):
-        shutil.rmtree(func_cache_dir)
+    clean_cache(ut_jcache_demo_20211227, 3, 5)
 
-    assert ut_jcache_demo_20211227(3, 5) == 8
+    key = cache_key(ut_jcache_demo_20211227, 3, 5)
+    write_cache(key, 9)
+    assert ut_jcache_demo_20211227(3, 5) == 9
 
-    assert os.path.exists(func_cache_dir)
-
-    assert ut_jcache_demo_20211227(3, 5) == 8
-
-    assert len(os.listdir(func_cache_dir)) == 1
+    clean_cache(ut_jcache_demo_20211227, 3, 5)
 
 
 def test_jcache_miss():
 
-    if os.path.exists(func_cache_dir):
-        shutil.rmtree(func_cache_dir)
+    clean_cache(ut_jcache_demo_20211227, 3, 5)
+    clean_cache(ut_jcache_demo_20211227, 5, 3)
 
-    assert ut_jcache_demo_20211227(3, 5) == 8
-
-    assert os.path.exists(func_cache_dir)
-
+    key = cache_key(ut_jcache_demo_20211227, 3, 5)
+    write_cache(key, 9)
     assert ut_jcache_demo_20211227(5, 3) == 8
 
-    assert len(os.listdir(func_cache_dir)) == 2
+    clean_cache(ut_jcache_demo_20211227, 3, 5)
+    clean_cache(ut_jcache_demo_20211227, 5, 3)
+
+
+def test_jcache_t_hit():
+    clean_cache(ut_jcache_demo_20211227, 3, 5)
+
+    key = cache_key_t(ut_jcache_t_demo_20211227, 3, 5)
+    write_cache_t(key, 9)
+    assert ut_jcache_t_demo_20211227(3, 5) == 9
+
+    clean_cache(ut_jcache_demo_20211227, 3, 5)
+
+
+def test_jcache_t_miss():
+
+    clean_cache(ut_jcache_demo_20211227, 3, 5)
+
+    key = cache_key_t(ut_jcache_t_demo_20211227, 3, 5)
+    write_cache_t(key, 9, time.time() - 13)
+    assert ut_jcache_t_demo_20211227(3, 5) == 8
+
+    clean_cache(ut_jcache_demo_20211227, 5, 3)
