@@ -6,7 +6,7 @@ import time
 from functools import wraps
 
 
-JCACHE_ROOT_DIR = os.getenv('JCACHE_ROOT_DIR', '.jcache-data')
+JCACHE_ROOT_DIR = os.getenv('JCACHE_ROOT_DIR', '/tmp/jcache-data')
 
 
 def md5(s):
