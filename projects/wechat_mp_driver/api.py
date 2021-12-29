@@ -5,6 +5,7 @@ import os
 
 from libs.libcache.api import jcache_t
 
+
 def test_conn(appid, secret):
     client = WeChatClient(appid, secret)
     ips = client.misc.get_wechat_ips()
