@@ -80,12 +80,14 @@
         </section>
     </section>
     <p><br></p>
-    <!-- {% for img in group.image_urls %} -->
-    <!-- <section style="display: inline-block;">
+
+    {% for img in group.image_urls %}
+    <section style="display: inline-block;">
         <img src="{{ img }}" style="display: block;width: 100%;"/>
-    </section> -->
-    <!-- {% endfor %} -->
-    {% if group.image_urls|length > 1 %}
+    </section>
+    {% endfor %}
+
+    <!-- {% if group.image_urls|length > 1 %}
     <p>
         ⚠️左右滑动图片，查看更多{{ group.group_info.display }}，更方便。
     </p>
@@ -102,6 +104,6 @@
             </section>
         </section>
     </section>
-    <br/>
+    <br/> -->
 
 {% endfor %}

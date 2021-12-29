@@ -82,41 +82,41 @@ task_args_config_v2 = {
             '01fc.url_dudu-1': {
                 'display': '肚肚-福彩 URL',
                 'value': '',
-                'help': '必须填',
+                'help': '',
             },
             '01fc.url_dudu-2': {
                 'display': '肚肚-快8 URL',
                 'value': '',
-                'help': '必须填',
+                'help': '',
             },
             '01fc.url_xiaotian-1': {
                 'display': '小田-福彩 URL',
                 'value': '',
-                'help': '必须填',
+                'help': '',
             },
             '01fc.url_xiaotian-2': {
                 'display': '小田-快8 URL',
                 'value': '',
-                'help': '必须填',
+                'help': '',
             },
             '02tc.url_dudu-tc': {
                 'display': '肚肚-体彩 URL',
                 'value': '',
-                'help': '必须填',
+                'help': '',
             },
             '02tc.url_xiaotian-tc': {
                 'display': '小田-体彩 URL',
                 'value': '',
-                'help': '必须填',
+                'help': '',
             },
         },
         'args_order': [
-            '01fc.url_dudu-1',  # 肚肚
-            '01fc.url_dudu-2',  # 肚肚快 8
             '01fc.url_xiaotian-1',  # 小田
             '01fc.url_xiaotian-2',  # 快 8 走势图
-            '02tc.url_dudu-tc',  # 肚肚体彩
             '02tc.url_xiaotian-tc',  # 小田体彩
+            '01fc.url_dudu-1',  # 肚肚
+            '02tc.url_dudu-tc',  # 肚肚体彩
+            '01fc.url_dudu-2',  # 肚肚快 8
         ],
     },
 }
