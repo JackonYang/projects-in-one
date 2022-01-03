@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "van-empty": "/miniprogram_npm/vant-weapp/empty/index",
+    "van-loading": "/miniprogram_npm/vant-weapp/loading/index"
+  }
+}

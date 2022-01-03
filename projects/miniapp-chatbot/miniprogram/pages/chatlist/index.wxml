@@ -1,0 +1,23 @@
+<scroll-view scroll-y="true">
+  <view class="item-avatar-md" wx:for="{{ itemOrder }}" wx:key="item"
+        wx:for-item="item" wx:for-index="index"
+        data-uid="{{data.userInfo[item].id}}" bindtap="goPage">
+    <view class="marks" wx:if="{{i.count}}">
+      <text>{{i.count}}</text>
+    </view>
+    <image src="{{ data.userInfo[item].payload.avatar }}"></image>
+    <view class="item-text">
+      <view class="text_box">
+        <view class="flex">
+          <text class="title"> {{ data.userInfo[item].payload.name }} </text>
+        </view>
+        <view class="message-box">
+          <text class="single"> {{ data.latestMsg[item].brief }} </text>
+        </view>
+      </view>
+    </view>
+    <view class="item-time padding_half">
+      <text class="message"> {{ data.latestMsg[item].timestamp }} </text>
+    </view>
+  </view>
+</scroll-view>

@@ -1,0 +1,78 @@
+<view class="phone-wrap">
+  <scroll-view class="i-body" scroll-y="true" scroll-into-view="{{scrollToId}}">
+
+    <block wx:for="{{ itemOrder }}" wx:key="id">
+
+      <view class="i-b-sen-text-{{ data[item].from.id == login_uid}}" id="msgItem{{index}}">
+        <image class="avatar" mode="aspectFit" src="{{ data[item].from.payload.avatar}}"></image>
+
+        <view class="i-b-pay" wx:if="{{ data[item].typeName == 'Transfer' }}">
+          <span class="i-pay-{{ data[item].transfer_subtype }}">
+            <i></i><em> {{ data[item].money }} </em>
+            <!-- <a class="msg-del"></a> -->
+          </span>
+        </view>
+        <view wx:elif="{{ data[item].typeName == 'Text' }}">
+          <p class="i-b-nick" style="display: block;">{{ data[item].from.payload.name}}</p>
+          <span>
+            <i></i><em> {{ data[item].text }} </em>
+            <!-- <a class="msg-del"></a> -->
+          </span>
+        </view>
+        <view wx:elif="{{ data[item].typeName == 'Image' }}" class="previewimg">
+          <p class="i-b-nick" style="display: block;">{{ data[item].from.payload.name}}</p>
+          <span>
+            <image class="message-image-preview" bindtap="previewImage" mode="aspectFit" data-src="{{ serverHostStatic }}/media/{{ data[item].typeName }}/{{ data[item].mediaFileName }}" src="{{ serverHostStatic }}/media/{{ data[item].typeName }}/{{ data[item].mediaFileName }}"></image>
+          </span>
+        </view>
+        <view wx:elif="{{ data[item].typeName == 'Video' }}">
+          <p class="i-b-nick" style="display: block;">{{ data[item].from.payload.name}}</p>
+          <span>
+            <video class="message-video-preview" src="{{ serverHostStatic }}/media/{{ data[item].typeName }}/{{ data[item].mediaFileName }}"></video>
+          </span>
+        </view>
+        <view wx:elif="{{ data[item].typeName == 'Audio' }}">
+          <p class="i-b-nick" style="display: block;">{{ data[item].from.payload.name}}</p>
+          <view class="i-b-voice">
+            <span style="width:140px">
+              <i></i><b></b><em>10''</em>
+              <!-- <a class="msg-del"></a> -->
+            </span>
+          </view>
+        </view>
+        <view wx:else>
+          <p class="i-b-nick" style="display: block;">{{ data[item].from.payload.name}}</p>
+          <span>
+            <i></i><em> {{ data[item].brief }} </em>
+            <!-- <a class="msg-del"></a> -->
+          </span>
+        </view>
+
+      </view>
+
+    </block>
+
+    <view class="i-b-sen-text-true" id="latest-msg-anchor-id">
+      <span>
+            <i></i><em></em>
+            <!-- <a class="msg-del"></a> -->
+      </span>
+      <!-- <image src="https://static.jackon.me/chatbot-user-data/avatar/default/10021.jpg"> -->
+      <!-- </image> -->
+      <!-- <view class="i-b-voice"><span style="width:140px">
+        <i></i><b></b><em>10''</em><a class="msg-del"></a></span>
+      </view> -->
+    </view>
+
+  </scroll-view>
+
+  <button bindtap="gotoLastest"> 滚动到聊天底部 </button>
+
+  <view class="i-bottom i-bottom-wechat">
+      <view class="i-b-we-left"></view>
+      <view class="i-b-we-mid">
+          <view class="i-b-we-mid-text"></view>
+      </view>
+      <view class="i-b-we-right"></view>
+  </view>
+</view>
