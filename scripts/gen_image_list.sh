@@ -1,0 +1,1 @@
+../markdown-coder/money-maker-apps/scripts/gen_image_list.sh
