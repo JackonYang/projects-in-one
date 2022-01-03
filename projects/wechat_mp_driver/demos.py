@@ -11,6 +11,7 @@ from .api import (
     get_images,
     freepublish,
     get_material_info,
+    update_articles_info,
 )
 
 appid = os.environ.get('WECHAT_MP_APPID', 'default_appid')
@@ -72,6 +73,20 @@ def demo_upload_articles_by_add_news():
     return upload_articles_by_add_news(article_list, appid, secret)
 
 
+def demo_update_articles_info():
+    media_id = '1UTMnBcBO8mywf144Qg_jCdCIl-HXGWfWn9Ttbim1_A'
+    idx = 0
+    article_info = {
+        'title': '你看我是不是变了？',
+        'digest': '好像是变了',
+        'content': '<h1>Welcome by Update</h1>这是内容哦哦哦哦!新的',
+        'thumb_media_id': '1UTMnBcBO8mywf144Qg_jA2V67dA2LwxRxSvtADCZBI',
+        'author': 'Jackon Yang',
+        'show_cover_pic': 0,
+    }
+    return update_articles_info(media_id, idx, article_info, appid, secret)
+
+
 def demo_upload_local_image_in_article():
     image_path = os.path.join(DATA_DIR, 'image-to-upload.jpg')
     return upload_local_image_in_article(image_path, appid, secret)
@@ -116,7 +131,9 @@ def test_all():
 
     # result = demo_upload_articles_by_add_news()
 
-    result = demo_get_material_info()
+    # result = demo_get_material_info()
+
+    result = demo_update_articles_info()
 
     print(json.dumps(result, indent=4, ensure_ascii=False))
 
