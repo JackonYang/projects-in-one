@@ -1,0 +1,7 @@
+django
+django-grappelli
+django-redis
+
+djangorestframework
+markdown
+django-filter
