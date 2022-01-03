@@ -135,3 +135,23 @@ def freepublish(media_id, appid, secret):
     rsp_json = rsp.json()
     check_rsp_error(rsp_json)
     return rsp_json
+
+
+def upload_articles_by_add_news(article_list, appid, secret):
+    if not isinstance(article_list, (list, tuple)):
+        article_list = [article_list]
+
+    url = 'https://api.weixin.qq.com/cgi-bin/material/add_news?access_token=' \
+        + get_access_token(appid, secret)
+    rsp = requests.post(
+        url=url,
+        headers={
+            "Content-Type": "application/json;",
+        },
+        data=json.dumps({
+            'articles': article_list,
+        }, indent=4, ensure_ascii=False).encode('utf8')
+    )
+    rsp_json = rsp.json()
+    check_rsp_error(rsp_json)
+    return rsp_json
