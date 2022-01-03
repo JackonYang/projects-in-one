@@ -10,6 +10,7 @@ from .api import (
     add_material_local_image,
     get_images,
     freepublish,
+    get_material_info,
 )
 
 appid = os.environ.get('WECHAT_MP_APPID', 'default_appid')
@@ -94,6 +95,11 @@ def demo_freepublish():
     return freepublish(media_id, appid, secret)
 
 
+def demo_get_material_info():
+    media_id = '1UTMnBcBO8mywf144Qg_jCdCIl-HXGWfWn9Ttbim1_A'
+    return get_material_info(media_id, appid, secret)
+
+
 def test_all():
     # result = demo_get_access_token()
     # demo_test_conn()
@@ -108,7 +114,9 @@ def test_all():
 
     # result = demo_freepublish()
 
-    result = demo_upload_articles_by_add_news()
+    # result = demo_upload_articles_by_add_news()
+
+    result = demo_get_material_info()
 
     print(json.dumps(result, indent=4, ensure_ascii=False))
 

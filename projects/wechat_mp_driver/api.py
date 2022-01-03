@@ -155,3 +155,19 @@ def upload_articles_by_add_news(article_list, appid, secret):
     rsp_json = rsp.json()
     check_rsp_error(rsp_json)
     return rsp_json
+
+
+def get_material_info(media_id, appid, secret):
+    url = 'https://api.weixin.qq.com/cgi-bin/material/get_material?access_token=%s' % get_access_token(appid, secret)
+    rsp = requests.post(
+        url=url,
+        headers={
+            "Content-Type": "application/json;",
+        },
+        data=json.dumps({
+            'media_id': media_id,
+        }, indent=4, ensure_ascii=False).encode('utf8')
+    )
+    rsp_json = rsp.json()
+    check_rsp_error(rsp_json)
+    return rsp_json
