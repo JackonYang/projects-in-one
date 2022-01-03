@@ -1,0 +1,47 @@
+{
+    "id": "798827680600199899",
+    "type": 0,
+    "typeName": "Unknown",
+    "text": "<msg>\n<op id='2'>\n<username>user_id_002</username>\n</op>\n</msg>",
+    "timestamp": "2021-02-19T11:25:10.000Z",
+    "from": {
+        "_events": {},
+        "_eventsCount": 0,
+        "id": "user_id_003",
+        "payload": {
+            "id": "user_id_003",
+            "gender": 2,
+            "type": 0,
+            "name": "Jerry",
+            "avatar": "https://wx.qlogo.cn/mmhead/ver_1/aZ9yRswjQjibHEHk72wsQncTl2iblDCTpF7UV0hhKx8Xcia0eNeEQhxsIUufbiabPdywDUnh0icopxEYHgqgQWXmouj0qpibJ2KrgHq78oVGjibmTs/0",
+            "alias": "",
+            "weixin": "",
+            "city": "",
+            "friend": true,
+            "province": "",
+            "signature": "",
+            "phone": []
+        }
+    },
+    "to": {
+        "_events": {},
+        "_eventsCount": 0,
+        "id": "user_id_002",
+        "payload": {
+            "id": "user_id_002",
+            "gender": 1,
+            "type": 0,
+            "name": "Tom",
+            "avatar": "https://wx.qlogo.cn/mmhead/ver_1/DWewRjT9YgC6vAYMyELuhTNib43LC4WET2CbX06TWj6ETKR5df3ZVIv5hibhqbLyuMZZiaWpAbicC9HcX695xILBtzFnuXWLnnblyQWEWBeicU9g/0",
+            "alias": "",
+            "weixin": "",
+            "city": "",
+            "friend": true,
+            "province": "",
+            "signature": "",
+            "phone": []
+        }
+    },
+    "room": null,
+    "mediaFileName": null
+}

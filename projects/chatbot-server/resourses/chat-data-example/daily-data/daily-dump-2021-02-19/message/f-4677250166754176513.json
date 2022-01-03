@@ -1,0 +1,47 @@
+{
+    "id": "4677250166754176513",
+    "type": 11,
+    "typeName": "Transfer",
+    "text": "<msg>\n<appmsg appid=\"\" sdkver=\"\">\n<title><![CDATA[微信转账]]></title>\n<des><![CDATA[收到转账10.00元。如需收钱，请点此升级至最新版本]]></des>\n<action></action>\n<type>2000</type>\n<content><![CDATA[]]></content>\n<url><![CDATA[https://support.weixin.qq.com/cgi-bin/mmsupport-bin/readtemplate?t=page/common_page__upgrade&text=text001&btn_text=btn_text_0]]></url>\n<thumburl><![CDATA[https://support.weixin.qq.com/cgi-bin/mmsupport-bin/readtemplate?t=page/common_page__upgrade&text=text001&btn_text=btn_text_0]]></thumburl>\n<lowurl></lowurl>\n<extinfo>\n</extinfo>\n<wcpayinfo>\n<paysubtype>3</paysubtype>\n<feedesc><![CDATA[￥10.00]]></feedesc>\n<transcationid><![CDATA[100005000121021900061213008056114809]]></transcationid>\n<transferid><![CDATA[1000050001202102190405236572869]]></transferid>\n<invalidtime><![CDATA[1613820307]]></invalidtime>\n<begintransfertime><![CDATA[1613733907]]></begintransfertime>\n<effectivedate><![CDATA[1]]></effectivedate>\n<pay_memo><![CDATA[]]></pay_memo>\n\n\n</wcpayinfo>\n</appmsg>\n</msg>",
+    "timestamp": "2021-02-19T11:25:43.000Z",
+    "from": {
+        "_events": {},
+        "_eventsCount": 0,
+        "id": "user_id_003",
+        "payload": {
+            "id": "user_id_003",
+            "gender": 2,
+            "type": 0,
+            "name": "Jerry",
+            "avatar": "https://wx.qlogo.cn/mmhead/ver_1/aZ9yRswjQjibHEHk72wsQncTl2iblDCTpF7UV0hhKx8Xcia0eNeEQhxsIUufbiabPdywDUnh0icopxEYHgqgQWXmouj0qpibJ2KrgHq78oVGjibmTs/0",
+            "alias": "",
+            "weixin": "",
+            "city": "",
+            "friend": true,
+            "province": "",
+            "signature": "",
+            "phone": []
+        }
+    },
+    "to": {
+        "_events": {},
+        "_eventsCount": 0,
+        "id": "user_id_002",
+        "payload": {
+            "id": "user_id_002",
+            "gender": 1,
+            "type": 0,
+            "name": "Tom",
+            "avatar": "https://wx.qlogo.cn/mmhead/ver_1/DWewRjT9YgC6vAYMyELuhTNib43LC4WET2CbX06TWj6ETKR5df3ZVIv5hibhqbLyuMZZiaWpAbicC9HcX695xILBtzFnuXWLnnblyQWEWBeicU9g/0",
+            "alias": "",
+            "weixin": "",
+            "city": "",
+            "friend": true,
+            "province": "",
+            "signature": "",
+            "phone": []
+        }
+    },
+    "room": null,
+    "mediaFileName": null
+}

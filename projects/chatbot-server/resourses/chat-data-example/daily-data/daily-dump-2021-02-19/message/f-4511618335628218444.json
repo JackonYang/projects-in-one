@@ -1,0 +1,47 @@
+{
+    "id": "4511618335628218444",
+    "type": 6,
+    "typeName": "Image",
+    "text": "<?xml version=\"1.0\"?>\n<msg>\n\t<img aeskey=\"2d46ac5cc76e919da593c03c929c8f48\" encryver=\"1\" cdnthumbaeskey=\"2d46ac5cc76e919da593c03c929c8f48\" cdnthumburl=\"3050020100044930470201000204a541b29402032f56c10204a2e5e7730204602ebd930422777869645f373875656f67683734677964323232395f313631333637353932335f310204010400010201000400\" cdnthumblength=\"8354\" cdnthumbheight=\"61\" cdnthumbwidth=\"120\" cdnmidheight=\"0\" cdnmidwidth=\"0\" cdnhdheight=\"0\" cdnhdwidth=\"0\" cdnmidimgurl=\"3050020100044930470201000204a541b29402032f56c10204a2e5e7730204602ebd930422777869645f373875656f67683734677964323232395f313631333637353932335f310204010400010201000400\" length=\"20559\" cdnbigimgurl=\"3050020100044930470201000204a541b29402032f56c10204a2e5e7730204602ebd930422777869645f373875656f67683734677964323232395f313631333637353932335f310204010400010201000400\" hdlength=\"103519\" md5=\"57ebecbe15b550ca6e03adde50b2eee9\" />\n</msg>\n",
+    "timestamp": "2021-02-18T19:18:43.000Z",
+    "from": {
+        "_events": {},
+        "_eventsCount": 0,
+        "id": "kunth002",
+        "payload": {
+            "id": "kunth002",
+            "gender": 1,
+            "type": 0,
+            "name": "Jackon",
+            "avatar": "https://wx.qlogo.cn/mmhead/ver_1/mR9z2ezpTQTvyfT3d0hmJKQP1770PJ6gDiarmXUGUo1FaeXJ6SmcIQAKibU3Lc29j0c94iaM2CqgBWYZiaddjA725yZGUvVTLQX8EnpKERib1H9U/0",
+            "alias": "Jackon",
+            "weixin": "",
+            "city": "",
+            "friend": true,
+            "province": "Shanghai",
+            "signature": "",
+            "phone": []
+        }
+    },
+    "to": {
+        "_events": {},
+        "_eventsCount": 0,
+        "id": "user_id_003",
+        "payload": {
+            "id": "user_id_003",
+            "gender": 2,
+            "type": 0,
+            "name": "Jerry",
+            "avatar": "https://wx.qlogo.cn/mmhead/ver_1/aZ9yRswjQjibHEHk72wsQncTl2iblDCTpF7UV0hhKx8Xcia0eNeEQhxsIUufbiabPdywDUnh0icopxEYHgqgQWXmouj0qpibJ2KrgHq78oVGjibmTs/0",
+            "alias": "",
+            "weixin": "",
+            "city": "",
+            "friend": true,
+            "province": "",
+            "signature": "",
+            "phone": []
+        }
+    },
+    "room": null,
+    "mediaFileName": "message-4511618335628218444-image-normal.jpg"
+}

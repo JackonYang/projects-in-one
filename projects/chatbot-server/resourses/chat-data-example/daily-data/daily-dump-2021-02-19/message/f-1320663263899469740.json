@@ -1,0 +1,47 @@
+{
+    "id": "1320663263899469740",
+    "type": 15,
+    "typeName": "Video",
+    "text": "<?xml version=\"1.0\"?>\n<msg>\n\t<videomsg aeskey=\"d77f4a2e013f3b5d71053b4cec3e757d\" cdnthumbaeskey=\"d77f4a2e013f3b5d71053b4cec3e757d\" cdnvideourl=\"304e020100044730450201000204a541b29402032f56c10204a2e5e7730204602ebd970420777869645f373875656f67683734677964323233305f313631333637353932360204010400040201000400\" cdnthumburl=\"304e020100044730450201000204a541b29402032f56c10204a2e5e7730204602ebd970420777869645f373875656f67683734677964323233305f313631333637353932360204010400040201000400\" length=\"1554537\" playlength=\"23\" cdnthumblength=\"5713\" cdnthumbwidth=\"240\" cdnthumbheight=\"135\" fromusername=\"kunth002\" md5=\"4056801d19ab3928c5039b92f1126efe\" newmd5=\"\" isad=\"0\" />\n</msg>\n",
+    "timestamp": "2021-02-18T19:18:48.000Z",
+    "from": {
+        "_events": {},
+        "_eventsCount": 0,
+        "id": "kunth002",
+        "payload": {
+            "id": "kunth002",
+            "gender": 1,
+            "type": 0,
+            "name": "Jackon",
+            "avatar": "https://wx.qlogo.cn/mmhead/ver_1/mR9z2ezpTQTvyfT3d0hmJKQP1770PJ6gDiarmXUGUo1FaeXJ6SmcIQAKibU3Lc29j0c94iaM2CqgBWYZiaddjA725yZGUvVTLQX8EnpKERib1H9U/0",
+            "alias": "Jackon",
+            "weixin": "",
+            "city": "",
+            "friend": true,
+            "province": "Shanghai",
+            "signature": "",
+            "phone": []
+        }
+    },
+    "to": {
+        "_events": {},
+        "_eventsCount": 0,
+        "id": "user_id_003",
+        "payload": {
+            "id": "user_id_003",
+            "gender": 2,
+            "type": 0,
+            "name": "Jerry",
+            "avatar": "https://wx.qlogo.cn/mmhead/ver_1/aZ9yRswjQjibHEHk72wsQncTl2iblDCTpF7UV0hhKx8Xcia0eNeEQhxsIUufbiabPdywDUnh0icopxEYHgqgQWXmouj0qpibJ2KrgHq78oVGjibmTs/0",
+            "alias": "",
+            "weixin": "",
+            "city": "",
+            "friend": true,
+            "province": "",
+            "signature": "",
+            "phone": []
+        }
+    },
+    "room": null,
+    "mediaFileName": "message-1320663263899469740-video.mp4"
+}

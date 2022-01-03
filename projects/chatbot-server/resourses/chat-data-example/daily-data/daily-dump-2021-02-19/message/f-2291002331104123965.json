@@ -1,0 +1,47 @@
+{
+    "id": "2291002331104123965",
+    "type": 2,
+    "typeName": "Audio",
+    "text": "<msg><voicemsg endflag=\"1\" length=\"4098\" voicelength=\"2300\" clientmsgid=\"49887d22d09f5c95980d3ac390b0ea13user_id_00331_1613675934\" fromusername=\"kunth002\" downcount=\"0\" cancelflag=\"0\" voiceformat=\"4\" forwardflag=\"0\" bufid=\"362484953522962845\" /></msg>",
+    "timestamp": "2021-02-18T19:18:56.000Z",
+    "from": {
+        "_events": {},
+        "_eventsCount": 0,
+        "id": "kunth002",
+        "payload": {
+            "id": "kunth002",
+            "gender": 1,
+            "type": 0,
+            "name": "Jackon",
+            "avatar": "https://wx.qlogo.cn/mmhead/ver_1/mR9z2ezpTQTvyfT3d0hmJKQP1770PJ6gDiarmXUGUo1FaeXJ6SmcIQAKibU3Lc29j0c94iaM2CqgBWYZiaddjA725yZGUvVTLQX8EnpKERib1H9U/0",
+            "alias": "Jackon",
+            "weixin": "",
+            "city": "",
+            "friend": true,
+            "province": "Shanghai",
+            "signature": "",
+            "phone": []
+        }
+    },
+    "to": {
+        "_events": {},
+        "_eventsCount": 0,
+        "id": "user_id_003",
+        "payload": {
+            "id": "user_id_003",
+            "gender": 2,
+            "type": 0,
+            "name": "Jerry",
+            "avatar": "https://wx.qlogo.cn/mmhead/ver_1/aZ9yRswjQjibHEHk72wsQncTl2iblDCTpF7UV0hhKx8Xcia0eNeEQhxsIUufbiabPdywDUnh0icopxEYHgqgQWXmouj0qpibJ2KrgHq78oVGjibmTs/0",
+            "alias": "",
+            "weixin": "",
+            "city": "",
+            "friend": true,
+            "province": "",
+            "signature": "",
+            "phone": []
+        }
+    },
+    "room": null,
+    "mediaFileName": "message-2291002331104123965-audio.slk"
+}

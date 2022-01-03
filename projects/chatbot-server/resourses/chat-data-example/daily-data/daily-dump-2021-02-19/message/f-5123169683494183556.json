@@ -1,0 +1,47 @@
+{
+    "id": "5123169683494183556",
+    "type": 7,
+    "typeName": "Text",
+    "text": "测试",
+    "timestamp": "2021-02-19T14:58:23.000Z",
+    "from": {
+        "_events": {},
+        "_eventsCount": 0,
+        "id": "kunth002",
+        "payload": {
+            "id": "kunth002",
+            "gender": 1,
+            "type": 0,
+            "name": "Jackon",
+            "avatar": "https://wx.qlogo.cn/mmhead/ver_1/mR9z2ezpTQTvyfT3d0hmJKQP1770PJ6gDiarmXUGUo1FaeXJ6SmcIQAKibU3Lc29j0c94iaM2CqgBWYZiaddjA725yZGUvVTLQX8EnpKERib1H9U/0",
+            "alias": "Jackon",
+            "weixin": "",
+            "city": "",
+            "friend": true,
+            "province": "Shanghai",
+            "signature": "",
+            "phone": []
+        }
+    },
+    "to": {
+        "_events": {},
+        "_eventsCount": 0,
+        "id": "user_id_003",
+        "payload": {
+            "id": "user_id_003",
+            "gender": 2,
+            "type": 0,
+            "name": "Jerry",
+            "avatar": "https://wx.qlogo.cn/mmhead/ver_1/aZ9yRswjQjibHEHk72wsQncTl2iblDCTpF7UV0hhKx8Xcia0eNeEQhxsIUufbiabPdywDUnh0icopxEYHgqgQWXmouj0qpibJ2KrgHq78oVGjibmTs/0",
+            "alias": "",
+            "weixin": "",
+            "city": "",
+            "friend": true,
+            "province": "",
+            "signature": "",
+            "phone": []
+        }
+    },
+    "room": null,
+    "mediaFileName": null
+}

@@ -3,7 +3,7 @@ const Api = require('../../api/index.js');
 
 Page({
   data: {
-    login_uid: '',
+    login_uid: 'user_id_003',
     serverHostStatic: app.globalData.serverHostStatic,
     chatUid: '',
     data: {},
