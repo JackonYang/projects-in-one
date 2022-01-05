@@ -1,0 +1,11 @@
+<h1 class="display-6">
+    快速跳转到其他功能
+</h1>
+
+<div>
+    {% for app in app_list %}
+    <p>
+        <a href="{{ app.url }}" class="btn btn-primary btn-lg" role="button">{{ app.name }}</a>
+    </p>
+    {% endfor %}
+</div>
