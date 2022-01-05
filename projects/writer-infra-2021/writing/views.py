@@ -122,6 +122,17 @@ task_args_config_v2 = {
 }
 
 
+def build_common_context():
+    for app in app_list:
+        app['url'] = reverse('app_home', kwargs={
+            'orig_app_name': app['key'],
+        })
+    context = {
+        'app_list': app_list,
+    }
+    return context
+
+
 class TaskManager():
     task_history = []  # id, only
     task_info = {}
@@ -196,14 +207,15 @@ def app_home(request, orig_app_name,
         t['key'] = i
         task_args.append(t)
 
-    context = {
+    context = build_common_context()
+    context.update({
         'orig_app_name': orig_app_name,
         'app_name': app_name,
         'task_run_url': reverse('task_run'),
         'page_title': app_config['page_title'],
         'task_args': task_args,
         'notification': get_notifys_str(),
-    }
+    })
 
     return TemplateResponse(request, template_name, context)
 
@@ -290,12 +302,13 @@ def task_run(request):
 
 def task_result(request, orig_app_name, task_id,
                 template_name='task-result.html'):
-    context = {
+    context = build_common_context()
+    context.update({
         'run_again_url': reverse('app_home', kwargs={
             'orig_app_name': orig_app_name,
         }),
         'notifys': task_mng.get_task_logs(task_id),
-    }
+    })
 
     return TemplateResponse(request, template_name, context)
 
@@ -330,29 +343,26 @@ def in_progress(request, orig_app_name, task_id,
             }))
 
         if task_mng.has_new_logs(task_id):
-            context = {
+            context = build_common_context()
+            context.update({
                 'notifys': task_mng.get_task_logs(task_id),
-            }
+            })
 
             return TemplateResponse(request, template_name, context)
 
         time.sleep(1)
 
-    context = {
+    context = build_common_context()
+    context.update({
         'notifys': task_mng.get_task_logs(task_id),
-    }
+    })
 
     return TemplateResponse(request, template_name, context)
 
 
 def task_home(request,
               template_name='task-home.html'):
-    for app in app_list:
-        app['url'] = reverse('app_home', kwargs={
-            'orig_app_name': app['key'],
-        })
-    context = {
-        'app_list': app_list,
-    }
+
+    context = build_common_context()
 
     return TemplateResponse(request, template_name, context)
