@@ -30,6 +30,7 @@ task_tmpls = {}
 
 ns_trend_table = 'lottery.trend_table'
 ns_tuijian = 'lottery.tuijian_collection'
+ns_realtie_tuijian = 'lottery.realtime_tuijian_collection'
 
 app_list = [
     {
@@ -39,7 +40,11 @@ app_list = [
     {
         'key': 'zoushitu',
         'name': '福彩体彩走势图大全',
-    }
+    },
+    {
+        'key': 'shishi-tuijian',
+        'name': '实时更新的推荐大全',
+    },
 ]
 
 task_args_config_v2 = {
@@ -119,6 +124,47 @@ task_args_config_v2 = {
             '01fc.url_dudu-2',  # 肚肚快 8
         ],
     },
+    ns_realtie_tuijian: {
+        'page_title': '文章更新-实时更新的推荐大全',
+        'mps': [
+            'MP1',
+            # 'MP2',
+        ],
+        'args': {
+            'token': {
+                'display': '密令',
+                'value': '',
+                'help': '必须填，联系管理员获取',
+            },
+            'url1': {
+                'display': '文章地址1',
+                'value': '',
+                'help': '可不填写',
+            },
+            'url2': {
+                'display': '文章地址2',
+                'value': '',
+                'help': '可不填写',
+            },
+            'url3': {
+                'display': '文章地址3',
+                'value': '',
+                'help': '可不填写',
+            },
+            'image_upload': {
+                'display': '图片上传',
+                'value': '',
+                'help': '暂不支持',
+            },
+        },
+        'args_order': [
+            'token',
+            'url1',
+            'url2',
+            'url3',
+            'image_upload',
+        ],
+    },
 }
 
 
@@ -184,6 +230,8 @@ def format_app_name(orig):
         return ns_trend_table
     elif orig == 'tuijian':
         return ns_tuijian
+    elif orig == 'shishi-tuijian':
+        return ns_realtie_tuijian
     # default, do nothing
     return orig
 

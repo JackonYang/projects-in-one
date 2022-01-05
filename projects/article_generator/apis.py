@@ -3,11 +3,13 @@ import logging
 from article_generator.apps.lottery_articles import (
     trend_article,
     tuijian_collection,
+    realtime_tuijian_collection,
 )
 
 app_mapper = {
     'lottery.trend_table': trend_article,
     'lottery.tuijian_collection': tuijian_collection,
+    'lottery.realtime_tuijian_collection': realtime_tuijian_collection,
 }
 
 logger = logging.getLogger(__name__)
