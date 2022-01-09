@@ -1,4 +1,5 @@
 import os
+import sys
 
 from .file_group import FileGroup
 
@@ -9,7 +10,8 @@ from article_generator.configs import (
 
 
 def main():
-    image_root_dir = os.path.join(donwloaded_images_dir, 'd6ab9565696a70078b76ca3aa99771e7')
+    dirname = sys.argv[1]
+    image_root_dir = os.path.join(donwloaded_images_dir, dirname)
     raw_dir = os.path.join(image_root_dir, 'raw')
     grouped_dir = os.path.join(image_root_dir, 'grouped')
 
