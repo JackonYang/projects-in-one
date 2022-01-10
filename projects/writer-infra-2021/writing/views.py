@@ -15,6 +15,7 @@ from django.shortcuts import redirect
 from django.urls import reverse
 
 from article_generator.apis import run_article_gen_app
+from wechat_mp_driver.api import get_drafts
 
 logger = logging.getLogger(__name__)
 
@@ -30,7 +31,7 @@ task_tmpls = {}
 
 ns_trend_table = 'lottery.trend_table'
 ns_tuijian = 'lottery.tuijian_collection'
-ns_realtie_tuijian = 'lottery.realtime_tuijian_collection'
+ns_realtime_tuijian = 'lottery.realtime_tuijian_collection'
 
 app_list = [
     {
@@ -128,11 +129,11 @@ task_args_config_v2 = {
             '01fc.url_dudu-2',  # 肚肚快 8
         ],
     },
-    ns_realtie_tuijian: {
+    ns_realtime_tuijian: {
         'page_title': '文章更新-实时更新的推荐大全',
         'mps': [
-            'MP1',
-            # 'MP2',
+            # 'MP1',
+            'MP2',
         ],
         'args': {
             'token': {
@@ -236,7 +237,7 @@ def format_app_name(orig):
     elif orig == 'tuijian':
         return ns_tuijian
     elif orig == 'shishi-tuijian':
-        return ns_realtie_tuijian
+        return ns_realtime_tuijian
     # default, do nothing
     return orig
 
@@ -273,12 +274,39 @@ def app_home(request, orig_app_name,
     return TemplateResponse(request, template_name, context)
 
 
+def re_org_draft_list(draft_list):
+    items = draft_list['item']
+    articles = []
+
+    for i in items:
+        media_id = i['media_id']
+        for seq, info in enumerate(i['content']['news_item']):
+            ctx = copy.deepcopy(info)
+            ctx.update({
+                'media_id': media_id,
+                'seq': seq + 1,
+            })
+            articles.append(ctx)
+    return articles
+
+
 def copy_home(request, orig_app_name,
-             template_name='app-home.html'):
+             template_name='copy-home.html'):
 
     app_name = format_app_name(orig_app_name)
-
     app_config = task_args_config_v2[app_name]
+
+    drafts = []
+    for mp_key in app_config['mps']:
+        appid = os.environ.get('WECHAT_MP_APPID_%s' % mp_key, 'default_appid')
+        secret = os.environ.get('WECHAT_MP_SECRET_%s' % mp_key, 'default_secret')
+        mp_name = os.environ.get('%s_NAME' % mp_key, 'default_name')
+        draft_list = re_org_draft_list(get_drafts(appid, secret))
+        drafts.append({
+            'mp_name': mp_name,
+            'draft_list': draft_list,
+        })
+
     task_args = []
     for i in app_config['args_order']:
         t = copy.copy(app_config['args'][i])
@@ -293,6 +321,7 @@ def copy_home(request, orig_app_name,
         'page_title': app_config['page_title'],
         'task_args': task_args,
         'notification': get_notifys_str(),
+        'drafts': drafts,
     })
 
     return TemplateResponse(request, template_name, context)

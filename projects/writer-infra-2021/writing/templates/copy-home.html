@@ -1,0 +1,74 @@
+<html>
+
+<head>
+    {% include "parts/header.html" %}
+</head>
+
+<body class="container-xxl my-md-4 bd-layout">
+    <h1 class="display-6">
+        {{ page_title }}
+    </h1>
+
+    <div id='nitify-info'>
+        {% if notification %}
+        <div class="alert alert-primary" role="alert">
+            {{ notification|safe }}
+        </div>
+        {% endif %}
+    </div>
+
+    {% for mp in drafts %}
+    <h1> 公众号：{{ mp.mp_name }} </h1>
+    <div>
+        {% for m in mp.draft_list %}
+        <p>
+            {{ m.title }}: {{ m.media_id }}
+        </p>
+        {% endfor %}
+    </div>
+    {% endfor %}
+
+    <button type="button" class="btn btn-primary mb-3" onclick="formReset()">清空已填写的参数</button>
+
+    <form id="app-args-form" action="{{ task_run_url }}" method="post"> {% csrf_token %}
+
+        <input type="hidden" class="form-control" name="orig_app_name" id="orig_app_name" value="{{ orig_app_name }}"> {% for arg in task_args %}
+        <div class="mb-3">
+            <label for="{{ arg.key }}" class="form-label"> {{ arg.display }}: </label>
+            <input type="text" class="form-control" name="{{ arg.key }}" id="{{arg.key}}" value="{{arg.value}}" aria-describedby="{{arg.key}Help">
+            <div id="{{arg.key}}Help" class="form-text">
+                {{ arg.help }}
+            </div>
+        </div>
+        {% endfor %}
+        <!-- <div class="form-check">
+            <input type="checkbox" class="form-check-input" name="is_save_template" id="is_save_template" value="true">
+            <label class="form-check-label" for="is_save_template">Save As Tempalte</label>
+        </div> -->
+
+        <button type="submit" class="btn btn-primary"> 提交 </button>
+    </form>
+
+    <div class="striped-border">
+    </div>
+    <div class="quick-links">
+        {% include "parts/quick-links.html" %}
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        function formReset() {
+            $(':input', '#app-args-form')
+                .not(':button, :submit, :reset, :hidden,:radio') // 去除不需要重置的input类型
+                .val('')
+                .removeAttr('checked')
+                .removeAttr('selected');
+        }
+    </script>
+
+</body>
+
+</html>
