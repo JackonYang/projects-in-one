@@ -36,14 +36,18 @@ app_list = [
     {
         'key': 'tuijian',
         'name': '每日专家推荐大全',
+        'description': '每个 URL 一篇文章，最多 3 篇，是一个推送',
     },
     {
         'key': 'zoushitu',
         'name': '福彩体彩走势图大全',
+        'description': '一个推送的 2 篇文章。福彩 3 个 URL 一篇，体彩 3 个 URL 一篇。',
     },
     {
         'key': 'shishi-tuijian',
         'name': '实时更新的推荐大全',
+        'url': '/writing/copy/shishi-tuijian',
+        'description': '',
     },
 ]
 
@@ -170,9 +174,10 @@ task_args_config_v2 = {
 
 def build_common_context():
     for app in app_list:
-        app['url'] = reverse('app_home', kwargs={
-            'orig_app_name': app['key'],
-        })
+        if 'url' not in app:
+            app['url'] = reverse('app_home', kwargs={
+                'orig_app_name': app['key'],
+            })
     context = {
         'app_list': app_list,
     }
@@ -244,6 +249,31 @@ def get_notifys_str():
 
 
 def app_home(request, orig_app_name,
+             template_name='app-home.html'):
+
+    app_name = format_app_name(orig_app_name)
+
+    app_config = task_args_config_v2[app_name]
+    task_args = []
+    for i in app_config['args_order']:
+        t = copy.copy(app_config['args'][i])
+        t['key'] = i
+        task_args.append(t)
+
+    context = build_common_context()
+    context.update({
+        'orig_app_name': orig_app_name,
+        'app_name': app_name,
+        'task_run_url': reverse('task_run'),
+        'page_title': app_config['page_title'],
+        'task_args': task_args,
+        'notification': get_notifys_str(),
+    })
+
+    return TemplateResponse(request, template_name, context)
+
+
+def copy_home(request, orig_app_name,
              template_name='app-home.html'):
 
     app_name = format_app_name(orig_app_name)
