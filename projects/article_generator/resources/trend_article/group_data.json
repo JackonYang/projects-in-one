@@ -4,7 +4,9 @@
         "2": "group-ssq",
         "3": "group-qlc",
         "4": "group-3d",
-        "5": "group-3d"
+        "5": "group-3d",
+        "6": "group-3d",
+        "7": "group-3d"
     },
     "dudu-2": {
         "1": "group-k8",
@@ -26,14 +28,20 @@
     },
     "xiaotian-1": {
         "1": "group-other",
-        "10": "group-qlc",
-        "11": "group1",
-        "12": "group-other",
+        "10": "group-3d",
+        "11": "group-3d",
+        "12": "group-3d",
+        "13": "group-3d",
+        "14": "group-3d",
+        "15": "group-3d",
+        "16": "group-3d",
+        "17": "group-qlc",
+        "18": "group-other",
         "2": "group-other",
         "3": "group-other",
-        "4": "group-ssq",
+        "4": "group1",
         "5": "group-ssq",
-        "6": "group-3d",
+        "6": "group-ssq",
         "7": "group-3d",
         "8": "group-3d",
         "9": "group-3d"
@@ -45,14 +53,14 @@
         "12": "group-k8",
         "13": "group-k8",
         "14": "group-k8",
-        "15": "group-other",
+        "15": "group-k8",
         "16": "group-other",
         "2": "group-other",
         "3": "group-other",
-        "4": "group-k8",
+        "4": "group1",
         "5": "group-k8",
-        "6": "group1",
-        "7": "groupk8-all",
+        "6": "group-k8",
+        "7": "group1",
         "8": "groupk8-all",
         "9": "groupk8-all"
     },
@@ -61,11 +69,11 @@
         "10": "group-other",
         "2": "group-other",
         "3": "group-other",
-        "4": "group-dlt",
-        "5": "group-p3",
+        "4": "group1",
+        "5": "group-dlt",
         "6": "group-p3",
-        "7": "group-p5",
-        "8": "group-qxc",
-        "9": "group1"
+        "7": "group-p3",
+        "8": "group-p5",
+        "9": "group-qxc"
     }
 }
