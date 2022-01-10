@@ -2,7 +2,7 @@ import re
 import os
 import logging
 
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ProcessPoolExecutor
 
 from libs.libmd5 import md5_for_text
 from libs.librequests.api import (
@@ -24,13 +24,13 @@ def download_images(page_url, output_dir, log_func=print, thread_num=5):
     log_func('开始下载文章图片: %s 图, 并发: %s, 文章 URL: %s' % (
         total, thread_num, page_url))
 
-    thread_pool_executor = ThreadPoolExecutor(max_workers=thread_num)
+    process_pool_executor = ProcessPoolExecutor(max_workers=thread_num)
 
     futures = []
     for idx, img_url in enumerate(image_src_urls):
         url_md5 = md5_for_text(img_url)
         filename = 'img-%03d-url-%s.jpg' % (idx+1, url_md5)
-        future = thread_pool_executor.submit(
+        future = process_pool_executor.submit(
             download_and_save_image, img_url, output_dir, filename)
         futures.append([idx, future])
 
