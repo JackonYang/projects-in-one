@@ -9,6 +9,7 @@ from .api import (
     test_conn,
     add_material_local_image,
     get_images,
+    get_drafts,
     freepublish,
     get_material_info,
     update_articles_info,
@@ -101,6 +102,10 @@ def demo_get_images():
     return get_images(appid, secret)
 
 
+def demo_get_drafts():
+    return get_drafts(appid, secret)
+
+
 def demo_get_access_token():
     return get_access_token(appid, secret)
 
@@ -133,7 +138,9 @@ def test_all():
 
     # result = demo_get_material_info()
 
-    result = demo_update_articles_info()
+    # result = demo_update_articles_info()
+
+    result = demo_get_drafts()
 
     print(json.dumps(result, indent=4, ensure_ascii=False))
 
