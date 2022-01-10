@@ -127,7 +127,7 @@ def get_drafts(appid, secret):
     rsp = requests.post(
         url=url,
         headers={
-            "Content-Type": "application/json;",
+            "Content-Type": "application/json;charset=utf-8",
         },
         data=json.dumps({
             "count": 20,
@@ -135,7 +135,9 @@ def get_drafts(appid, secret):
             "no_content": 1,
         })
     )
-    rsp_json = rsp.json()
+
+    text = rsp.text.encode(rsp.encoding).decode('utf-8')
+    rsp_json = json.loads(text)
     check_rsp_error(rsp_json)
     return rsp_json
 
