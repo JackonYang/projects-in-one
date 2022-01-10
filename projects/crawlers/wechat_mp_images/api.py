@@ -26,15 +26,15 @@ def download_images(page_url, output_dir, log_func=print, thread_num=5):
 
     thread_pool_executor = ThreadPoolExecutor(max_workers=thread_num)
 
-    futures = {}
+    futures = []
     for idx, img_url in enumerate(image_src_urls):
         url_md5 = md5_for_text(img_url)
         filename = 'img-%03d-url-%s.jpg' % (idx+1, url_md5)
         future = thread_pool_executor.submit(
             download_and_save_image, img_url, output_dir, filename)
-        futures[idx] = future
+        futures.append([idx, future])
 
-    for idx, f in futures.items():
+    for idx, f in futures:
         try:
             fullpath = f.result(timeout=15)
         except Exception:
