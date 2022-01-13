@@ -121,7 +121,7 @@ def get_images(appid, secret):
     return rsp_json
 
 
-def get_drafts(appid, secret):
+def get_drafts(appid, secret, limit=20):
     """ return url string """
     url = 'https://api.weixin.qq.com/cgi-bin/draft/batchget?access_token=' + get_access_token(appid, secret)
     rsp = requests.post(
@@ -130,7 +130,7 @@ def get_drafts(appid, secret):
             "Content-Type": "application/json;charset=utf-8",
         },
         data=json.dumps({
-            "count": 20,
+            "count": limit,
             "offset": 0,
             "no_content": 1,
         })

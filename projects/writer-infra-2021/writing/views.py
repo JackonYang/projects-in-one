@@ -301,7 +301,7 @@ def copy_home(request, orig_app_name,
         appid = os.environ.get('WECHAT_MP_APPID_%s' % mp_key, 'default_appid')
         secret = os.environ.get('WECHAT_MP_SECRET_%s' % mp_key, 'default_secret')
         mp_name = os.environ.get('%s_NAME' % mp_key, 'default_name')
-        draft_list = re_org_draft_list(get_drafts(appid, secret))
+        draft_list = re_org_draft_list(get_drafts(appid, secret, limit=3))
         drafts.append({
             'mp_name': mp_name,
             'draft_list': draft_list,
