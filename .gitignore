@@ -6,6 +6,7 @@ output-dir
 
 media/
 
+projects/writer-infra-2021/static
 
 # hexo
 db.json
