@@ -1,5 +1,20 @@
 # 云开发 quickstart
 
+## pages
+
+"pages/index/index",
+"pages/getOpenId/index",
+"pages/getMiniProgramCode/index",
+"pages/deployService/index",
+"pages/createCollection/index",
+"pages/uploadFile/index",
+"pages/selectRecord/index",
+"pages/updateRecord/index",
+"pages/updateRecordResult/index",
+"pages/updateRecordSuccess/index",
+"pages/sumRecord/index",
+"pages/sumRecordResult/index"
+
 这是云开发的快速启动指引，其中演示了如何上手使用云开发的三大基础能力：
 
 - 数据库：一个既可在小程序前端操作，也能在云函数中读写的 JSON 文档型数据库
