@@ -1,0 +1,9 @@
+<!--pages/login/login.wxml-->
+<view class="login-box" hidden="true">
+  <view class="text-box">
+    <view class="loader"></view>
+    <text class="tips">{{title}}</text>
+  </view>
+  <image src="{{loadingSrc}}" class="bg-image" mode="scaleToFill"></image>
+</view>
+

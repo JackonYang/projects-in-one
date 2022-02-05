@@ -1,0 +1,48 @@
+<!--pages/myShoot/myShoot.wxml-->
+<view class="gallery-list">
+  <view wx:for='{{galleryInfo}}' wx:key="*this" class="">
+    <block wx:if="{{item.type==0}}">
+      <view class="gallery-item" bindtap='goSubscribing' data-id="{{index}}">
+        <view class="gallery-details">
+          <view class="place-time">地点:{{item.place}}</view>
+          <view class="place-time">预计拍摄时间</view>
+          <view class="place-time">{{item.time}}</view>
+          <view class='code-status'>预约单号:{{item.code}}</view>
+          <view class='code-status'>订单状态:{{item.status}}</view>
+        </view>
+        <image src='{{item.url}}' mode='aspectFill' class='gallery-cover'></image>
+      </view>
+    </block>
+    <block wx:if="{{item.type==1}}">
+      <view class="gallery-item" bindtap='goDetails' data-id="{{index}}">
+        <view class="gallery-details">
+          <view class='gallery-name'>{{item.name}}</view>
+          <view class='code-status'>预约单号:{{item.code}}</view>
+          <view class='code-status'>订单状态:{{item.status}}</view>
+        </view>
+        <image src='{{item.url}}' mode='aspectFill' class='gallery-cover'></image>
+      </view>
+    </block>
+    <block wx:if="{{item.type==2}}">
+      <view class="gallery-item" id="{{index}}">
+        <view class="gallery-details">
+          <view class='gallery-name'>{{item.name}}</view>
+          <view class="code-status">浏览:{{item.viewNum}}</view>
+          <view class="code-status">{{item.time}}</view>
+        </view>
+        <image src='{{item.url}}' mode='aspectFill' class='gallery-cover'></image>
+        <view class='red-tab'>拍摄中</view>
+      </view>
+    </block>
+    <block wx:if="{{item.type==3}}" >
+      <view class="gallery-item" id="{{index}}">
+        <view class="gallery-details">
+          <view class='gallery-name'>{{item.name}}</view>
+          <view class="code-status">浏览:{{item.viewNum}}</view>
+          <view class="code-status">{{item.time}}</view>
+        </view>
+        <image src='{{item.url}}' mode='aspectFill' class='gallery-cover'></image>
+      </view>
+    </block>
+  </view>
+</view>

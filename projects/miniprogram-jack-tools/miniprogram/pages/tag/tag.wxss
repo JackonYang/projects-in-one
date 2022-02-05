@@ -1,0 +1,40 @@
+/* pages/tag/tag.wxss */
+.userinfo{
+  width: 100%;
+  margin-top: 130rpx;
+  text-align: center;
+  font-size: 40rpx;
+  color: #000;
+}
+.userList{
+  width: 100%;
+  margin-top: 126rpx;
+}
+.userList .item {
+  display: block;
+  width: 136rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  background-color: #F3F3F3;
+  border-radius: 30rpx;
+  color: #000;
+  font-size: 24rpx;
+  text-align: center;
+  float: left;
+  margin-left: 42rpx;
+  margin-bottom: 56rpx;
+}
+.userList .checked{
+  display: block;
+  width: 136rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 30rpx;
+  background-color: #000;
+  color: #fff;
+  font-size: 24rpx;
+  text-align: center;
+  float: left;
+  margin-left: 42rpx;
+  margin-bottom: 56rpx;  
+}

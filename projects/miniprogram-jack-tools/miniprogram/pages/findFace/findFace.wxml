@@ -1,0 +1,56 @@
+<!--viewages/findFace/findFace.wxml-->
+<import src="../../components/we-cropper/we-cropper.wxml"/>
+<view class="search-face">
+  <!-- <view class="cancel-box" bindtap="goBack" hidden="{{cropStatus}}">
+    <image src="{{imgUrl.cancelBlack}}" class="cancel"  mode="aspectFit"></image>
+  </view> -->
+  <view class="find-box">
+    <!-- 有过扫面历史 -->
+    <view class="searched" wx:if="{{isShowHistory}}">
+      <view class="top-tip">你可能想找的是</view>
+      <view class="photo-ul">
+        <swiper interval="{{swipeInfo.interval}}" duration="{{swipeInfo.duration}}" circular="{{swipeInfo.circular}}" previous-margin="{{swipeInfo.nextMargin}}" next-margin="{{swipeInfo.nextMargin}}" current="{{currentIndex}}" bindchange="swichFaceHistory" skip-hidden-item-layout="true">
+          <block wx:for="{{faceHistory}}" wx:key="index">
+            <swiper-item wx:if="{{item.imageUrl}}" data-id="{{item.id}}" class="img-box {{currentIndex == index ? 'current' : ''}}">
+              <image src="{{item.imageUrl}}" class="slide-image" lazy-load="true" mode="aspectFit"></image>
+            </swiper-item>
+          </block>
+        </swiper>   
+      </view>
+      <view class="tip">
+        上传正面大头照片最佳，非正面角度人物偏小都会影响精准度，照片大小不超过4M。
+      </view>
+      <view class="enter-btn" bindtap='confirmFind'>确定查找</view>
+      <view class="enter-btn uploading" bindtap='uploadImage'>重新上传目标</view>
+    </view>  
+    <!-- 第一次扫描 -->
+    <view class="first-search"  wx:else>
+      <view class="photo-box border-box">
+        <image src="{{imgUrl.defPhoto}}" class="photo" lazy-load="true" mode="aspectFit"></image>
+      </view> 
+      <view class="tip">
+        上传正面大头照片最佳，非正面角度人物偏小都会影响精准度，照片大小不超过4M。
+      </view>
+      <view class='btn-box'>
+        <view class="enter-btn" bindtap='uploadImage'>上传照片找自己</view>      
+      </view>
+    </view>
+  </view>
+  <!-- 裁剪图层 -->
+  <view class="cropper-wrapper search-modal" wx:if="{{cropStatus}}">
+      <template is="we-cropper" data="{{...cropperOpt}}"/>
+      <view class="cropper-buttons box-crop">
+          <view class="upload bth" bindtap="cancelCrop">取消</view>
+          <view class="getCropperImage bth" bindtap="confirmCrop">确定</view>
+      </view>
+  </view>
+  <!-- 弹起扫描层 -->
+  <view class="search-modal" wx:if="{{searchStatus}}">
+    <view class="v-pic corp-photo">
+      <image src="{{currentPhoto}}" class="photo xyCenter" lazy-load="true" mode="aspectFit"></image>
+      <image src="{{imgUrl.blueBorder}}" class="camera" lazy-load="true" mode="aspectFit"></image>
+      <image src="{{imgUrl.seraching}}" class="search" lazy-load="true" mode="aspectFit"></image>
+    </view>
+    <view class="searching">人脸识别中…</view>
+  </view>
+</view>

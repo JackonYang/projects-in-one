@@ -1,0 +1,18 @@
+<!--pages/component/galleryList/gallery.wxml-->
+<view class="gallery-list">
+  <view wx:for='{{galleryInfo}}' wx:key="index" class="gallery-item" bindtap='onTap'>
+    <view class="gallery-details">
+      <view class="photo-name">{{item.headTitle}}</view>
+      <view class="view-gray">
+         <!-- <view class="view-num">{{item.viewCount}}</view>  -->
+        <view class="time-distance">
+          <view class="photo-time">{{item.viewCount}}</view>
+          <view class="distance">{{item.cityName}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="img-right">
+      <image src='{{item.coverUrl}}' lazy-load="{{load}}" mode="{{mode}}" class='gallery-cover'></image>
+    </view>
+  </view>
+</view>

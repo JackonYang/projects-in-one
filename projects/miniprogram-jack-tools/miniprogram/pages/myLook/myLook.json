@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "gallery-list": "/components/galleryList/galleryList",
+    "taste-page": "/components/taste/taste"
+  },
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "浏览历史",
+  "backgroundColor": "#eeeeee",
+  "backgroundTextStyle": "light",
+  "enablePullDownRefresh": true
+}

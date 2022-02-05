@@ -1,0 +1,23 @@
+/* pages/choiceness/index.wxss */
+.page{
+  padding: 0 80rpx;
+}
+.list-item{
+  width: 100%;
+  padding: 60rpx 0 20rpx;
+  overflow: hidden;
+}
+.list-item .pic{
+  width: 100%;
+  height: 350rpx;
+  background-color: #ccc;
+  overflow: hidden;
+}
+.list-item .title{
+  width: 100%;
+  line-height: 40rpx;
+  font-size: 36rpx;
+  color: #333;
+  margin-top: 40rpx;
+  overflow: hidden;
+}

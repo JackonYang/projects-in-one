@@ -1,0 +1,7 @@
+<!--pages/submitSuccess/submitSuccess.wxml-->
+<view class='submit-success'>
+  <image class='success-icon' src='../../assets/icon/success.png'></image>
+  <view class='success-tip'>信息提交成功</view>
+  <view class='remark'>VPhoto客服人员将在2小时内与您联系</view>
+  <view class="confirm" bindtap='goIndex'>确定</view>
+</view>

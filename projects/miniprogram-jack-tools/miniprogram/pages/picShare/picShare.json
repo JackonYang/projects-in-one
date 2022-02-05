@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "layou-box": "/components/layou/layou"
+  }
+}

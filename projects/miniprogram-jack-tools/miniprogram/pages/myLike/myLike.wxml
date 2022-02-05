@@ -1,0 +1,122 @@
+<!--pages/myLike/myLike.wxml-->
+<view class="like-box {{popupInfo.switchState ? 'posfix ': ''}}" wx:if="{{hasInfo}}">
+  <view class="like-list" wx:for="{{imageList}}" wx:key='index' data-current="{{index}}" bindtap='openBigPic'>
+    <image src='{{item.smallUrl}}' mode='aspectFill' class='list-image' lazy-load='true'></image>
+    <!-- 未选择 -->
+    <view class="icon-select" wx:if="{{puzzleState && !item.selected}}">
+      <image src="{{layouImages.selected}}" class="icon" mode="aspectFill"></image>
+    </view>
+    <!-- 选择 -->
+    <view class="icon-select" wx:if="{{puzzleState && item.selected}}">
+      <block wx:for="{{puzzlePushData}}" wx:key="index" wx:for-index="idx" wx:for-item="itemName">
+        <view class="icon text-icon" wx:if="{{item.photoId==itemName}}">{{idx+1}}</view>
+      </block>
+    </view>
+  </view>
+  <!-- 浮动按钮 -->
+  <view class="layou-box" wx:if="{{!puzzleState && hasInfo}}">
+    <view class="bth mt20" bindtap="switchPuzzle">拼图</view>
+  </view>
+</view>
+<view class='empty-box' wx:if="{{!hasInfo}}">
+  <view class='empty-img-box'>
+    <image class='empty-img' src='../../assets/img/no-pic.png'></image>
+  </view>
+  <view class='tip mt40'>空空如也哦~</view>
+</view>
+<!-- 大图弹层  -->
+<view class="popup-box" wx:if="{{popupInfo.switchState}}">
+  <view class="popup-name">
+    <view class="left_b">
+      <block wx:if="{{!!popupCurInfo.photographerNickName}}">
+        <text class="photographer mr20">摄影师：{{popupCurInfo.photographerNickName}}</text>
+      </block>
+      <block wx:if="{{!!popupCurInfo.digitalName}}">
+        <text class="digital">数码师：{{popupCurInfo.digitalName}}</text>
+      </block>
+    </view>
+    <view class="right_b">
+      <image src="../../assets/icon/more.png" mode="scaleToFill" class="more" bindtap="openPicInfo"></image>
+      <image src="../../assets/icon/close.png" mode="scaleToFill" class="close ml40" bindtap="closePopup"></image>
+    </view>
+  </view>
+  <view class="pic-info" wx:if="{{popupInfo.picInfoState}}">
+    <view class="info-bth">
+      <image src="../../assets/icon/more.png" mode="scaleToFill" class="more" bindtap="openPicInfo"></image>
+    </view>
+    <view class="pic-list">
+      <view class="item">
+        <text class="left">相片名</text>
+        <text class="right">{{photoMetaInfo.photoName}}</text>
+      </view>
+      <view class="item">
+        <text class="left">相机品牌</text>
+        <text class="right">{{photoMetaInfo.camBrand}}</text>
+      </view>
+      <view class="item">
+        <text class="left">相机型号</text>
+        <text class="right">{{photoMetaInfo.camType}}</text>
+      </view>
+      <view class="item">
+        <text class="left">焦距</text>
+        <text class="right">{{photoMetaInfo.camFocus}}</text>
+      </view>
+      <view class="item">
+        <text class="left">光圈</text>
+        <text class="right">{{photoMetaInfo.camLight}}</text>
+      </view>
+      <view class="item">
+        <text class="left">快门速度</text>
+        <text class="right">{{photoMetaInfo.camSpead}}</text>
+      </view>
+      <view class="item">
+        <text class="left">ISO</text>
+        <text class="right">{{photoMetaInfo.camISO}}</text>
+      </view>
+      <view class="item">
+        <text class="left">曝光补偿</text>
+        <text class="right">{{photoMetaInfo.camExposure}}</text>
+      </view>
+      <view class="item">
+        <text class="left">镜头</text>
+        <text class="right">{{photoMetaInfo.camSpead}}</text>
+      </view>
+    </view>
+  </view>
+
+  <swiper class="popup-swipe" duration="300" current="{{popupInfo.current}}" bindchange="bindSlideChange">
+    <block wx:for="{{imageList}}" wx:key="index">
+      <swiper-item>
+        <view class="img-box">
+          <image src="{{item.smallUrl}}" class="slide-image" lazy-load="{{setSwitchInfo.load}}" mode="{{popupInfo.mode}}" bindtap='openScale'></image>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='enter-btn xCenter' bindtap='goAlbum'>进入相册</view>
+  <view class="popup-tool my-like-tool">
+    <view class="make flex" bindtap="">
+      <image src="../../assets/icon/share.png" mode="scaleToFill" class="img"></image>
+      <text class="text">分享</text>
+      <button class="share-bth" open-type="share" plain="true">分享给朋友</button>
+    </view>
+    <view class="comment flex" bindtap="userSave">
+      <image src="../../assets/icon/download.png" mode="scaleToFill" class="img"></image>
+      <text class="text">保存</text>
+    </view>
+    <view class="like flex">
+      <image src="/assets/icon/love.png" mode="scaleToFill" class="img"></image>
+      <text class="text">{{popupCurInfo.likeNum}}</text>
+    </view>
+  </view>
+</view>
+<!-- 拼图底部弹层 -->
+<view class="layou-puzzle" wx:if="{{puzzleState}}">
+  <view class="left-bth" bindtap="closePuzzle">取消</view>
+  <view class="right-bth yCenter {{puzzleCount < 2 ? 'opacity' : ''}}" bindtap="goPuzzleFun">开始拼图({{puzzleCount}})</view>
+</view>
+<!-- 拼图loading弹层  -->
+<view class="merge-loading" wx:if="{{mergeLoading}}">
+  <image src="{{layouImages.loadingUrl}}" class="img" mode="widthFix"></image>
+  <view>图片合成中，请稍后...</view>
+</view>

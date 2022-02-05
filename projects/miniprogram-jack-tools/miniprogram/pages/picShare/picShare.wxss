@@ -1,0 +1,63 @@
+/* pages/picShare/share.wxss */
+
+.big-pic-contain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000;
+}
+
+.big-pic {
+  width: 100%;
+  margin-top: 250rpx;
+}
+
+/* .nav-box {
+  margin-top: 100rpx;
+  overflow: hidden;
+  padding: 0 150rpx;
+} */
+
+.nav-box {
+  position: fixed;
+  bottom: 100rpx;
+  box-sizing: border-box;
+  padding: 0 150rpx;
+  width: 100%;
+}
+
+.back-btn {
+  position: relative;
+  color: #fff;
+}
+
+.btn {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border: 0 none !important;
+}
+.merge-loading {
+  width: 100%;
+  height: 100%;
+  padding-top: 40%;
+  font-size: 24rpx;
+  line-height: 66rpx;
+  color: #999;
+  text-align: center;
+  background-color: #fff;
+  box-sizing: border-box;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 199;
+}
+
+.merge-loading .img {
+  width: 80rpx;
+  height: 80rpx;
+}

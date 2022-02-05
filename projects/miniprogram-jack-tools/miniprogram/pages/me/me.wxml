@@ -1,0 +1,58 @@
+<!--pages/me/me.wxml-->
+<view class="me-box">
+  <view class="userinfo clearfix">
+    <!-- 登录部分 -->
+    <block wx:if="{{!hasUserInfo}}">
+      <view class='userinfo-box'>
+        <image class='yCenter userinfo-avatar' src='../../assets/icon/defalut-head.png'></image>
+        <view class='login-text'>点击授权登录</view>
+        <view class='login-btn' wx:if="{{token}}">
+          <button class='login-menu' wx:if="{{!userInfo && canIUse}}" size='mini' plain='true' open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
+        </view>
+        <view class='login-btn' wx:else>
+          <button class='login-menu' wx:if="{{!userInfo && canIUse}}" size='mini' plain='true' open-type="getUserInfo" bindgetuserinfo="getUserInfoStatus"></button>
+        </view>
+      </view>
+    </block>
+    <!-- 个人头像 -->
+    <block wx:else>
+      <view class='userinfo-box'>
+        <image class="yCenter userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+        <text class="yCenter userinfo-nickname">{{userInfo.nickName}}</text>
+      </view>
+    </block>
+  </view>
+  <view class='me-btn-list'>
+    <!-- <view class="me-bth">
+      <text bindtap="goMyAlbum">我的拍摄</text>
+    </view> -->
+    <view class="me-bth" bindtap="goMyLook">
+      <text class='fl'>浏览历史</text>
+      <text class='fr'>{{countInfo.visitHistoryNum}}条</text>
+    </view>
+    <view class="me-bth" bindtap="goMyLike">
+      <text class='fl'>我赞过的照片</text>
+      <text class='fr'>{{countInfo.UserLikesNum}}张</text>
+    </view>
+    <view class="me-bth" bindtap="goMymaking">
+      <text class='fl'>我制作的照片</text>
+      <text class='fr'>{{countInfo.puzzleListNum}}张</text>
+    </view>
+    <!-- <view class="me-bth">
+      <text class='fl'>语言设置</text>
+      <picker class='fr picker-lang' mode="selector" bindchange="setLang" value="{{pickerIndex}}" range="{{langList}}">
+        <view style='padding-left:100rpx;'>
+          {{langList[pickerIndex]}}
+        </view>
+      </picker>
+    </view> -->
+    <view class="me-bth" bindtap="logOut">
+      <text class='fl'>退出登录</text>
+    </view>
+    <!-- <view class="me-bth">
+      <text bindtap="goMyCover">集合页</text>
+    </view> -->
+    <input style='border:1px solid' wx:if="{{showInput}}" bindinput='enterKey' bindconfirm="done"></input>
+    <view class="shade_box" wx:if="{{!token}}" bindtap="userInfoTips"></view>
+  </view>
+</view>

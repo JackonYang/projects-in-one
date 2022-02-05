@@ -1,0 +1,185 @@
+/* pages/order/order.wxss */
+
+.order-contain {
+  position: relative;
+  padding: 0 60rpx 50rpx;
+}
+
+.header {
+  position: relative;
+  color: #9b9b9b;
+  font-size: 24rpx;
+}
+
+.header .tel-box {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding-right: 60rpx;
+  text-align: right;
+}
+
+.header .tel-num {
+  color: #ea111c;
+}
+
+.header .tel-icon {
+  right: 0;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.logo-box .logo {
+  display: block;
+}
+
+.exper {
+  margin-top: 80rpx;
+  font-size: 24rpx;
+  color: #9b9b9b;
+}
+
+.exper .title {
+  margin-bottom: 40rpx;
+  font-size: 44rpx;
+  font-weight: 700;
+  color: #000;
+}
+
+.personal-info {
+  margin-top: 60rpx;
+}
+
+.form_box {
+  width: 100%;
+  overflow: hidden;
+}
+
+.type-info .type-item {
+  margin-bottom: 40rpx;
+  width: 160rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  border-radius: 50rpx;
+  border: 1px solid #e3e3e3;
+  box-sizing: border-box;
+  text-align: center;
+  color: #c8c8c8;
+  font-size: 24rpx;
+}
+
+.type-info .type-item:nth-child(3n+2) {
+  margin: 0 74rpx;
+}
+
+.type-info .type-item.selected {
+  border: 0 none;
+  background-color: #ea111c;
+  color: #fff;
+}
+
+.info-title {
+  font-size: 36rpx;
+  font-weight: 700;
+  margin-bottom: 50rpx;
+}
+
+.section {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-bottom: 10rpx;
+  font-size: 24rpx;
+  color: #000;
+  box-sizing: border-box;
+}
+
+.underline {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.section input {
+  height: 80rpx;
+  line-height: 80rpx;
+}
+
+.section .picker {
+  padding-right: 40rpx;
+  text-align: right;
+}
+
+.section .colunm {
+  color: #c8c8c8;
+}
+
+.section .col-black {
+  color: #000;
+}
+
+.btn-area {
+  margin-top: 50rpx;
+}
+
+.submit {
+  width: 300rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 24rpx;
+  background-color: #ea111c;
+  color: #fff;
+  border-radius: 50rpx;
+  box-shadow: 0px 7px 28px 0px rgba(255, 162, 162, 0.5);
+}
+
+.img-box {
+  margin-top: 140rpx;
+}
+
+.v-img {
+  display: block;
+  width: 100%;
+}
+.intro-img-box{
+  margin-top: 100rpx;
+  padding: 0 40rpx;
+}
+.support-logo {
+  position: relative;
+  margin-top: 80rpx;
+}
+
+.logo-swiper {
+  width: 100%;
+  height: 500rpx;
+}
+
+.logo-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.support-logo .prev, .support-logo .next {
+  width: 40rpx;
+  height: 40rpx;
+  padding: 50rpx 40rpx;
+}
+
+.support-logo .prev {
+  left: -40rpx;
+}
+
+.support-logo .next {
+  right: -40rpx;
+}
+
+.prev-img, .next-img {
+  width: 100%;
+  height: 100%;
+}
+
+.placeholder-color {
+  color: #c8c8c8;
+}

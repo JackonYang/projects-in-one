@@ -1,0 +1,7 @@
+<!--pages/myMaking/single.wxml-->
+<view class='pop-up'>
+  <image class='close' src='../../assets/icon/close.png' bindtap='goBack'></image>
+  <scroll-view scroll-y style="height: 100%;">
+    <image class='big-img {{isFull ? " " : "yCenter"}}' mode='widthFix' lazy-load='true' src='{{currentInfo.url}}' bindload='waitLoading' bindtap='openBig'></image>
+  </scroll-view>
+</view>

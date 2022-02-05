@@ -1,0 +1,114 @@
+@import './making.wxss';
+
+.merge-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #f6f6f6;
+}
+
+.z-index100 {
+  z-index: 100;
+}
+
+.merge-box .img-list {
+  width: 100%;
+  height: 100%;
+  padding-bottom: 300rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.scroll-box {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.img-list image {
+  width: 100%;
+}
+
+.merge-box .bottom-box {
+  position: relative;
+}
+
+.scroll-box .title {
+  margin-left: 12rpx;
+  margin-top: 60rpx;
+  width: 436rpx;
+  height: 100rpx;
+  line-height: 50rpx;
+}
+
+
+.scroll-box .code {
+  position: absolute;
+  top: 0;
+  right: 12rpx;
+  width: 112rpx;
+  height: 112rpx;
+}
+
+.pic-box {
+  width: 100%;
+  height: 100%;
+  padding-bottom: 100rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+}
+
+.layou-merge {
+  width: 100%;
+  height: 98rpx;
+  line-height: 98rpx;
+  background-color: #fff;
+  box-shadow: 0px -1px 4px 0px rgba(0, 0, 0, 0.1);
+  color: #000;
+  font-size: 28rpx;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 9;
+}
+
+.left-bth {
+  padding: 0 60rpx;
+  float: left;
+}
+
+.right-bth {
+  padding: 0 60rpx;
+  color: #000;
+  float: right;
+}
+
+.slide-box {
+  position: fixed;
+  bottom: 100rpx;
+  padding: 0 50rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+  overflow: hidden;
+  height: 140rpx;
+  width: 100%;
+}
+
+.slide-box .frame-slide {
+  margin-top: 50rpx;
+  color: #ea111c !important;
+}
+
+.select-footer .handle {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

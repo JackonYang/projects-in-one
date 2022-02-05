@@ -1,0 +1,14 @@
+<!--pages/picShare/share.wxml-->
+<view class='big-pic-contain' wx:if="{{loading}}">
+  <image class='big-pic' mode="aspectFit" src="{{photoUrl}}" bindload="LoadComplete"></image>
+  <view class='nav-box'>
+    <view class='back-btn fl' bindtap='goCurrentAlbum'>
+      <text>查看相册</text>
+      <button class='btn' plain='true'></button>
+    </view>
+    <view class='back-btn fr' bindtap='goIndex'>
+      <text>回到首页</text>
+      <button class='btn' plain='true'></button>
+    </view>
+  </view>
+</view>

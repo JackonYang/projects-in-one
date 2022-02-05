@@ -1,0 +1,35 @@
+/* pages/submitSuccess/submitSuccess.wxss */
+
+.submit-success {
+  text-align: center;
+}
+
+.success-icon {
+  margin: 170rpx auto 0;
+  width: 140rpx;
+  height: 140rpx;
+}
+
+.success-tip {
+  margin-top: 80rpx;
+  font-size: 44rpx;
+  font-weight: 700;
+}
+
+.remark {
+  margin-top: 40rpx;
+  font-size: 28rpx;
+  color: #9b9b9b;
+}
+
+.confirm {
+  margin: 160rpx auto 0;
+  width: 320rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  border-radius: 50rpx;
+  font-size: 24rpx;
+  box-shadow: 0px 7px 28px 0px rgba(255, 162, 162, 0.5);
+  background-color: #ea111c;
+  color: #fff;
+}

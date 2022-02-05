@@ -1,0 +1,36 @@
+<!--pages/myShoot/myShoot.wxml-->
+<view class="my-shoot">
+  <view class='order-info bg-fff'>
+    <view class="underline h80  pd32">
+      <text class="font-w700">预约单号</text>
+      <text class="fr">{{subInfo.code}}</text>
+    </view>
+    <view class="h80 pd32">
+      <text class="font-w700 h80">订单状态</text>
+      <text class="fr">{{subInfo.status}}</text>
+    </view>
+  </view>
+  <view class='basic-info bg-fff'>
+    <view class="title underline pd32">基础信息</view>
+    <view class="underline h80 pd32">
+      <text class="font-w700">姓名</text>
+      <text class="fr">{{subInfo.name}}</text>
+    </view>
+    <view class="underline h80 pd32">
+      <text class="font-w700">手机号</text>
+      <text class="fr">{{subInfo.telphone}}</text>
+    </view>
+    <view class="underline h80 pd32">
+      <text class="font-w700">拍摄时间</text>
+      <text class="fr">{{subInfo.time}}</text>
+    </view>
+    <view class="h80 pd32">
+      <text class="font-w700">拍摄城市</text>
+      <text class="fr">{{subInfo.city}}</text>
+    </view>
+  </view>
+  <view class="remark bg-fff">
+    <view class="title underline pd32">备注信息</view>
+    <text class="pd32">{{subInfo.remark}}</text>
+  </view>
+</view>

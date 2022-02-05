@@ -1,0 +1,45 @@
+<!-- 拼图page  -->
+<view class="merge-box">
+  <view class="img-list" style='padding-bottom:{{currentIndex&&currentIndex!=2?"300rpx":"100rpx"}}'>
+    <view id='scroll-box' class='scroll-box' style='padding:0 {{marginVal}}rpx;'>
+      <scroll-view class="JS-Scroll" scroll-y scroll-top="{{scrollH}}" style="height: 100%;">
+        <block wx:for='{{photoMergeList}}' wx:key="index">
+          <image class='border-box JS-Img' style='margin:{{marginVal}}rpx 0;' mode='widthFix' src='{{item.smallUrl}}'></image>
+        </block>
+        <view class='bottom-box' style='height:{{textVal||!pageType?"200rpx":"0"}}'>
+          <view class="{{currentIndex == 1 ? 'select-border' : 'input-box' }}" bindtap='showTextModal'>
+            <view class='input-text text'>{{textVal}}</view>
+          </view>
+          <image class='code' mode='aspectFit' src='{{footImg.codeUrl}}' wx:if="{{!pageType}}"></image>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</view>
+<view class='edit-footer'>
+  <view class='foot-ul clearfix'>
+    <view class='foot-li' data-num="0" bindtap='selectFun'>
+      <image class='foot-icon' src='{{isFrameSlc?footImg.slcFrameUrl:footImg.defFrameUrl}}'></image>
+      <view class='txt-con'>相框</view>
+    </view>
+    <view class='foot-li' data-num="1" bindtap='selectFun'>
+      <image class='foot-icon' src='{{isFrameSlc?footImg.slcTextUrl:footImg.defTextUrl}}'></image>
+      <view class='txt-con'>文字</view>
+    </view>
+    <view class='foot-li' data-num="2" bindtap='selectFun'>
+      <image class='foot-icon' src='{{footImg.saveUrl}}'></image>
+      <view class='txt-con'>保存</view>
+    </view>
+  </view>
+</view>
+<view class='slide-box' wx:if="{{currentIndex==0}}">
+  <slider class='frame-slide' show-value='true' step='2' max='20' backgroundColor='#eee' activeColor='#ea111c' block-size='22' value='{{marginVal}}' bindchanging='changeMargin'></slider>
+</view>
+<view class='select-footer' wx:if="{{currentIndex&&currentIndex!=='2'}}">
+  <view class="handle">
+    <image class='cancle yCenter' src='{{footImg.cancleUrl}}' bindtap='cancle'></image>
+    <image class='confirm yCenter' src='{{footImg.confirmUrl}}' bindtap="{{currentIndex==1?'textConfirm':'frameConfirm'}}"></image>
+    {{currentIndex==0?"相框":"文字"}}
+  </view>
+</view>
+<input-laye id="single-border" bindtextevent="userWriteFinish"></input-laye>

@@ -1,0 +1,14 @@
+<!--pages/tag/tag.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <text class="title">{{tagInfo.title}}</text>
+  </view>
+  <view class="userList">
+    <block wx:for="{{tagList}}" wx:key="name">
+      <text class="item {{item.checked ? 'checked' : ''}}"  bindtap="checkList" id="{{index}}">{{item.value}}</text>
+    </block>
+  </view>
+  <view class="userButton">
+    <button bindtap="goIndex">确认，进入首页</button>
+  </view>
+</view>

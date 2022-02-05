@@ -1,0 +1,67 @@
+<!--pages/merge/making.wxml-->
+<!-- 单图编辑 -->
+<view class='single-edic'>
+  <view class='single-edic' wx:if="{{frameItemIndex == 2}}">
+    <scroll-view scroll-y class='pic-scroll'>
+      <image class="xCenter {{isHorizontal ? 'single-pic' : 'vertical-pic'}}" mode='aspectFit' src="{{currentInfo.smallUrl}}"></image>
+    </scroll-view>
+  </view>
+  <view wx:else>
+    <view class="frame-pic horizontal {{frameItemIndex == 1 ? 'black' : ''}}" wx:if="{{isHorizontal}}">
+      <image class='pic' mode='aspectFit' src="{{currentInfo.smallUrl}}"></image>
+      <view class='contain clearfix'>
+        <view class="fl {{currentIndex == 1 ? 'select-border' : 'input-box' }}" bindtap='openInputLayou'>
+          <view class='input-text text'>{{textItemFonts}}</view>
+        </view>       
+        <image class='code fr' src='{{footImg.qrcodeUrl}}' mode="aspectFit"></image>
+      </view>
+    </view>
+    <view class="frame-pic vertical clearfix {{frameItemIndex == 1 ? 'black' : ''}}" wx:else>
+      <image class='pic fl' mode='aspectFit' src="{{currentInfo.smallUrl}}"></image>
+      <view class='contain fr'>
+         <view class="fl {{currentIndex == 1 ? 'select-border' : 'input-box' }}" bindtap='openInputLayou'>
+          <view class='input-text text'>{{verticalText.one}}</view>
+          <view class='input-text text'>{{verticalText.two}}</view>
+        </view>         
+        <image class='code' src='{{footImg.qrcodeUrl}}' mode="aspectFit"></image>
+      </view>
+    </view>  
+  </view>
+
+</view>
+<!-- 底部tab  -->
+<view class='edit-footer'>
+  <view class='foot-ul clearfix'>
+    <view class='foot-li' data-num="0" bindtap='selectFun'>
+      <image class='foot-icon' src='{{isFrameSlc?footImg.slcFrameUrl:footImg.defFrameUrl}}'></image>
+      <view class='txt-con'>相框</view>
+    </view>
+    <view class='foot-li' data-num="1" bindtap='selectFun'>
+      <image class='foot-icon' src='{{isFrameSlc?footImg.slcTextUrl:footImg.defTextUrl}}'></image>
+      <view class='txt-con'>文字</view>
+    </view>
+    <view class='foot-li' data-num="2" bindtap='saveImage'>
+      <image class='foot-icon' src='{{footImg.saveUrl}}'></image>
+      <view class='txt-con'>保存</view>
+    </view>
+  </view>
+</view>
+<!-- 单图相框列表 -->
+<view class='select-frame' wx:if="{{currentIndex == 0}}">
+  <view class='frame-list'>
+    <image class="frame-icon {{frameItemIndex == 2 ?'selected':''}}" src='{{footImg.notBorder}}' data-current="2" bindtap='frameChoose'></image>
+    <block wx:for="{{borderList}}" wx:key="index" wx:if="{{item.showLevel == 1}}">
+      <image class="frame-icon {{frameItemIndex == index?'selected':''}}" src='{{item.frameUrl}}' data-current="{{index}}" bindtap='frameChoose'></image>
+    </block>
+  </view>
+</view>
+<!-- 底部按钮弹层 -->
+<view class='select-footer' wx:if="{{currentIndex}}">
+  <view class="handle">
+    <image class='cancle yCenter' src='{{footImg.cancleUrl}}' bindtap='cancle'></image>
+    <image class='confirm yCenter' src='{{footImg.confirmUrl}}' bindtap='confirm'></image>
+    {{currentIndex == 0 ? "相框" : "文字"}}
+  </view>
+</view>
+<!--输入框弹层  -->
+<input-laye id="single-border" bindtextevent="userWriteFinish"></input-laye>

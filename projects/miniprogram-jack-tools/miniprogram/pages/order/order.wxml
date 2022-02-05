@@ -1,0 +1,77 @@
+<!--pages/order/order.wxml-->
+<!-- <swiper vertical="true">
+  <swiper-item> -->
+<view class='order-contain clearfix'>
+  <view class='header clearfix'>
+    <view class='logo-box fl'>
+      <image class='logo' src='../../assets/icon/logo-fff.png' mode="scaleToFill"></image>
+    </view>
+    <view class='tel-box' bindtap='call'>
+      <view>合作热线</view>
+      <view class='tel-num'>400 806 5775</view>
+      <image class='tel-icon yCenter' src='../../assets/icon/tel-icon.png'></image>
+    </view>
+  </view>
+  <view class='exper'>
+    <view class='title'>体验VPhoto</view>
+    <view>提交预约资料，将更方便我们服务您。</view>
+    <view>提交后，VPhoto客服人员将在2小时内与您联系。</view>
+  </view>
+  <view class='personal-info'>
+    <form class="form_box" bindsubmit="formSubmit" bindreset="formReset">
+      <!-- 拍摄类型 -->
+      <view class='type-info'>
+        <view class='info-title'>01.选择需要拍摄的类型</view>
+        <view class='contain clearfix'>
+          <view class="type-item fl {{isSelected==index?'selected':''}}" wx:for="{{typeList}}" wx:key='index' data-text='{{item}}' data-index='{{index}}' bindtap='chooseType'>{{item}}</view>
+        </view>
+      </view>
+      <!-- 基本信息 -->
+      <view class='base-info'>
+        <view class='info-title'>02.填写您的基本信息</view>
+        <view class="section">
+          <view class="underline">
+            <input name="user" type="text" value='{{formName}}' maxlength="10" placeholder="您的姓名" placeholder-style="color:#c8c8c8" bindinput='bindName' />
+          </view>
+        </view>
+        <view class="section">
+          <view class="underline">
+            <picker class='place' mode="selector" bindchange="bindPlace" value="{{pickerIndex}}" range="{{placeList}}">
+              <view class="{{pickerIndex||pickerIndex==0? 'col-black': 'colunm'}}">
+                {{formPlace || "所在地"}}
+              </view>
+            </picker>
+          </view>
+        </view>
+        <view class="section">
+          <view class="underline">
+            <input name="phone" type="number" value='{{formTel}}' maxlength="11" placeholder="您的手机号码" placeholder-style="color:#c8c8c8" bindinput='bindTelNum' />
+          </view>
+        </view>
+      </view>
+      <view class="btn-area">
+        <button formType="submit" class="submit" wx:if="{{!isSubmit}}">提交信息</button>
+        <button class="submit" wx:if="{{isSubmit}}">提交信息</button>
+      </view>
+    </form>
+  </view>
+  <view class='img-box'>
+    <image class='v-img' src='../../assets/img/order-img.png' mode='widthFix'></image>
+  </view>
+  <view class='intro-img-box'>
+    <image class='intro-img' src='{{introduceUrl}}' mode='widthFix'></image>
+  </view>
+  <view class='support-logo'>
+    <swiper class='logo-swiper' bindchange='changeSwiper' current="{{currentIndex}}">
+      <swiper-item wx:for="{{imgList}}" wx:key="index" item-id="{{index}}">
+        <image class='logo-img' src='{{item}}' mode='aspectFit'></image>
+      </swiper-item>
+    </swiper>
+    <view class='prev yCenter' bindtap='goPrev'>
+      <image class='prev-img' src='../../assets/icon/prev.png'></image>
+    </view>
+    <view class='next yCenter' bindtap='goNext'>
+      <image class='next-img' src='../../assets/icon/next.png'></image>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,30 @@
+<template name="v-gallery-viewer">
+  <view class="gallery-viewer" wx:if="{{_gallery_view_show_status}}">
+    <view class="J_swiper_view swiper-view" 
+      bindtouchstart="_swiper_touch_start" 
+      bindtouchmove="_swiper_touch_move" 
+      bindtouchend="_swiper_touch_end">
+
+      <block wx:for="{{_gallery_swiper_photoList}}" wx:key="{{item.photoKey}}">
+        <view class="swiper-item" data-imageidx="{{item.idx}}" 
+          bindtap="_swiper_item_taped"
+          style="background-image: url({{item.smallUrl}}); transform: translate({{item.transX}}px, 0px) translateZ(0px);">
+        </view>
+      </block>
+    </view>
+
+    <view class="J_thumbs_view thumbs-view" 
+      bindtouchstart="_thumbs_touch_start" 
+      bindtouchmove="_thumbs_touch_move" 
+      bindtouchend="_thumbs_touch_end">
+
+      <block wx:for="{{_gallery_thumbs_photoList}}" wx:key="{{item.photoKey}}">
+        <view class="thumbs-item" bindtap="_swipe_item_tap" data-imageidx="{{item.idx}}"
+          style="background-image: url({{item.thumbUrl}}); transform: translate({{item.transX}}px, 0) translateZ(0px);">
+        </view>
+      </block>
+
+      <view class="J_thumb_choosed thumb-choosed-item"></view>
+    </view>
+  </view>
+</template>

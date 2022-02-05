@@ -1,0 +1,9 @@
+<!--pages/choiceness/details.wxml-->
+<view class='page'>
+  <view class='title-box'>{{dataInfo.name}}</view>
+  <view class="describe">
+     <rich-text nodes="{{dataInfo.content}}"></rich-text> 
+  </view>
+</view> 
+<!-- 体验一下 -->
+<taste-page id="taste-dialog"></taste-page>

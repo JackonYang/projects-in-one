@@ -1,0 +1,43 @@
+/* pages/myShoot/myShoot.wxss */
+.bg-fff{
+  background-color: #fff;
+}
+.font-w700{
+  font-weight: 700;
+  float: left;
+}
+.fr{
+  float: right;
+}
+.underline{
+  border-bottom: 1rpx #E5E5E5 solid;
+  overflow: hidden;
+}
+text{
+  display: inline-block;
+  height: 100%;
+  /* float: left; */
+}
+.h80{
+  height: 112rpx;
+  line-height: 112rpx;
+}
+.pd32{
+  padding: 0 32rpx;
+}
+.my-shoot{
+  /* padding:  40rpx 40rpx 0; */
+  overflow: hidden;
+  font-size: 32rpx;
+  background-color: #F8F8FA;
+}
+.title{
+  color: #909090;
+  font-size: 28rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+}
+.order-info,.basic-info,.remark{
+  margin-top: 28rpx;
+}
+

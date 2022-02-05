@@ -1,0 +1,186 @@
+/* pages/myLike/myLike.wxss */
+@import "../../components/albumLayer/layer.wxss";
+
+.like-box {
+  width: 100%;
+  padding: 40rpx 60rpx;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.like-list {
+  position: relative;
+  width: 33.33%;
+  height: 206rpx;
+  box-sizing: border-box;
+  padding: 6rpx;
+  float: left;
+}
+
+.list-image {
+  width: 100%;
+  height: 100%;
+}
+
+.icon-select {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+}
+
+.icon-select .icon {
+  position: absolute;
+  right: 14rpx;
+  top: 14rpx;
+  z-index: 3;
+  font-size: 28rpx;
+  width: 50rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+}
+
+.icon-select .text-icon {
+  border-radius: 50rpx;
+  background-color: #fff;
+  color: #ea111c;
+}
+
+.my-like-tool {
+  /* background-color: #dedede; */
+  padding-top: 40rpx;
+  box-sizing: border-box;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+}
+
+.enter-btn {
+  z-index: 1;
+  bottom: 150rpx;
+  width: 388rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 24rpx;
+  border: 1px solid #e3e3e3;
+  border-radius: 50rpx;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* 功能按钮 */
+
+.layou-box {
+  width: 78rpx;
+  padding-bottom: 98rpx;
+  position: fixed;
+  right: 40rpx;
+  bottom: 60rpx;
+  z-index: 99;
+}
+
+.layou-box .bth {
+  width: 76rpx;
+  height: 76rpx;
+  line-height: 76rpx;
+  text-align: center;
+  color: #333;
+  font-size: 20rpx;
+  background-color: #fff;
+  border-radius: 50%;
+  /* box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.2);  */
+  box-shadow: 0px 2px 15px 0px rgba(227, 227, 227, 0.5);
+  border: 1rpx solid #f3f3f3;
+}
+
+/* 拼图底部弹层  */
+
+.layou-puzzle {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 19;
+  width: 100%;
+  height: 98rpx;
+  line-height: 98rpx;
+  font-size: 36rpx;
+  background-color: #fff;
+}
+
+.layou-puzzle .left-bth {
+  padding: 0 60rpx;
+  height: 98rpx;
+  float: left;
+}
+
+.layou-puzzle .right-bth {
+  right: 20rpx;
+  padding: 0 40rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 24rpx;
+  border-radius: 50rpx;
+  background-color: #ea111c;
+  color: #fff;
+  float: right;
+}
+
+.layou-puzzle .opacity {
+  opacity: 0.5;
+}
+
+.layou-puzzle .red-bg {
+  display: inline-block;
+  width: 44rpx;
+  height: 44rpx;
+  line-height: 44rpx;
+  font-size: 28rpx;
+  color: #fff;
+  text-align: center;
+  border-radius: 50%;
+  margin: 27rpx 8rpx;
+  background-color: rgba(234, 17, 28, 1);
+}
+
+.layou-puzzle .opacity {
+  opacity: 0.5;
+}
+
+.merge-loading {
+  width: 100%;
+  height: 100%;
+  padding-top: 40%;
+  font-size: 24rpx;
+  line-height: 66rpx;
+  color: #999;
+  text-align: center;
+  background-color: #fff;
+  box-sizing: border-box;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 199;
+}
+
+.merge-loading .img {
+  margin: 0 auto;
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.empty-box {
+  text-align: center;
+}
+
+.empty-img-box {
+  margin-top: 230rpx;
+  text-align: center;
+}
+
+.empty-img {
+  margin: 0 auto;
+  width: 372rpx;
+  height: 372rpx;
+}

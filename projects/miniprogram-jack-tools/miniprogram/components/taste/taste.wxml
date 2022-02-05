@@ -1,0 +1,7 @@
+<!--components/taste/taste.wxml-->
+<view class='page-layou' wx:if="{{showState}}">
+  <view class="taste-box" bindtap="goSubscribe">
+    <image class='pic' src='../../assets/icon/taste.png' lazy-load="{{imgInfo.load}}" mode="{{imgInfo.mode}}"></image>
+    <view class='title'>体验一下</view>  
+  </view>
+</view>

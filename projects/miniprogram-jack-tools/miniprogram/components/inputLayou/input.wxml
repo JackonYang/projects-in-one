@@ -1,0 +1,18 @@
+<!--components/inputLayou/input.wxml-->
+<view class='fixed' hidden="{{hideStatus}}">
+  <view class='input-view'>
+    <view class='top'>
+      <view class='fl bth' bindtap="cancel">取消</view>
+      <view class='fr bth' bindtap="finish">完成</view>
+    </view>
+    <view class='text-box'>
+      <textarea bindinput="userDefined" maxlength="20" value="{{userTexts}}" focus="{{isFocus}}" fixed="true" placeholder="最大可输入20字符" />
+      <view class="pos-clear" bindtap="clearText">
+        <image class="img" mode="aspectFit" src="/assets/icon/del.png"></image>
+      </view>
+    </view>
+    <view class='switch-text'>
+      <text class='text' bindtap="switchText">换一句</text>
+    </view>
+  </view>
+</view>

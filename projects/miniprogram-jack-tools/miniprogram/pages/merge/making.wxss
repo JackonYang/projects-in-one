@@ -1,0 +1,236 @@
+/* pages/merge/making.wxss */
+
+.single-edic {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  background-color: #f6f6f6;
+}
+
+.single-pic {
+  top: 270rpx;
+}
+.vertical-pic{
+  height: 100%;
+}
+.pic-scroll {
+  position: relative;
+  height: calc(100% - 100rpx);
+}
+
+.frame-pic {
+  position: relative;
+  padding: 52rpx 52rpx 66rpx;
+  margin-top: 140rpx;
+  background-color: #fff;
+}
+
+/* 黑色相框（默认白） */
+.frame-pic.black {
+  background-color: #000;
+  color: #fff;
+}
+.frame-pic .code {
+  width: 112rpx;
+  height: 112rpx;
+  background-color: #fff;
+  z-index: 5;
+}
+
+/* 横版相框*/
+
+.horizontal .contain {
+  margin-top: 46rpx;
+  width: 100%;
+  
+  position: relative;
+}
+.horizontal .code{
+  position: absolute;
+  top: 20rpx;
+  right: 0;
+}
+.input-box{
+  width: 460rpx;
+  height: 96rpx;
+  padding: 20rpx;
+  overflow: hidden;
+}
+.select-border{
+  width: 460rpx;
+  height: 96rpx;
+  padding: 20rpx;
+  overflow: hidden;
+  border: 1px dashed #e3e3e3;
+}
+.input-text{
+  width: 100%;
+  height: 100%;
+  font-size: 34rpx;
+  overflow: hidden;
+}
+.horizontal .text {
+  width: 436rpx;
+  height: 112rpx;
+  font-size: 36rpx;
+  line-height: 46rpx;
+  overflow: hidden;
+}
+
+.horizontal .pic {
+  height: 456rpx;
+}
+
+/* 竖版相框 */
+
+.vertical .pic {
+  width: 436rpx;
+  height: 634rpx;
+}
+.vertical .input-box{
+  width: 96rpx;
+  height: 480rpx;
+  padding: 20rpx;
+  overflow: hidden;
+  border: 1px dashed #fff;
+}
+.vertical .select-border{
+  width: 94rpx;
+  height: 450rpx;
+  padding: 20rpx;
+  overflow: hidden;
+  border: 1px dashed #e3e3e3;
+}
+.vertical .input-text{
+  display: block;
+  width: 26rpx;
+  height: 100%;
+  line-height: 46rpx;
+  padding: 0 10rpx;
+  text-align: center;
+  white-space: normal;
+  word-break: break-all;
+  float: right;
+}
+.vertical .contain {
+  position: relative;
+  width: 136rpx;
+  height: 634rpx;
+}
+.vertical .code {
+  position: absolute;
+  bottom: 0;
+  right: 10rpx;
+}
+
+/* 底部操作栏 */
+
+.edit-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100rpx;
+  background-color: #fff;
+  z-index: 99;
+}
+
+.edit-footer .foot-ul {
+  height: 100%;
+}
+
+.edit-footer .foot-li {
+  float: left;
+  text-align: center;
+  width: 33.3333%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.edit-footer .foot-icon {
+  margin: 16rpx auto 10rpx;
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.edit-footer .txt-con {
+  font-size: 20rpx;
+}
+
+/* 弹出选择项 */
+.select-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100rpx;
+  background-color: #fff;
+  z-index: 100;
+}
+.select-frame{
+  position: fixed;
+  left: 0;
+  bottom: 100rpx;
+  width: 100%;
+  height: 140rpx;
+  background-color: #fff;
+  z-index: 150;  
+}
+/* 确定or取消 */
+
+.handle {
+  position: relative;
+  text-align: center;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-top: 1px solid #e3e3e3;
+  font-size: 28rpx;
+  color: #ea111c;
+}
+
+.cancle, .confirm {
+  width: 34rpx;
+  height: 34rpx;
+  padding: 20rpx;
+}
+
+.cancle {
+  left: 60rpx;
+}
+
+.confirm {
+  right: 60rpx;
+}
+
+.frame-list, .text-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 140rpx;
+  line-height: 140rpx;
+}
+
+.frame-list .frame-icon {
+  margin: 0 76rpx;
+  width: 100rpx;
+  height: 100rpx;
+  background-color:#eee;
+  border: 1px solid #eee;
+}
+
+.frame-icon.selected {
+  border: 1px solid #ea111c;
+}
+
+.text-list .text-item {
+  margin: 0 76rpx;
+  font-size: 28rpx;
+  color: #999;
+}
+
+.text-item.selected {
+  color: #000;
+}

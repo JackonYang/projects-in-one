@@ -1,0 +1,44 @@
+<!--pages/details/details.wxml-->
+<!--pages/myShoot/myShoot.wxml-->
+<view class="my-shoot">
+  <view class='order-info bg-fff'>
+    <view class="underline h80  pd32">
+      <text class="font-w700">预约单号</text>
+      <text class="fr">{{detailInfo.code}}</text>
+    </view>
+    <view class="h80 pd32">
+      <text class="font-w700 h80">订单状态</text>
+      <text class="fr">{{detailInfo.status}}</text>
+    </view>
+  </view>
+  <view class='basic-info bg-fff'>
+    <view class="title underline pd32">基础信息</view>
+    <view class="underline h80 pd32">
+      <text class="font-w700">相册名称</text>
+      <text class="fr">{{detailInfo.albumName}}</text>
+    </view>
+    <view class="underline h80 pd32">
+      <text class="font-w700">拍摄时间</text>
+      <text class="fr">{{detailInfo.date}}</text>
+    </view>
+    <view class="underline h80 pd32">
+      <text class="font-w700">拍摄时长</text>
+      <text class="fr">{{detailInfo.time}}</text>
+    </view>
+    <view class="h80 pd32">
+      <text class="font-w700">拍摄地点</text>
+      <text class="fr">{{detailInfo.shootPlace}}</text>
+    </view>
+  </view>
+  <view class="remark bg-fff">
+    <view class="title underline pd32">人员信息</view>
+    <view class="underline h80 pd32">
+      <text class="font-w700">首席摄影师</text>
+      <text class="fr">{{detailInfo.photographer}}</text>
+    </view>
+    <view class="underline h80 pd32">
+      <text class="font-w700">VIP 专业级数码师</text>
+      <text class="fr">{{detailInfo.digital}}</text>
+    </view>
+  </view>
+</view>

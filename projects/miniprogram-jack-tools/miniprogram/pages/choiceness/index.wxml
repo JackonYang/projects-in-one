@@ -1,0 +1,15 @@
+<!--pages/choiceness/index.wxml-->
+<view class='page'>
+  <block wx:for="{{picList}}" wx:key="index">
+    <view class='list-item' data-id="{{item.id}}" bindtap='goDetails'>
+      <image class='pic' src='{{item.thumbnailUrl}}' lazy-load="{{imgInfo.load}}" mode="{{imgInfo.mode}}"></image>
+      <view class='title twoLineOmit'>{{item.name}}</view>
+    </view>
+  </block>
+</view>
+<!-- 底部加载提示  -->
+<view class='onload_tips_box'>
+  <text class='no_more' >{{isShowMore}}</text>
+</view>
+<!-- 体验一下 -->
+<taste-page id="taste-dialog"></taste-page>

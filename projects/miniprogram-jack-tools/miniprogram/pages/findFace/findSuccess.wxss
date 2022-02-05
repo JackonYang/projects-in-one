@@ -1,0 +1,74 @@
+/* pages/findFace/findSuccess.wxss */
+
+.search-result {
+  padding: 0 80rpx;
+}
+
+/* 有结果 */
+
+.result {
+  overflow: hidden;
+}
+
+.result .tip1 {
+  margin-top: 60rpx;
+}
+
+.result .tip2 {
+  margin-top: 16rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.result .photos {
+  margin-top: 40rpx;
+}
+
+.result .photos .list-item {
+  margin-bottom: 40rpx;
+  width: 100%;
+}
+
+/* 没结果 */
+.no-result{
+  overflow: hidden;
+}
+.no-result .contain {
+  margin-top: 140rpx;
+}
+
+.no-result .contain .txt {
+  margin-top: 60rpx;
+  text-align: center;
+}
+
+.no-result .error-img {
+  margin: 16rpx auto;
+  width: 376rpx;
+  height: 340rpx;
+}
+
+/* .no-result .contain.too-more {
+  .error-img {
+    background-image: url("../assets/imgs/more.png");
+  }
+} */
+
+.no-result .tip {
+  margin-top: 180rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.no-result .enter-btn {
+  margin: 40rpx auto 0;
+  width: 388rpx;
+  box-shadow: none;
+}
+
+.no-result .enter-btn.back {
+  box-sizing: border-box;
+  border: 1px solid #ea111c;
+  background-color: #fff;
+  color: #ea111c;
+}

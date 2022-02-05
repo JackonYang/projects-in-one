@@ -1,0 +1,85 @@
+<!--pages/album/video.wxml-->
+<view>
+  <view class='header'>
+    <view class='title'>{{albumInfo.headTitle}}</view>
+    <view class='subtitle'>{{albumInfo.subHeadTitle}}</view>
+  </view>
+  <view class='content'>
+    <view class='v-author clearfix'>
+      <view class='photographer fl' wx:if="{{albumInfo.showPhotographer==1}}">
+        <image class='v-author-icon yCenter' src='../../assets/icon/auth.png'></image>
+        <view>{{albumInfo.photographerPrefix}}{{currentVideoData.photographerNickName}}</view>
+      </view>
+      <view class='editor fl' wx:if="{{albumInfo.showDigital==1}}">
+        <image class='v-author-icon yCenter' src='../../assets/icon/auth.png'></image>
+        <view>{{albumInfo.digitalPrefix}}{{currentVideoData.digitalName}}</view>
+      </view>
+    </view>
+    <view class='video-box'>
+      <video class="video" id='myVideo' src="{{currentVideoData.smallUrl}}" controls objectFit poster="{{currentVideoData.thumbUrl}}" autoplay wx:if="{{isShowVideo}}"></video>
+      <view class='video-modal' data-id='{{currentVideoData.photoId}}' data-name='{{currentVideoData.photoName}}' bindtap='startPlay' wx:if="{{!isShowVideo}}">
+        <view class='v-time xCenter'>{{currentVideoData.duration}}</view>
+        <image class='video-play-icon xyCenter' src='../../assets/icon/play.png'></image>
+        <image class='video-bg-image' src='{{currentVideoData.thumbUrl}}' mode='aspectFill'></image>
+      </view>
+      <cover-view class='video-modal hide-modal' wx:if="{{currentVideoData.hide==1}}">该视频已隐藏</cover-view>
+    </view>
+    <view class='v-contain'>
+      <view class='v-title clearfix'>
+        <view class='fl twoLineOmit'>{{currentVideoData.labelName}}</view>
+        <!-- <view class='editor-btn fr' wx:if="{{!!albumInfo.isManage}}">编辑</view> -->
+      </view>
+      <view class='v-desc'>{{currentVideoData.labelContent}}</view>
+    </view>
+    <view class='v-contain edit hidden'>
+      <input class='add-title' placeholder='添加标题'></input>
+      <input class='add-desc' placeholder='添加描述'></input>
+      <view class='deal clearfix '>
+        <view class='fl'>取消</view>
+        <view class='fr selected'>完成</view>
+      </view>
+    </view>
+    <view class='v-details clearfix'>
+      <view class='visit-album fl' bindtap='goAlbum' wx:if="{{isShare}}">查看相册</view>
+      <view class='visit fl'>访问 {{currentVideoData.viewNum}}</view>
+      <view class='support fr' bindtap='wechatLike'>
+        <image class='sup-icon yCenter' src='../../assets/icon/like-black.png' wx:if="{{currentVideoData.likeStatus == 0}}"></image>
+        <image class='sup-icon yCenter' src="../../assets/icon/love-red.png" mode="scaleToFill" wx:if="{{currentVideoData.likeStatus == 1}}"></image>
+        <view>{{currentVideoData.likeNum}}</view>
+      </view>
+      <!-- <view class='on-off fr' wx:if="{{!!albumInfo.isManage}}">
+        <image class='on-off-btn yCenter' src='../../assets/icon/lock.png'></image>
+        <view>设为隐藏</view>
+      </view> -->
+      <view class='share-box fr'>
+        <image class='share-img yCenter' src='../../assets/icon/share-black.png'></image>
+        <view class='share-text'>分享</view>
+        <button class='share-btn xyCenter' open-type='share'></button>
+      </view>
+    </view>
+    <block wx:if="{{recentVideoInfo.length>0}}">
+      <view class='more'>更多视频</view>
+      <scroll-view scroll-x class='v-scroll'>
+        <block wx:for="{{recentVideoInfo}}" wx:key="index">
+          <view class='video-item' data-index="{{index}}" bindtap='switchCurrentVideoInfo'>
+            <image class='video-img' src='{{item.thumbUrl}}' mode='aspectFill'></image>
+            <view class='video-time'>{{item.duration}}</view>
+          </view>
+        </block>
+      </scroll-view>
+    </block>
+  </view>
+</view>
+<!-- <view class='share'>
+  <view class='share-text'>分享</view>
+  <button class='share-btn xyCenter' open-type='share'></button>
+</view> -->
+<cover-view class='affirm-modal hidden' catchtouchmove="stopScrollEvent">
+  <cover-view class='modal-contain xyCenter'>
+    <cover-view class='tip'>是否退出编辑描述？</cover-view>
+    <cover-view class='btn-contain clearfix'>
+      <cover-view class='cancel fl'>取消</cover-view>
+      <cover-view class='confirm fr'>确定</cover-view>
+    </cover-view>
+  </cover-view>
+</cover-view>

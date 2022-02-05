@@ -1,0 +1,249 @@
+/* pages/findFace/findFace.wxss */
+
+.search-face {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.cancel-box {
+  position: absolute;
+  top: 40rpx;
+  right: 32rpx;
+  z-index: 99;
+  padding: 40rpx;
+}
+
+.cancel {
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.tip {
+  margin: 0 auto;
+  width: 516rpx;
+  line-height: 36rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: #878787;
+}
+
+.enter-btn {
+  width: 388rpx;
+}
+
+/* 第一次搜索 */
+
+.first-search .photo-box {
+  margin: 200rpx auto 80rpx;
+  padding: 30rpx;
+  width: 516rpx;
+  height: 516rpx;
+}
+
+.first-search .photo {
+  width: 100%;
+  height: 100%;
+}
+
+.btn-box {
+  margin-bottom: 20rpx;
+}
+
+.first-search .enter-btn {
+  margin-top: 136rpx;
+}
+
+/* 有过搜索记录 */
+
+.searched .top-tip {
+  margin-top: 120rpx;
+  font-size: 40rpx;
+  text-align: center;
+}
+
+.searched .photo-ul {
+  position: relative;
+  margin-top: 100rpx;
+  height: 360rpx;
+}
+
+.photo-ul swiper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.photo-ul .img-box {
+  width: 100%;
+  height: 100%;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.photo-ul .slide-image {
+  height: 320rpx;
+  margin-top: 20rpx;
+}
+
+.photo-ul .current .slide-image {
+  height: 360rpx;
+  margin-top: 0;
+}
+
+.searched .list-item {
+  width: 320rpx;
+  height: 320rpx;
+  background-color: pink;
+}
+
+.searched .current {
+  width: 360rpx;
+  height: 360rpx;
+}
+
+.searched .tip {
+  margin-top: 160rpx;
+}
+
+.searched .enter-btn {
+  margin-top: 40rpx;
+  box-shadow: none;
+}
+
+.searched .uploading {
+  color: #ea111c;
+  background-color: #fff;
+  border: 1px solid #ea111c;
+}
+
+/* 弹起扫描层 */
+
+.search-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background-color: #000;
+}
+
+.search-modal .current-photo {
+  position: fixed;
+  left: 0;
+  top: 200rpx;
+  width: 100%;
+  height: 516rpx;
+  z-index: 19;
+  overflow: hidden;
+}
+
+.search-modal .corp-photo {
+  width: 516rpx;
+  height: 516rpx;
+  overflow: hidden;
+  margin: 200rpx auto 0;
+  position: relative;
+}
+
+.search-modal .camera {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 516rpx;
+  height: 516rpx;
+  overflow: hidden;
+}
+
+#head-preview {
+  width: 100%;
+  height: calc(100% - 98rpx);
+  overflow: hidden;
+  position: relative;
+}
+
+#head-preview .current-photo {
+  position: absolute;
+  left: 0;
+  top: 200rpx;
+  width: 100%;
+  height: 516rpx;
+  z-index: 19;
+  overflow: hidden;
+}
+
+#head-preview .mask-event {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  overflow: hidden;
+}
+
+@keyframes movedown {
+  from {
+    top: -90%;
+  }
+
+  to {
+    top: 50%;
+  }
+}
+
+.corp-photo .search {
+  position: absolute;
+  top: -90%;
+  z-index: 99;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  /* background-image: url("../../assets/img/seraching.png"); */
+  animation: movedown 1.5s linear infinite;
+}
+
+.search-modal .searching {
+  margin-top: 100rpx;
+  text-align: center;
+  font-size: 48rpx;
+  color: #fff;
+}
+
+.box-crop {
+  width: 100%;
+  height: 98rpx;
+  line-height: 98rpx;
+  background-color: #fff;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 99;
+}
+
+.box-crop .bth {
+  width: 50%;
+  height: 98rpx;
+  line-height: 98rpx;
+  float: left;
+  text-align: center;
+  font-size: 36rpx;
+  color: #999;
+}
+
+.popup-scroll-box {
+  width: 100%;
+  height: 360rpx;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.scroll-image {
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,127 @@
+/* pages/myMaking/myMaking.wxss */
+@import "../myLike/myLike.wxss";
+
+.posfix {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.top-nav {
+  display: flex;
+  justify-content: center;
+  height: 100rpx;
+  line-height: 100rpx;
+  color: #999;
+  box-shadow: 0px 4px 20px 0px rgba(227, 227, 227, 0.3);
+}
+
+.nav-item {
+  margin: 0 80rpx;
+  display: inline-block;
+  height: 100%;
+}
+
+.selected {
+  color: #333;
+}
+
+.unlogin-box {
+  padding: 0 60rpx;
+}
+
+.login {
+  margin: 30rpx 0;
+  font-size: 28rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+.login-btn {
+  position: relative;
+  width: 120rpx;
+  text-align: center;
+  background-color: #ea111c;
+  color: #fff;
+  border-radius: 60rpx;
+  overflow: hidden;
+}
+
+.login-tip, .login-btn {
+  height: 100%;
+}
+
+.login-menu {
+  width: 130rpx;
+  height: 70rpx;
+}
+
+.like-box-making {
+  padding: 0;
+}
+
+/* 空单图 */
+
+.img-box {
+  margin-top: 160rpx;
+  text-align: center;
+}
+
+.empty-img {
+  margin: 0 auto;
+  width: 372rpx;
+  height: 372rpx;
+}
+
+.single .tip {
+  text-align: center;
+}
+
+/* 拼图列表 */
+
+.like-box {
+  width: 100%;
+  padding: 40rpx 60rpx;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.like-list {
+  width: 33.33%;
+  height: 206rpx;
+  box-sizing: border-box;
+  padding: 6rpx;
+  float: left;
+}
+
+.list-image {
+  width: 100%;
+  height: 100%;
+}
+.pop-up{
+  position: fixed;
+  z-index: 990;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  text-align: center;
+  background-color: #000;
+}
+.pop-up .close{
+  position: fixed;
+  right: 30rpx;
+  top: 30rpx;
+  padding: 30rpx;
+  width: 40rpx;
+  height: 40rpx;
+  z-index: 999;
+}
+ .big-img{
+  /* height: 100%;  */
+  left: 0;
+  width: 100%;
+} 

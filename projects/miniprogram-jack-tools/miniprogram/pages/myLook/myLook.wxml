@@ -1,0 +1,46 @@
+<!-- 头部导航 -->
+<view class="tapbar-top">
+  <scroll-view class="scroll-view-tap" scroll-x style="width: 100%">
+    <view class="tap-item {{currentTab==0 ? 'cur' : ''}} History" data-current="0" bindtap="swichNav">扫码浏览的</view>
+    <view class="tap-item {{currentTab==1 ? 'cur' : ''}}" data-current="1" bindtap="swichNav">最近浏览的</view>
+  </scroll-view>
+</view>
+<!-- 历史记录 -->
+<view class="gallery-list" wx:if="{{lookState && currentTab==1}}">
+  <view wx:for='{{historyList}}' wx:key="index" class="gallery-item" bindtap='goCurrentAlbum' data-wechatid="{{item.wechatMd5}}">
+    <!-- 卡片信息 -->
+    <view class="gallery-info yCenter">
+      <view class="photo-name twoLineOmit gallery-info-title">{{item.headTitle}}</view>
+      <view class="time-dt-box">{{item.albumCategory==1?'照片':'视频'}} {{item.photoCount}}</view>
+      <view class='video-tip' wx:if='{{item.albumCategory==2}}'>视频</view>
+    </view>
+    <!-- 卡片封面 -->
+    <view class="img-right yCenter">
+      <image src='{{item.coverUrl}}' lazy-load="{{imgInfo.load}}" mode="{{imgInfo.mode}}" class='gallery-cover'></image>
+    </view>
+  </view>
+</view>
+<!-- 扫码内容 -->
+<view class="gallery-list" wx:if="{{lookState && currentTab==0}}">
+  <view wx:for='{{historyList}}' wx:key="index" class="gallery-item" bindtap='goCurrentAlbum' data-wechatid="{{item.wechatMd5}}">
+    <!-- 卡片信息 -->
+    <view class="gallery-info yCenter">
+      <view class="photo-name twoLineOmit gallery-info-title">{{item.headTitle}}</view>
+      <view class="time-dt-box">{{item.albumCategory==1?'照片':'视频'}} {{item.photoCount}}</view>
+      <view class='video-tip' wx:if='{{item.albumCategory==2}}'>视频</view>
+    </view>
+    <!-- 卡片封面 -->
+    <view class="img-right yCenter">
+      <image src='{{item.coverUrl}}' lazy-load="{{imgInfo.load}}" mode="{{imgInfo.mode}}" class='gallery-cover'></image>
+    </view>
+  </view>
+</view>
+<view class='empty-box' wx:if="{{!lookState}}">
+  <view class='empty-img-box'>
+    <image class='empty-img' src='../../assets/img/no-pic.png'></image>
+  </view>
+  <view class='tip mt40'>空空如也哦~</view>
+</view>
+<!-- <view class="tips-box" wx:if="{{lookState}}">
+  <text>您还没有赞过的照片哦~</text>
+</view> -->

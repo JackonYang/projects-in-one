@@ -1,0 +1,349 @@
+<!--pages/album/album.wxml-->
+<view class="page ">
+  <!--轮播  -->
+  <view class="switch-box {{albumInfo.bannerStatus > 0 ? '' : 'hidden'}}">
+    <swiper class="album-swipe" autoplay="{{setSwitchInfo.autoplay}}" indicator-dots="{{setSwitchInfo.indicatorDots}}" duration="{{setSwitchInfo.duration}}" circular="{{setSwitchInfo.circular}}" current="{{setSwitchInfo.currentItem}}" bindchange="bindChange">
+      <block wx:if="{{albumInfo.bannerType == 0}}" wx:for="{{albumInfo.bannerUrl}}" wx:key="index">
+        <swiper-item class="img-box">
+          <image src="{{item}}" class="slide-image" lazy-load="{{setSwitchInfo.load}}" mode="{{setSwitchInfo.mode}}"></image>
+        </swiper-item>
+      </block>
+      <block wx:if="{{albumInfo.bannerType == 1}}" wx:for="{{albumInfo.bannerList}}" wx:key="index">
+        <swiper-item class="img-box">
+          <image src="{{item.bannerUrl}}" class="slide-image" lazy-load="{{setSwitchInfo.load}}" mode="{{setSwitchInfo.mode}}"></image>
+        </swiper-item>
+      </block>
+      <block wx:if="{{albumInfo.bannerType == 2 && albumInfo.activityChoiceSwitch == 1}}" wx:for="{{choiceBannerData}}" wx:key="index">
+        <swiper-item class="img-box">
+          <image src="{{item.smallUrl}}" class="slide-image" lazy-load="{{setSwitchInfo.load}}" mode="{{setSwitchInfo.mode}}"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class='head-info-box'>
+    <view class="fixed-head-box" wx:if="{{onTopState && !isVideo}}">
+      <!-- 相册标题 -->
+      <view class="album-title-box">
+        <view class='content'>
+          <view class="head-box yCenter">
+            <view class="title {{albumInfo.subHeadTitle?'oneLineOmit':'twoLineOmit'}}" wx:if="{{albumInfo.headTitle}}">{{albumInfo.headTitle}}</view>
+            <view class="subhead {{albumInfo.headTitle?' oneLineOmit mt20':'twoLineOmit'}}" wx:if="{{albumInfo.subHeadTitle}}">{{albumInfo.subHeadTitle}}</view>
+          </view>
+        </view>
+      </view>
+      <!-- 顶部tag  -->
+      <view class="tapbar-top">
+        <scroll-view class="scroll-view-tap" scroll-x style="width: 100%">
+          <block wx:if="{{isVideo}}">
+            <view class="tap-item {{currentTagId == 'video' ? 'cur' : ''}}" data-current="video" bindtap="swichNav">视频快剪</view>
+          </block>
+          <block wx:else>
+            <view class="tap-item {{currentTagId == 'choice' ? 'cur' : ''}}" wx:if="{{albumInfo.activityChoiceSwitch == 1 && choiceInfo.choiceLabelPhotosList.length > 0}}" data-current="choice" bindtap="swichNav">活动精选</view>
+            <view class="tap-item {{currentTagId == 'all' ? 'cur' : ''}}" data-current="all" bindtap="swichNav">全部照片</view>
+            <view class="tap-item {{currentTagId == 'rank' ? 'cur' : ''}} TopTen" wx:if="{{albumInfo.photoRanking == 1}}" data-current="rank" bindtap="swichNav">热门</view>
+            <view wx:for="{{tagList}}" wx:key="id" class="tap-item {{currentTagId == item.id ? 'cur' : ''}}" data-current="{{item.id}}" bindtap="swichNav">{{item.name}}</view>
+          </block>
+        </scroll-view>
+      </view>
+    </view>
+    <view class="flow-head-box">
+      <!-- 相册标题 -->
+      <view class="album-title-box">
+        <view class='pos-title xCenter'>
+          <view class='title-text yCenter'>
+            <view class="title {{albumInfo.subHeadTitle?'oneLineOmit':'twoLineOmit'}}" wx:if="{{albumInfo.headTitle}}">{{albumInfo.headTitle}}</view>
+            <view class="subhead {{albumInfo.headTitle?' oneLineOmit mt20':'twoLineOmit '}}" wx:if="{{albumInfo.subHeadTitle}}">{{albumInfo.subHeadTitle}}</view>
+          </view>
+        </view>
+        <view class='content'>
+          <view class='count-text'>
+            <view class='fonts'>{{isVideo?"视频":"照片"}}
+              <text class='ml6'>{{albumInfo.photoCount}}</text>
+            </view>
+            <view class='fonts ml40'>访问
+              <text class='ml6'>{{albumInfo.userNum}}</text>
+            </view>
+            <view class='tips' wx:if="{{albumInfo.needPowered==1}}">Powered by VPhoto</view>
+          </view>
+        </view>
+
+      </view>
+      <!-- 顶部tag  -->
+      <view class="tapbar-top">
+        <scroll-view class="scroll-view-tap" scroll-x style="width: 100%">
+          <block wx:if="{{isVideo}}">
+            <view class="tap-item {{currentTagId == 'video' ? 'cur' : ''}}" data-current="video" bindtap="swichNav">视频快剪</view>
+          </block>
+          <block wx:else>
+            <view class="tap-item {{currentTagId == 'choice' ? 'cur' : ''}}" wx:if="{{albumInfo.activityChoiceSwitch == 1 && choiceInfo.choiceLabelPhotosList.length > 0}}" data-current="choice" bindtap="swichNav">活动精选</view>
+            <view class="tap-item {{currentTagId == 'all' ? 'cur' : ''}}" data-current="all" bindtap="swichNav">全部照片</view>
+            <view class="tap-item {{currentTagId == 'rank' ? 'cur' : ''}} TopTen" wx:if="{{albumInfo.photoRanking == 1}}" data-current="rank" bindtap="swichNav">热门</view>
+            <view wx:for="{{tagList}}" wx:key="id" class="tap-item {{currentTagId == item.id ? 'cur' : ''}}" data-current="{{item.id}}" bindtap="swichNav">{{item.name}}</view>
+          </block>
+        </scroll-view>
+      </view>
+    </view>
+  </view>
+  <!-- 空白相册  -->
+  <view class="index-tips-box" wx:if="{{!photoListTotal}}">
+    <image src='{{localSrc.noList}}' mode="{{imgInfo.mode}}" class='bg-img'></image>
+    <text class='tips-text'>活动还没开始，先去其他相册看看吧~</text>
+  </view>
+  <!-- 视频 -->
+  <block wx:if="{{isVideo}}">
+    <view class='video-list'>
+      <view class='video-item' wx:for="{{videoListData}}" wx:key="index">
+        <view class='video-box'>
+          <video id="{{'myVideo'+index}}" class="video" src="{{item.smallUrl}}" controls objectFit poster="{{item.thumbUrl}}" autoplay wx:if="{{item.isShowVideo}}"></video>
+          <!-- <cover-view class='video-time'>{{item.duration}}</cover-view> -->
+          <view class='video-modal' data-current="{{index}}" data-id='{{item.photoId}}' data-name='{{item.photoName}}' wx:if="{{!item.isShowVideo}}" bindtap='playVideo'>
+            <view class='v-time xCenter'>{{item.duration}}</view>
+            <image class='video-play-icon xyCenter' src='../../assets/icon/play.png'></image>
+            <image class='video-bg-image' src='{{item.thumbUrl}}' mode='aspectFill'></image>
+          </view>
+          <cover-view class='video-modal hide-modal' wx:if="{{item.hide==1}}">该视频已隐藏</cover-view>
+        </view>
+        <view class='v-title twoLineOmit'>{{item.labelName}}</view>
+        <view class='v-desc'>{{item.labelContent}}</view>
+        <view class='clearfix btm-contain'>
+          <view class='v-visit clearfix fl'>
+            <view class='fl'>访问 {{item.viewNum}}</view>
+            <view class='fr'>获赞 {{item.likeNum}}</view>
+          </view>
+          <view class='v-details fr' data-id="{{item.photoId}}" bindtap='goVideoDetail'>查看详情</view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <!-- 相册 -->
+  <block wx:else>
+    <!-- 活动精选列表 -->
+    <view class='choice-list-box' wx:if="{{choiceInfoStatus && showAlbumList}}">
+      <view class='choice-shell' wx:for="{{choiceInfo.choiceLabelPhotosList}}" wx:key="index">
+        <view class='check-box' wx:if="{{item.photoList.length > 0}}">
+          <view class='title-box'>
+            <view class='name fl'>{{item.labelName}}</view>
+            <view class='count fr'>{{item.photoList.length}}张</view>
+          </view>
+          <view class='event-album-list'>
+            <scroll-view class="scroll-photo-list" scroll-x style="width: 100%">
+              <block wx:for="{{item.photoList}}" wx:for-index="idx" wx:for-item="itemContent" wx:key="idx">
+                <view class="tap-item J_image_item" data-current="{{[index,idx]}}" bindtap="selectPic">
+                  <image class='show' src='{{itemContent.thumbUrl}}' lazy-load="true" mode="widthFix"></image>
+                </view>
+              </block>
+            </scroll-view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 照片列表  -->
+    <view class='album-list-box' wx:if="{{!!photoListTotal && !choiceInfoStatus}}">
+      <!-- 默认  -->
+      <view class="photo-list" wx:if="{{!timeLineState && !rankState && showAlbumList}}">
+        <view class="{{columnState == 'two' ? 'item-two' : 'item-three'}} openBigPic J_image_item" wx:for="{{photoListData}}" wx:key="index" data-current="{{index}}" bindtap="selectPic">
+          <!-- 选择 -->
+          <view class="icon-select" wx:if="{{puzzleState && item.selected}}">
+            <block wx:for="{{puzzlePushData}}" wx:key="index" wx:for-index="idx" wx:for-item="itemName">
+              <view class="icon text-icon" wx:if="{{item.photoId==itemName}}">{{idx+1}}</view>
+            </block>
+          </view>
+          <!-- 未选择 -->
+          <view class="icon-select" wx:if="{{puzzleState && !item.selected}}">
+            <image src="{{layouImages.selected}}" class="icon" mode="aspectFill"></image>
+          </view>
+          <!-- 照片 -->
+          <image src="{{item.thumbUrl}}" class="list-image" mode="aspectFill"></image>
+        </view>
+      </view>
+      <!-- top 10  -->
+      <view class="photo-list" wx:if="{{rankState && showAlbumList}}">
+        <view class="topTen-item openBigPic J_image_item" wx:for="{{photoListData}}" wx:key="index" data-current="{{index}}" bindtap="selectPic">
+          <text class="top-text {{index == 0 ? 'one' : index == 1 ? 'two' : index == 2 ? 'three' : '' }}" wx:if="{{index < 3}}">Top{{index+1}}</text>
+          <view class="top-like">
+            <image src="../../assets/icon/like-has.png" mode="scaleToFill" class="img"></image>
+            <text class="text">{{item.likeNum}}</text>
+          </view>
+          <image src="{{item.smallUrl}}" class="list-image" mode="aspectFill"></image>
+        </view>
+      </view>
+      <!-- 时间线  -->
+      <view class="timeline-list" wx:if="{{timeLineState  && showAlbumList}}">
+        <view class="timeline-box" wx:for="{{timeLIneData}}" wx:for-item="dayItem" wx:key="index">
+          <view class="timeline-title">{{dayItem.title}}</view>
+          <view class="time-box" wx:for="{{dayItem.dayList}}" wx:for-item="hourItem" wx:for-index="idx" wx:key="dayItem.time">
+            <view class="time-title {{idx > 0 ? 'mt30' : '' }}">{{hourItem.timeTitle}}</view>
+            <view class="time-item J_image_item" wx:for="{{hourItem.hourList}}" wx:for-item="oneItem" wx:key="oneItem.photoId" data-current="{{oneItem.photoId}}" bindtap="OpenTimeLinePic">
+              <!-- 选择 -->
+              <view class="icon-select" wx:if="{{puzzleState && oneItem.selected}}">
+                <block wx:for="{{puzzlePushData}}" wx:key="index" wx:for-index="idx" wx:for-item="itemName">
+                  <view class="icon text-icon" wx:if="{{oneItem.photoId== itemName}}">{{idx+1}}</view>
+                </block>
+              </view>
+              <!-- 未选择 -->
+              <view class="icon-select" wx:if="{{puzzleState && !oneItem.selected}}">
+                <image src="{{layouImages.selected}}" class="icon" mode="aspectFill"></image>
+              </view>
+              <!-- 照片 -->
+              <image src="{{oneItem.thumbUrl}}" class="list-image" mode="aspectFill"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 浮动按钮 -->
+    <view class="layou-box {{rankState ? 'layou-one' : ''}}" wx:if="{{!puzzleState && !!photoListTotal && !choiceInfoStatus && !rankState}}">
+      <view class="bth" bindtap="onTop" wx:if="{{onTopState}}">
+        <image src="{{layouImages.top}}" class="images" mode="aspectFit"></image>
+      </view>
+      <view class="bth mt20" wx:if="{{showIndex}}" bindtap="goIndex">首页</view>
+      <view class="bth mt20" bindtap="findMe" hidden="{{!token}}">找我</view>
+      <view class="bth mt20" bindtap="switchPuzzle" hidden="{{!token}}">拼图</view>
+      <view class="position {{settingState ? '' : 'close'}}">
+        <text class="text switchTimeLine" wx:if="{{settingState}}" bindtap="switchTimeLine">时间</text>
+        <text class="text switchColumns" wx:if="{{settingState && !timeLineState}}" bindtap="switchColumns">{{columnStateName}}</text>
+        <text class="text gray" wx:if="{{settingState && timeLineState}}">{{columnStateName}}</text>
+        <view class="text setting" bindtap="onOpenSetting">
+          <image src="{{layouImages.setting}}" class="img" mode="aspectFit"></image>
+        </view>
+      </view>
+    </view>
+    <!-- 拼图底部弹层 -->
+    <view class="layou-puzzle" wx:if="{{puzzleState}}">
+      <view class="left-bth" bindtap="closePuzzle">取消</view>
+      <view class="right-bth yCenter {{puzzleCount < 2 ? 'opacity' : ''}}" bindtap="goPuzzleFun">开始拼图({{puzzleCount}})</view>
+    </view>
+    <!-- 大图弹层模版  -->
+    <!-- <album-laye id="module-layer" photo-list-data="{{photoListData}}" album-info-data="{{albumInfo}}"></album-laye> -->
+    <!-- 大图弹层  -->
+    <view class="popup-box" hidden="{{popupInfo.switchState}}" catchtouchmove="stopScrollEvent">
+      <view class="popup-name">
+        <view class="left_b">
+          <view class='fl' wx:if="{{albumInfo.showPhotographer == 1 && !!popupCurInfo.photographerNickName}}">
+            <image src="../../assets/icon/auth.png" mode="scaleToFill" class="auth fl"></image>
+            <text class="photographer mr40">{{albumInfo.photographerPrefix}}{{popupCurInfo.photographerNickName}}</text>
+          </view>
+          <view class='fl' wx:if="{{albumInfo.showDigital == 1 && !!popupCurInfo.digitalName}}">
+            <image src="../../assets/icon/auth.png" mode="scaleToFill" class="auth fl"></image>
+            <text class="digital">{{albumInfo.digitalPrefix}}{{popupCurInfo.digitalName}}</text>
+          </view>
+        </view>
+        <view class="right_b">
+          <image src="../../assets/icon/more.png" mode="scaleToFill" class="more fl" bindtap="openPicInfo"></image>
+          <image src="../../assets/icon/close.png" mode="scaleToFill" class="close fr" bindtap="closePicInfo"></image>
+        </view>
+        <view class='visitors-number'>
+          <text class='count'>{{popupCurInfo.viewNum}}</text>人已浏览过此照片</view>
+      </view>
+      <view class="pic-info" wx:if="{{popupInfo.picInfoState}}" bindtap="openPicInfo">
+        <view class="info-bth">
+          <image src="../../assets/icon/more.png" mode="scaleToFill" class="more" catchtap="openPicInfo"></image>
+        </view>
+        <view class="pic-list">
+          <view class="item">
+            <text class="left">相片名</text>
+            <text class="right">{{photoMetaInfo.photoName}}</text>
+          </view>
+          <view class="item">
+            <text class="left">相机品牌</text>
+            <text class="right">{{photoMetaInfo.camBrand}}</text>
+          </view>
+          <view class="item">
+            <text class="left">相机型号</text>
+            <text class="right">{{photoMetaInfo.camType}}</text>
+          </view>
+          <view class="item">
+            <text class="left">焦距</text>
+            <text class="right">{{photoMetaInfo.camFocus}}</text>
+          </view>
+          <view class="item">
+            <text class="left">光圈</text>
+            <text class="right">{{photoMetaInfo.camLight}}</text>
+          </view>
+          <view class="item">
+            <text class="left">快门速度</text>
+            <text class="right">{{photoMetaInfo.camSpead}}</text>
+          </view>
+          <view class="item">
+            <text class="left">ISO</text>
+            <text class="right">{{photoMetaInfo.camISO}}</text>
+          </view>
+          <view class="item">
+            <text class="left">曝光补偿</text>
+            <text class="right">{{photoMetaInfo.camExposure}}</text>
+          </view>
+          <view class="item">
+            <text class="left">镜头</text>
+            <text class="right">{{photoMetaInfo.camSpead}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="gallery-view-panel">
+        <import src="../../components/galleryview/galleryview.wxml" />
+        <template is="v-gallery-viewer" data="{{ _gallery_swiper_photoList, _gallery_thumbs_photoList, _swiper_touch_start, _swiper_touch_move, _swiper_touch_end, _swiper_item_taped, _thumbs_touch_start, _thumbs_touch_move, _thumbs_touch_end, _thumbs_item_taped, _gallery_view_show_status }}"></template>
+
+        <view class="title-box">
+          <text class="title">{{popupCurInfo.labelName}}</text>
+          <text class="content">{{popupCurInfo.labelContent}}</text>
+        </view>
+      </view>
+      <!-- 弹层底部按钮  -->
+      <view class="popup-tool">
+        <view class="make flex" bindtap="userShare">
+          <image src="/assets/icon/share.png" mode="scaleToFill" class="img"></image>
+          <text class="text">分享</text>
+          <button class="share-bth PicShare" open-type="share" plain="true">分享给朋友</button>
+        </view>
+        <view class="comment flex userSave" bindtap="userSave">
+          <image src="/assets/icon/download.png" mode="scaleToFill" class="img"></image>
+          <text class="text">保存</text>
+        </view>
+        <view class="comment flex userMake" bindtap="userMaking">
+          <image src="/assets/icon/make.png" mode="scaleToFill" class="img"></image>
+          <text class="text">制作</text>
+        </view>
+        <view class="like flex wechatLike" bindtap="wechatLike">
+          <image src="/assets/icon/like.png" mode="scaleToFill" class="img" wx:if="{{popupCurInfo.likeStatus == 0}}"></image>
+          <image src="/assets/icon/love.png" mode="scaleToFill" class="img" wx:if="{{popupCurInfo.likeStatus == 1}}"></image>
+          <text class="text">{{popupCurInfo.likeNum}}</text>
+          <button class='share-bth' wx:if="{{!token}}" size='mini' plain='true' open-type="getUserInfo" bindgetuserinfo="getUserInfoStatus"> </button>
+        </view>
+      </view>
+    </view>
+    <!-- 拼图loading弹层  -->
+    <view class="merge-loading" wx:if="{{mergeLoading}}">
+      <image src="{{layouImages.loadingUrl}}" class="img" mode="widthFix"></image>
+      <view>图片合成中，请稍后...</view>
+    </view>
+  </block>
+</view>
+<!-- <cover-view class="layou-box" wx:if="{{showIndex && isVideo}}">
+  <cover-view class="bth" bindtap="goIndex">首页</cover-view>
+</cover-view> -->
+<!-- 底部加载提示  -->
+<view class='onload_tips_box' wx:if="{{!!photoListTotal && !choiceInfoStatus && !rankState}}">
+  <text class='no_more'>{{isShowMore}}</text>
+</view>
+
+<block xw:if="{{showAlbumList}}">
+  <!-- 视频标题 -->
+  <cover-view class="fixed-head-box {{onTopState && isVideo ? '':'hidden'}}">
+    <!-- 相册标题 -->
+    <cover-view class="album-title-box">
+      <cover-view class='content cover-content'>
+        <cover-view class="head-box yCenter">
+          <cover-view class="title {{albumInfo.subHeadTitle?'oneLineOmit':'twoLineOmit'}}" wx:if="{{albumInfo.headTitle}}">{{albumInfo.headTitle}}</cover-view>
+          <cover-view class="subhead {{albumInfo.headTitle?' oneLineOmit mt20':'twoLineOmit'}}" wx:if="{{albumInfo.subHeadTitle}}">{{albumInfo.subHeadTitle}}</cover-view>
+        </cover-view>
+      </cover-view>
+    </cover-view>
+    <!-- 顶部tag  -->
+    <cover-view class="tapbar-top">
+      <cover-view class="scroll-view-tap" scroll-x style="width: 100%">
+        <cover-view class="tap-item {{currentTagId == 'video' ? 'cur' : ''}}" data-current="video" bindtap="swichNav">视频快剪</cover-view>
+      </cover-view>
+    </cover-view>
+  </cover-view>
+  <!-- 密码弹层  -->
+  <password-layer id="pass-layer" bindtextevent="checkAlbumPassword"></password-layer>
+</block>

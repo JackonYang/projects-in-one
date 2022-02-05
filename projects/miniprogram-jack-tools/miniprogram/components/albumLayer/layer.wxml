@@ -1,0 +1,103 @@
+<!-- 大图弹层  -->
+<view class="popup-box" hidden="{{popupInfo.switchState}}" catchtouchmove="stopScrollEvent">
+  <view class="popup-name">
+    <view class="left_b">
+      <view wx:if="{{albumInfoData.showPhotographer == '1'}}">
+        <text class="photographer mr20" wx:if="{{!!popupCurInfo.photographerNickName}}">摄影师：{{popupCurInfo.photographerNickName}}</text>
+      </view>
+      <view wx:if="{{albumInfoData.showDigital == 1}}">
+        <text class="digital" wx:if="{{!!popupCurInfo.digitalName}}">数码师：{{popupCurInfo.digitalName}}</text>
+      </view>
+    </view>
+    <view class="right_b">
+      <image src="../../assets/icon/more.png" mode="scaleToFill" class="more" bindtap="openPicInfo"></image>
+      <image src="../../assets/icon/close.png" mode="scaleToFill" class="close ml40" bindtap="close"></image>
+    </view>
+  </view>
+  <view class="pic-info" wx:if="{{popupInfo.picInfoState}}" bindtap="openPicInfo">
+    <view class="info-bth">
+      <image src="../../assets/icon/more.png" mode="scaleToFill" class="more" catchtap="openPicInfo"></image>
+    </view> 
+    <view class="pic-list">
+      <view class="item">
+        <text class="left">相片名</text> 
+        <text class="right">{{photoMetaInfo.photoName}}</text>
+      </view>
+      <view class="item">
+        <text class="left">相机品牌</text> 
+        <text class="right">{{photoMetaInfo.camBrand}}</text>
+      </view>
+      <view class="item">
+        <text class="left">相机型号</text> 
+        <text class="right">{{photoMetaInfo.camType}}</text>
+      </view>
+      <view class="item">
+        <text class="left">焦距</text> 
+        <text class="right">{{photoMetaInfo.camFocus}}</text>
+      </view>
+      <view class="item">
+        <text class="left">光圈</text> 
+        <text class="right">{{photoMetaInfo.camLight}}</text>
+      </view>
+      <view class="item">
+        <text class="left">快门速度</text> 
+        <text class="right">{{photoMetaInfo.camSpead}}</text>
+      </view>  
+      <view class="item">
+        <text class="left">ISO</text> 
+        <text class="right">{{photoMetaInfo.camISO}}</text>
+      </view>
+      <view class="item">
+        <text class="left">曝光补偿</text> 
+        <text class="right">{{photoMetaInfo.camExposure}}</text>
+      </view>
+      <view class="item">
+        <text class="left">镜头</text> 
+        <text class="right">{{photoMetaInfo.camSpead}}</text>
+      </view>     
+    </view>      
+  </view>
+  <!-- 大轮播  -->
+  <swiper class="popup-swipe" duration="300"  current="{{popupInfo.current}}" bindchange="bindSlideChange">
+    <block wx:for="{{photoListData}}" wx:key="index">
+      <swiper-item class="big-switch-item">
+        <view class="img-box" bindtap="openZoomPic">
+          <image src="{{item.smallUrl}}" class="slide-image {{item.smallWidth > item.smallHeight ? 'mt-200' : ''}}" lazy-load="{{setSwitchInfo.load}}" mode="aspectFit"></image>   
+        </view>          
+      </swiper-item>
+    </block>
+  </swiper>
+   <!-- 小轮播 -->
+  <view class="popup-swipe-small">
+    <view class="title-box">
+      <text class="title">{{popupCurInfo.labelName}}</text>
+      <text class="content">{{popupCurInfo.labelContent}}</text>
+    </view>
+    <scroll-view class="popup-scroll-box" scroll-x scroll-with-animation scroll-into-view="{{popupInfo.currentId}}" style="width: 100%">
+      <block wx:for="{{photoListData}}" wx:key="index">
+        <view class="item-box {{popupInfo.current == index ? 'cur' : ''}}" id="id{{item.photoId}}" data-current="{{index}}" bindtap="swichPopupImg">
+          <image src="{{item.smallUrl}}" class="scroll-image" lazy-load="{{setSwitchInfo.load}}" mode="scaleToFill"></image> 
+        </view>
+      </block>    
+      
+    </scroll-view>       
+  </view>
+  <!-- 弹层底部按钮  -->
+  <view class="popup-tool">
+    <view class="make flex" bindtap="userShare">
+      <image src="/assets/icon/share.png" mode="scaleToFill" class="img"></image>
+      <text class="text">分享</text>
+      <button class="share-bth" open-type="share" plain="true">分享给朋友</button>
+    </view>
+    <view class="comment flex" bindtap="userSave">
+      <image src="/assets/icon/download.png" mode="scaleToFill" class="img"></image>
+      <text class="text">保存</text>
+    </view>
+    <view class="like flex" bindtap="wechatLike">
+      <image src="/assets/icon/like.png" mode="scaleToFill" class="img" wx:if="{{popupCurInfo.likeStatus == 0}}"></image>
+      <image src="/assets/icon/love.png" mode="scaleToFill" class="img" wx:if="{{popupCurInfo.likeStatus == 1}}"></image>
+      <text class="text">{{popupCurInfo.likeNum}}</text>
+      <button class='share-bth' wx:if="{{!token}}" size='mini' plain='true' open-type="getUserInfo" bindgetuserinfo="getUserInfoStatus"> </button>
+    </view>
+  </view>  
+</view>

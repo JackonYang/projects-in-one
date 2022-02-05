@@ -1,0 +1,13 @@
+<!--components/password/index.wxml-->
+<view class='page-layou' wx:if="{{showState}}">
+  <view class='content'>
+    <view class='ipt-box' bindtap='getFocus'>
+      <block wx:for="{{Length}}" wx:key="item">
+        <input class='ipt' value="{{Value.length >= index+1 ? Value[index] : ''}}" disabled password='{{ispassword}}'></input>
+      </block>     
+    </view>
+    <input type='number' password="true" class='hide-ipt' maxlength="{{Length}}" focus="{{isFocus}}" bindinput="readNumber"></input>
+    <view class='tips'>本相册只限密码访问</view>
+    <view class="def-bth {{isApply ? 'apply' : ''}}" bindtap="submit">确认</view>
+  </view>
+</view>

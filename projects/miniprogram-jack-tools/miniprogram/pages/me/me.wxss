@@ -1,0 +1,103 @@
+/* pages/me/me.wxss */
+
+page {
+  height: 100%;
+}
+
+.userinfo {
+  margin-top: 72rpx;
+  height: 132rpx;
+}
+
+.userinfo-box {
+  position: relative;
+  height: 100%;
+}
+
+.login-text {
+  height: 100%;
+  line-height: 132rpx;
+  color: #333;
+}
+
+.userinfo-avatar {
+  right: 60rpx;
+  z-index: 9;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  max-width: 300rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  font-size: 48rpx;
+  color: #333;
+  overflow: hidden;
+}
+
+.login-btn {
+  width: 100%;
+  height: 100%;
+  font-size: 36rpx;
+  color: #333;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 999;
+}
+
+.login-menu {
+  padding: 0 !important;
+  border: 0 none !important;
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+}
+
+.userinfo-box, .me-bth {
+  box-sizing: border-box;
+  padding: 0 60rpx;
+  background-color: #fff;
+}
+
+.me-btn-list {
+  margin-top: 20rpx;
+  overflow: hidden;
+  position: relative;
+}
+
+.me-bth {
+  width: 100%;
+  height: 120rpx;
+  line-height: 120rpx;
+}
+
+.me-bth text {
+  height: 100%;
+  font-size: 36rpx;
+  color: #000;
+}
+
+.me-bth text.fr {
+  font-size: 24rpx;
+  color: #aaa;
+}
+
+.shade_box {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 9;
+}
+
+.picker-lang {
+  height: 100%;
+  color: #aaa;
+  font-size: 24rpx;
+}

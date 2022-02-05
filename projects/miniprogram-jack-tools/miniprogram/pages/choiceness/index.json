@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "投图列表",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
+  "usingComponents": {
+    "taste-page": "/components/taste/taste"
+  }
+}

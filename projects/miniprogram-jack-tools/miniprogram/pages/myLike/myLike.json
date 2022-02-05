@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "taste-page": "/components/taste/taste"
+  },
+  "navigationBarTitleText": "我赞过的照片",
+  "enablePullDownRefresh": true
+}

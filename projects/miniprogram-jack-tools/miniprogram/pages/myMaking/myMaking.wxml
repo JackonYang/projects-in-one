@@ -1,0 +1,17 @@
+<!--pages/myMaking/myMaking.wxml-->
+<view class='my-making'>
+  <view class='puzzle'>
+    <view class="like-box" wx:if='{{!!pageTotal}}'>
+      <view class="like-list" wx:for="{{imageList}}" wx:key='index' data-current="{{index}}" bindtap='openBigPic'>
+        <image src='{{item.thumbUrl}}' mode='aspectFill' class='list-image' lazy-load='true'></image>
+      </view>
+    </view>
+    <!-- 没有数据显示 -->
+    <view class='single' wx:if="{{!pageTotal}}">
+      <view class='img-box'>
+        <image class='empty-img' src='../../assets/img/no-pic.png'></image>
+      </view>
+      <view class='tip mt40'>空空如也哦~</view>
+    </view>
+  </view>
+</view>

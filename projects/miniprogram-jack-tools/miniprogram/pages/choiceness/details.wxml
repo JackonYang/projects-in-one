@@ -1,0 +1,26 @@
+<!--pages/choiceness/details.wxml-->
+<view class='page'>
+  <view class='top-box' wx:if="{{dataInfo.isKeyWord}}">
+      <text class='fl oneLineOmit'>{{coverInfo.headTitle}}</text>
+      <text class='fr' bindtap='goAlbum'>去看直播相册</text>
+  </view>
+  <view class='title-box'>{{dataInfo.name}}</view>
+  <view class="author-box">
+    <view class='fl' hidden="{{!dataInfo.photographer}}">
+      <image class='img' src="{{authUrl}}" lazy-load="{{imgInfo.load}}" mode="{{imgInfo.mode}}"></image>
+      <text class='name'>摄影师：{{dataInfo.photographer}}</text>
+    </view>
+    <view class='fl ml40' hidden="{{!dataInfo.digital}}">
+      <image class='img' src="{{authUrl}}" lazy-load="{{imgInfo.load}}" mode="{{imgInfo.mode}}"></image>
+      <text class='name'>数码师：{{dataInfo.digital}}</text>    
+    </view>
+  </view>
+  <view class='detail-img'>
+    <image src="{{dataInfo.thumbnailUrl}}" lazy-load="{{imgInfo.load}}" mode="widthFix"></image>
+  </view>
+  <view class="describe">
+     <rich-text nodes="{{dataInfo.content}}"></rich-text>
+  </view>
+</view> 
+<!-- 体验一下 -->
+<taste-page id="taste-dialog"></taste-page>

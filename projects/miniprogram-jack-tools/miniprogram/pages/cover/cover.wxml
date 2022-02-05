@@ -1,0 +1,219 @@
+<!--pages/cover/cover.wxml-->
+<view class="album-cover" wx:if="{{loadingState}}">
+  <view class="banner {{coverStyle ? verticalStyle :''}} no-banner">
+    <view class=" tip " wx:if="{{coverInfo.isLiving}}">LIVE</view>
+    <image class="bg-cover  {{!coverInfo.coverUrl && coverStyle ? noBanner: ''}}" src="{{coverInfo.coverUrl}}" mode='widthFix' wx:if="{{!(!coverInfo.coverUrl && !coverStyle)}}">
+    </image>
+    <!-- 空白banner -->
+    <view class='no-banner bg-cover' style='height:100%' wx:if="{{!coverInfo.coverUrl && !coverStyle}}"></view>
+    <!-- </swiper-item>
+    </swiper>  -->
+  </view>
+  <view class="contain">
+    <!-- banner信息单相册 -->
+    <view class="cover-detail" wx:if="{{pageType==1}}">
+      <view class="title oneLineOmit">{{coverInfo.headTitle}}</view>
+      <view class="cover-name">{{coverInfo.subHeadTitle}}</view>
+      <view class="cover-des threeLineOmit">{{coverInfo.activityContent}}</view>
+    </view>
+    <!-- banner信息多相册 -->
+    <view class="cover-detail" wx:if="{{pageType==2}}">
+      <view class="title oneLineOmit">{{coverInfo.sportTitle}}</view>
+      <view class="cover-name">{{coverInfo.sportName}}</view>
+      <view class="cover-des threeLineOmit">{{coverInfo.sportContent}}</view>
+    </view>
+
+    <view class="flow-links">
+      <view class="photos">
+        <view>{{coverInfo.photoCount}}</view>
+        <view class="txt">{{wechatInfo.albumCategory==1?'照片':'视频'}}</view>
+      </view>
+      <view class="visit" wx:if="{{pageType==1 && coverInfo.flowSet}}">
+        <view>{{coverInfo.visitCount}}</view>
+        <view class="txt">访问</view>
+      </view>
+      <view class="visit" wx:if="{{pageType==2}}">
+        <view>{{coverInfo.viewCount}}</view>
+        <view class="txt">访问</view>
+      </view>
+      <view class="flow-menu" bindtap='showDetailModal' wx:if="{{coverInfo.entranceButtonSet==1 || coverInfo.sportDeatilShowType==0}}">
+        <image class="icon flow-menu-icon yCenter" src="../../assets/icon/details-icon.png"></image>
+        <view>活动详情</view>
+      </view>
+    </view>
+    <!-- 活动介绍.单相册 -->
+    <view class="activity-details" wx:if="{{isShowDetail && pageType==1}}">
+      <image class="close icon" src='../../assets/icon/close.png' bindtap='showDetailModal'></image>
+      <view class="act-intoduce">
+        <view class="act-tag act-inc-tag">活动介绍</view>
+        <view class="act-intro-time" wx:if="{{!!singleDetailList.activityInfo.activityTitle}}">
+          <image class="icon clock-icon" src='../../assets/icon/time.png'></image>
+          <view>{{singleDetailList.activityInfo.activityTitle}}</view>
+        </view>
+        <view class="act-intro-place" wx:if="{{!!singleDetailList.activityInfo.activityAddress}}">
+          <image class="icon place-icon" src='../../assets/icon/address.png'></image>
+          <view>{{singleDetailList.activityInfo.activityAddress}}</view>
+        </view>
+        <view class="act-intro-des">
+          {{singleDetailList.activityInfo.activityContent}}
+        </view>
+      </view>
+      <view class="act-flow" wx:if="{{wechatInfo.activityProcess==1}}">
+        <view class="act-tag act-inc-tag">活动流程</view>
+        <view class='act-flow-content'>
+          <view class="act-flow-item clearfix" wx:for="{{singleDetailList.activityProcess}}" wx:key="index">
+            <view class="fl">{{item.timeOrPersonName}}</view>
+            <view class="fl flow-title">{{item.contentOrTitle}}</view>
+          </view>
+        </view>
+      </view>
+      <view class="act-share clearfix" wx:if="{{wechatInfo.guestInfo==1}}">
+        <view class="act-tag act-inc-tag">分享嘉宾</view>
+        <view class="act-share-ul clearfix">
+          <view class="act-share-item" wx:for="{{singleDetailList.guestList}}" wx:key="index">
+            <image class="cover" src='{{item.headUrl}}'></image>
+            <view class="cover-des">
+              <view class="cover-name">{{item.timeOrPersonName}}</view>
+              <view class="cover-id oneLineOmit">{{item.contentOrTitle}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="act-organizer" wx:if="{{wechatInfo.masterParty==1}}">
+        <view class="act-tag act-inc-tag">主办方</view>
+        <image class="icon act-logo" mode='aspectFit' src='{{singleDetailList.organiser.titleUrl}}'></image>
+        <rich-text class='vp-introduce' nodes="{{singleDetailList.organiser.contentOrTitle}}"></rich-text>
+      </view>
+      <view class="act-organizer" wx:if="{{wechatInfo.shootingParty==1}}">
+        <view class="act-tag act-inc-tag">拍摄方</view>
+        <image class="icon act-logo" mode='aspectFit' src='{{singleDetailList.shooting.titleUrl}}'></image>
+        <rich-text class='vp-introduce' nodes="{{singleDetailList.shooting.contentOrTitle}}"></rich-text>
+      </view>
+    </view>
+    <!-- 活动介绍.多相册 -->
+    <view class="activity-details {{coverInfo.sportDeatilShowType==1 ?'inline-act-details':''}}" wx:if="{{isShowDetail && pageType==2}}">
+      <image class="close icon" src='../../assets/icon/close.png' bindtap='showDetailModal' wx:if="{{coverInfo.sportDeatilShowType==0}}"></image>
+      <view class="act-intoduce">
+        <view class="act-tag act-inc-tag">活动介绍</view>
+        <view class="act-intro-time" wx:if="{{!!coverInfo.sportTime}}">
+          <image class="icon clock-icon" src='../../assets/icon/time.png'></image>
+          <view>{{coverInfo.sportTime}}</view>
+        </view>
+        <view class="act-intro-place" wx:if="{{!!coverInfo.sportAddress}}">
+          <image class="icon place-icon" src='../../assets/icon/address.png'></image>
+          <view>{{coverInfo.sportAddress}}</view>
+        </view>
+        <view class="act-intro-des">
+          {{coverInfo.sportContent}}
+        </view>
+      </view>
+      <view class="act-flow" wx:if="{{coverInfo.sportFlowSwitch==1}}">
+        <view class="act-tag act-inc-tag">活动流程</view>
+        <view class='scroll-view-box'>
+          <scroll-view class="act-ul" scroll-x="true" scroll-y="false">
+            <block wx:for="{{coverInfo.sportFlowList}}" wx:key="index">
+              <view class="nav-item {{curFlowIndex==index?'selected':''}}" data-current='{{index}}' bindtap='switchFlowList'>
+                {{item.flowName}}
+              </view>
+            </block>
+          </scroll-view>
+        </view>
+        <view class='act-flow-content'>
+          <view class="act-flow-item clearfix" wx:for="{{coverInfo.sportFlowList[curFlowIndex].flowContextResult}}" wx:key="index">
+            <view class="fl">{{item.flowTime}}</view>
+            <view class="fl flow-title">{{item.flowContext}}</view>
+          </view>
+        </view>
+      </view>
+      <view class="act-share clearfix" wx:if="{{coverInfo.shareGuestSwitch==1}}">
+        <view class="act-tag act-inc-tag">分享嘉宾</view>
+        <view class="act-share-ul clearfix">
+          <view class="act-share-item" wx:for="{{coverInfo.shareGuestList}}" wx:key="index">
+            <image class="cover" src='{{item.url}}'></image>
+            <view class="cover-des">
+              <view class="cover-name">{{item.title}}</view>
+              <view class="cover-id oneLineOmit">{{item.context}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="act-logos" wx:if="{{coverInfo.brandSwitch==1}}">
+        <view class="act-tag act-inc-tag">品牌</view>
+        <view class="logos-ul">
+          <view class="logos-item" wx:for="{{coverInfo.brankList}}" wx:key="index">
+            <image class="icon-box border-box" mode='aspectFit' src='{{item.url}}'></image>
+            <view class="name">{{item.title}}</view>
+          </view>
+        </view>
+      </view>
+      <view class="act-organizer" wx:if="{{coverInfo.sponsorSwitch==1}}">
+        <view class="act-tag act-inc-tag">主办方</view>
+        <image class="icon act-logo" mode='aspectFit' src='{{coverInfo.sponsorLogo}}'></image>
+        <rich-text class='vp-introduce' nodes="{{coverInfo.sponsorContext}}"></rich-text>
+      </view>
+    </view>
+    <!-- 精彩活动 -->
+    <view class="handpick" wx:if="{{pageType==1}}">
+      <view class="act-nav">
+        <view class="act-ul">
+          <block wx:for="{{singleList}}" wx:key="index">
+            <image class="no-pic act-li" src="{{wechatInfo.albumCategory==1?item.smallUrl:item.thumbUrl}}" mode='aspectFill'></image>
+          </block>
+        </view>
+      </view>
+    </view>
+    <!-- 所有相册(图文版)-->
+    <view class="all-album" wx:if="{{pageType==2 && coverInfo.template}}" wx:for="{{multiList}}" wx:key="index">
+      <view class="tab-view">{{item.groupName}}</view>
+      <view class="album-list clearfix">
+        <!-- style="{{item.albumList.length==1?width=100%}}" -->
+        <view class="list-item {{item.albumList.length==1? 'w100':''}}" wx:for="{{item.albumList}}" wx:for-item="listItem" wx:key="idx" data-url="{{listItem.albumUrl}}" bindtap='goAlbum'>
+          <image class="no-pic album-img {{item.albumList.length==1? 'h360':''}}" src="{{listItem.albumCover}}" mode='aspectFill'></image>
+          <view class="album-info">
+            <view class="ai-box">
+              <view class="content yCenter">
+                <view class="title twoLineOmit">{{listItem.albumName}}</view>
+                <view class="subtitle oneLineOmit"></view>
+              </view>
+            </view>
+            <view class="view clearfix">
+              <text class="">访问</text>
+              <text class="view-count">{{listItem.viewNum}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 文字版 -->
+    <view class="character" wx:for="{{multiList}}" wx:key="index" wx:if="{{pageType==2 && !coverInfo.template}}">
+      <view class="tab-view">{{item.groupName}}</view>
+      <view class="character-ul">
+        <view class="list-item" wx:for="{{item.albumList}}" wx:for-item="listItem" wx:key="idx" data-url="{{listItem.albumUrl}}" bindtap='goAlbum'>
+          <view class="title yCenter twoLineOmit">{{listItem.albumName}}</view>
+          <view class="view-data yCenter">
+            <text>访问</text>
+            <text class="count">{{listItem.viewNum}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 下拉列表 -->
+    <view class="slide-down clearfix" wx:if="{{coverInfo.serviceSupportSwitch}}">
+      <view class="fl">VPhoto服务支持参数</view>
+      <view class="fr" bindtap='switchOpen'>{{openState?"收起":"展开"}}</view>
+    </view>
+    <view class="slide-content {{openState?'':'hidden'}}">
+      <view>
+        <view class="slide-item">
+          <view>{{coverInfo.cloudDeviceName}}</view>
+          <view class="tag">云设备</view>
+        </view>
+        <view class="slide-item">
+          <view>{{coverInfo.photographerCount}}</view>
+          <view class="tag">机位</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="enter-btn enter-album xCenter" wx:if="{{pageType==1}}" bindtap="goAlbum">进入云相册</view>
+</view>

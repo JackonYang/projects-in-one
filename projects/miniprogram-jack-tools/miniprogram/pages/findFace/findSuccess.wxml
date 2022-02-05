@@ -1,0 +1,34 @@
+<!--pages/findFace/findSuccess.wxml-->
+<view class="search-result">
+  <!-- 有结果 -->
+  <view class="result" wx:if="{{!!searchResult}}">
+    <view class="head-txt">
+      <view class="tip1">VPhoto为您找到{{searchCount}}张现场照片</view>
+      <view class="tip2">点击查看大图，长按保存图片至手机相册</view>
+    </view>
+    <view class="photos">
+      <block wx:for="{{searchResult}}" wx:key="index">
+        <view class="list-item" data-current="{{index}}" bindtap="openImage">
+          <image src="{{item.thumbUrl}}" mode="widthFix"></image> 
+        </view>
+      </block> 
+    </view>
+  </view>
+  <!-- 无结果 -->
+  <view class="no-result" wx:else>
+    <view class="contain too-more" wx:if="{{notFound}}">
+      <image class='error-img' mode="widthFix" src='{{imgUrl.noFind}}'></image>
+      <view class='txt'>咦，没找到你哦～</view>
+    </view>
+    <view class="contain too-more" wx:if="{{errorMore}}">
+      <image class='error-img' mode="widthFix" src='{{imgUrl.more}}'></image>
+      <view class='txt'>照片中人物太多啦～</view>
+    </view>
+    <view class="tip">上传正面大头照片最佳，非正面角度人物偏小都会影响精准度，照片大小不超过4M。
+    </view>
+    <view class="btm-btn">
+      <view class="enter-btn" bindtap="backFindFace">再试一次</view>
+      <view class="enter-btn back" bindtap="backAlbum">返回相册</view>
+    </view>
+  </view>
+</view>

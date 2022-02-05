@@ -1,0 +1,21 @@
+/* pages/choiceness/details.wxss */
+.page{
+  padding: 0 80rpx 100rpx;
+}
+.title-box{
+  width: 100%;
+  line-height: 60rpx;
+  padding: 40rpx 0 60rpx;
+  font-size: 40rpx;
+  font-weight: 600;
+  color: #333;
+  overflow: hidden;
+}
+
+.describe{
+  width: 100%;
+  line-height: 44rpx;
+  font-size: 28rpx;
+  color: #333;
+  overflow: hidden;  
+}

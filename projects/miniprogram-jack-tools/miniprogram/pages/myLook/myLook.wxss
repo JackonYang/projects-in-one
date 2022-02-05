@@ -1,0 +1,74 @@
+/* pages/myLook/myLook.wxss */
+@import "/components/galleryList/galleryList.wxss";
+
+page {
+  width: 100%;
+}
+
+/* 顶部导航 */
+
+.tapbar-top {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  padding: 0 60rpx;
+  font-size: 36rpx;
+  width: 100%;
+  line-height: 116rpx;
+  background-color: #fff;
+  white-space: nowrap;
+}
+
+.tapbar-top .tap-item {
+  display: inline-block;
+  margin-right: 60rpx;
+  font-weight: 700;
+  color: #b4b4b4;
+}
+
+.tapbar-top .cur {
+  color: #333;
+}
+
+/* 相册列表 */
+
+.gallery-list {
+  padding-top: 116rpx;
+}
+
+.gallery-info {
+  left: 250rpx;
+}
+
+.gallery-info-title {
+  margin-bottom: 30rpx;
+  width: 380rpx;
+}
+
+.time-dt-box {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.video-tip {
+  margin-top: 20rpx;
+  width: 68rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  text-align: center;
+  font-size: 18rpx;
+  color: #fff;
+  background-color: #ea111c;
+}
+
+/* 空白页 */
+
+.empty-box {
+  text-align: center;
+}
+
+.empty-img {
+  margin: 160rpx auto 0;
+  width: 372rpx;
+  height: 372rpx;
+}

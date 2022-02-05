@@ -1,0 +1,643 @@
+/* pages/cover/cover.wxss */
+
+.album-cover {
+  font-size: 32rpx;
+  padding-top: 40rpx;
+}
+
+/* power */
+
+.album-cover .power {
+  position: relative;
+  padding-left: 170rpx;
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+  color: #d8d8d8;
+}
+
+.power .v-icon {
+  left: 60rpx;
+  width: 100rpx;
+  height: 20rpx;
+}
+
+/* banner */
+
+.banner {
+  position: relative;
+  margin: 0 auto;
+  width: 670rpx;
+  height: 340rpx;
+  overflow: hidden;
+  border-radius: 16rpx;
+  background-color: #fff;
+}
+
+.banner.h340 {
+  height: 340rpx;
+}
+
+.banner .tip {
+  position: absolute;
+  left: -20rpx;
+  top: -20rpx;
+  z-index: 99;
+  width: 100rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  font-size: 24rpx;
+  text-align: center;
+  color: #fff;
+  background-color: #ea111c;
+}
+
+.banner .bg-cover {
+  display: block;
+  width: 100%;
+  border-radius: 16rpx;
+}
+
+/* 竖版空图 */
+
+.bg-cover.h-normal {
+  height: 536rpx;
+}
+
+.bg-cover.h-IPhone5 {
+  height: 468rpx;
+}
+
+.bg-cover.h-IPhoneX {
+  height: 790rpx;
+}
+
+/* 横版空图 */
+
+.bg-cover.h100 {
+  height: 100%;
+}
+
+/* 竖直banner */
+
+/* normal */
+
+.vertical {
+  width: 400rpx;
+  height: auto;
+}
+
+/* IPhone5 */
+
+.vertical-IPhone5 {
+  width: 350rpx;
+  height: auto;
+}
+
+/* IPhoneX */
+
+.vertical-IPhoneX {
+  width: 590rpx;
+  height: auto;
+}
+
+.contain {
+  padding: 0 60rpx 200rpx;
+  margin-top: 40rpx;
+}
+
+.tab-h2 {
+  color: #333;
+  font-weight: 700;
+  font-size: 36rpx;
+}
+
+/* banner信息 */
+
+.cover-detail .title {
+  font-size: 48rpx;
+  font-weight: 700;
+}
+
+.cover-detail .cover-name, .cover-detail .cover-des {
+  line-height: 36rpx;
+  font-size: 24rpx;
+}
+
+.cover-detail .cover-name {
+  font-size: 28rpx;
+  color: #333;
+  margin-top: 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.cover-detail .cover-des {
+  color: #999;
+}
+
+/* 活动详情 */
+
+.flow-links {
+  position: relative;
+  box-sizing: border-box;
+  padding: 24rpx 0;
+  margin-top: 16rpx;
+  height: 116rpx;
+  border-bottom: 1px solid #f5f5f5;
+  color: #999;
+}
+
+.flow-links .photos, .flow-links .visit {
+  height: 100%;
+  display: inline-block;
+  font-size: 24rpx;
+}
+
+.flow-links .photos .txt, .flow-links .visit .txt {
+  font-size: 24rpx;
+}
+
+.flow-links .collection {
+  color: #333;
+  font-size: 28rpx;
+  height: 100%;
+  line-height: 116rpx;
+  position: absolute;
+  top: 0;
+}
+
+.flow-links .visit {
+  margin-left: 50rpx;
+}
+
+.flow-links .language {
+  position: absolute;
+  right: 180rpx;
+  top: 0;
+  padding-left: 30rpx;
+  height: 100%;
+  line-height: 116rpx;
+  font-size: 24rpx;
+  color: #d2d2d2;
+}
+
+.flow-links .language .color333 {
+  color: #333;
+}
+
+.flow-links .language.right {
+  right: 0;
+}
+
+.flow-links .flow-menu {
+  position: absolute;
+  font-size: 24rpx;
+  right: 0;
+  top: 0;
+  padding-left: 30rpx;
+  height: 100%;
+  line-height: 116rpx;
+}
+
+.flow-links .flow-menu-icon {
+  left: 0;
+  width: 24rpx;
+  height: 24rpx;
+}
+
+/* 活动精选 */
+
+.handpick .tab-h2 {
+  margin-top: 60rpx;
+}
+
+.handpick .act-nav {
+  margin-top: 50rpx;
+  margin-bottom: 60rpx;
+  width: 690rpx;
+  height: 208rpx;
+  overflow: hidden;
+}
+
+.handpick .act-ul {
+  height: 240rpx;
+  white-space: nowrap;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.handpick .act-ul .act-li {
+  display: inline-block;
+  margin-right: 20rpx;
+  width: 312rpx;
+  height: 208rpx;
+}
+
+/* 所有相册 */
+
+.all-album {
+  margin-top: 60rpx;
+}
+
+.all-album .album-list {
+  margin-top: 50rpx;
+}
+
+.all-album .list-item {
+  margin-bottom: 20rpx;
+  width: 304rpx;
+}
+
+.all-album .w100 {
+  width: 100%;
+}
+
+.all-album .list-item:nth-child(2n+1) {
+  float: left;
+}
+
+.all-album .list-item:nth-child(2n) {
+  float: right;
+}
+
+/* 正常列表高度 */
+
+.all-album .album-img {
+  height: 296rpx;
+}
+
+.all-album .h360 {
+  height: 360rpx;
+}
+
+.all-album .album-info {
+  position: relative;
+  height: 170rpx;
+}
+
+.all-album .ai-box {
+  position: relative;
+  height: 120rpx;
+  margin-top: 10rpx;
+}
+
+.all-album .content {
+  width: 100%;
+}
+
+.all-album .subtitle {
+  margin-top: 10rpx;
+  font-size: 24rpx;
+}
+
+.all-album .view {
+  position: absolute;
+  bottom: 32rpx;
+  width: 264rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.all-album .view-count {
+  margin-left: 10rpx;
+}
+
+/* 下拉列表 */
+
+.slide-down {
+  margin-top: 60rpx;
+  border-top: 1px solid #f5f5f5;
+  border-bottom: 1px solid #f5f5f5;
+  height: 76rpx;
+  line-height: 76rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.slide-content .slide-item {
+  margin-top: 60rpx;
+  color: #ea111c;
+}
+
+.slide-content .tag {
+  font-size: 24rpx;
+  margin-top: 20rpx;
+  color: #000;
+}
+
+/* 文字版 */
+
+.character {
+  margin-top: 70rpx;
+}
+
+.character .character-ul {
+  margin-top: 50rpx;
+}
+
+.character .list-item {
+  position: relative;
+  margin-bottom: 32rpx;
+  width: 100%;
+  height: 150rpx;
+  border: 1px solid #f5f5f5;
+  border-radius: 12rpx;
+  box-shadow: 0px 7px 24px 0px rgba(239, 239, 239, 0.5);
+}
+
+.character .title {
+  left: 40rpx;
+  width: 280rpx;
+  font-size: 28rpx;
+  word-wrap: break-word;
+}
+
+.character .view-data {
+  right: 40rpx;
+  font-size: 24rpx;
+  color: #9b9b9b;
+}
+
+.character .count {
+  margin-left: 20rpx;
+}
+
+/* 底部按钮 */
+
+.enter-btn {
+  margin: 0 auto;
+  box-shadow: 0px 8px 30px 0px rgba(234, 17, 28, 0.3);
+  text-align: center;
+  height: 88rpx;
+  line-height: 88rpx;
+  font-size: 24rpx;
+  width: 240rpx;
+  border-radius: 48rpx;
+  background-color: #ea111c;
+  color: #fff;
+}
+
+.enter-btn.enter-album {
+  font-size: 24rpx;
+  position: fixed;
+  z-index: 100;
+  bottom: 60rpx;
+  width: 388rpx;
+}
+
+/* 活动详情 */
+
+.activity-details {
+  padding: 0 60rpx;
+  background-color: #000;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 150;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  color: #e3e3e3;
+  font-size: 24rpx;
+}
+
+/* 关闭按钮 */
+
+.activity-details .close {
+  position: fixed;
+  padding: 20rpx;
+  top: 60rpx;
+  right: 40rpx;
+  width: 30rpx;
+  height: 30rpx;
+  /* background-image: url("../assets/close.png"); */
+  background-origin: content-box;
+  z-index: 10;
+}
+
+.act-tag {
+  font-size: 36rpx;
+  font-weight: 700;
+  margin-bottom: 50rpx;
+}
+
+/* 活动介绍 */
+
+.act-intoduce {
+  margin-top: 140rpx;
+}
+
+.act-intro-time, .act-intro-place {
+  position: relative;
+  padding-left: 40rpx;
+  min-height: 30rpx;
+}
+
+.act-intro-place {
+  margin-top: 34rpx;
+}
+
+.act-intoduce .clock-icon, .act-intoduce .place-icon {
+  position: absolute;
+  left: 0;
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.act-intro-des {
+  margin-top: 54rpx;
+  line-height: 40rpx;
+}
+
+/* 活动流程 */
+
+.act-flow {
+  margin-top: 100rpx;
+}
+
+.act-flow .scroll-view-box {
+  height: 100rpx;
+  overflow: hidden;
+}
+
+.act-flow-content {
+  margin-top: 40rpx;
+}
+
+.act-flow-item {
+  position: relative;
+  margin-bottom: 50rpx;
+}
+
+.act-flow .flow-title {
+  margin-left: 64rpx;
+  width: 64%;
+}
+
+.act-flow .act-tag {
+  margin-bottom: 0;
+}
+
+/* 新加滑动标题 */
+
+.act-flow .act-ul {
+  width: 100%;
+  height: 140rpx;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.act-flow .nav-item.selected {
+  color: #fff;
+}
+
+.act-flow .nav-item {
+  color: #999;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 28rpx;
+  display: inline-block;
+  box-sizing: border-box;
+  padding-right: 100rpx;
+}
+
+/* 分享嘉宾 */
+
+.act-share {
+  margin-top: 100rpx;
+}
+
+.act-share-item {
+  padding: 0 20rpx;
+  margin-bottom: 50rpx;
+  box-sizing: border-box;
+  text-align: center;
+  width: 50%;
+  float: left;
+}
+
+.act-share .cover {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 100rpx;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+.act-share .cover-des {
+  margin-top: 20rpx;
+}
+
+.act-share .cover-id {
+  margin-top: 10rpx;
+  width: 100%;
+}
+
+.act-share  .cover-name {
+  font-size: 32rpx;
+}
+
+/* 主办方 */
+
+.act-organizer {
+  margin: 100rpx 0;
+}
+
+.act-organizer .act-logo {
+  width: 180rpx;
+  height: 180rpx;
+  margin-bottom: 40rpx;
+}
+
+.vp-introduce {
+  line-height: 40rpx;
+}
+
+/* 新加logo列表 */
+
+.act-logos {
+  position: relative;
+  display: block;
+  margin-top: 50rpx;
+  margin-bottom: 100rpx;
+}
+
+.logos-ul {
+  width: 100%;
+  overflow: hidden;
+}
+
+.logos-item {
+  float: left;
+  box-sizing: border-box;
+  width: 190rpx;
+  margin-bottom: 20rpx;
+}
+
+.logos-item:nth-child(3n+2) {
+  margin: 0 30rpx;
+}
+
+.logos-item .icon-box {
+  width: 100%;
+  height: 60rpx;
+  border: 1px solid #e3e3e3;
+}
+
+.logos-item .name {
+  margin-top: 10rpx;
+  text-align: center;
+}
+
+/* 嵌入 */
+
+.activity-details.inline-act-details {
+  padding: 0;
+  background-color: inherit;
+  position: relative;
+  z-index: 1;
+  color: #333;
+  overflow: hidden;
+}
+
+.inline-act-details .act-intoduce {
+  margin-top: 60rpx;
+  color: #aeaeae;
+}
+
+.inline-act-details .act-tag {
+  position: relative;
+  padding-bottom: 10rpx;
+  font-size: 36rpx;
+  color: #333;
+}
+
+.inline-act-details .act-inc-tag {
+  position: relative;
+  margin-bottom: 30rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.inline-act-details .act-inc-tag::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 56rpx;
+  height: 1px;
+  background-color: #333;
+}
+
+.inline-act-details .nav-item.selected {
+  color: #333;
+}
+
+.inline-act-details .nav-item {
+  color: #e3e3e3;
+}
+
+.inline-act-details .cover-id {
+  color: #aeaeae;
+}

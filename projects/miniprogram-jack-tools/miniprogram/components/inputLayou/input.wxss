@@ -1,0 +1,99 @@
+/* components/inputLayou/input.wxss */
+.input-view{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow: hidden;
+}
+.top{
+  width: 100%;
+  height: 98rpx;
+  padding: 20rpx 0;
+  overflow: hidden;
+}
+.bth{
+  color: #fff;
+  font-size: 36rpx;
+  width: 100rpx;
+  height: 98rpx;
+  line-height: 98rpx;
+  padding: 0 40rpx;
+  text-align: center;
+  overflow: hidden;
+}
+.fl{
+  float: left;
+}
+.fr{
+  float: right;
+}
+.text-box{
+  width: calc(100% - 150rpx);
+  height: 136rpx;
+  margin: 0 auto;
+  margin-top: 300rpx;
+  box-sizing: border-box;
+  border: 1rpx dashed #EEE;
+  overflow: hidden;
+  position: relative;
+}
+.text-box textarea{
+  width: 80%;
+  height: 136rpx;
+  line-height: 55rpx;
+  padding: 13rpx;
+  font-size: 36rpx;
+  color: #fff;
+  box-sizing: border-box;  
+}
+.fixed {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+}
+.xyCenter {
+  position: absolute;
+  transform: translate(-50%, 50%);
+  left: 50%;
+  bottom: 50%;
+}
+.xCenter {
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+}
+.pos-clear{
+  width: 28rpx;
+  height: 28rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  position: absolute;
+  top: 54rpx;
+  right: 32rpx;
+  z-index: 9;
+}
+.pos-clear .img{
+  width: 28rpx;
+  height: 28rpx;
+  overflow: hidden;
+}
+.switch-text{
+  padding-right: 75rpx;
+  margin-top: 60rpx;
+  overflow: hidden;
+}
+.switch-text .text{
+  display: block;
+  width: 130rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  font-size: 36rpx;
+  text-align: center;
+  color: #fff;
+  float: right;
+}
