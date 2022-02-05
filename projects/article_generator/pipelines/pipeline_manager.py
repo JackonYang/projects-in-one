@@ -11,6 +11,9 @@ logger = logging.getLogger(__name__)
 
 
 image_groups = [
+    ['group0', {
+        'display': '重要通知',
+    }],
     ['group1', {
         'display': '开奖 公告',
     }],
