@@ -24,12 +24,12 @@ task_args_order = [
 def trigger_task(task_id, task_args_dict):
     logger.info('task started. task_id: %s' % task_id)
     try:
-        run_downloader(task_id, task_args_dict)
+        res = run_downloader(task_id, task_args_dict)
     except Exception:
         logger.exception('task error. task_id: %s' % task_id)
         task_mng.add_task_log(task_id, '运行出错，请联系客服，或重试一下')
 
-    task_mng.mark_done(task_id)
+    task_mng.mark_done(task_id, res)
     logger.info('task done. task_id: %s' % task_id)
 
 
@@ -39,7 +39,7 @@ def submit_task(request):
 
     task_args_dict = {k: qd.get(k) for k in task_args_order}
 
-    task_id = task_mng.add_new_task()
+    task_id = task_mng.add_new_task(**task_args_dict)
     logger.info('submit task: %s. %s' % (task_id, str(task_args_dict)))
     thread_pool_executor.submit(
         trigger_task, task_id, task_args_dict)
@@ -47,11 +47,11 @@ def submit_task(request):
     rsp = {
         'errno': 0,
         'task_id': task_id,
-        'msg': 'ok',
     }
     return Response(rsp)
 
 
+@api_view(['GET', 'POST'])
 def get_result(request, task_id):
     for _ in range(3):
         is_done = task_mng.is_done(task_id)
@@ -64,6 +64,6 @@ def get_result(request, task_id):
         'errno': 0,
         'task_id': task_id,
         'is_done': is_done,
-        'msg': 'ok',
+        'data': task_mng.get_task_meta(task_id),
     }
     return Response(rsp)

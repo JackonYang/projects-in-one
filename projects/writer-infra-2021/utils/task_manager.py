@@ -46,8 +46,9 @@ class TaskManager():
         self.has_new_logs_map[task_id] = False
         return self.task_logs.get(task_id, [])
 
-    def mark_done(self, task_id):
+    def mark_done(self, task_id, res):
         self.task_info[task_id]['is_done'] = True
+        self.task_info[task_id]['result'] = res
 
     def is_done(self, task_id):
         if task_id not in self.task_info:
