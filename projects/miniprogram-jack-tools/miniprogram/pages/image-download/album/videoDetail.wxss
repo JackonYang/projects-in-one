@@ -1,0 +1,306 @@
+/* pages/album/video.wxss */
+
+.header {
+  padding: 0 40rpx;
+  font-size: 28rpx;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 40rpx;
+}
+
+.subtitle {
+  margin-top: 20rpx;
+  padding-bottom: 44rpx;
+  border-bottom: 1px solid #e3e3e3;
+}
+
+.content {
+  margin-top: 40rpx;
+  margin-bottom: 48rpx;
+  padding: 0 60rpx;
+}
+
+.v-author {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.v-author .editor {
+  margin-left: 40rpx;
+}
+
+.v-author .photographer, .v-author .editor {
+  position: relative;
+  padding-left: 30rpx;
+}
+
+.v-author .v-author-icon {
+  left: 0;
+  width: 24rpx;
+  height: 24rpx;
+}
+
+.video-box {
+  position: relative;
+  margin-top: 32rpx;
+  width: 100%;
+  height: 360rpx;
+}
+
+.video {
+  margin-top: 30rpx;
+  width: 630rpx;
+  height: 370rpx;
+}
+
+.v-contain {
+  margin-top: 40rpx;
+}
+
+.v-title {
+  font-size: 32rpx;
+  font-weight: 700;
+}
+
+.editor-btn {
+  color: #ea111c;
+}
+
+.v-desc {
+  margin-top: 30rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.v-contain.edit {
+  position: relative;
+}
+
+.v-contain.edit input {
+  width: 60%;
+}
+
+.edit .deal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 180rpx;
+  font-size: 32rpx;
+}
+
+.edit .deal .selected {
+  color: #ea111c;
+}
+
+.edit .add-title {
+  font-size: 32rpx;
+}
+
+.edit .add-desc {
+  font-size: 28rpx;
+}
+
+.v-details {
+  margin-top: 40rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 24rpx;
+}
+
+.v-details .visit {
+  height: 100%;
+  color: #999;
+}
+
+.v-details .visit-album {
+  margin-right: 40rpx;
+  height: 100%;
+  color: #ea111c;
+}
+
+.v-details .support {
+  position: relative;
+  padding-left: 60rpx;
+  height: 100%;
+  font-size: 32rpx;
+}
+
+.v-details .on-off {
+  position: relative;
+  padding-left: 36rpx;
+}
+
+.v-details .on-off-btn {
+  left: 0;
+  width: 28rpx;
+  height: 24rpx;
+}
+
+.v-details .sup-icon {
+  left: 20rpx;
+  width: 32rpx;
+  height: 28rpx;
+}
+
+.v-details .on-off {
+  margin-right: 40rpx;
+  font-size: 28rpx;
+}
+
+.v-details .share-box {
+  position: relative;
+  padding-left: 40rpx;
+  margin-right: 40rpx;
+  height: 100%;
+  overflow: hidden;
+}
+
+.v-details .share-img {
+  left: 0;
+  width: 32rpx;
+  height: 28rpx;
+}
+
+.v-details .share-text {
+  height: 100%;
+  font-size: 30rpx;
+}
+
+.share-box .share-btn {
+  z-index: 1;
+  padding: 0;
+  position: absolute;
+  width: 110%;
+  height: 110%;
+  background-color: transparent !important;
+}
+
+.more {
+  margin-top: 80rpx;
+  font-size: 28rpx;
+}
+
+.v-scroll {
+  margin-top: 28rpx;
+  height: 160rpx;
+  white-space: nowrap;
+}
+
+.video-item {
+  position: relative;
+  margin-right: 20rpx;
+  display: inline-block;
+  height: 100%;
+  width: 240rpx;
+  background-color: #521521;
+}
+
+.video-item .video-time {
+  position: absolute;
+  top: 10rpx;
+  left: 10rpx;
+  font-size: 24rpx;
+  color: #fff;
+}
+
+.video-item .video-img {
+  width: 100%;
+  height: 100%;
+}
+
+.share {
+  position: fixed;
+  bottom: 30rpx;
+  right: 20rpx;
+  width: 76rpx;
+  height: 76rpx;
+  line-height: 76rpx;
+  border-radius: 76rpx;
+  text-align: center;
+  font-size: 20rpx;
+  background-color: #fff;
+  box-shadow: 0px 4px 30px 0px rgba(227, 227, 227, 0.5);
+  border: 1px solid rgba(235, 235, 235, 1);
+  color: #ea111c;
+  overflow: hidden;
+}
+
+.affirm-modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-contain {
+  width: 540rpx;
+  border-radius: 24rpx;
+  background-color: #fff;
+}
+
+.modal-contain .tip {
+  padding-top: 90rpx;
+  text-align: center;
+  font-size: 28rpx;
+}
+
+.modal-contain .btn-contain {
+  margin-top: 50rpx;
+  border-top: 1px solid #e3e3e3;
+}
+
+.modal-contain .cancel, .modal-contain .confirm {
+  width: 50%;
+  height: 102rpx;
+  line-height: 102rpx;
+  text-align: center;
+}
+
+.modal-contain .confirm {
+  border-left: 1px solid #e3e3e3;
+  box-sizing: border-box;
+  color: #ea111c;
+}
+
+.video-box .video-modal {
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  line-height: 360rpx;
+  color: #fff;
+  text-align: center;
+  font-size: 40rpx;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.video-modal.hide-modal {
+  z-index: 11;
+}
+
+.video-box .v-time {
+  top: 200rpx;
+  z-index: 5;
+  width: 100rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+  font-size: 24rpx;
+}
+
+.video-box .video-play-icon {
+  z-index: 5;
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.video-box .video-bg-image {
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+}

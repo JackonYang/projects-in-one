@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/image-download/album/album",
     "pages/image-download/input/index",
     "pages/tools-list/index"
   ],
