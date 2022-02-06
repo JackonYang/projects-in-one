@@ -15,9 +15,14 @@ logger = logging.getLogger(__name__)
 image_url_ptn = re.compile(r'src="(https://mmbiz.qpic.cn/mmbiz_.*?)"')
 
 
-def download_images(page_url, output_dir, log_func=print, thread_num=5):
+def get_img_urls(page_url):
     content = download_text(page_url)
     image_src_urls = image_url_ptn.findall(content)
+    return image_src_urls
+
+
+def download_images(page_url, output_dir, log_func=print, thread_num=5):
+    image_src_urls = get_img_urls(page_url)
 
     image_files = []
     total = len(image_src_urls)
