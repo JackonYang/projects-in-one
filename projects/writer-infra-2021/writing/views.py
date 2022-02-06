@@ -291,7 +291,7 @@ def re_org_draft_list(draft_list):
 
 
 def copy_home(request, orig_app_name,
-             template_name='copy-home.html'):
+              template_name='copy-home.html'):
 
     app_name = format_app_name(orig_app_name)
     app_config = task_args_config_v2[app_name]

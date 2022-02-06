@@ -28,6 +28,7 @@ urlpatterns = [
     path('', heartbeat_views.default_home, name='default_home'),
     path('heartbeat/', include('heartbeat.urls')),
     path('writing/', include('writing.urls')),
+    path('downloader/', include('downloader.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:  # pragma: no cover
