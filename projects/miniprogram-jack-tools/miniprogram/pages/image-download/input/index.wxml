@@ -20,7 +20,7 @@
         <view class='info-title'>填写参数</view>
         <view class="section">
           <view class="underline">
-            <input name="user" type="text" value='{{formName}}' maxlength="10" placeholder="网址 URL" placeholder-style="color:#c8c8c8" bindinput='bindName' />
+            <input name="url" type="text" value='{{formUrl}}' maxlength="255" placeholder="网址 URL" placeholder-style="color:#c8c8c8" bindinput='bindUrl' />
           </view>
         </view>
         <!-- <view class="section">
@@ -34,7 +34,7 @@
         </view> -->
         <view class="section">
           <view class="underline">
-            <input name="phone" type="number" value='{{formTel}}' maxlength="11" placeholder="标签" placeholder-style="color:#c8c8c8" bindinput='bindTelNum' />
+            <input name="tag" type="text" value='{{formTag}}' maxlength="100" placeholder="标签" placeholder-style="color:#c8c8c8" bindinput='bindTag' />
           </view>
         </view>
       </view>

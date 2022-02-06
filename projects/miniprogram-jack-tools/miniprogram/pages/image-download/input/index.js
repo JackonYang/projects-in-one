@@ -1,57 +1,24 @@
-//获取应用实例
+// 获取应用实例
 const app = getApp();
-//倒计时定时器
-let interval = null;
+
 Page({
   data: {
-    telphone: "400-806-5775",
-    formName: '',
-    formPlace: '',
-    formTel: '',
+    // for debug
+    // formUrl: 'https://mp.weixin.qq.com/s/dbIccKt5YczwS44XHKazJQ',
+    formUrl: '',
+    formTag: '',
     isSubmit: false,
-    typeList: ['会务活动', '会展现场', '时尚派对', '品牌活动', '体育赛事', '娱乐演出', '婚礼庆典', '旅游跟拍', '年会晚会'],
-    placeList: null,
-    cityCodeList: null,
-    isSelected: '',
-    currentText: '娱乐演出',
-    pickerIndex: null,
-    imgList: ["../../../assets/img/one.png", "../../../assets/img/two.png", "../../../assets/img/three.png", "../../../assets/img/four.png", "../../../assets/img/five.png"],
-    // 介绍长图
-    introduceUrl: null,
-    currentIndex: 0
   },
-  // 打电话
-  call: function () {
-    wx.makePhoneCall({
-      phoneNumber: "4008065775"
+  // 绑 URL
+  bindUrl: function (res) {
+    this.setData({
+      formUrl: res.detail.value
     })
   },
-  //选取拍摄类型
-  chooseType: function (e) {
-    console.log(e);
+  // 绑 tag
+  bindTag: function (res) {
     this.setData({
-      isSelected: e.target.dataset.index,
-      currentText: e.target.dataset.text
-    })
-  },
-  //绑手机号码
-  bindTelNum: function (res) {
-    this.setData({
-      formTel: res.detail.value
-    })
-  },
-  // 绑定地址
-  bindPlace: function (e) {
-    let list = this.data.placeList;
-    this.setData({
-      pickerIndex: e.detail.value,
-      formPlace: list[e.detail.value]
-    })
-  },
-  //绑姓名
-  bindName: function (res) {
-    this.setData({
-      formName: res.detail.value
+      formTag: res.detail.value
     })
   },
 
@@ -61,35 +28,28 @@ Page({
       isSubmit: true
     })
     let that = this;
-    let code = this.data.cityCodeList[this.data.pickerIndex];
-    let url = "createRequirementModel";
+    let urlName = "submit_image_download";
     let params = {
-      name: this.data.formName,
-      cityCode: code,
-      phone: this.data.formTel,
-      shootingScene: this.data.currentText,
-      sourceFrom: 'OFFICE_MINI_APP'
+      url: this.data.formUrl,
+      tag: this.data.formTag,
     };
     // 提交字段检查
-    if (!params.phone) {
-      app.utils.toast("手机号不能为空");
+    if (!params.url) {
+      app.utils.toast("URL 不能为空");
     } else {
-      if (!(/^[1][3,4,5,7,8,9][0-9]{9}$/.test(params.phone))) {
-        app.utils.toast("请输入正确的手机号");
+      if (!(/^[http].*$/.test(params.url))) {
+        app.utils.toast("请输入正确的 URL ");
         this.setData({
           isSubmit: false
         })
         return;
       }
     };
-    if (!params.cityCode) {
-      app.utils.toast("地址不能为空");
+    if (!params.tag) {
+      app.utils.toast("tag 不能为空");
     };
-    if (!params.name) {
-      app.utils.toast("姓名不能为空");
-    };
-    if (!!params.name && !!params.cityCode && !!params.phone) {
-      app.request.requestPostApi(url, params, "SUBMIT_INFO", that.successFUN);
+    if (!!params.url && !!params.tag) {
+      app.request.requestRestPostApi(urlName, params, 'IMAGE_DOWNLOAD', that.successFUN);
     } else {
       this.setData({
         isSubmit: false
@@ -98,29 +58,28 @@ Page({
   },
   successFUN: function (res, code) {
     let that = this;
+    console.log(code, res)
     switch (code) {
-      case "SUBMIT_INFO":
-        if (res.code == 0) {
-          app.sensors.track('ReservationClick', {
-            reservation_result: true,
-            fail_type: ''
-          });
+      case "IMAGE_DOWNLOAD":
+        if (res.errno == 0) {
+          console.log('success');
+          // app.sensors.track('ReservationClick', {
+          //   reservation_result: true,
+          //   fail_type: ''
+          // });
           wx.navigateTo({
-            url: '../submitSuccess/submitSuccess',
+            url: `../album/album?albumId=${res.task_id}`,
           })
-          that.setData({
-            formName: '',
-            formTel: '',
-            formPlace: '',
-            pickerIndex: null,
-            isSelected: ''
-          });
+          // that.setData({
+          //   formUrl: '',
+          //   formTag: '',
+          // });
         } else {
           if (res.message) {
-            app.sensors.track('ReservationClick', {
-              reservation_result: false,
-              fail_type: res.message
-            });
+            // app.sensors.track('ReservationClick', {
+            //   reservation_result: false,
+            //   fail_type: res.message
+            // });
             app.utils.toast(res.message);
           }
         }
@@ -128,69 +87,12 @@ Page({
           isSubmit: false
         })
         break;
-      case "CITY_INFO":
-        if (res.code == 0) {
-          let list = res.data.citysService;
-          let placeList = [];
-          let cityCodeList = [];
-          list.forEach(function (item, index) {
-            placeList.push(item.split("|")[0]);
-            cityCodeList.push(item.split("|")[1]);
-          })
-          this.setData({
-            placeList: placeList,
-            cityCodeList: cityCodeList
-          })
-        }
-        break;
-      case "PIC_DETAILS":
-        if (res.code == 0) {
-          let url = res.data.pageData[0].thumbnailUrl;
-          console.log(url);
-          that.setData({
-            introduceUrl: url
-          })
-        }
-        break;
     }
   },
+
   // 重置表单
   formReset: function () {
     console.log('form发生了reset事件')
-  },
-
-  telCall: function () {
-    var that = this;
-    wx.makePhoneCall({
-      phoneNumber: that.data.telphone
-    })
-  },
-  changeSwiper: function (e) {
-    console.log(e);
-    if (e.detail.source == "touch") {
-      this.setData({
-        currentIndex: e.detail.current
-      })
-    }
-  },
-  //前后切换
-  goPrev: function () {
-    let index = this.data.currentIndex;
-    if (index > 0) {
-      index--;
-    }
-    this.setData({
-      currentIndex: index
-    })
-  },
-  goNext: function () {
-    let index = this.data.currentIndex;
-    if (index < this.data.imgList.length - 1) {
-      index++;
-    }
-    this.setData({
-      currentIndex: index
-    })
   },
 
   /**
