@@ -8,8 +8,8 @@ import base64 from '/utils/base64';
 import english from '/i18n/en.js';
 import chinese from '/i18n/zh.js';
 
-// var sensors = require('/sensors/sensorsdata.js');
-// sensors.init();
+var sensors = require('/sensors/sensorsdata.js');
+sensors.init();
 
 App({
   request: request,
@@ -55,6 +55,44 @@ App({
       });
     }
 
-    this.globalData = {};
-  }
+    this.setLangInfo();
+    // 获取设备信息,网络类型
+    this.getUserSystemInfo();
+    this.getNetworkType();
+  },
+
+  //获取中英文数据
+  setLangInfo: function() {
+    let lang = wx.getStorageSync("lang");
+    if (!!lang && lang == "en") {
+      this.globalData.langInfo = english;
+    } else {
+      this.globalData.langInfo = chinese;
+    }
+  },
+
+  // 获取用户系统信息
+  getUserSystemInfo: function () {
+    wx.getSystemInfo({
+      success: res => {
+        wx.setStorageSync("systemInfo", res);
+        this.globalData.systemInfo = res;
+        console.log("系统信息", res);
+      }
+    })
+  },
+
+  // 获取用户网络类型
+  getNetworkType: function () {
+    wx.getNetworkType({
+      success: function (res) {
+        // 返回网络类型, 有效值：
+        // wifi/2g/3g/4g/unknown(Android下不常见的网络类型)/none(无网络)
+        wx.setStorageSync("network", res.networkType);
+        console.log("NetworkType：", res.networkType);
+      }
+    });
+  },
+
+
 });
