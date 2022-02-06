@@ -1,0 +1,16 @@
+/* 底部全局按钮 --red  */
+.userButton{
+  width: 100%;
+  height: 90rpx;
+  padding: 0 40rpx;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 128rpx;
+  left: 0;
+  z-index: 99;
+}
+.userButton button{
+  color: #EA111C;
+  border: 1px solid #EA111C;
+  border-radius: 200rpx;
+}

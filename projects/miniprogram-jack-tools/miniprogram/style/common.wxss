@@ -1,0 +1,257 @@
+/* common style  */
+
+image {
+  width: 100%;
+  display: block;
+}
+
+.page {
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+.ml6{
+  margin-left: 6rpx;
+}
+.ml20 {
+  margin-left: 20rpx;
+}
+
+.ml40 {
+  margin-left: 40rpx;
+}
+
+.mr20 {
+  margin-right: 20rpx;
+}
+
+.mr40 {
+  margin-right: 40rpx;
+}
+
+.mt20 {
+  margin-top: 20rpx;
+}
+.mt30 {
+  margin-top: 30rpx;
+}
+.mt-200 {
+  margin-top: -200rpx;
+}
+
+.mt40 {
+  margin-top: 40rpx;
+}
+
+.mt60 {
+  margin-top: 60rpx;
+}
+
+.mb0 {
+  margin-bottom: 0;
+}
+
+.mb20 {
+  margin-bottom: 20rpx;
+}
+
+.mb40 {
+  margin-bottom: 40rpx;
+}
+
+.pl40 {
+  padding-left: 40rpx;
+}
+
+.pb80 {
+  padding-bottom: 80rpx;
+}
+
+.img {
+  width: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+.gray {
+  color: #ccc;
+}
+
+.fixed {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+}
+
+.tips-box {
+  width: 100%;
+  height: 60rpx;
+  line-height: 60rpx;
+  padding-top: 400rpx;
+  text-align: center;
+  color: #999;
+  font-size: 28rpx;
+}
+
+/* 改变盒模型 */
+
+.border-box {
+  box-sizing: border-box;
+}
+
+/* 垂直水平居中 */
+
+.xyCenter {
+  position: absolute;
+  transform: translate(-50%, 50%);
+  left: 50%;
+  bottom: 50%;
+}
+
+/* 水平居中 */
+
+.xCenter {
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+}
+
+/* 垂直居中 */
+
+.yCenter {
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+}
+
+/* 一行文字溢出三点省略 */
+
+.oneLineOmit {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 两行文字溢出省略 */
+
+.twoLineOmit {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* 3行文字溢出省略 */
+
+.threeLineOmit {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+/* 清除浮动 */
+
+.clearfix::after {
+  content: ".";
+  display: block;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+
+/* 无图片时 */
+
+.no-pic {
+  box-sizing: border-box;
+  background-color: #fff;
+  border: 1px solid #f3f3f3;
+}
+
+/* 无banner时 */
+
+.no-banner {
+  box-shadow: 0px 3px 24px 0px rgba(227, 227, 227, 0.5);
+  border: 1px solid #f3f3f3;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+/* 小图标 */
+
+.icon {
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/* 背景图 */
+
+.v-pic {
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+.v-pic.bg-contain {
+  background-size: contain;
+}
+
+/* 基础按钮样式 */
+
+.enter-btn {
+  margin: 0 auto;
+  box-shadow:0rpx 8rpx 30rpx 0rpx rgba(234,17,28,0.3);
+  text-align: center;
+  height: 88rpx;
+  line-height: 88rpx;
+  font-size: 24rpx;
+  width: 240rpx;
+  border-radius: 48rpx;
+  background-color: #ea111c;
+  color: #fff;
+}
+
+/* 加载更多 */
+
+.onload_tips_box {
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  padding-top: 50rpx;
+  text-align: center;
+  color: #b5b5b5;
+  font-size: 24rpx;
+  overflow: hidden;
+}
+
+/* logo */
+
+.logo-box {
+  width: 172rpx;
+  height: 80rpx;
+  background-color: #ea111c;
+  overflow: hidden;
+}
+
+.logo-box .logo {
+  width: 116rpx;
+  height: 24rpx;
+  padding: 28rpx;
+}

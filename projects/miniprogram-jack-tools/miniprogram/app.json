@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/image-download/input/index",
     "pages/tools-list/index"
   ],
   "window": {
@@ -9,6 +10,5 @@
     "navigationBarTitleText": "杰克工具箱",
     "navigationBarTextStyle": "black"
   },
-  "sitemapLocation": "sitemap.json",
-  "style": "v2"
+  "sitemapLocation": "sitemap.json"
 }
