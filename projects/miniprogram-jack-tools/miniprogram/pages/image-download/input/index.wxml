@@ -1,0 +1,47 @@
+<!-- <swiper vertical="true">
+  <swiper-item> -->
+<view class='order-contain clearfix'>
+  <view class='exper'>
+    <view class='title'>图片批量下载</view>
+    <view>填写 URL，下载网页上的全部图片，并保存到手机。</view>
+    <view>只支持微信公众号文章</view>
+  </view>
+  <view class='personal-info'>
+    <form class="form_box" bindsubmit="formSubmit" bindreset="formReset">
+      <!-- 拍摄类型 -->
+      <!-- <view class='type-info'>
+        <view class='info-title'>01.选择需要拍摄的类型</view>
+        <view class='contain clearfix'>
+          <view class="type-item fl {{isSelected==index?'selected':''}}" wx:for="{{typeList}}" wx:key='index' data-text='{{item}}' data-index='{{index}}' bindtap='chooseType'>{{item}}</view>
+        </view>
+      </view> -->
+      <!-- 基本信息 -->
+      <view class='base-info'>
+        <view class='info-title'>填写参数</view>
+        <view class="section">
+          <view class="underline">
+            <input name="user" type="text" value='{{formName}}' maxlength="10" placeholder="网址 URL" placeholder-style="color:#c8c8c8" bindinput='bindName' />
+          </view>
+        </view>
+        <!-- <view class="section">
+          <view class="underline">
+            <picker class='place' mode="selector" bindchange="bindPlace" value="{{pickerIndex}}" range="{{placeList}}">
+              <view class="{{pickerIndex||pickerIndex==0? 'col-black': 'colunm'}}">
+                {{formPlace || "所在地"}}
+              </view>
+            </picker>
+          </view>
+        </view> -->
+        <view class="section">
+          <view class="underline">
+            <input name="phone" type="number" value='{{formTel}}' maxlength="11" placeholder="标签" placeholder-style="color:#c8c8c8" bindinput='bindTelNum' />
+          </view>
+        </view>
+      </view>
+      <view class="btn-area">
+        <button formType="submit" class="submit" wx:if="{{!isSubmit}}">提交信息</button>
+        <button class="submit" wx:if="{{isSubmit}}">提交信息</button>
+      </view>
+    </form>
+  </view>
+</view>  
