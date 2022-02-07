@@ -8,6 +8,8 @@ global_vars = {
     'task_tmpl_id': 0,
 }
 
+IS_DONE_IF_ID_NOT_EXISTS = False
+
 
 def gen_task_id():
     global_vars['task_id'] += 1
@@ -52,6 +54,6 @@ class TaskManager():
 
     def is_done(self, task_id):
         if task_id not in self.task_info:
-            return True
+            return IS_DONE_IF_ID_NOT_EXISTS
 
         return self.task_info[task_id]['is_done']
