@@ -70,6 +70,7 @@ def test_get_result_ok(client):
     assert data['task_id'] == task_id
     assert data['is_done']
     assert len(data['photos']) == 2
+    assert data['total'] == 2
 
 
 def test_get_result_exception(client):

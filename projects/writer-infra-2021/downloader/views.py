@@ -39,6 +39,7 @@ def trigger_task(task_id, task_args_dict):
         'has_exception': has_exception,
         'traceback': traceback.format_exc(),
         'photos': photos,
+        'total': len(photos),
     })
     logger.info('task done. task_id: %s' % task_id)
 
