@@ -20,6 +20,10 @@ function requestRestPostApi(url, params, sourceStr, successFun, failFun, complet
   requestRestApi(url, params, 'POST', sourceStr, successFun, failFun, completeFun)
 }
 
+function requestRestGetApi(url, params, sourceStr, successFun, failFun, completeFun) {
+  requestRestApi(url, params, 'GET', sourceStr, successFun, failFun, completeFun)
+}
+
 /**
  * @param requestUrl 正式环境
  * @param testRuquestUrl 测试环境
@@ -33,6 +37,7 @@ const project_config = {
 
 let url_config = {
   'submit_image_download': '/downloader/submit-task',
+  'getPhotoList': '/downloader/get-result/{task_id}',
 }
 
 function format(s, params) {
@@ -201,4 +206,5 @@ module.exports = {
   requestPostApi,
   requestGetApi,
   requestRestPostApi,
+  requestRestGetApi,
 }

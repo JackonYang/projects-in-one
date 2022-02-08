@@ -68,7 +68,7 @@ Page({
           //   fail_type: ''
           // });
           wx.navigateTo({
-            url: `../album/album?albumId=${res.task_id}`,
+            url: `../album/album?albumID=${res.task_id}`,
           })
           // that.setData({
           //   formUrl: '',

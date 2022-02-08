@@ -58,7 +58,9 @@ Page({
       photoList: []
     },
     wechatToken: '', // 密码相册鉴权码
-    albumInfo: {}, //相册属性
+    albumInfo: {
+      'headTitle': '下载的图片列表',
+    }, //相册属性
     coverInfo: {}, //相册封面
     photoListData: [], //相册data
     videoListData: [], //视频data
@@ -94,7 +96,8 @@ Page({
       setting: '/assets/icon/setting.png',
       select: '/assets/icon/select.png',
       selected: '/assets/icon/select-white.png',
-      loadingUrl: '/assets/icon/photo.png'
+      loadingUrl: '/assets/icon/photo.png',
+      save: '/assets/icon/save.png',
     },
     localSrc: {
       noList: '/assets/img/no-pic.png'
@@ -102,57 +105,7 @@ Page({
     photoListUrls: [], //照片列表url数组
     tagList: []
   },
-  // 轮播事件
-  bindChange: function(e) {
-    // "touch" 表示用户滑动引起的变化
-    if (e.detail.source == "touch") {
-      this.setData({
-        'setSwitchInfo.currentItem': e.detail.current
-      });
-    }
-  },
-  // 切换顶部nav
-  swichNav: function(e) {
-    let tagId = e.currentTarget.dataset.current;
-    if (tagId == this.data.currentTagId) {
-      return false;
-    } else {
-      this.setData({
-        currentTagId: tagId,
-        albumState: true,
-        rankState: false,
-        choiceInfoStatus: tagId == 'choice' ? true : false
-      });
-    }
-    if (tagId == 'all') {
-      this.setData({
-        currentTagName: '全部照片'
-      });
-      app.sensors.track('AlbumClick', {
-        album_wechatid: this.data.albumID,
-        album_click: '全部照片'
-      });
-    }
-    if (tagId == 'choice') {
-      this.getEventChoice();
-    } else {
-      this.getPhotoList();
-    }
-    if (tagId == 'rank') {
-      this.setData({
-        currentTagName: '排行'
-      });
-      app.sensors.track('AlbumClick', {
-        album_wechatid: this.data.albumID,
-        album_click: '热门'
-      });
-      app.sensors.track('AlbumTabSwitch', {
-        album_wechatid: this.data.albumID,
-        tab_name: '排行'
-      });
-    }
 
-  },
   // 人脸识别 -- 找我
   findMe: function() {
     app.utils.go("findFace/findFace", "albumID=" + this.data.albumID);
@@ -166,40 +119,14 @@ Page({
   selectPic: function(e) {
     let index = e.currentTarget.dataset.current;
     console.log("选中图片:", index);
-    if (this.data.puzzleState) {
-      this.setPhotoListData(index);
-    } else {
-      this.setData({
-        settingState: false
-      });
-      this.openBigPic(index);
-    }
-  },
-  // 打开时间线大图
-  OpenTimeLinePic: function(e) {
-    let id = e.currentTarget.dataset.current;
-    if (this.data.puzzleState) {
-      this.timeLinePuzzle(id);
-    } else {
-      this.setData({
-        settingState: false
-      });
-      this.TimeLineOpenBigPic(id);
-    }
-  },
-  // 时间线拼图
-  timeLinePuzzle: function(id) {
-    let that = this;
-    let photoList = this.data.photoListData;
-    photoList.findIndex(function(item, index) {
-      if (item.photoId == id) {
-        that.setPhotoListData(index);
-      }
+    this.setData({
+      settingState: false
     });
+    // this.openBigPic(index);
   },
   // 设置页面title
   setPageTitle: function() {
-    let title = this.data.albumInfo.headTitle || "VPhoto";
+    let title = this.data.albumInfo.headTitle || "图片查看";
     wx.setNavigationBarTitle({
       title: title
     })
@@ -232,15 +159,8 @@ Page({
     app.utils.go("album/videoDetail", param);
   },
   // 设置按钮状态
-  onOpenSetting: function() {
-    let state = this.data.settingState;
-    this.setData({
-      settingState: !state
-    });
-    app.sensors.track('AlbumClick', {
-      album_wechatid: this.data.albumID,
-      album_click: '设置'
-    });
+  onSaveToDisk: function() {
+
   },
   // 拼图模式
   switchPuzzle: function() {
@@ -360,21 +280,6 @@ Page({
       album_click: name
     });
   },
-  // 时间线模式
-  switchTimeLine: function() {
-    let state = !this.data.timeLineState;
-    this.setData({
-      timeLineState: state,
-      settingState: false,
-      reloadState: true //借用刷新状态
-    });
-    this.getPhotoList();
-    app.sensors.track('AlbumClick', {
-      album_wechatid: this.data.albumID,
-      album_click: '时间轴'
-    });
-    console.log("TimeLine切换：", this.data.timeLineState);
-  },
   // 关闭大图弹层
   closePicInfo: function() {
     if (this.galleryView) {
@@ -414,12 +319,6 @@ Page({
     this.setData({
       CurrentSwiperData: arr
     });
-  },
-  // 加载更多大图
-  loadMoreBigPics: function() {
-    if (this.data.photoListTotal > this.data.photoListData.length) {
-      this.getPhotoList();
-    }
   },
 
   // 打开大图弹层
@@ -928,43 +827,7 @@ Page({
       timeLIneData: datas
     });
   },
-  // 请求相册图片列表
-  getPhotoList: function() {
-    app.utils.loading("加载中...");
-    //热门排行
-    // if (this.data.currentTagId == "rank") {
-    //   let url = "getPhotoRankModel";
-    //   let params = {
-    //     isSaveNum: 1,
-    //     weChatId: this.data.albumID
-    //   };
-    //   app.request.requestPostApi(url, params, "TOP_LIST", this.successFun, this.failFun);
-    // } else {
-    let url = "getPhotoListByWeChatIdModel";
-    let params = {
-      weChatId: this.data.albumID,
-      photoId: this.data.lastPhotoId,
-      pageSize: 30,
-      sort: 'desc'
-    };
-    if (this.data.timeLineState) {
-      params.sort = 'asc';
-    }
-    if (this.data.reloadState || this.data.albumState) {
-      params.photoId = '';
-    }
-    if (this.data.currentTagId == "rank") {
-      params.rank = "1";
-      params.pageSize = 10;
-      this.setData({
-        rankState: true
-      });
-    } else if (this.data.currentTagId != "all" && this.data.currentTagId != "choice" && this.data.currentTagId != "video") {
-      params.tagId = this.data.currentTagId;
-    }
-    app.request.requestPostApi(url, params, "PHOTO_LIST", this.successFun, this.failFun);
-    // }
-  },
+
   // 请求相册tag
   getAlbumTag: function() {
     let url = "getAlbumTagModel";
@@ -974,317 +837,44 @@ Page({
     app.request.requestPostApi(url, params, "ALBUM_TAG", this.successFun, this.failFun);
   },
   // 获取相册信息
-  getWechatInfo: function() {
-    let url = "getWeChatInfoModel";
+  getPhotoList: function() {
+    let url = "getPhotoList";
     let params = {
-      weChatId: this.data.albumID,
-      url: 'https://gallery.vphotos.cn/vphotosgallery/index.html?vphotowechatid=' + this.data.albumID
+      task_id: this.data.albumID,
     };
-    app.request.requestPostApi(url, params, "ALBUM_INFO", this.successFun, this.failFun);
+    app.request.requestRestGetApi(url, params, "PHOTO_LIST", this.successFun, this.failFun);
   },
-  // 请求相册封面信息
-  getCoverInfo: function() {
-    let url = "findCoverInfoModel";
-    let params = {
-      weChatId: this.data.albumID,
-      photoSizeType: this.data.albumInfo.directType
-    };
-    app.request.requestPostApi(url, params, "COVER_INFO", this.successFun, this.failFun);
-  },
-  // 获取活动精选
-  getEventChoice: function() {
-    let url = "findChoiceLabelAndPhotosModel";
-    let params = {
-      weChatId: this.data.albumID,
-      photoSizeType: this.data.albumInfo.directType
-    };
-    app.request.requestPostApi(url, params, "CHOICE_INFO", this.successFun, this.failFun);
-  },
-  // 获取活动精选banner
-  getChoiceBanner: function() {
-    let url = "findChoicePhotosInBannerModel";
-    let params = {
-      weChatId: this.data.albumID
-    };
-    app.request.requestPostApi(url, params, "CHOICE_BANNER", this.successFun, this.failFun);
-  },
-  // 相册浏览量日志收集
-  getAnalyse: function() {
-    let url = "analyseModel";
-    let pageUrl = app.utils.getCurrentPageUrlWithArgs();
-    let systemInfo = app.globalData.systemInfo;
-    let sourceType = this.data.sourceType;
-    let params = {
-      weChatId: this.data.albumID,
-      url: pageUrl,
-      browserType: systemInfo.version,
-      browserVersion: systemInfo.SDKVersion,
-      platform: systemInfo.model,
-      language: systemInfo.language,
-      sourceFrom: "OFFICE_MINI_APP",
-    };
-    if (sourceType) {
-      params.sourceFromType = sourceType
-    }
-    console.log("sourceType: ", sourceType);
-    app.request.requestPostApi(url, params, "ANALYSE", this.successFun, this.failFun);
-  },
-  // 验证相册密码
-  checkAlbumPassword: function(e) {
-    let password = e.detail.text;
-    console.log("password: ", password);
-    let url = "unlockWechatModel";
-    let params = {
-      weChatId: this.data.albumID,
-      password: app.Base64.encode(password)
-    };
-    app.request.requestPostApi(url, params, "CHECK_PASSWORD", this.successFun, this.failFun);
-  },
-  // 摄影师带单判断
-  getAlbumPhotographer: function(info) {
-    if (info.isPhotographerOrder == 1) {
-      let obj = {
-        weChatId: this.data.albumID,
-        date: Date.parse(new Date())
-      }
-      wx.setStorageSync("photographer", obj);
-    }
-  },
+
   // 请求成功返回数据
   successFun: function(res, code) {
     var that = this;
     switch (code) {
-      case "COVER_INFO":
-        if (res.code == 0) {
-          wx.showShareMenu();
+      case "PHOTO_LIST":
+        let ListArr = [],
+          lastId = '';
+        if (res.errno == 0) {
+          ListArr = res.data.photos;
+
+          let albumInfo = that.data.albumInfo;
+          let photoListTotal = res.data.total;
+          albumInfo['subHeadTitle'] = `共 ${photoListTotal} 张图`;
           that.setData({
-            coverInfo: res.data
+            photoListData: ListArr,
+            photoListTotal: photoListTotal,
+            albumInfo: albumInfo,
           });
-          wx.setStorageSync("headTitle", res.data.headTitle);
-          that.sensorsDataGather();
-          console.log("COVER_INFO:", res.data);
-        }
-        break;
-      case "CHECK_PASSWORD":
-        if (res.code == 0) {
-          that.setData({
-            wechatToken: res.data.wechatToken
-          });
-          wx.setStorageSync("wechatToken", res.data.wechatToken);
-          that.passwordLayer.close();
-          that.getWechatInfo();
         } else {
           app.utils.toast(res.message);
         }
-        break;
-      case "ALBUM_INFO":
-        if (res.code == 0) {
-          let info = res.data;
-          if (info.directType == 3 && !that.data.wechatToken) {
-            wx.hideLoading();
-            that.passwordLayer.show();
-          } else if (info.directType == 2) {
-            wx.hideLoading();
-            wx.showModal({
-              title: '',
-              content: "直播已关闭",
-              showCancel: false,
-              confirmText: "返回上页",
-              success: function(info) {
-                if (info.confirm) {
-                  wx.navigateBack();
-                }
-              }
-            });
-          } else {
-            info.headTitle = app.utils.clearHeadString(info.headTitle);
-            that.setData({
-              albumInfo: info
-            });
-            app.pageBetweenData.currentAlbumInfo = info;
-            if (info.activityChoiceSwitch == 1) {
-              that.getEventChoice();
-            } else {
-              that.getPhotoList();
-            };
-            if (info.bannerType == 2) {
-              that.getChoiceBanner();
-            }
-            that.getAlbumTag();
-            that.getCoverInfo();
-            console.log("ALBUM_INFO:", info);
-          };
-          that.getAlbumPhotographer(info);
-        } else {
-          wx.hideLoading();
-          wx.showModal({
-            title: '',
-            content: res.message,
-            showCancel: false,
-            confirmText: "返回上页",
-            success: function(info) {
-              if (info.confirm) {
-                wx.navigateBack();
-              }
-            }
-          });
-        }
-        break;
-      case "CHOICE_INFO":
-        if (res.code == 0) {
-          let info = res.data;
-          if (info.choiceLabelPhotosList.length > 0) {
-            that.setData({
-              choiceInfo: info,
-              currentTagId: 'choice',
-              choiceInfoStatus: true
-            });
-            app.utils.hideLoading();
-            wx.stopPullDownRefresh();
-          } else {
-            that.getPhotoList();
-          }
-        }
-        break;
-      case "CHOICE_BANNER":
-        if (res.code == 0) {
-          let info = res.data;
-          that.setData({
-            choiceBannerData: info
-          });
-        }
-        break;
-      case "PHOTO_LIST":
-        let ListArr = [],
-          lastId = '',
-          showMore = '';
-        if (res.code == 0) {
-          if (that.data.albumInfo.albumCategory == 2) {
-            that.setData({
-              isVideo: true
-            })
-          }
-          if (that.data.albumState || that.data.reloadState || that.data.rankState) {
-            ListArr = res.data.photos;
-          } else {
-            if (that.data.isVideo) {
-              ListArr = that.data.videoListData.concat(res.data.photos);
-            } else {
-              ListArr = that.data.photoListData.concat(res.data.photos);
-            }
-          };
-
-          if (ListArr.length > 0) {
-            lastId = ListArr[ListArr.length - 1].photoId;
-          };
-
-          if (this.galleryView) {
-            this.galleryView.addImagesList(res.data.photos || []);
-          }
-
-          if (that.data.timeLineState) {
-            console.log("timeLine finish!")
-            that.getTimeLineData(ListArr);
-          };
-
-          if (ListArr.length < res.data.total && res.data.total > 30) {
-            showMore = "上拉加载更多";
-          } else {
-            showMore = "没有更多啦";
-          };
-          if (that.data.isVideo) {
-            ListArr.forEach(function(val, index) {
-              ListArr[index].labelName = app.utils.clearHeadString(val.labelName);
-              ListArr[index].duration = app.dates.formatSeconds(val.duration);
-              val.isShowVideo = false;
-            })
-            that.setData({
-              videoListData: ListArr,
-              currentTagId: 'video'
-            })
-          } else {
-            that.setData({
-              photoListData: ListArr
-            })
-          }
-          that.setData({
-            lastPhotoId: lastId,
-            albumState: false,
-            reloadState: false,
-            photoListData: ListArr,
-            photoListTotal: res.data.total,
-            isShowMore: showMore
-          });
-        } else {
-          app.utils.toast("错误啦，请再试一次");
-        }
-        console.log("lastId:", lastId);
-        console.log("PHOTO_LIST:", ListArr);
         app.utils.hideLoading();
         wx.stopPullDownRefresh();
-        break;
-      case "TOP_LIST":
-        if (res.code == 0) {
-          that.setData({
-            rankState: true,
-            photoListData: res.data
-          })
-          app.utils.hideLoading();
-          wx.stopPullDownRefresh();
-        }
-        break;
-      case "ALBUM_TAG":
-        let tagArr = res.data;
-        that.setData({
-          tagList: tagArr
-        });
-        console.log("ALBUM_TAG:", res.data);
         break;
     }
   },
   // 页面初始化
   init: function() {
     app.utils.loading();
-    this.getWechatInfo();
-    this.getAnalyse();
-  },
-  // 神策相册来源数据采集
-  sensorsDataGather: function() {
-    let packageName = app.packages[this.data.coverInfo.packageId];
-    console.log(this.data.albumID, packageName, this.data.sourceName);
-    app.sensors.track('AlbumLaunch', {
-      album_wechatid: this.data.albumID,
-      album_packageid: packageName,
-      album_enter: this.data.sourceName
-    });
-  },
-  // 页面url参数解析
-  urlParamParse: function(source) {
-    if (source) {
-      if (source == 2001) {
-        this.setData({
-          showIndex: true,
-          sourceType: "QR_CODE",
-          sourceName: app.sources[source]
-        });
-      } else if (source == 2011) {
-        this.setData({
-          sourceType: "QR_CODE",
-          sourceName: app.sources[source]
-        });
-      } else if (source == 2009) {
-        this.setData({
-          showIndex: true,
-          sourceName: app.sources[app.globalData.curScene]
-        })
-      } else {
-        this.setData({
-          sourceName: app.sources[source]
-        })
-      };
-      console.log("《====进入方式 ====》", app.sources[source]);
-    };
-    this.init();
+    this.getPhotoList();
   },
   /**
    * 生命周期函数--监听页面加载
@@ -1292,18 +882,19 @@ Page({
   onLoad: function(options) {
     console.log("相册参数：", options);
     wx.hideShareMenu();
+    options = {
+      albumID: '1',
+    }
     if (options.albumID) {
-      wx.removeStorageSync("wechatToken");
       this.setData({
         albumID: options.albumID
       });
-      this.passwordLayer = this.selectComponent("#pass-layer");
-      this.urlParamParse(options.source);
+      // this.passwordLayer = this.selectComponent("#pass-layer");
+      this.init();
     } else {
       app.utils.toast("呀，发生错误啦！");
       this.goIndex();
     }
-    console.log('当前相册参数：', options);
   },
 
   /**
@@ -1361,7 +952,7 @@ Page({
    */
   onPageScroll: function(res) {
     let state = this.data.videoListData.length > 1 || this.data.photoListData.length > 12;
-    if (res.scrollTop > 220 && state) {
+    if (res.scrollTop > 120 && state) {
       this.setData({
         onTopState: true
       })

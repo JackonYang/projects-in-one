@@ -1,44 +1,20 @@
 <view class="page ">
   <view class='head-info-box'>
-    <view class="fixed-head-box">
-      <!-- 相册信息 -->
+
+    <!-- flow head -->
+    <view class="flow-head-box">
+      <!-- 相册标题 -->
       <view class="album-title-box">
-        <view class='content'>
-          <view class="head-box yCenter">
-            <!-- 相册标题 -->
+        <view class='pos-title xCenter'>
+          <view class='title-text yCenter'>
             <view class="title {{albumInfo.subHeadTitle?'oneLineOmit':'twoLineOmit'}}" wx:if="{{albumInfo.headTitle}}">{{albumInfo.headTitle}}</view>
-            <view class="subhead {{albumInfo.headTitle?' oneLineOmit mt20':'twoLineOmit'}}" wx:if="{{albumInfo.subHeadTitle}}">{{albumInfo.subHeadTitle}}</view>
-
-            <!-- 相册数据 -->
-            <view class='count-text'>
-              <view class='fonts'>{{isVideo?"视频":"照片"}}
-                <text class='ml6'>{{albumInfo.photoCount}}</text>
-              </view>
-              <view class='fonts ml40'>访问
-                <text class='ml6'>{{albumInfo.userNum}}</text>
-              </view>
-              <view class='tips' wx:if="{{albumInfo.needPowered==1}}">Powered by VPhoto</view>
-            </view>
-
+            <view class="subhead {{albumInfo.headTitle?' oneLineOmit mt20':'twoLineOmit '}}" wx:if="{{albumInfo.subHeadTitle}}">{{albumInfo.subHeadTitle}}</view>
           </view>
         </view>
       </view>
-      <!-- 顶部tag  -->
-      <view class="tapbar-top">
-        <scroll-view class="scroll-view-tap" scroll-x style="width: 100%">
-          <block wx:if="{{isVideo}}">
-            <view class="tap-item {{currentTagId == 'video' ? 'cur' : ''}}" data-current="video" bindtap="swichNav">视频快剪</view>
-          </block>
-          <block wx:else>
-            <view class="tap-item {{currentTagId == 'choice' ? 'cur' : ''}}" wx:if="{{albumInfo.activityChoiceSwitch == 1 && choiceInfo.choiceLabelPhotosList.length > 0}}" data-current="choice" bindtap="swichNav">活动精选</view>
-            <view class="tap-item {{currentTagId == 'all' ? 'cur' : ''}}" data-current="all" bindtap="swichNav">全部照片</view>
-            <view class="tap-item {{currentTagId == 'rank' ? 'cur' : ''}} TopTen" wx:if="{{albumInfo.photoRanking == 1}}" data-current="rank" bindtap="swichNav">热门</view>
-            <view wx:for="{{tagList}}" wx:key="id" class="tap-item {{currentTagId == item.id ? 'cur' : ''}}" data-current="{{item.id}}" bindtap="swichNav">{{item.name}}</view>
-          </block>
-        </scroll-view>
-      </view>
     </view>
   </view>
+
   <!-- 空白相册  -->
   <view class="index-tips-box" wx:if="{{!photoListTotal}}">
     <image src='{{localSrc.noList}}' mode="{{imgInfo.mode}}" class='bg-img'></image>
@@ -83,7 +59,7 @@
             <image src="{{layouImages.selected}}" class="icon" mode="aspectFill"></image>
           </view>
           <!-- 照片 -->
-          <image src="{{item.thumbUrl}}" class="list-image" mode="aspectFill"></image>
+          <image src="{{item}}" class="list-image" mode="aspectFill"></image>
         </view>
       </view>
       <!-- top 10  -->
@@ -129,12 +105,9 @@
       <view class="bth mt20" wx:if="{{showIndex}}" bindtap="goIndex">首页</view>
       <view class="bth mt20" bindtap="findMe" hidden="{{!token}}">找我</view>
       <view class="bth mt20" bindtap="switchPuzzle" hidden="{{!token}}">拼图</view>
-      <view class="position {{settingState ? '' : 'close'}}">
-        <text class="text switchTimeLine" wx:if="{{settingState}}" bindtap="switchTimeLine">时间</text>
-        <text class="text switchColumns" wx:if="{{settingState && !timeLineState}}" bindtap="switchColumns">{{columnStateName}}</text>
-        <text class="text gray" wx:if="{{settingState && timeLineState}}">{{columnStateName}}</text>
-        <view class="text setting" bindtap="onOpenSetting">
-          <image src="{{layouImages.setting}}" class="img" mode="aspectFit"></image>
+      <view class="position close">
+        <view class="text setting" bindtap="onSaveToDisk">
+          <image src="{{layouImages.save}}" class="img" mode="aspectFit"></image>
         </view>
       </view>
     </view>

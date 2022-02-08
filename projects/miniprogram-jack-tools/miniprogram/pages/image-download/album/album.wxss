@@ -148,7 +148,7 @@
   box-shadow: 0 6rpx 48rpx 0 rgba(227, 227, 227, 0.5);
   border-radius: 8rpx;
   border: 1px solid #f5f5f5;
-  top: -40rpx;
+  /* top: -40rpx; */
   z-index: 19;
 }
 
