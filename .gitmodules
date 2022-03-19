@@ -13,3 +13,6 @@
 [submodule "markdown-coder/paper-reading"]
 	path = markdown-coder/paper-reading
 	url = git@github.com:JackonYang/paper-reading.git
+[submodule "markdown-coder/blog-2020s"]
+	path = markdown-coder/blog-2020s
+	url = git@github.com:JackonYang/blog-2020s.git
