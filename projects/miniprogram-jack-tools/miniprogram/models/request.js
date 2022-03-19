@@ -32,7 +32,7 @@ const project_config = {
   domainMode: 'devRuquestUrl',
   userMock: false,
   requestUrl: "https://writer.jackon.me",
-  devRuquestUrl: "http://127.0.0.1:18000",
+  devRuquestUrl: "http://192.168.2.4:18000",
 }
 
 let url_config = {
