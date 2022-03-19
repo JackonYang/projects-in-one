@@ -61,6 +61,7 @@ Page({
     albumInfo: {
       'headTitle': '下载的图片列表',
     }, //相册属性
+    showAuthHintDialog: false,
     coverInfo: {}, //相册封面
     photoListData: [], //相册data
     videoListData: [], //视频data
@@ -158,10 +159,44 @@ Page({
     let param = "albumID=" + this.data.albumID + "&&" + "photoId=" + id;
     app.utils.go("album/videoDetail", param);
   },
-  // 设置按钮状态
-  onSaveToDisk: function() {
+  // 保存图片到手机相册
+  onSaveImage: function() {
+    this.data.photoListData.forEach(function (item, index) {
+      let url = item;
+    wx.downloadFile({
+        url: url,
+        success (res) {
+          console.log(res);
 
+          // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+          if (res.statusCode === 200) {
+            let filePath = res.tempFilePath;
+            wx.saveImageToPhotosAlbum({
+              filePath: filePath,
+              success: (res) => {
+                console.log(`saved. ${url}`);
+                // wx.showToast({
+                //   title: '生成图片成功',
+                //   icon: 'success',
+                //   duration: 2000
+                // })
+              },
+              fail: (err) => {
+                console.log(`failed. ${url}`);
+                console.log(err);
+                // wx.showToast({
+                //   title: '生成图片失败',
+                //   icon: 'error',
+                //   duration: 2000
+                // })
+              }
+            })
+          }
+        }
+      });
+    });
   },
+
   // 拼图模式
   switchPuzzle: function() {
     this.getPuzzleData();

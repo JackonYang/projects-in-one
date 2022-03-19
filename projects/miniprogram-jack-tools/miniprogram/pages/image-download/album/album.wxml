@@ -106,11 +106,26 @@
       <view class="bth mt20" bindtap="findMe" hidden="{{!token}}">找我</view>
       <view class="bth mt20" bindtap="switchPuzzle" hidden="{{!token}}">拼图</view>
       <view class="position close">
-        <view class="text setting" bindtap="onSaveToDisk">
+        <view class="text setting" bindtap="onSaveImage">
           <image src="{{layouImages.save}}" class="img" mode="aspectFit"></image>
         </view>
       </view>
     </view>
+    <!-- 简陋版提示 -->
+<view wx:if="{{showAuthHintDialog}}" class="dialog-wrap">
+  <view class="dialog">
+    这是一段提示用户授权的提示语
+    <view class="dialog-footer">
+      <button
+        class="btn"
+        open-type="openSetting"
+        bindtap="confirm" >
+         授权
+      </button>
+      <button class="btn" bindtap="cancel">取消</button>
+    </view>
+  </view>
+</view>
     <!-- 拼图底部弹层 -->
     <view class="layou-puzzle" wx:if="{{puzzleState}}">
       <view class="left-bth" bindtap="closePuzzle">取消</view>
