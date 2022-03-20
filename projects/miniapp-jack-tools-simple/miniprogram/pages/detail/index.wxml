@@ -1,0 +1,12 @@
+<view class="container">
+  <view class="form-group">
+    <view class="form-cell">
+      <view class="form-cell_title">{{todo.title}}</view>
+      <view class="form-cell_desc">{{todo.desc}}</view>
+    </view>
+  </view>
+  <view class="footer">
+    <view class="list" bindtap="toFileList">查看附件</view>
+    <view class="edit" bindtap="toEditPage">编辑待办</view>
+  </view>
+</view>

@@ -1,0 +1,30 @@
+.footer {
+  margin-left: -50%;
+  width: 100%;
+  height: var(--footer-height);
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  border-top: #E0E0E0 solid 1px;
+  background: white;
+  z-index: 10;
+}
+
+.add {
+  width: var(--button-size);
+  height: var(--button-size);
+  position: fixed;
+  bottom: calc(var(--footer-height) - var(--button-size) / 2);
+  left: calc(50% - var(--button-size) / 2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: calc(var(--button-size) / 2);
+  background-color: var(--button-color);
+  box-shadow: rgba(0, 0, 0, 0.3) 0 2px 10px;
+}
+
+.add-image {
+  width: var(--button-icon-size);
+  height: var(--button-icon-size);
+}

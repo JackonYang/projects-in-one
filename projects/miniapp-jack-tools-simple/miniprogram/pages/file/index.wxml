@@ -1,0 +1,16 @@
+<wxs module="util" src="../util.wxs"/>
+
+<view class="container">
+  <view class="form-group_label">包含文件</view>
+  <view class="form-group" wx:if="files.length > 0">
+    <view class="form-cell inline" wx:for="{{files}}" wx:key="index">
+      <view class="file-info">
+        <view class="file-info_name">{{util.filterStr(item.name, 10)}}</view>
+        <view class="file-info_size">{{item.size}}M</view>
+      </view>
+      <image class="delete" data-index="{{index}}" src="../../images/file/trash.png" bindtap="deleteFile"/>
+      <image class="download" data-index="{{index}}" src="../../images/file/download.png" bindtap="downloadFile"/>
+    </view>
+  </view>
+  <footer addFile="{{true}}" _id="{{_id}}"></footer>
+</view>

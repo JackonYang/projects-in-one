@@ -1,0 +1,5 @@
+<view class="footer">
+    <view class="add" bindtap="onClick">
+      <image class="add-image" src="../../images/footer/add.png"/>
+    </view>
+</view>

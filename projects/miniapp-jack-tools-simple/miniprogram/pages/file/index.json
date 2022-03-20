@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "footer": "../../components/footer"
+  },
+  "navigationBarTitleText": "包含文件"
+}
