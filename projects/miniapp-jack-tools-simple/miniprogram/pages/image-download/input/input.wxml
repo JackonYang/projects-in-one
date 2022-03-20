@@ -1,0 +1,32 @@
+<view class="page">
+
+  <view class='exper'>
+    <view class='title'>图片批量下载</view>
+    <view>填写网页 URL，自动下载全部图片，一键批量保存到手机。</view>
+    <view>目前，只支持微信公众号文章的 URL</view>
+  </view>
+
+  <view class='task-submit'>
+    <form class="form-box" bindsubmit="formSubmit" bindreset="formReset">
+      <!-- 基本信息 -->
+      <view class='base-info'>
+        <view class='info-title'>填写参数</view>
+        <view class="section">
+          <view class="underline">
+            <input name="url" type="text" value='{{formUrl}}' maxlength="255" placeholder="网址 URL" placeholder-style="color:#c8c8c8" bindinput='bindUrl' />
+          </view>
+        </view>
+
+        <view class="section">
+          <view class="underline">
+            <input name="tag" type="text" value='{{formTag}}' maxlength="100" placeholder="标签(可不填)" placeholder-style="color:#c8c8c8" bindinput='bindTag' />
+          </view>
+        </view>
+      </view>
+      <view class="btn-area">
+        <button formType="submit" class="submit" wx:if="{{!isSubmit}}">提交信息</button>
+        <button class="submit" wx:if="{{isSubmit}}">提交信息</button>
+      </view>
+    </form>
+  </view>
+</view>  

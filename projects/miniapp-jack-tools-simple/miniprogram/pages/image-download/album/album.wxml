@@ -1,0 +1,38 @@
+<view class="page">
+  <view class='head-info-box'>
+    <view class="flow-head-box">
+      <!-- 相册标题 -->
+      <view class="album-title-box">
+        <view class='pos-title xCenter'>
+          <view class='title-text yCenter'>
+            <view class="title {{albumInfo.subHeadTitle?'oneLineOmit':'twoLineOmit'}}" wx:if="{{albumInfo.headTitle}}">{{albumInfo.headTitle}}</view>
+            <view class="subhead {{albumInfo.headTitle?' oneLineOmit mt20':'twoLineOmit '}}" wx:if="{{albumInfo.subHeadTitle}}">{{albumInfo.subHeadTitle}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="popup-box">
+    <view class="popup-tool yCenter">
+      <view class="action-box flex xCenter" bindtap="saveImageToPhoto">
+          <!-- <image src="/assets/icon/download.png" mode="scaleToFill" class="img"></image> -->
+          <view class="text">保存到手机</view>
+      </view>
+    </view>
+  </view>
+  <!-- 空白相册  -->
+  <view class="index-tips-box" wx:if="{{!photoListTotal}}">
+    <image src='{{localSrc.noList}}' mode="aspectFill" class='bg-img'></image>
+    <text class='tips-text'>一些提示</text>
+  </view>
+
+  <!-- 照片列表  -->
+  <view class="photo-list">
+    <view class="item-three" wx:for="{{photoListData}}"
+          wx:key="index" data-current="{{index}}" bindtap="selectPic">
+      <image src="{{item}}" class="list-image" mode="aspectFill"></image>
+    </view>
+  </view>
+
+</view>
