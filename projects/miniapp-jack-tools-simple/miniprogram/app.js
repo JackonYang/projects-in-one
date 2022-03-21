@@ -1,4 +1,22 @@
+import request from './models/request.js';
+import utils from './utils/util.js';
+// import dates from '/utils/dates';
+// import sources from '/utils/source';
+// import packages from '/utils/package';
+// import base64 from '/utils/base64';
+// import english from '/i18n/en.js';
+// import chinese from '/i18n/zh.js';
+
 App({
+  request: request,
+  utils: utils,
+  // dates: dates,
+  // sources: sources,
+  // packages: packages,
+  // Base64: base64,
+  // english: english,
+  // chinese: chinese,
+
   async onLaunch() {
     this.initcloud()
 
