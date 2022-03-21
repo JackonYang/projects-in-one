@@ -3,10 +3,10 @@
  * @param testRuquestUrl 测试环境
  */
 const projectConfig = {
-  domainMode: 'devRuquestUrl',
+  domainMode: 'requestUrl',
   userMock: false,
   requestUrl: "https://writer.jackon.me",
-  devRuquestUrl: "http://localhost:18000",
+  devRuquestUrl: "http://192.168.2.4:18000",
 }
 
 let urlConfig = {
