@@ -1,1 +1,0 @@
-"/Applications/wechatwebdevtools.app/Contents/MacOS/cli" cloud functions deploy --e cloud1-8g74di3ma0c408c5 --n quickstartFunctions --r --project "/Users/jackon/projects-in-one/projects/miniprogram-jack-tools" --report_first --report

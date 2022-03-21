@@ -1,9 +1,0 @@
-{
-  "navigationBarTitleText": "图片查看",
-  "enablePullDownRefresh": true,
-  "onReachBottomDistance": 50,
-  "usingComponents": {
-    "album-laye": "/components/albumLayer/layer",
-    "password-layer": "/components/password/index"
-  }
-}

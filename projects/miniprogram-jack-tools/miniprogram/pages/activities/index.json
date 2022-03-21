@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "",
-  "enablePullDownRefresh": true,
-  "onReachBottomDistance": 50,
-  "usingComponents": {
-    "taste-page": "/components/taste/taste"
-  }
-}

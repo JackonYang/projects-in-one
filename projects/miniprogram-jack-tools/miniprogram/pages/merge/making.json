@@ -1,6 +1,0 @@
-{
-  "enablePullDownRefresh": false,
-  "usingComponents": {
-    "input-laye": "/components/inputLayou/input"
-  }
-}
