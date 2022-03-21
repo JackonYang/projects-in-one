@@ -18,6 +18,9 @@ Page({
     showAuthHintDialog: false,
     photoListData: [], //相册data
     photoListTotal: 0,
+    progressPercent: 0,
+    toptips: '',
+    toptipsTpye: 'error',
     layouImages: {
       top: '/assets/icon/top.png',
       select: '/assets/icon/select.png',
@@ -39,87 +42,97 @@ Page({
     });
     // this.openBigPic(index);
   },
-  // 设置页面title
-  setPageTitle: function() {
-    let title = this.data.albumInfo.headTitle || "图片查看";
-    wx.setNavigationBarTitle({
-      title: title
-    })
-  },
   //  回到顶部
   onTop: function() {
     wx.pageScrollTo({
       scrollTop: 0,
       duration: 500
     });
-    app.sensors.track('AlbumClick', {
-      album_wechatid: this.data.albumID,
-      album_click: '回到顶部'
-    });
-  },
-  // 返回首页
-  goIndex: function() {
-    wx.switchTab({
-      url: '../index/index'
-    });
-    app.sensors.track('AlbumClick', {
-      album_wechatid: this.data.albumID,
-      album_click: '返回首页'
-    });
   },
 
   // 保存图片到手机相册
-  saveImageToPhoto: function() {
-    this.data.photoListData.forEach(function (item, index) {
+  OnSaveImageToPhoto: function() {
+    // console.log('ok, starting saving');
+    let photoCnt = this.data.photoListTotal;
+    let savedCnt = 0;
+    var that = this;
+
+    wx.showModal({
+      content: `保存 ${photoCnt} 张图？`,
+      success: function(res) {
+        if (res.confirm) {
+    that.data.photoListData.forEach(function (item, index) {
       let url = item;
       wx.downloadFile({
         url: url,
         success (res) {
-          console.log(res);
-
+          // console.log(res);
           // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
           if (res.statusCode === 200) {
             let filePath = res.tempFilePath;
             wx.saveImageToPhotosAlbum({
               filePath: filePath,
               success: (res) => {
-                console.log(`saved. ${url}`);
-                // wx.showToast({
-                //   title: '生成图片成功',
-                //   icon: 'success',
-                //   duration: 2000
-                // })
+                savedCnt += 1;
+                that.setData({
+                  progressPercent: 100.0 * savedCnt / photoCnt,
+                })
+                // console.log(`${savedCnt} saved. ${url}`);
+                if (savedCnt >= photoCnt) {
+                  wx.showToast({
+                    title: `已保存 ${savedCnt} 张图片`,
+                    icon: 'success',
+                    duration: 2000
+                  })
+                }
               },
               fail: (err) => {
                 console.log(`failed. ${url}`);
                 console.log(err);
-                // wx.showToast({
-                //   title: '生成图片失败',
-                //   icon: 'error',
-                //   duration: 2000
-                // })
+                that.setData({
+                  toptips: err.errMsg,
+                  toptipsTpye: 'error',
+                });
               }
             })
           }
         }
       });
     });
+        }
+      }
+    });
+  },
+  saveImageToPhoto: function() {
+    this.ensureAlbumAuth(this.OnSaveImageToPhoto);
+  },
+  //引导设置
+  ensureAlbumAuth: function(OnAuthedFunc) {
+    var that = this;
+    wx.getSetting({
+      success (res) {
+        if (res.authSetting['scope.writePhotosAlbum']) {
+          OnAuthedFunc();
+        } else {
+          that.openAlbumAuth(OnAuthedFunc);
+        }
+      }
+    })
   },
 
-  //引导设置
-  openAlbumAuth: function() {
+  openAlbumAuth: function(OnAuthedFunc) {
     wx.showModal({
-      content: '关闭相册权限获取会导致无法下载图片，去打开？',
+      content: '未授权“添加到相册”，去打开？',
       success: function(res) {
         if (res.confirm) {
           wx.openSetting({
-            //打开微信设置
+            // 打开微信设置
             success: function(res) {
-              //获取设置状态
+              // 获取设置状态
               wx.getSetting({
                 success: function(res) {
                   if (res.authSetting['scope.writePhotosAlbum']) {
-                    //查看用户设置的状态
+                    OnAuthedFunc();
                   }
                 }
               })
@@ -128,32 +141,6 @@ Page({
         }
       }
     })
-  },
-  // 登录授权
-  getUserInfoStatus: function() {
-    let that = this;
-    app.getLoginFun().then(function(info) {
-      console.log("回调：", info)
-      if (info) {
-        that.getAuthCallBack();
-      }
-    })
-  },
-  // 获取授权接口返回状态
-  getAuthCallBack: function() {
-    let that = this;
-    app.utils.loading("授权中");
-    timeOut = setInterval(function() {
-      let token = wx.getStorageSync('token');
-      let uid = wx.getStorageSync('uid');
-      if (token) {
-        clearInterval(timeOut);
-        wx.hideLoading();
-        that.setData({
-          token: token
-        });
-      }
-    }, 500);
   },
 
   // 阻止滚动穿透

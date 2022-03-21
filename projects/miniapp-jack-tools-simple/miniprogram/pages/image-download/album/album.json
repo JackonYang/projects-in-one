@@ -1,5 +1,8 @@
 {
   "navigationBarTitleText": "图片批量下载",
   "enablePullDownRefresh": false,
-  "onReachBottomDistance": 50
+  "onReachBottomDistance": 50,
+  "usingComponents": {
+    "mp-toptips": "weui-miniprogram/toptips/toptips"
+  }
 }

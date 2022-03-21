@@ -1,4 +1,6 @@
 <view class="page">
+  <mp-toptips msg="{{toptips}}" type="{{ toptipsTpye }}" show="{{toptips}}"></mp-toptips>
+
   <view class='head-info-box'>
     <view class="flow-head-box">
       <!-- 相册标题 -->
@@ -25,6 +27,10 @@
   <view class="index-tips-box" wx:if="{{!photoListTotal}}">
     <image src='{{localSrc.noList}}' mode="aspectFill" class='bg-img'></image>
     <text class='tips-text'>一些提示</text>
+  </view>
+
+  <view class="progress-box" wx:if="{{ !!progressPercent }}">
+    <progress percent="{{ progressPercent }}" show-info stroke-width="3"/>
   </view>
 
   <!-- 照片列表  -->
