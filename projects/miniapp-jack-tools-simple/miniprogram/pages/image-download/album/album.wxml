@@ -1,5 +1,5 @@
 <view class="page">
-  <mp-toptips msg="{{toptips}}" type="{{ toptipsTpye }}" show="{{toptips}}"></mp-toptips>
+  <mp-toptips msg="{{toptips}}" type="{{ toptipsTpye }}" delay="4000" show="{{toptips}}"></mp-toptips>
 
   <view class='head-info-box'>
     <view class="flow-head-box">

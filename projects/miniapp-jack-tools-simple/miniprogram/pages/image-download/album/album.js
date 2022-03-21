@@ -96,6 +96,14 @@ Page({
               }
             })
           }
+        },
+        fail: (err) => {
+          console.log(`failed. ${url}`);
+          console.log(err);
+          that.setData({
+            toptips: err.errMsg,
+            toptipsTpye: 'error',
+          });
         }
       });
     });
