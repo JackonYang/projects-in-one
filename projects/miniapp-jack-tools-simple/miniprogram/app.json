@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/list/index",
+    "pages/sanguo/heroTeams/heroTeams",
     "pages/image-download/input/input",
     "pages/image-download/album/album"
   ],

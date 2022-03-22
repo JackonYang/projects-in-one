@@ -27,7 +27,7 @@ Page({
           {
             'title': '三国志配将表',
             'desc': '起飞了 🛫️',
-            'url': 'pages/image-download/input/input',
+            'url': '/pages/sanguo/heroTeams/heroTeams',
           },
         ]
       },
