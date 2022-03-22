@@ -198,7 +198,7 @@ Page({
    */
   onLoad: function(options) {
     console.log("相册参数：", options);
-    wx.hideShareMenu();
+    // wx.hideShareMenu();
     // for debug
     // options = {
     //   albumID: '1',
@@ -269,18 +269,19 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function(options) {
-  //   return {
-  //     title: title,
-  //     path: path,
-  //     imageUrl: imgUrl,
-  //     success: function(res) {
-  //       // 转发成功
-  //       console.log("转发属性：", res)
-  //     },
-  //     fail: function(res) {
-  //       // 转发失败
-  //     }
-  //   }
-  }
+  onShareAppMessage: function (options) {
+    let title = '公众号图片批量下载';
+    let path =  'pages/image-download/input/input';
+    return {
+      title: title,
+      path: path,
+      success: function (res) {
+        // 转发成功
+        console.log("转发属性：", res)
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
+  },
 })
