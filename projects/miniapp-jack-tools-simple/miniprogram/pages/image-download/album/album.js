@@ -21,6 +21,7 @@ Page({
     progressPercent: 0,
     toptips: '',
     toptipsTpye: 'error',
+    authSettingAdded: false,
     layouImages: {
       top: '/assets/icon/top.png',
       select: '/assets/icon/select.png',
@@ -121,14 +122,45 @@ Page({
       success (res) {
         if (res.authSetting['scope.writePhotosAlbum']) {
           OnAuthedFunc();
+        } else if (that.data.authSettingAdded) {
+          that.openAuthSetting(OnAuthedFunc);
         } else {
-          that.openAlbumAuth(OnAuthedFunc);
+          that.doAuthorize(OnAuthedFunc);
         }
       }
     })
   },
 
-  openAlbumAuth: function(OnAuthedFunc) {
+  doAuthorize: function(OnAuthedFunc) {
+    var that = this;
+    wx.showModal({
+      content: '未授权“添加到相册”，去打开？',
+      success: function(res) {
+        if (res.confirm) {
+          wx.authorize({
+            scope: 'scope.writePhotosAlbum',
+            success () {
+              OnAuthedFunc();
+            },
+            fail (err) {
+              console.log(err.errMsg)
+              wx.showToast({
+                title: '未授权，无法保存图片',
+                icon: 'error',
+                duration: 2000
+              });
+            },
+            complete () {
+              that.setData({
+                authSettingAdded: true,
+              })
+            }
+          })
+        }
+      }
+    })
+  },
+  openAuthSetting: function(OnAuthedFunc) {
     wx.showModal({
       content: '未授权“添加到相册”，去打开？',
       success: function(res) {
@@ -141,16 +173,24 @@ Page({
                 success: function(res) {
                   if (res.authSetting['scope.writePhotosAlbum']) {
                     OnAuthedFunc();
+                  } else {
+                    wx.showToast({
+                      title: '未授权，无法保存图片',
+                      icon: 'error',
+                      duration: 2000
+                    })
                   }
                 }
               })
-            }
+            },
+            fail: function (err) {
+              console.log(err.errMsg);
+            },
           })
         }
       }
     })
   },
-
   // 阻止滚动穿透
   stopScrollEvent: function() {
     // stop user scroll it!
