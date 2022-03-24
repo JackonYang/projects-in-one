@@ -5,25 +5,32 @@ Component({
    */
   properties: {
     heroInfo: Object,
-    // heroName: String,
-    // heroPosition: String,
-    // heroSkill0: String,
-    // heroSkill1: String,
-    // heroSkill2: String,
-    // heroPointAdd: String,
   },
 
   /**
    * Component initial data
    */
   data: {
-
+    keyNames: {
+      'skill1': '技能一',
+      'skill2': '技能二',
+    }
   },
 
   /**
    * Component methods
    */
   methods: {
+    tapSkill: function(e) {
+      var that = this;
+      let key = e.currentTarget.dataset.key;
+      let keyName = that.data.keyNames[key];
 
+      wx.showModal({
+        title: keyName,
+        content: that.properties.heroInfo[key],
+      })
+
+    },
   }
 })
