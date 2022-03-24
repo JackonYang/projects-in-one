@@ -1,2 +1,22 @@
 <!--pages/sanguo/heroTeams/heroTeams.wxml-->
-<text>pages/sanguo/heroTeams/heroTeams.wxml</text>
+<view>
+  <view class="hero-subtable">
+    <view class="table-head"> S1 赛季 </view>
+    <view class="table-teams">
+
+      <view class="hero-team" wx:for="{{ teamsData }}" wx:key="index">
+
+        <view class="hero-team-head">
+          <view class="hero-team-name"> {{ item.team_name }} </view>
+          <view class="hero-team-meta"> {{ item.team_score }} </view>
+        </view>
+
+        <view class="team-hero-list">
+          <hero-brief-box heroInfo="{{ item }}" wx:for="{{ item.heros }}" wx:key="index"></hero-brief-box>
+        </view>
+        <view class="hero-team-comment"> 点评: {{ item.notes }} </view>
+      </view>
+    </view>
+
+  </view>
+</view>

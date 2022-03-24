@@ -1,1 +1,54 @@
-/* pages/sanguo/heroTeams/heroTeams.wxss */
+.hero-subtable {
+  width: 100%;
+  padding: 0 40rpx;
+  padding-bottom: 10rpx;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.table-head {
+  font-weight: bolder;
+  font-size: larger;
+  color:violet;
+}
+
+.hero-team-head {
+  background-color:yellowgreen;
+  width: 100%;
+  padding: 0 20rpx;
+  padding-bottom: 10rpx;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.team-hero-list {
+  width: 100%;
+  /* padding: 0 40rpx; */
+  padding-bottom: 10rpx;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.hero-team-name {
+  width: 66%;
+  overflow: hidden;
+  float: left;
+  position: relative;
+}
+
+.hero-team-meta {
+  width: 33.33%;
+  overflow: hidden;
+  float: right;
+  position: relative;
+}
+
+.hero-team-comment {
+  width: 100%;
+  /* padding: 0 40rpx; */
+  color: #6c757d;
+  padding-bottom: 10rpx;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-size: smaller;
+}

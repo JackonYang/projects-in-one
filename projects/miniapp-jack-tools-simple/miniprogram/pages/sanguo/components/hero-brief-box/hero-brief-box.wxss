@@ -1,0 +1,35 @@
+.team-hero-item {
+  width: 33.33%;
+  height: 206rpx;
+  box-sizing: border-box;
+  padding: 3rpx;
+  overflow: hidden;
+  float: left;
+  position: relative;
+  border: 1px solid #dbdbdb;
+}
+
+.team-hero-info {
+  border-bottom: 1px solid #dbdbdb;  
+  border-top:0px;
+  border-left:0px;
+  border-right:0px;
+  padding-left: 6rpx;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.team-hero-name {
+  color:sandybrown;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.team-hero-pos {
+  font-size: smaller;
+  text-align: center;
+}
+
+.team-hero-skill {
+  /* font-size: small; */
+}
