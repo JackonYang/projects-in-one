@@ -5,6 +5,7 @@ Component({
    */
   properties: {
     heroInfo: Object,
+    orderIndex: Number,
   },
 
   /**

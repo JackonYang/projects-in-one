@@ -1,4 +1,4 @@
-<view class="team-hero-item">
+<view class="team-hero-item order{{orderIndex}}">
   <view class="team-hero-info team-hero-pos"> {{ heroInfo.team_pos }} </view>
   <view class="team-hero-info team-hero-name"> {{ heroInfo.name }} </view>
   <view class="team-hero-info team-hero-skill" data-key="skill1" bindtap="tapSkill"> {{ heroInfo.skill1 }} </view>

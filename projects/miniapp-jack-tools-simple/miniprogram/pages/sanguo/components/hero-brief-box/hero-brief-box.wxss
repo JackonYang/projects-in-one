@@ -1,12 +1,17 @@
 .team-hero-item {
   width: 33.33%;
-  height: 206rpx;
+  /* height: 206rpx; */
   box-sizing: border-box;
-  padding: 3rpx;
+  /* padding: 3rpx; */
   overflow: hidden;
+  white-space: nowrap;
   float: left;
   position: relative;
-  border: 1px solid #dbdbdb;
+  border-right: 1px solid #dbdbdb;
+}
+
+.team-hero-item .order0 {
+  border-left: 1px solid #dbdbdb;
 }
 
 .team-hero-info {

@@ -12,7 +12,7 @@
         </view>
 
         <view class="team-hero-list">
-          <hero-brief-box heroInfo="{{ item }}" wx:for="{{ item.heros }}" wx:key="index"></hero-brief-box>
+          <hero-brief-box heroInfo="{{ item }}" orderIndex="{{ index }}" wx:for="{{ item.heros }}" wx:key="index"></hero-brief-box>
         </view>
         <view class="hero-team-comment"> 点评: {{ item.notes }} </view>
       </view>
