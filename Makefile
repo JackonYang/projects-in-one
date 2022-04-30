@@ -9,6 +9,9 @@ update-private-data:
 	bash scripts/private-data/update-private-data.sh
 
 setup-all:
+	git submodule update --init --recursive
+	make setup-private-data | true
+	make update-private-data
 	find . -name requirements.txt | xargs -I{} pip3 install -r {}
 
 test-all:
