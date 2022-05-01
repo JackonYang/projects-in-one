@@ -19,3 +19,6 @@
 [submodule "third-party/heaptrack"]
 	path = third-party/heaptrack
 	url = git@github.com:KDE/heaptrack.git
+[submodule "third-party/FlameGraph"]
+	path = third-party/FlameGraph
+	url = git@github.com:brendangregg/FlameGraph.git
