@@ -1,14 +1,16 @@
 # 笔记 markdown 们
 
-
 ## 方法论更新的记录
 
 倒叙排列
 
+### 2022.05 obsidian 用于 paper reading 的流程改善
+
+1. 解决了 link 在 GitHub 上无法跳转的问题。修改 obsidian 配置即可。用 markdown link & use relative format
+
 ### 2022.04 obsidian 工具 & HPC 笔记
 
-
-出发点，在 https://github.com/JackonYang/paper-reading 里面，适合放 HPC 的笔记
+出发点，在 <https://github.com/JackonYang/paper-reading> 里面，适合放 HPC 的笔记
 
 存在的问题：
 
