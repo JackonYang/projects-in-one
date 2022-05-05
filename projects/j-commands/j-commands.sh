@@ -1,4 +1,5 @@
-script_path=`readlink -f ~/.j-commands.sh`
+script_path=`readlink ~/.j-commands.sh`
+
 project_dir=`dirname $script_path`
 
 function j () {
