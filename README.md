@@ -8,7 +8,7 @@
 | [writer-infra-2021](projects/writer-infra-2021/) | website | 根据模版，帮助用户自动写文章，自动发布文章。[主要页面的截图预览](versions-preview/writer-infra-2021/) |
 | [article_generator](projects/article_generator/) | framework | 用于快速开发一套每天自动写文章的系统 |
 | [wechat_mp_driver](projects/wechat_mp_driver/) | SDK | 更易用的微信公众号 API |
-
+| [evernote2](projects/evernote2/) | SDK | A simple, yet elegant EverNote SDK. 并提供了一键导出 Evernote 所有笔记的命令行工具 |
 
 # Notes
 

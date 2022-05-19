@@ -22,3 +22,6 @@
 [submodule "third-party/FlameGraph"]
 	path = third-party/FlameGraph
 	url = git@github.com:brendangregg/FlameGraph.git
+[submodule "projects/evernote2"]
+	path = projects/evernote2
+	url = git@github.com:JackonYang/evernote2.git
