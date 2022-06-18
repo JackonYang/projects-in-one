@@ -25,3 +25,6 @@
 [submodule "projects/evernote2"]
 	path = projects/evernote2
 	url = git@github.com:JackonYang/evernote2.git
+[submodule "projects/iTableOcr"]
+	path = projects/iTableOcr
+	url = git@github.com:JackonYang/iTableOcr.git
