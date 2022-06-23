@@ -8,6 +8,10 @@ setup-private-data:
 update-private-data:
 	bash scripts/private-data/update-private-data.sh
 
+update:
+	git pull
+	git submodule update --init --recursive
+
 setup-all:
 	git submodule update --init --recursive
 	make setup-private-data | true
@@ -22,5 +26,6 @@ flake8:
 	flake8 .
 
 
+.PHONY: update
 .PHONY: setup-all test-all flake8
 .PHONY: setup-private-data update-private-data
