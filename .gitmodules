@@ -28,3 +28,6 @@
 [submodule "projects/iTableOcr"]
 	path = projects/iTableOcr
 	url = git@github.com:JackonYang/iTableOcr.git
+[submodule "projects/yspace"]
+	path = projects/yspace
+	url = git@github.com:JackonYang/yspace.git
