@@ -28,3 +28,6 @@
 [submodule "projects/jspace"]
 	path = projects/jspace
 	url = git@github.com:JackonYang/jspace.git
+[submodule "projects/dockerfiles"]
+	path = projects/dockerfiles
+	url = git@github.com:JackonYang/dockerfiles.git
