@@ -1,0 +1,22 @@
+torch==1.9.1
+
+tf2onnx
+onnx
+onnxruntime
+
+numpy
+pandas
+scipy
+scikit-image
+graphviz
+
+minio
+psutil
+pyyaml
+h5py
+
+# code check
+flake8
+pytest>=3
+pytest-xdist
+pytest-cov
