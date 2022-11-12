@@ -31,3 +31,6 @@
 [submodule "projects/dockerfiles"]
 	path = projects/dockerfiles
 	url = git@github.com:JackonYang/dockerfiles.git
+[submodule "tinyxx/rust-based-os-comp2022"]
+	path = tinyxx/rust-based-os-comp2022
+	url = git@github.com:JackonYang/rust-based-os-comp2022.git
