@@ -15,6 +15,8 @@ psutil
 pyyaml
 h5py
 
+jinja2
+
 # code check
 flake8
 pytest>=3
