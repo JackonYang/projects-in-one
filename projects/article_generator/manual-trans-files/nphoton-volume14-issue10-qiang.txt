@@ -1,0 +1,87 @@
+https://www.nature.com/articles/s41566-020-0675-0
+
+Generalized Kramers–Kronig receiver for coherent terahertz communications
+
+Modern communication systems rely on efficient quadrature amplitude modulation formats that encode information on both the amplitude and phase of an electromagnetic carrier. Coherent detection of such signals typically requires complex receivers that contain a continuous-wave local oscillator as a phase reference and a mixer circuit for spectral down-conversion. In optical communications, the so-called Kramers–Kronig scheme has been demonstrated to simplify the receiver, reducing the hardware to a single photodiode. In this approach, a local-oscillator tone is transmitted along with the signal, and the amplitude and phase of the complex signal envelope are digitally reconstructed from the photocurrent by exploiting their Kramers–Kronig-type relation. Here, we transfer the Kramers–Kronig scheme to high-speed wireless communications at terahertz carrier frequencies. To this end, we generalize the approach to account for non-quadratic receiver characteristics and employ a Schottky-barrier diode as a nonlinear receiver element. Using 16-state quadrature amplitude modulation, we transmit a net data rate of 115 Gbit s−1 at a carrier frequency of 0.3 THz over a distance of 110 m.
+
+用于相干太赫兹通信的广义 Kramers–Kronig 接收机
+
+现代通信系统依赖于有效的正交幅度调制，对电磁载波的幅度和相位上的信息进行编码。这种信号的相干检测通常需要复杂的接收机，该接收机包含一个连续波本机振荡器作为相位参考，以及一个用于频谱下变频的混频器电路。在光通信中，已经证明了Kramers-Kronig方案可简化接收器，将硬件缩减为单个光电二极管。在这种方法中，本地振荡器音随信号一起传输，并利用 Kramers-Kronig 关系从光电流中数字重建复信号的幅度和相位。在这里，我们将 Kramers-Kronig 方案转移到太赫兹载波频率的高速无线通信中。为此，我们推广了解决非二次接收器特性的方法，并采用了肖特基势垒二极管作为非线性接收器元件。使用16状态正交幅度调制，我们在110 m的距离上以0.3 THz的载波频率发送115 Gbit s<sup>-1</sup> 的净数据速率。
+
+------------
+https://www.nature.com/articles/s41566-020-0666-1
+
+Extreme ionization of heavy atoms in solid-density plasmas by relativistic second-harmonic laser pulses
+
+Stripping heavy atoms in solid matter of most of their electrons requires the extreme conditions that exist in astrophysical plasmas, but are difficult to create in the laboratory. Here we demonstrate solid-density gold plasmas with atoms stripped of up to 72 electrons (N-like Au72+) over large target depths. This record ionization is achieved by irradiating solid foils and near-solid-density nanowire arrays with highly relativistic (3 × 1021 W cm−2) second-harmonic femtosecond laser pulses of <10 J energy focused into a 1.6 µm spot. The short wavelength and high intensity enable the interaction to occur at a relativistic critical density4,5 of 1023 cm−3. Solid targets reach a higher average charge in 1- to 2-µm-thick layers, while the less dense nanowire plasmas are heated to much larger depths (>8 µm) by energetic electrons generated near the nanowire tips. Larger laser spots could result in solid Au plasmas ionized up to He-like.
+
+基于相对论二次谐波激光脉冲的固体密度等离子体中重原子极端电离
+
+在固体中剥离重原子的大多数电子，需要存在天体等离子体中的极端条件，很难在实验室中产生。 在这里，我们展示了在目标深度上具有高达72个电子（N型Au<sup>72 +</sup>）被剥离的金等离子体。 我们将高相对论（3 × 10<sup>21</sup> W cm<sup>−2</sup>）、能量小于10 J的二次谐波（3×10<sup>21</sup> W cm<sup>−2</sup>）飞秒激光脉冲汇聚到1.6 µm的光斑，并照射到固体箔和接近固体密度的纳米线阵列，实现了里程碑式的电离效果。 短波长和高强度使相互作用能够达到相对论临界密度10<sup>23</sup> cm<sup>-3</sup>。 固体靶材在1至2 µm厚的层中达到较高的平均电荷，而密度较小的纳米线等离子体则通过在纳米线尖端附近产生的高能电子被加热到更大的深度（> 8 µm）。 较大的激光斑点可能会导致固态的Au等离子体离子化为He型。
+
+------------
+
+https://www.nature.com/articles/s41566-020-0678-x
+
+Perovskite-filled membranes for flexible and large-area direct-conversion X-ray detector arrays
+
+The soft nature of metal halide perovskites makes them potentially applicable as flexible X-ray detectors. Here we report a structure of perovskite-filled membranes (PFMs) for highly sensitive, flexible and large-area X-ray detectors. PFMs with areas up to 400 cm2 are formed by infiltrating saturated perovskite solution through porous polymer membranes followed by hot lamination. The good connectivity and crystallization of perovskite crystals in the membranes enable a large mobility–lifetime product. The sensitivity of the X-ray detectors under a field of 0.05 V µm−1 reaches 8,696 ± 228 µC Gyair−1 cm−2 and shows no degradation after storage for over six months and exposure to a dose of 376.8 Gyair, equivalent to 1.88 million chest X-ray scans. The flexible PFMs can be bent at radii down to 2 mm without losing performance. The stand-alone detector array is curved and put inside metal pipes for the detection of material defects with imaging quality superior to flat-panel detectors.
+
+用于柔性和大面积X射线探测器阵列的钙钛矿填充膜
+
+金属卤化物钙钛矿的柔软特性使其在柔性X射线探测器领域有潜在的应用。这里，我们报道了用于高度灵敏、大面积X射线探测器的钙钛矿填充膜（PFM）的结构。通过将饱和钙钛矿溶液渗透通过多孔聚合物膜，然后进行热层压，可形成面积高达400 cm<sup>2</sup>的PFM。钙钛矿晶体在膜中的良好连通性和结晶性使产品具有较大的移动性和使用寿命。 X射线探测器在0.05 V μm<sup>-1</sup>条件下的灵敏度达到8,696±228 C Gy<sub>air</sub><sup>-1</sup> cm<sup>-2</sup>，并且在储存六个月以上并暴露于376.8 Gy<sub>air</sub>的剂量后（相当于1.88万次胸部X线扫描），性能没有明显降低。灵活的PFM可以在不降低性能的情况下弯曲至2 mm的半径。用于检测材料缺陷的独立检测器阵列是弯曲的，并放置在金属管内，其成像质量优于平板检测器。
+
+------------
+https://www.nature.com/articles/s41566-020-0660-7
+
+Broadband coherent diffractive imaging
+
+Recent technological advances in attosecond science hold the promise of tracking electronic processes at the shortest space and time scales. However, the necessary imaging methods combining attosecond temporal resolution with nanometre spatial resolution are currently lacking. Regular coherent diffractive imaging, based on the diffraction of quasi-monochromatic illumination by a sample, is inherently incompatible with the extremely broad nature of attosecond spectra. Here, we present an approach that enables coherent diffractive imaging using broadband illumination. The method is based on a numerical monochromatization of the broadband diffraction pattern by the regularized inversion of a matrix that depends only on the spectrum of the diffracted radiation. Experimental validations using visible and hard X-ray radiation show the applicability of the method. Because of its generality and ease of implementation we expect this method to find widespread applications such as in petahertz electronics or attosecond nanomagnetism.
+
+宽带相干衍射成像
+
+阿秒领域的最新技术进展有望在最短的时空范围内跟踪电子过程。然而，目前缺乏将亚秒级时间分辨率与纳米空间分辨率相结合的成像方法。基于样品的准单色照明的衍射，常规相干衍射成像与阿秒光谱的宽谱性质不兼容。这里，我们提出了一种使用宽带照明实现相干衍射成像的方法。该方法基于通过仅依赖于衍射辐射的光谱的矩阵的规则反演来对宽带衍射图进行数值单色化。可见光和硬X射线辐射的实验表明了该方法的可行性。由于它的通用性和易实施性，我们希望这种方法能够找到广泛的应用，如应用于太赫兹电子学或亚秒级纳米磁性。
+
+
+------------
+https://www.nature.com/articles/s41566-020-0658-1
+
+Generating optical vortex beams by momentum-space polarization vortices centred at bound states in the continuum
+
+Optical vortices, beams with spiral wavefronts and screw phase dislocations, have been attracting increasing interest in various fields. Here, we theoretically propose and experimentally realize an easy approach to generating optical vortices. We leverage the inherent momentum-space topological vortex-like response of polarization (strong polarization anisotropy) around bound states in the continuum of two-dimensional periodic structures, for example photonic crystal slabs, to induce Pancharatnam–Berry phases and spin–orbit interaction in the beams. This new class of optical vortex generators operates in momentum space, meaning that the structure is almost homogeneous without a real-space centre. In principle, any even-order optical vortex that is a diffraction-resistant high-order quasi-Bessel beam can be achieved at any desired working wavelength. The proposed approach expands the application of bound states in the continuum and topological photonics.
+
+通过连续体中的束缚态为中心的动量空间偏振涡旋产生光学涡旋光束
+
+光学涡旋，其具有螺旋波阵面的光束和螺旋相错位，已经在各个领域引起了越来越多的兴趣。 这里，我们在理论上提出并通过实验实现了一种简便的方法来产生光学涡旋。 我们利用二维周期结构（例如光子晶体平板）连续体中束缚态周围固有的动量-空间拓扑涡旋状极化（强极化各向异性）响应来诱发Pancharatnam–Berry相和自旋轨道相互作用。 这种新型的光学涡旋发生器在动量空间中工作，这意味着其结构几乎是均匀的，没有真实的空间中心。 原则上，可以在任何所需的工作波长下实现耐衍射、高阶准贝塞尔光束的任何偶数光学涡旋。这种方法方法扩展了束缚态在连续光子学和拓扑光子学中的应用。
+
+------------
+https://www.nature.com/articles/s41566-020-0659-0
+
+Sub-cycle millijoule-level parametric waveform synthesizer for attosecond science
+
+The availability of high-energy pulses with durations shorter than the period of their carrier frequency (sub-cycle) will reveal new regimes of strong-field light–matter interactions. Parametric waveform synthesis (that is, the coherent combination of carrier-envelope-phase-stable pulses that emerge from different optical parametric amplifiers) is a promising technology for the realization of tailored optical waveforms with scalable spectral bandwidth, energy and average power. Here we use parametric waveform synthesis to generate phase-controlled sub-cycle waveforms at the millijoule energy level with excellent stability. Full control over the synthesized waveforms (currently spanning 1.7 octaves with full-width at half-maximum durations down to 2.8 fs, that is, 0.6 optical cycles at a central wavelength of 1.4 μm) enables the creation of extreme ultraviolet isolated attosecond pulses via high-harmonic generation without the need for additional gating techniques. The synthesized electric field is directly measured by attosecond-resolution sampling, which also showcases the waveform stability.
+
+用于阿秒科学的亚周期毫焦级参量波形合成器
+
+持续时间短于其载波频率（亚周期）周期的高能量脉冲的可用性将揭示强场光与物质相互作用的新机制。参量波形合成（即，来自不同光学参量放大器的载波-包络-相位稳定脉冲的相干组合）是一种实现具有可扩展光谱带宽、能量和平均功率的定制光学波形的有前途的技术。这里，我们使用参量波形合成来生成具有出色稳定性的毫焦耳能级的相位控制子周期波形。完全控制合成波形（当前跨度为1.7个八度，半衰期为2.8µfs时的全宽度，即在1.4μm的中心波长下有0.6个光学循环）可以产生极紫外隔离的阿秒脉冲-谐波，且无需其他选通技术。通过阿秒分辨率采样可直接测量合成电场，这也显示了波形的稳定性。
+
+------------
+https://www.nature.com/articles/s41566-020-0668-z
+
+Fast spin-flip enables efficient and stable organic electroluminescence from charge-transfer states
+
+A spin-flip from a triplet to a singlet excited state, that is, reverse intersystem crossing (RISC), is an attractive route for improving light emission in organic light-emitting diodes, as shown by devices using thermally activated delayed fluorescence (TADF). However, device stability and efficiency roll-off remain challenging issues that originate from a slow RISC rate (kRISC). Here, we report a TADF molecule with multiple donor units that form charge-resonance-type hybrid triplet states leading to a small singlet–triplet energy splitting, large spin–orbit couplings, and a dense manifold of triplet states energetically close to the singlets. The kRISC in our TADF molecule is as fast as 1.5 × 107 s−1, a value some two orders of magnitude higher than typical TADF emitters. Organic light-emitting diodes based on this molecule exhibit good stability (estimated T90 about 600 h for 1,000 cd m−2), high maximum external quantum efficiency (>29.3%) and low efficiency roll-off (<2.3% at 1,000 cd m−2).
+
+快速自旋翻转可从电荷转移状态实现高效稳定的有机电致发光
+
+从三重态到单重激发态的自旋翻转，即反向系统间交叉（RISC），是改善有机发光二极管发光的诱人途径，如使用热激活延迟荧光（TADF）的设备。但是，由于RISC速率慢（k<sub>RISC</sub>），设备的稳定性和效率下降仍然是具有挑战性的问题。这里，我们报道了一种具有多个供体单元的TADF分子，这些供体单元形成了电荷共振型混合三重态，导致了单重态-三重态能量分裂、大的自旋-轨道耦合以及一个紧密靠近单重态的密集的三重态。我们的TADF分子中的k<sub>RISC</sub>快至1.5×10<sup>7</sup> s<sup>-1</sup>，这个值比典型的TADF发射体高两个量级。基于该分子的有机发光二极管表现出良好的稳定性（在1,000 cd m<sup>-2</sup>条件下，T<sub>90</sub>估计约为600 h）、最大外部量子效率高（> 29.3％）和低效率滚降（在1,000 cd m<sup>-2</sup>时，小于2.3％）。
+------------
+https://www.nature.com/articles/s41566-020-0667-0
+
+Organic light emitters exhibiting very fast reverse intersystem crossing
+
+Reverse intersystem crossing (RISC), originally considered forbidden in purely organic materials, has recently become possible by minimizing the energy gap between the lowest excited singlet state (S1) and lowest triplet state (T1) in thermally activated delayed fluorescence systems. However, direct spin-inversion from T1 to S1 is still inefficient when both states are of the same charge transfer (CT) nature (that is, 3CT and 1CT, respectively). Intervention of locally excited triplet states (3LE) between 3CT and 1CT is expected to trigger fast spin-flipping. Here, we report the systematic design of ideal thermally activated delayed fluorescence molecules with near-degenerate 1CT, 3CT and 3LE states by controlling the distance between the donor and acceptor segments in a molecule with tilted intersegment angles. This system realizes very fast RISC with a rate constant (kRISC) of 1.2 × 107 s−1, resulting in organic light-emitting diodes with excellent performance, particularly at high brightness.
+
+有机发光体表现出非常快的反向系统间交叉
+
+反向系统间交叉（RISC），在纯有机材料中最初被认为是禁止的，最近已通过最小化热激活延迟荧光系统中最低激发单重态（S<sub>1</sub>）和最低三重态（T<sub>1</sub>）之间的能隙成为可能。但是，当两个状态具有相同的电荷转移（CT）性质（分别为<sup>3</sup>CT和<sup>1</sup>CT）时，从T<sub>1</sub>到S<sub>1</sub>的直接自旋反转仍然无效。预期在<sup>3</sup>CT和<sup>1</sup>CT之间干预局部激发三重态（<sup>3</sup>LE）会触发快速自旋翻转。这里，我们通过控制倾斜的节间角分子中供体和受体片段的距离，报道了具有近简并的<sup>1</sup>CT，<sup>3</sup>CT和<sup>3</sup>LE状态的理想热活化延迟荧光分子的系统设计。该系统以1.2×10<sup>7</sup> s<sup>-1</sup>的速率常数（k<sub>RISC</sub>）实现了非常快的RISC，从而使有机发光二极管具有出色的性能，尤其是在高亮度下。

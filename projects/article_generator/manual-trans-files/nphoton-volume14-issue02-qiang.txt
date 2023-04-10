@@ -1,0 +1,110 @@
+https://doi.org/10.1038/s41566-019-0545-9
+
+Triplet management for efficient perovskite light-emitting diodes
+
+Perovskite light-emitting diodes are promising for next-generation lighting and displays because of their high colour purity and performance. Although the management of singlet and triplet excitons is fundamental to the design of efficient organic light-emitting diodes, the nature of how excitons affect performance is still not clear in perovskite and quasi-two-dimensional (2D) perovskite-based devices. Here, we show that triplet excitons are key to efficient emission in green quasi-2D perovskite devices and that quenching of triplets by the organic cation is a major loss path. Employing an organic cation with a high triplet energy level (phenylethylammonium) in a quasi-2D perovskite based on formamidinium lead bromide yields efficient harvesting of triplets. Furthermore, we show that upconversion of triplets to singlets can occur, making 100% harvesting of electrically generated excitons potentially possible. The external quantum and current efficiencies of our green (527 nm) devices reached 12.4% and 52.1 cd A<sup>−1</sup>, respectively.
+
+三重态管理实现高效钙钛矿发光二极管
+
+钙钛矿发光二极管具有高色纯度和高性能，有望用于下一代照明和显示。尽管单态和三重态激子管理对于高效有机发光二极管的设计至关重要，但是在钙钛矿和基于准二维（2D）钙钛矿器件中，激子对性能影响的本质尚不清楚。本文结果表明三重态激子是绿色准二维钙钛矿器件有效辐射的关键，有机阳离子导致的三重态猝灭是主要的损耗途径。在基于溴化铅甲脒的准二维钙钛矿中使用具有高三重态能级的有机阳离子（苯乙基铵），可获得高效的三重态捕获。此外，我们发现三重态可以上转换至单重态，可能实现电致激子的100％捕获效率。我们的绿光（527 nm）器件外量子效率和电流效率分别实现12.4％和 52.1 cd A<sup>−1</sup>。
+
+------------
+
+https://doi.org/10.1038/s41566-019-0562-8
+
+Synthesizing multi-dimensional excitation dynamics and localization transition in one-dimensional lattices
+
+The excitation dynamics in complex networks can describe the fundamental aspects of transport and localization across multiple fields of science, ranging from solid-state physics and photonics to biological signalling pathways and neuromorphic circuits. Although the effects of increasing network dimensionality are highly non-trivial, their implementation likewise becomes ever more challenging due to the exponentially growing numbers of sites and connections. To address these challenges, we formulate a universal approach for mapping arbitrary networks to synthesized one-dimensional lattices with strictly local inhomogeneous couplings, where the dynamics at the excited site is exactly replicated. We present direct experimental observations in judiciously designed planar photonic structures, showcasing non-monotonic excitation decays associated with up to seven-dimensional hypercubic lattices, and demonstrate a novel sharp localization transition specific to four and higher dimensions. The unprecedented capability of experimentally exploring multi-dimensional dynamics and harnessing their unique features in one-dimensional lattices can find multiple applications in diverse physical systems, including photonic integrated circuits.
+
+在一维晶格中合成多维激发动力学和局域跃迁
+
+复杂网络中的激发动力学可以描述多个科学领域的跃迁和局域跃迁基本原理，包括固体物理学、光子学、生物信号通路和神经形态电路。尽管增加网络维度的影响非常重要，但由于站点和连接的数量呈指数级增长，其操作亦越来越具有挑战性。为解决这些问题，我们提出了一种通用方法，用于将任意网络映射到具有严格局部不均匀耦合的合成一维晶格，精确再现了受激节点的动力学。我们在精心设计的平面光子结构中呈现了实验观察结果，展示了与多达七维超立方晶格相关的非单调激发衰变，并展示了特定于四维和更高维的新型尖锐局部跃迁。该实验探索多维动力学及利用其一维晶格独特功能的空前能力，可应用于包括光子集成电路在内的多种物理系统中。
+
+
+------------
+
+
+https://doi.org/10.1038/s41566-019-0538-8
+
+Reversible 3D laser printing of perovskite quantum dots inside a transparent medium
+
+The three-dimensional (3D) patterning of semiconductors is potentially important for exploring new functionalities and applications in optoelectronics. Here, we show that it is possible to write on demand 3D patterns of perovskite quantum dots (QDs) inside a transparent glass material using a femtosecond laser. By utilizing the inherent ionic nature and low formation energy of perovskite, highly luminescent CsPbBr<sub>3</sub> QDs can be reversibly fabricated in situ and decomposed through femtosecond laser irradiation and thermal annealing. This pattern of writing and erasing can be repeated for many cycles, and the luminescent QDs are well protected by the inorganic glass matrix, resulting in stable perovskite QDs with potential applications such as high-capacity optical data storage, information encryption and 3D artwork.
+
+钙钛矿量子点在透明介质中的可逆3D激光打印
+
+半导体三维（3D）图案对探索光电子学中的新功能和应用具有潜在的重要意义。本文演示了飞秒激光在透明玻璃材料内按命令写入钙钛矿量子点（QD）的三维图案。利用钙钛矿的固有离子性质和低形成能，可原位可逆制造高发光 CsPbBr<sub>3</sub> 量子点，并通过飞秒激光照射和退火将其分解。这种写入和擦除模式可多次重复，且无机玻璃基质可以很好地保护发光量子点，从而形成稳定的钙钛矿量子点。该技术在大容量光学数据存储、信息加密和3D图形等领域具有潜在的应用前景。
+
+------------
+
+https://doi.org/10.1038/s41566-019-0561-9
+
+Higher-order topological states in photonic kagome crystals with long-range interactions
+
+Photonic topological insulators enable topological boundary modes that are resilient to defects and disorder, irrespective of manufacturing precision. This property is known as topological protection. Although originally limited to dimensionality of modes one lower than that of topological insulators, the recently discovered higher-order topological insulators (HOTIs) offer topological protection over an extended range of dimensionalities. Here, we introduce a photonic HOTI with kagome lattice that exhibits topological bulk polarization, leading to the emergence of one-dimensional edge states, as well as higher-order zero-dimensional states confined to the corners of the structure. Interestingly, in addition to the corner states due to nearest-neighbour interactions, we discover a new class of topological corner states induced by long-range interactions and specific to photonic systems. Our findings demonstrate that photonic HOTIs possess richer physics than their condensed-matter counterparts, offering opportunities for engineering novel designer electromagnetic states with unique topological robustness.
+
+具有长程相互作用光子kagome晶体中的高阶拓扑态
+
+光子拓扑绝缘体使拓扑边界模式能够抵抗缺陷和无序，且与制造精度无关，此属性称为拓扑保护。尽管最初只限于比拓扑绝缘子低一阶的模态维数，但最近发现的高阶拓扑绝缘子（HOTI）在扩展的维数范围内提供了拓扑保护。这里，我们介绍了一种具有kagome晶格的光子HOTI，它表现出拓扑体极化，从而导致一维边缘态以及局限在结构拐角处的高阶零维态的出现。有趣的是，除了由近邻相互作用产生的转角状态外，我们还发现了由远程相互作用引起的一类新的拓扑转角状态，并且特定于光子系统。我们的发现表明，光子HOTI相比于其凝聚态对应物，具有更丰富的物理特性，从而为具有独特拓扑鲁棒性的电磁状态设计提供了可能性。
+
+------------
+
+https://doi.org/10.1038/s41566-019-0563-7
+
+Raman laser from an optical resonator with a grafted single-molecule monolayer
+
+Raman-based technologies have enabled many ground-breaking scientific discoveries related to surface science, single-molecule chemistry and biology. For example, researchers have identified surface-bound molecules by their Raman vibrational modes and demonstrated polarization-dependent Raman gain. However, a surface-constrained Raman laser has yet to be demonstrated because of the challenges associated with achieving a sufficiently high photon population located at a surface to transition from spontaneous to stimulated Raman scattering. Here, advances in surface chemistry and in integrated photonics are combined to demonstrate lasing based on surface stimulated Raman scattering (SSRS). By creating an oriented, constrained Si–O–Si monolayer on the surface of integrated silica optical microresonators, the requisite conditions for SSRS are achieved with low threshold powers (200 μW). The expected polarization dependence of SSRS due to the orientation of the Si–O–Si bond is observed. Owing to the ordered monolayer, the Raman lasing efficiency is improved from ~5% to over 40%.
+
+基于嫁接单分子层光学谐振腔的拉曼激光器
+
+基于拉曼的技术已获得了许多与表面科学，单分子化学和生物学有关的突破性科学发现。例如，研究人员通过拉曼振动模式识别了表面结合分子，并证明了偏振相关的拉曼增益。然而，表面受约束的拉曼激光尚未实现，原因是难以获得足够高的表面光子布居并从自发拉曼散射转变为受激拉曼散射。本文结合表面化学和集成光子学方面的进展，验证了表面激发拉曼散射激光。通过在集成石英光学微腔表面形成定向、受约束的硅–氧–硅单层，可以以低阈值功率（200μW）达到表面激发拉曼散射的必要条件。观察到由硅–氧–硅键取向引起的表面激发拉曼散射的偏振依赖性，与预期结果一致。有序单层结构可以使拉曼激光发射效率从5％提高到40％以上。
+
+------------
+
+https://doi.org/10.1038/s41566-019-0560-x
+
+
+Orbital angular momentum holography for high-security encryption
+
+Holography has been identified as a vital platform for three-dimensional displays, optical encryption, microscopy and artificial intelligence through different physical dimensions. However, unlike the wavelength and polarization divisions, orbital angular momentum (OAM) of light, despite its helical wavefront being an independent physical dimension, has not been implemented as an information carrier for holography due to the lack of helical mode index selectivity in the Bragg diffraction formula. Here, we demonstrate OAM holography by discovering strong OAM selectivity in the spatial-frequency domain without a theoretical helical mode index limit. As such, OAM holography allows the multiplexing of a wide range of OAM-dependent holographic images with a helical mode index spanning from −50 to 50, leading to a 10 bit OAM-encoded hologram for high-security optical encryption. Our results showing up to 2<sup>10</sup> OAM-dependent distinctive holographic images mark a new path to achieving ultrahigh-capacity holographic information systems harnessing the previously inaccessible OAM division.
+
+
+轨道角动量全息术用于高安全性加密
+
+全息术是通过不同物理尺寸进行三维显示、光学加密、显微镜学和人工智能的重要平台。与光的波长和偏振不同，其轨道角动量螺旋波前是一个独立的物理维度，由于在布拉格衍射方程中缺乏螺旋模指数选择性，因此尚未成为全息术的信息载体。本文通过在空间频域中发现强轨道角动量选择性，且在理论上没有螺旋模指数限制的方式来验证轨道角动量全息。同样地，轨道角动量全息图允许对多种轨道角动量依赖的全息图像进行多路复用，其螺旋模指数范围为-50到50，从而产生10比特的轨道角动量编码全息图，用于高安全性光学加密。结果显示多达2<sup>10</sup>张依赖于轨道角动量的独特全息图像，这标志着利用以前无法访问的轨道角动量分离实现超大容量全息信息系统的新途径。
+
+------------
+
+https://doi.org/10.1038/s41566-019-0536-x
+
+Single-shot quantitative phase gradient microscopy using a system of multifunctional metasurfaces
+
+Quantitative phase imaging (QPI) of transparent samples plays an essential role in multiple biomedical applications, and miniaturizing these systems will enable their adoption into point-of-care and in vivo applications. Here, we propose a compact quantitative phase gradient microscope (QGPM) based on two dielectric metasurface layers, inspired by a classical differential interference contrast (DIC) microscope. Owing to the multifunctionality and compactness of the dielectric metasurfaces, the QPGM simultaneously captures three DIC images to generate a quantitative phase gradient image in a single shot. The volume of the metasurface optical system is on the order of 1 mm<sup>3</sup>. Imaging experiments with various phase resolution samples verify the capability to capture quantitative phase gradient data, with phase gradient sensitivity better than 92.3 mrad μm<sup>−1</sup> and single-cell resolution. The results showcase the potential of metasurfaces for developing miniaturized QPI systems for label-free cellular imaging and point-of-care devices.
+
+
+基于多功能超表面系统的单发定量相位梯度显微镜
+
+透明样品的定量相位成像在多种生物医学应用中起着至关重要的作用，而将这些系统小型化将使其能够实现即时的活体内成像。本文基于经典差分干涉对比显微镜，提出基于双介电超表面层的紧凑型定量相位梯度显微镜。由于介电超表面的多功能性和紧凑性，定量相位梯度显微镜可一次捕获三张差分干涉对比图像，以生成定量的相位梯度图像。超表面光学系统的体积约为1 mm<sup>3</sup>。使用各种相位分辨率样本的成像实验证明了捕获定量相位梯度数据的能力，其相位梯度灵敏度优于 92.3 mrad μm<sup>−1</sup>，具有单细胞分辨能力。结果显示超表面在开发用于无标记细胞成像和即时护理设备的小型定量相位成像系统方面具有很大潜力。
+
+------------
+
+https://doi.org/10.1038/s41566-019-0535-y
+
+Higher-order coherent anti-Stokes Raman scattering microscopy realizes label-free super-resolution vibrational imaging
+
+Coherent Raman scattering (for example, coherent anti-Stokes Raman scattering (CARS) and stimulated Raman scattering) microscopy has emerged as a powerful tool for label-free biomolecular imaging in biological and biomedical systems, but its spatial resolution is diffraction limited. Here, we report a higher-order coherent anti-Stokes Raman scattering (HO-CARS) microscopy to break the diffraction limit for label-free, super-resolution vibrational imaging. The resolution enhancement of HO-CARS microscopy has been analysed and demonstrated in biological samples (for example, live HeLa and buccal cells). The HO-CARS technique provides an inherent high resonant to non-resonant background ratio compared with conventional CARS microscopy. We affirm that under a tight focusing, the HO-CARS signal originating from the higher-order nonlinear process (χ<sup>(5)</sup>, χ<sup>(7)</sup>) dominates over the cascaded lower-order nonlinear process (χ<sup>(3)</sup>), yielding much richer spectroscopic information. This study illustrates that HO-CARS microscopy can be an appealing tool for label-free, super-resolution imaging in biological and biomedical systems with high image contrast.
+
+高阶相干反斯托克斯拉曼散射显微镜实现无标记超分辨率振动成像
+
+相干拉曼散射（例如，相干反斯托克斯拉曼散射（CARS）和受激拉曼散射）显微镜已成为生物和生物医学系统中无标记生物分子成像的有力工具，但其空间分辨率受到衍射的限制。本文报道了一种高阶相干反斯托克斯拉曼散射（HO-CARS）显微镜，打破了无标记、超分辨率振动成像的衍射极限。高阶相干反斯托克斯拉曼散射显微镜的分辨率提高已经在生物样品（例如活海拉细胞和颊细胞）中进行了分析和论证。确认在紧聚焦下，源自高阶非线性过程(χ<sup>(5)</sup>, χ<sup>(7)</sup>) 的高阶相干反斯托克斯拉曼散射信号在级联的低阶非线性过程 (χ<sup>(3)</sup>)中占主导地位，从而产生了更丰富的光谱信息。这项研究表明，高阶相干反斯托克斯拉曼散射显微镜可以成为生物学和生物医学系统中具有高图像对比度、无标记、超分辨率成像的利器。
+
+------------
+
+https://doi.org/10.1038/s41566-019-0546-8
+
+Photodoping through local charge carrier accumulation in alloyed hybrid perovskites for highly efficient luminescence
+
+Metal halide perovskites have emerged as exceptional semiconductors for optoelectronic applications. Substitution of the monovalent cations has advanced luminescence yields and device efficiencies. Here, we control the cation alloying to enhance optoelectronic performance through alteration of the charge carrier dynamics in mixed-halide perovskites. In contrast to single-halide perovskites, we find high luminescence yields for photoexcited carrier densities far below solar illumination conditions. Using time-resolved spectroscopy we show that the charge carrier recombination regime changes from second to first order within the first tens of nanoseconds after excitation. Supported by microscale mapping of the optical bandgap, electrically gated transport measurements and first-principles calculations, we demonstrate that spatially varying energetic disorder in the electronic states causes local charge accumulation, creating p- and n-type photodoped regions, which unearths a strategy for efficient light emission at low charge-injection in solar cells and light-emitting diodes.
+
+通过合金混合钙钛矿中局部电荷载流子积聚进行光掺杂实现高效发光
+
+金属卤化物钙钛矿已经成为光电子应用中的优异半导体，将其用于取代单价阳离子可以提高发光量和器件效率。本文通过控制阳离子合金化，改变混合卤化物钙钛矿中的载流子动力学来增强光电性能。与单卤化物钙钛矿相反，我们发现光激发载流子密度的发光量远低于太阳光照条件。使用时间分辨光谱，展示了在激发后的几十纳秒内，电荷载流子的复合形式从二阶变为一阶。通过光学带隙的微尺度映射、门输运测量和第一性原理计算，证明了电子态中空间变化的高能紊乱会引起局部电荷积累，从而形成P型和n型光掺杂区域，从而揭示了在太阳能电池和发光二极管中以低电荷注入实现高效发光的新方法。

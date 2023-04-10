@@ -1,0 +1,104 @@
+https://www.nature.com/articles/s41566-019-0532-1
+
+Integrated photonic quantum technologies
+
+Quantum technologies comprise an emerging class of devices capable of controlling superposition and entanglement of quantum states of light or matter, to realize fundamental performance advantages over ordinary classical machines. The technology of integrated quantum photonics has enabled the generation, processing and detection of quantum states of light at a steadily increasing scale and level of complexity, progressing from few-component circuitry occupying centimetre-scale footprints and operating on two photons, to programmable devices approaching 1,000 components occupying millimetre-scale footprints with integrated generation of multiphoton states. This Review summarizes the advances in integrated photonic quantum technologies and its demonstrated applications, including quantum communications, simulations of quantum chemical and physical systems, sampling algorithms, and linear-optic quantum information processing.
+
+集成光量子技术
+
+量子技术由一种新型的能够控制光或物质的量子态叠加和纠缠的器件组成，具有比常规经典器件更好的基本特性。集成量子光子技术已经能够产生、处理和探测稳态增加范围和复杂情况下的光量子态，并实现从几个器件电路占厘米级尺寸仅运行两个光子到可编程电路实现1000个器件占厘米尺寸处理多个光子。本综述总结了集成光量子技术的最新进展及应用，包括量子通信，量子化学物理系统模拟，取样计算和线性光量子信息处理。
+
+------------
+
+https://www.nature.com/articles/s41566-020-0609-x
+
+Hybrid integrated quantum photonic circuits
+
+Recent developments in chip-based photonic quantum circuits have radically impacted quantum information processing. However, it is challenging for monolithic photonic platforms to meet the stringent demands of most quantum applications. Hybrid platforms combining different photonic technologies in a single functional unit have great potential to overcome the limitations of monolithic photonic circuits. Our Review summarizes the progress of hybrid quantum photonics integration, discusses important design considerations, including optical connectivity and operation conditions, and highlights several successful realizations of key physical resources for building a quantum teleporter. We conclude by discussing the roadmap for realizing future advanced large-scale hybrid devices, beyond the solid-state platform, which hold great potential for quantum information applications.
+
+混合集成量子光子电路
+
+最近，芯片集成光量子电路的发展对量子信息处理产生了极大的影响，然而，大部分量子应用中，其严格要求对单片光子平台产生了极大的挑战，集合不同光子技术于单一功能单元的混合平台对克服单光子电路性能极限具有极大的潜力。该综述总结了混合光量子集成的最新进展，讨论了重要的设计方案，包含光学连接和运行条件，并突出介绍了几种用于制作量子传送器的关键物理源。我们通过讨论实现未来大规模混合器件的发展蓝图，对全文进行了总结，该蓝图超越了固体平台，在未来的量子信息应用中具有巨大潜力。
+
+
+------------
+
+
+https://www.nature.com/articles/s41566-019-0573-5
+
+High-efficiency organic solar cells with low non-radiative recombination loss and low energetic disorder
+
+Energy loss within organic solar cells (OSCs) is undesirable as it reduces cell efficiency. In particular, non-radiative recombination loss and energetic disorder, which are closely related to the tail states below the band edge and the overall photon energy loss, need to be minimized to improve cell performance. Here, we report how the use of a small-molecule acceptor with torsion-free molecular conformation can achieve a very low degree of energetic disorder and mitigate energy loss in OSCs. The resulting single-junction OSC has an energy loss due to non-radiative recombination of just 0.17 eV and a high power conversion efficiency of up to 16.54% (certified as 15.89% by the National Renewable Energy Laboratory). The findings take studies of organic photovoltaics deeper into a new regime, beyond the limits of energetic disorder and large energy offset for charge generation.
+
+低非辐射复合损耗和低能量无序的高效率有机太阳能电池
+
+有机太阳能电池的能量损耗会导致电池效率降低，应极力避免。电池性能的提高主要依靠将非辐射复合损耗和能量无序降至最低值，因为它们与低于带隙边沿的带尾态和总光子能量损耗密切相关。本文报道一种使用无扭曲构造的小分子受体获得极低能量无序度并降低有机太阳能电池能量损耗的方法，获得了具有较低能量损耗（由0.17eV的非辐射复合导致）的单结有机太阳能电池，其能量转换效率（由国家新能源实验室验证为15.89%）高达16.54%。该发现将有机光伏研究推进到更深入的新机制，突破了能量无序和电荷产生中的大能量偏移极限。
+
+
+------------
+
+
+https://www.nature.com/articles/s41566-020-0592-2
+
+A high-fidelity heralded quantum squeezing gate
+
+Squeezing operation is critical for continuous-variable quantum information, enabling encoding of information in phase space to a resolution otherwise forbidden by vacuum noise. A universal squeezing gate that can squeeze arbitrary input states is particularly essential for continuous-variable quantum computation. However, the fidelity of existing state-of-the-art implementations is ultimately limited due to their reliance on first synthesizing squeezed vacuum modes of unbounded energy. Here, we circumvent this fundamental limitation by using a heralded squeezing gate. This allows improved gate fidelity without requiring more squeezed ancillary vacuum. For a specific target squeezing level for coherent states, we present measured fidelities higher than what would be possible using non-heralded schemes that utilize up to 15 dB of best available ancilla squeezing. Our technique can be applied to non-Gaussian states and provides a promising pathway towards high-fidelity gate operations and fault-tolerant continuous-variable quantum computation.
+
+高保真度前驱量子压缩门
+
+压缩运转对连续变化的量子信息至关重要，因为其能够对相位空间的信息进行特定分辨率编码从而避免被真空噪声湮没。对于连续可变量子计算来说，能够压缩任意输入态的通用压缩门必不可少，然而，由于依靠第一次综合压缩的非结合能真空模式，现有最优方法的保真度依然受到了极大限制。本文中，我们通过采用一种前驱压缩门规避了这一基本限制，实现了不需更多压缩真空的门保真度提高。对于特定的相干态压缩目标，我们实现的保真度高于采用15dB最好附带压缩的非前驱机制。该技术可为非高斯态提供一种有前景的高保真门运算方法和具有一定容错率的连续可变量子计算。
+
+
+---------------
+
+
+https://www.nature.com/articles/s41566-020-0593-1
+
+Luminescent surfaces with tailored angular emission for compact dark-field imaging devices
+
+Dark-field microscopy is a standard imaging technique widely employed in biology that provides high image contrast for a broad range of unstained specimens. Unlike bright-field microscopy, it accentuates high spatial frequencies and can therefore be used to emphasize and resolve small features. However, the use of dark-field microscopy for reliable analysis of blood cells, bacteria, algae and other marine organisms often requires specialized, bulky microscope systems, as well as expensive additional components, such as dark-field-compatible objectives or condensers. Here, we propose to simplify and downsize dark-field microscopy equipment by generating the high-angle illumination cone required for dark-field microscopy directly within the sample substrate. We introduce a luminescent photonic substrate with a controlled angular emission profile and demonstrate its ability to generate high-contrast dark-field images of micrometre-sized living organisms using standard optical microscopy equipment. This new type of substrate forms the basis for miniaturized lab-on-chip dark-field imaging devices that are compatible with simple and compact light microscopes.
+
+基于定制角辐射发光表面的紧凑暗场成像器件
+
+暗场显微术是一种广泛应用于生物学的标准成像技术，能够提供具有高图像对比度的大范围无污染样本，这与亮场显微术强调高空间频率和分辨小尺寸样品的能力不同。然而，采用暗场显微镜对血细胞、细菌、藻类和其他水生生物进行可靠分析需要专业的大尺寸显微镜系统和昂贵的额外部件，如暗场兼容物镜或冷凝器。本文提出采用能够在样品基底产生大锥角辐射的方法简化和缩小暗场显微镜装置，介绍了一种具有可控角辐射轮廓的发光光子基底，使用标准光学显微镜设备验证其可以产生微米级高对比度的活体组织暗场成像图，这种新型基底为小型化芯片集成且与简单紧凑光学显微镜兼容的暗场成像器件奠定了基础。
+
+
+---------------
+
+
+https://www.nature.com/articles/s41566-020-0591-3
+
+Flat optics for image differentiation
+
+Image processing has become a critical technology in a variety of science and engineering disciplines. Although most image processing is performed digitally, optical analog processing has the advantages of being low-power and high-speed, but it requires a large volume. Here, we demonstrate flat optics for direct image differentiation, allowing us to significantly shrink the required optical system size. We first demonstrate how the differentiator can be combined with traditional imaging systems such as a commercial optical microscope and camera sensor for edge detection with a numerical aperture up to 0.32. We next demonstrate how the entire processing system can be realized as a monolithic compound flat optic by integrating the differentiator with a metalens. The compound nanophotonic system manifests the advantage of thin form factor as well as the ability to implement complex transfer functions, and could open new opportunities in applications such as biological imaging and computer vision.
+
+平面光学用于图像微分
+
+在各种科学和工程科目中，图像处理已经成为一种关键技术，尽管大部分图像处理都被数字化，光学模拟图像处理仍然具有低功耗、高速率的优势，只是要求较大的容量。本文论证了一种可直接用于图像微分的平面光学技术，极大地压缩了所需光学系统的尺寸。我们首次验证了如何将该微分处理器与传统成像系统的结合，比如与商业的光学显微镜和用于边沿探测的0.32大数值孔径照相传感器相结合。然后验证了如何将整套图像处理系统与具有超透镜的微分器集成实现单片复合平面光学系统。该复合纳米光子系统表明单一构成因素的优点及处理复变函数的能力，并为生物成像和计算机可视化等应用创造了新的机会。
+
+
+---------------
+
+
+https://www.nature.com/articles/s41566-019-0581-5
+
+Dynamics and efficient conversion of excitons to trions in non-uniformly strained monolayer WS2
+
+In recent years, there has been ongoing effort in achieving efficient transport of excitons in monolayer transition metal dichalcogenides subjected to highly non-uniform strain. Here we investigate the transport of excitons and trions in monolayer semiconductor WS2 subjected to controlled non-uniform mechanical strain. An atomic force microscope (AFM)-based setup is applied to actively control and tune the strain profiles by indenting the monolayer with an AFM tip. Optical spectroscopy is used to reveal the dynamics of the excited carriers. The non-uniform strain configuration locally changes the valence and conduction bands of WS2, giving rise to effective forces attracting excitons and trions towards the point of maximum strain underneath the AFM tip. We observe large changes in the photoluminescence spectra of WS2 under strain, which we interpret using a drift–diffusion model. We show that the transport of neutral excitons, a process that was previously thought to be efficient in non-uniformly strained two-dimensional semiconductors and termed as funnelling, is negligible at room temperature, in contrast to previous observations. Conversely, we discover that redistribution of free carriers under non-uniform strain profiles leads to highly efficient conversion of excitons to trions. Conversion efficiency reaches up to about 100% even without electrical gating. Our results explain inconsistencies in previous experiments and pave the way towards new types of optoelectronic devices.
+
+非均匀张力作用下单层二流化钨中激子向带电激子的高效转化动力学
+
+近年来，人们一直为获得单层过渡金属硫族化合物在大应力作用下的高效激子传输而努力。本文研究单层二流化钨半导体在非均匀应力作用下的激子和带电激子传输过程，采用原子力显微镜探针对单原子层进行应力控制和调节，受激载流子动力学由光谱进行表征，非均匀应力局部改变了二流化钨的价带和导带，导致有效力将激子和带电激子向原子力显微镜探针下的最大应力点吸引。在应力作用下观察到二流化钨光致发光谱发生了很大变化，并用漂移扩散模型对其进行解释。结果表明，曾经被认为在非均匀应力作用下二维半导体材料中有效的中性激子传输在室温下可忽略不计，相反地，我们发现在非均匀应力作用下自由载流子的重新分布会导致激子向带电激子的高效转变，甚至在不加电学门时的转换效率可达100%。该结果解释了前期实验中的矛盾并为新型光电子器件的开发铺平了道路。
+
+
+---------------
+
+
+https://www.nature.com/articles/s41566-019-0556-6
+
+4H-silicon-carbide-on-insulator for integrated quantum and nonlinear photonics
+Optical quantum information processing will require highly efficient photonic circuits to connect quantum nodes on-chip and across long distances. This entails the efficient integration of optically addressable qubits into photonic circuits, as well as quantum frequency conversion to the telecommunications band. 4H-silicon carbide (4H-SiC) offers unique potential for on-chip quantum photonics, as it hosts a variety of promising colour centres and has a strong second-order optical nonlinearity. Here, we demonstrate within a single, monolithic platform the strong enhancement of emission from a colour centre and efficient optical frequency conversion. We develop a fabrication process for thin films of 4H-SiC, which are compatible with industry-standard, CMOS nanofabrication. This work provides a viable route towards industry-compatible, scalable colour-centre-based quantum technologies, including the monolithic generation and frequency conversion of quantum light on-chip.
+
+4H碳化硅绝缘体用于集成量子和非线性光子学
+
+光量子信息处理要求高效光子电路能够连接长距离间隔的芯片量子节点，这意味着光学可寻址量子比特的有效集成和量子频率至通信波段的有效转换，4H型碳化硅为片上集成的量子光子学提供了独特的潜力，由于其具有各种有前途的色心和大的二阶光学非线性，本文验证了在单片电路平台中的色心辐射增强和有效的光学频率转换，并发展了一种4H型碳化硅薄膜的制备工艺，该工艺与标准工业和CMOS纳米加工工艺兼容；该工作提供了一种兼容工业、可大规模生产的色心量子技术，包括量子光芯片集成的单片电路产生和频率转换。

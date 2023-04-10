@@ -1,0 +1,116 @@
+https://www.nature.com/articles/s41566-019-0530-3
+
+Resonant excitation and all-optical switching of femtosecond soliton molecules
+
+The emergence of confined structures and pattern formation are exceptional manifestations of nonlinear interactions found in a variety of physical, chemical and biological systems1. Facilitated by optical nonlinearities, solitons enable ultrashort temporal confinement of light and stable propagation despite the presence of dispersion. Such particle-like structures can assemble in stable arrangements, forming ‘soliton molecules’2,3. Recent work has revealed oscillatory internal motions of these bound states, akin to molecular vibrations, raising the question of how far the ‘molecular’ analogy reaches, that is, whether further concepts from molecular spectroscopy apply and whether such intramolecular dynamics can be externally driven or manipulated. Here, we probe and control ultrashort bound states in an optical oscillator, using real-time spectral interferometry and time-dependent excitation. For a frequency-swept pump modulation, we analyse the nonlinear response and resolve anharmonicities in soliton interactions that lead to generation of overtones and sub-harmonics. Applying stronger stimuli, we demonstrate all-optical switching between states with different binding separations. These results could be applied to rapid pulse-pair generation and may stimulate the development of future instruments for ultrafast science.
+
+飞秒孤子分子的共振激发和全光转换
+
+在各种物理、化学和生物系统中的研究发现，受限结构的出现及图案形成是非线性相互作用的特殊表现。尽管存在色散，受益于光学非线性，孤子具有超短束缚态且能稳定传播。这种粒子状结构能够稳定的排列聚集，形成孤子分子。近期研究揭示了这种束缚态振荡的内部运动机理，类似分子振动，据此提出了新问题“这种类分子振动能传播多远”，换言之，根此能否在分子光谱学应用上提出更深层概念，以及能否从外部来操纵和驱动这种分子内的动力学系统。本文中，通过实时光谱干涉测量法和含时激励，来探测和控制光学振荡器中的超短波束缚态。利用扫频泵浦调制，我们分析并解决了由于孤子相互作用带来的非简谐振荡，这种非简谐振荡会产生倍频峰和次谐波。在更强的激励下，我们通过聚集和分离作用实现了不同状态下的全光转换。此项研究结果可用于产生超快脉冲对，并会促进用于研究超快科学仪器的发展。
+
+------------
+
+https://www.nature.com/articles/s41566-019-0548-6
+
+Time-stretch LiDAR as a spectrally scanned time-of-flight ranging camera
+
+The need for imaging and ranging in robotics has brought LiDAR (light detection and ranging) to the forefront of consumer technology. Among various approaches, time-of-flight ranging sets the benchmark for robust operation due to illumination with high-energy pulses and direct detection. Conversely, spectrally scanning using tunable lasers is an inertia-free solution that offers fast scanning. The realization of a time-of-flight LiDAR with fast spectral scanning has not been possible because of difficulty in creating pulsed tunable sources. We demonstrate a wavelength-scanned time-of-flight LiDAR that realizes single-shot imaging and inertia-free scanning in one dimension with a rate of 1 MHz using a single laser and a single detector. We report two implementations of this concept, the first with a gain-switched supercontinuum source at 1,550 nm, and the second with a frequency-domain mode-locked laser at 1,060 nm. We show foveated imaging with both approaches as a potential solution to the big data predicament in three-dimensional imaging.
+
+时间拉伸激光雷达用于光谱扫描飞行时间测距相机
+
+机器人技术对成像与测距的需求促使激光雷达（光探测和测距）成为用于客户端的前沿技术。在众多方法中，测量回波时间成为针对高能脉冲稳定运算和直接探测的检测基准。然而，采用可调激光器进行光谱扫描是一种非惯性的快速扫描方法。由于制作可调脉冲光源难度很大，采用快速光谱扫描的回波探测激光雷达很难实现。本文中展示了一种采用波长扫描方式的回波探测激光雷达，利用单一激光器和单一探测器，实现了单向的单次成像和非惯性扫描，扫描频率为1MHz。在此介绍两种概念方法，第一种是采用波长为1550nm的增益转换超连续光源，第二种是采用波长为1060nm频域的锁模激光器。我们用以上两种途径展示了小凹成像，这两种方法有希望解决三维成像的大数据问题。
+
+
+------------
+
+
+https://www.nature.com/articles/s41566-019-0527-y
+
+Broadband reduction of quantum radiation pressure noise via squeezed light injection
+
+The Heisenberg uncertainty principle states that the position of an object cannot be known with infinite precision, as the momentum of the object would then be totally uncertain. This momentum uncertainty then leads to position uncertainty in future measurements. When continuously measuring the position of an object, this quantum effect, known as back-action, limits the achievable precision1,2. In audio-band, interferometer-type gravitational-wave detectors, this back-action effect manifests as quantum radiation pressure noise (QRPN) and will ultimately (but does not yet) limit sensitivity3. Here, we present the use of a quantum engineered state of light to directly manipulate this quantum back-action in a system where it dominates the sensitivity in the 10–50 kHz range. We observe a reduction of 1.2 dB in the quantum back-action noise. This experiment is a crucial step in realizing QRPN reduction for future interferometric gravitational-wave detectors and improving their sensitivity
+
+通过压缩光注入降低宽带量子辐射压力噪声
+
+海森堡不确定性原理指出，由于物体的动量不确定性，物体位置不能无限精确测量。这种动量不确定会导致未来测量中的位置不确定。对物体的位置进行连续测量时，被称为反作用的量子效应，会限制测量精度。在音频干涉型引力波探测器应用中，这种反作用对量子辐射压力噪声的影响很明显，并最终（尚未）限制测量灵敏度。本文利用光的量子工程态直接操控系统中的量子反作用，该系统的灵敏度范围在10-50KHz。我们观测到量子反作用噪声衰减了1.2dB。该实验是降低干涉型引力波探测器中量子辐射压力噪声的关键步骤，能够提高探测器的灵敏度。
+
+
+------------
+
+
+https://www.nature.com/articles/s41566-019-0529-9
+
+An integrated broadband spectrometer on thin-film lithium niobate
+
+Optical spectrometry is a tool to investigate wavelength-dependent light–matter interactions and is widely used in astronomy, physics and chemistry. Integration and miniaturization of the currently bulky spectrometers will have an impact on applications where compactness and low complexity are key, such as air- and spaceborne missions. A high-resolution spectroscopy principle based on the near-field detection of a spatial standing wave inside a subwavelength waveguide has shown great promise to accomplish some of the aforementioned demands. However, small-scale devices based on this principle face strong bandwidth limitations due to undersampling of the standing wave. Here, we demonstrate an integrated single-waveguide Fourier transform spectrometer with an operational bandwidth of 500 nm in the near- and short-wavelength infrared, not relying on any moving components. The prototype device, with a footprint of less than 10 mm2, exploits the electro-optic properties of thin-film lithium niobate in order to retrieve the complete spatial interferogram.
+
+基于铌酸锂薄膜的集成宽带光谱仪
+
+光谱仪是研究不同波长的光与物质相互作用的工具，广泛应用于天文学、物理学和化学领域。将现行使用的大型光谱仪进行集成化和小型化，，对要求光谱仪具有紧凑简洁特性的应用具有很大影响，例如执行航天与星载任务。一种基于近场探测亚波长波导中的空间驻波高分辨率光谱仪有希望实现上述应用要求。然而，由于对驻波的采样不足，基于该原理的小型化设备受到极大的带宽限制。本文展示了一种集成单波导傅里叶变换光谱仪，该仪器在近红外短波长中具有500nm的带宽，并且不依附于任何可移动部件。该光谱仪样机，尺寸不足10mm2，可利用铌酸锂薄膜的光电特性得到全空间干涉图。
+
+
+---------------
+
+
+https://www.nature.com/articles/s41566-019-0549-5
+
+Tunable isolated attosecond X-ray pulses with gigawatt peak power from a free-electron laser
+
+The quantum-mechanical motion of electrons in molecules and solids occurs on the sub-femtosecond timescale. Consequently, the study of ultrafast electronic phenomena requires the generation of laser pulses shorter than 1 fs and of sufficient intensity to interact with their target with high probability. Probing these dynamics with atomic-site specificity requires the extension of sub-femtosecond pulses to the soft X-ray spectral region. Here, we report the generation of isolated soft X-ray attosecond pulses with an X-ray free-electron laser. Our source has a pulse energy that is millions of times larger than any other source of isolated attosecond pulses in the soft X-ray spectral region, with a peak power exceeding 100 GW. This unique combination of high intensity, high photon energy and short pulse duration enables the investigation of electron dynamics with X-ray nonlinear spectroscopy and single-particle imaging, unlocking a path towards a new era of attosecond science.
+
+源于自由电子激光器的具有千兆瓦峰值功率的可调隔离阿秒X射线脉冲
+
+电子在分子和固体中的量子力学运动时间发生在亚飞秒尺度。因此，对超快电子的现象的研究，需要产生小于1fs的激光脉冲，并具有足够强度与目标靶材进行高能作用。利用原子位置特征探究这种动力学，需要将亚飞秒脉冲扩展到软X射线光谱区域。在此，我们阐述如何利用X射线自由电子激光器产生独立的软X射线飞秒脉冲。我们的能量源峰值功率超过100GW，是其他在软X射线光谱区独立阿秒脉冲能量的百万倍之多。这种高强度、高光子能量和超短脉冲的独特结合，使X射线非线性的电子动力学和单粒子成像得以开展研究，开启了进入阿秒科学领域的新时代。
+
+
+---------------
+
+
+https://www.nature.com/articles/s41566-019-0547-7
+
+Ultrafast and energy-efficient all-optical switching with graphene-loaded deep-subwavelength plasmonic waveguides
+
+All-optical switches have attracted attention because they can potentially overcome the speed limitation of electric switches. However, ultrafast, energy-efficient all-optical switches have been challenging to realize owing to the intrinsically small optical nonlinearity in existing materials. As a solution, we propose the use of graphene-loaded deep-subwavelength plasmonic waveguides (30 × 20 nm2). Thanks to extreme light confinement, we have greatly enhanced optical nonlinear absorption in graphene, and achieved ultrafast all-optical switching with a switching energy of 35 fJ and a switching time of 260 fs. The switching energy is four orders of magnitude smaller than that in previous graphene-based devices and is the smallest value reported for any all-optical switch operating at a few picoseconds or less. This device can be efficiently connected to conventional silicon waveguides and used in silicon photonic integrated circuits. We believe that this graphene-based device will pave the way towards on-chip ultrafast and energy-efficient photonic processing.
+
+通过负载石墨烯的深亚波长等离子波导实现超快、节能全光开关
+
+全光开关有希望突破电子开关的速度限制，因此受到关注。然而，超快节能全光开关面临的困难来自材料内固有的微小光学非线性。本文提出深亚波长等离子波导（30 × 20 nm2）负载石墨烯法解决该问题。得益于光局域特性，我们在石墨烯中极大增强了光的非线性吸收，并在260fs内实现了35fj能量的超快全光开关。本次开关消耗的能量相比此前基于石墨烯的器件小四个数量级，并且是目前已报道的皮秒全光转换所需能量最小值。该器件能有效地与传统硅光波导结合，用于硅光集成电路。我们相信这种基于石墨烯的器件能为芯片级超快节能光子过程的研究铺平道路。
+
+
+---------------
+
+
+https://www.nature.com/articles/s41566-019-0520-5
+
+Real-time phase tracking for wide-band optical frequency measurements at the 20th decimal place
+
+Optical frequency measurements are among the most precise tools available to science. With the rapid advances in optical clocks now achieving a low 10−17 stability at 1 s and averaging down to the 10−19 level in a few hundred seconds, real-time sensing of subtle phenomena becomes essential. To render possible such measurements, we introduce real-time optical phase tracking with ultra-low-noise frequency combs as a fundamental means to constantly monitor frequency offsets. This enables the characterization of optical frequency synthesis with stability and accuracy at the 20th decimal place within a measurement time of <100 s. To enable comb operation at this level of performance, dichroic heterodyne detection is used to compensate phase drifts occurring in the generation and dissemination of widely spaced optical frequencies. We qualify an example set-up by comparison with a reference system, measuring an offset between two combs of (5.4 ± 5.3) × 10−21 in one single measurement run of 1 × 105 s.
+
+实时相位跟踪用于20小数位精度的宽带光频测量
+
+光频测量是科学中最精密的工具之一。随着光频钟的快速发展，现在在1秒内实现了低至的10-17的稳定性，并在几百秒内平均降低到10 - 19的水平，实时传感精细现象变得尤为重要。为了提供这种测量可能，本文介绍一种以超低噪声频率梳为基础的实时光相位跟踪法，来连续不间断检测频率变化。实现了在测量时间＜100s的条件下，对光频合成的测量表征稳定性和精度达第20个小数位。为了能够在这个水平进行频率梳操作，二色性外差检测被用于补偿光频产生和传播时的相位偏移。我们设置一个与参考系统的对比实验，在1 × 105 s内对两个(5.4 ± 5.3) × 10−21频率梳进行单次相移测量。
+
+
+---------------
+
+https://www.nature.com/articles/s41566-019-0526-z
+
+Efficient colloidal quantum dot light-emitting diodes operating in the second near-infrared biological window
+
+Semiconductor colloidal quantum dots (CQDs) offer size- and composition-tunable luminescence of high colour purity. Importantly, their emission can be tuned deep into the second biological near-infrared (NIR-II) window (1,000–1,700 nm). However, applications are hindered by the low efficiencies achieved to date. Here, we report NIR-II CQD light-emitting diodes with an external quantum efficiency of 16.98% and a power conversion efficiency of 11.28% at wavelength 1,397 nm. This performance arises from device engineering that delivers a high photoluminescence quantum yield and charge balance close to unity. More specifically, we employed a binary emissive layer consisting of silica-encapsulated silver sulfide (Ag2S@SiO2) CQDs dispersed in a caesium-containing triple cation perovskite matrix that serves as an additional passivation medium and a carrier supplier to the emitting CQDs. The hole-injection contact also features a thin porphyrin interlayer to balance the device current and enhance carrier radiative recombination
+
+位于第二近红外生物学窗口的高效胶体量子点LED
+
+半导体胶体量子可发射尺寸和结构可调的高纯度荧光，重要的是其光发射可以被调谐到位于第二生物学窗口的近红外波段（1000-1700 nm），然而，迄今为止其应用依然受制于较低的发光效率。本文报道了一种工作于第二生物学窗口、在1397nm具有16.98%外量子效率和11.28%功率转换效率的胶体量子点LED，通过器件设计获得了高激发量子产率和接近整数的电荷平衡。特别地，二元发射层构造氧化硅包裹的分散在含铯三阳极钙钛矿基质中的硫化银胶体量子点，可作为发光胶体量子点的额外钝化层和载流子施主，空穴注入接触亦可作为薄的卟啉夹层平衡器件电流和增强载流子辐射复合。
+
+---------------
+
+https://www.nature.com/articles/s41566-019-0537-9
+
+Integrated gallium phosphide nonlinear photonics
+
+Gallium phosphide (GaP) is an indirect-bandgap semiconductor used widely in solid-state lighting. Despite numerous intriguing optical properties—including large χ(2) and χ(3) coefficients, a high refractive index (>3) and transparency from visible to long-infrared wavelengths (0.55–11 μm)—its application as an integrated photonics material has been little studied. Here, we introduce GaP-on-insulator as a platform for nonlinear photonics, exploiting a direct wafer-bonding approach to realize integrated waveguides with 1.2 dB cm−1 loss in the telecommunications C-band (on par with Si-on-insulator). High-quality (Q > 105), grating-coupled ring resonators are fabricated and studied. Employing a modulation transfer approach, we obtain a direct experimental estimate of the nonlinear index of GaP at telecommunication wavelengths: n2 = 1.1(3) × 10−17 m2 W−1. We also observe Kerr frequency comb generation in resonators with engineered dispersion. Parametric threshold powers as low as 3 mW are realized, followed by broadband (>100 nm) frequency combs with sub-THz spacing, frequency-doubled combs and, in a separate device, efficient Raman lasing. These results signal the emergence of GaP-on-insulator as a novel platform for integrated nonlinear photonics.
+
+集成磷化镓非线性光子学
+
+磷化镓（GaP）是一种广泛用于固体光源中的间接带隙半导体。尽管磷化镓具有各种优异的光学性质，包括大的二阶、三阶非线性系数、高折射率（>3）及在可见光到远红外波段的高透明性，然而，其在集成光子系统中的应用尚未被充分研究。本文介绍以绝缘层-磷化镓作为非线性光子学平台，通过直接晶片键合法获得C波段损耗为1.2 dBcm-1的集成波导，研究并制备了高品质因数的光栅耦合环形腔。采用调制转换法，实验直接获得磷化镓在通信波段的非线性系数为n2 = 1.1(3) × 10−17 m2 W−1。通过色散管理，在环形腔中同时产生了克尔频率梳，其参量阈值功率只有3mW，并获得了具有亚太赫兹频率间隔的宽带（>100 nm）频率梳、倍频梳和独立的高效拉曼激光振荡。这些结果表明绝缘层-磷化镓是一种新型的集成非线性光子学平台。

@@ -1,0 +1,96 @@
+https://www.nature.com/articles/s41566-020-0691-0
+
+Harmonic spin–orbit angular momentum cascade in nonlinear optical crystals
+
+Optical angular momentum-based photonic technologies demonstrate the key role of the optical spin–orbit interaction that usually refers to linear optical processes in spatially engineered optical materials. Re-examining the basics of nonlinear optics of homogeneous crystals under circularly polarized light2 , we report experiments on the enrichment of the spin–orbit angular momentum spectrum of paraxial light. The demonstration is made within the framework of second-harmonic generation using a crystal with three-fold rotational symmetry. Four spin–orbit optical states for the second harmonic field are predicted from a single fundamental state owing to the interplay between linear spin–orbit coupling and nonlinear wave mixing; three of these states are experimentally verified. Besides representing a spin-controlled nonlinear route to orbital angular multiplexing, modal vortex light sources , high-dimensional parametric processes and multi-state optical magnetization, our findings suggest that the fundamentals of nonlinear optics are worth revisiting through the prism of the spin–orbit interaction of light.
+
+非线性光学晶体中的谐波自旋-轨道角动量级联效应
+
+基于光子技术的自旋-轨道角动量体现出光学自旋角动量相互作用的重要性，目前研究主要集中在空间工程光学材料的线性光学范畴。我们报道了旁轴条件下自旋角动量光谱富集实验，再次验证圆偏振光下各向同性晶体的光学非线性要素。这项实验室展示了采用三倍旋转对称晶体产生二次谐波。利用线性自旋轨道耦合与非线性波混合的相互作用，从单基态预测了二次谐波场的四种自旋轨道光学态。除了描述自旋控制的非线性轨道角复用路线、模态涡旋光源、高维参数过程和多态光磁化外，该研究结果表明，非线性光学的基础学科值得通过光的自旋-轨道相互作用晶体再次研究。
+
+------------
+
+https://www.nature.com/articles/s41566-020-0679-9
+
+Optical soliton formation controlled by angle twisting in photonic moiré lattices
+
+Exploration of the impact of synthetic material landscapes featuring tunable geometrical properties on physical processes is a research direction that is currently of great interest because of the outstanding phenomena that are continually being uncovered. Twistronics and the properties of wave excitations in moiré lattices are salient examples. Moiré patterns bridge the gap between aperiodic structures and perfect crystals, thus opening the door to the exploration of effects accompanying the transition from commensurate to incommensurate phases. Moiré patterns have revealed profound effects in graphene-based systems, they are used to manipulate ultracold atoms and to create gauge potentials, and are observed in colloidal clusters. Recently, it was shown that photonic moiré lattices enable observation of the two-dimensional localization-to-delocalization transition of light in purely linear systems1. Here, we employ moiré lattices optically induced in photorefractive nonlinear media 4 to elucidate the formation of optical solitons under different geometrical conditions controlled by the twisting angle between the constitutive sublattices. We observe the formation of solitons in lattices that smoothly transition from fully periodic geometries to aperiodic ones, with threshold properties that are a pristine direct manifestation of flat-band physics.
+
+扭转角控制光子莫尔晶格中转的光孤子
+
+由于越来越多重要的现象被发现，研究具有可调几何特性的合成材料形貌对物理过程的影响目前成为一个极具吸引力的研究方向。在莫尔晶格中，Twistronics和波激发特性是显著的例子。莫尔图案弥补了非周期结构和完美晶体之间的差距，从而为探索从相称相过渡到不相称相时伴随产生的效应打开了大门。莫尔图案揭示了基于石墨烯系统的深层效应，他们被用来操纵超冷原子和创建测量电位，并在胶体团簇中进行观察。最近，研究表明，在纯线性系统中，光子莫尔晶格可以观测光的二维局域到非局域跃迁。本文利用在光折变非线性介质中光诱导的莫尔晶格来说明在不同几何形态的亚晶格之间通过扭转角控制光孤子形成。我们观察到晶格中孤子的形成，这些孤子从完全周期的几何形态平滑地过渡到非周期几何形态，其阈值特性是平带物理的原始直接表现。
+
+------------
+
+https://www.nature.com/articles/s41566-020-0688-8
+
+Tunable pseudo-magnetic fields for polaritons in strained metasurfacesnyiAbstract
+
+Pseudo-magnetic fields generated in artificially strained lattices have enabled the emulation of exotic phenomena once thought to be exclusive to charged particles. However, they have so far failed to emulate the tunability of real magnetic fields because they are determined solely by the engineered strain configuration, rendering them fixed by design. Here, we unveil a universal mechanism to tune pseudo-magnetic fields for polaritons supported by a strained honeycomb metasurface composed of interacting dipole emitters/antennas. Without altering the strain configuration, we show that the pseudo-magnetic field strength can be tuned by modifying the surrounding electromagnetic environment via an enclosing cavity waveguide, which modifies the nature of the dipole–dipole interactions. Owing to the competition between short-range Coulomb interactions and long-range photon-mediated interactions, the pseudo-magnetic field can be entirely switched off at a critical cavity width, without removing the strain. Consequently, by varying only the cavity width, we demonstrate a tunable Lorentz-like force that can be switched on/off and a collapse and revival of polariton Landau levels. Unlocking this tunable pseudo-magnetism poses new intriguing questions beyond the paradigm of conventional tight-binding physics.
+
+作为张力超表面中极化子的可调谐伪磁场
+
+在人工拉紧的晶格中产生的伪磁场使得曾经被认为是带电粒子独有的奇异现象实现模拟。然而，到目前为止，它们还不能模拟真实磁场的可调性，因为它们仅由工程应变结构决定，并被设计限制。本文揭示了一个通用的机制来调整伪磁场的极化子支持的一个张力蜂窝状超表面由相互作用的偶极子发射/天线。在不改变应变构型的情况下，通过一个封闭的腔波导来改变周围的电磁环境，从而改变偶极-偶极相互作用的性质，实现伪磁场强度的调谐。由于短程库仑相互作用和长程光子介导相互作用的竞争，可以在不消除张力的情况下，在一个临界腔宽处完全关闭伪磁场。因此，仅通过改变腔宽，我们演示了一个可调谐的洛伦兹力，它可以被开启/关闭，以及极化子朗道能级的坍缩和恢复。解开这种可调谐的伪磁性带来了新的有趣问题，超出了传统紧密物理束缚的范式。
+
+------------
+
+https://www.nature.com/articles/s41566-020-0673-2
+
+Non-adiabatic stripping of a cavity field from electrons in the deep-strong coupling regime
+
+Atomically strong light pulses can drive sub-optical-cycle dynamics. When the Rabi frequency—the rate of energy exchange between light and matter—exceeds the optical carrier frequency, fascinating non-perturbative strong-field phenomena emerge, such as high-harmonic generation and lightwave transport. Here, we explore a related novel subcycle regime of ultimately strong light–matter interaction without a coherent driving field. We use the vacuum fluctuations of nanoantennas to drive cyclotron resonances of two-dimensional electron gases to vacuum Rabi frequencies exceeding the carrier frequency. Femtosecond photoactivation of a switch element inside the cavity disrupts this ‘deep-strong coupling’ more than an order of magnitude faster than the oscillation cycle of light. The abrupt modification of the vacuum ground state causes spectrally broadband polarization oscillations confirmed by our quantum model. In the future, this subcycle shaping of hybrid quantum states may trigger cavity-induced quantum chemistry, vacuum-modified transport or cavity-controlled superconductivity, opening new scenarios for non-adiabatic quantum optics.
+
+深度强耦合机制下腔场与电子的非绝热剥离
+
+原子强光脉冲可以驱动亚光周期动力学。当拉比频率(光与物质之间的能量交换速率)超过光载流子频率时，就会出现不可思议的非扰动强场现象，如高次谐波产生和光传输。本文探索一个没有相干驱动场的相关新亚循环体制的最终强光-物质相互作用。我们利用纳米天线的真空涨落驱动二维电子气体回旋共振到真空拉比频率并超过载频。空腔内开关元件的飞秒光活化会破坏这种“深强耦合”，比光的振荡周期快一个数量级。真空基态的突变引起的频谱宽带极化振荡得到了量子模型的证实。在未来，这种杂化量子态的子循环可能引发空腔诱导的量子化学、真空修饰的输运或空腔控制的超导，为非绝热量子光学开辟了新的前景。
+
+------------
+
+https://www.nature.com/articles/s41566-020-0690-1
+
+Vectorized optoelectronic control and metrology in a semiconductor
+
+The increasingly prominent role of light in information processing makes optoelectronic devices a technology of fundamental importance. Coherent control of currents in semiconductors using synthesized optical waveforms provides a sensitive and robust means to transfer information from light to an electronic circuit. Currents driven by Gaussian laser beams are spatially uniform in direction, offering limited technological utility. Full control over the transverse spatial distribution of currents excited in a material would vastly increase the versatility and impact of optoelectronic devices. Here we simultaneously control the waveform and vectorial arrangement of optical fields, enabling precise manipulation of the spatial distribution of currents in a semiconductor. As a direct application, we drive loop currents, embodying a new ultrafast magnetic field source. Subsequently, we demonstrate a scheme for generating an arbitrary superposition of two orthogonal current arrangements via subcycle adjustment of the optical waveform.
+
+半导体矢量光电控制与计量
+
+由于光在信息处理中的作用日益突出，导致光电子器件成为一项至关重要的技术。利用合成光波形对半导体中的电流进行相干控制，提供了一种灵敏度高且稳定的方法，可以将信息从光传输到电子电路中。由高斯激光束驱动的电流在空间方向上是不变的的，因此提供的技术用途有限。全面控制在材料中激发电流的横向空间分布将极大地增加光电子器件的通用性和影响力。本文同时控制光场的波形和矢量排列，从而能够精确地控制半导体中电流的空间分布。作为直接应用，我们驱动环路电流，实现一种新的超快磁场源。随后，我们演示了一种方案，通过次循环调整的光波形以产生任意叠加的两个正交电流排列。
+
+------------
+
+https://www.nature.com/articles/s41566-020-0689-7
+
+Tunable free-electron X-ray radiation from van der Waals materials
+
+Tunable sources of X-ray radiation are widely used for imaging and spectroscopy in fundamental science, medicine and industry. The growing demand for highly tunable, high-brightness laboratory-scale X-ray sources motivates research into new fundamental mechanisms of X-ray generation. Here, we demonstrate the ability of van der Waals materials to serve as a platform for tunable X-ray generation when irradiated by moderately relativistic electrons available, for example, from a transmission electron microscope. The radiation spectrum can be precisely controlled by tuning the acceleration voltage of the incident electrons, as well as by our proposed approach: adjusting the lattice structure of the van der Waals material. We present experimental results for both methods, observing the energy tunability of X-ray radiation from the van der Waals materials WSe2, CrPS4, MnPS3, FePS3, CoPS3 and NiPS3. Our findings demonstrate the concept of material design at the atomic level, using van der Waals heterostructures and other atomic superlattices, for exploring novel phenomena of X-ray physics.
+
+范德瓦尔斯材料的可调谐自由电子x射线辐射
+
+可调谐x射线辐射源广泛应用于基础科学、医学和工业的成像和光谱学领域。对高可调、高亮度实验室尺度的x射线源的不断增长的需求，产生了对x射线产生的新的根本性机理的研究。本文演示了利用范德华材料提供平台产生可调谐x射线的能力，例如，从透射电子显微镜用适量相对论电子辐射时，通过调整入射电子的加速电压，以及通过我们提出的方法:调整范德瓦尔斯材料的晶格结构，可以精确地控制辐射谱。我们给出了两种方法的实验结果，观察了范德瓦耳斯材料 WSe<sub>2</sub>、CrPS<sub>4</sub>、MnPS<sub>3</sub>、FePS<sub>3</sub>、CoPS<sub>3</sub> 和 NiPS<sub>3</sub> 的x射线辐射能量可调性。我们的发现证明了在原子层面上材料设计的概念，利用范德瓦尔斯异质结构和其他原子超晶格来探索x射线物理的新现象。
+
+------------
+
+https://www.nature.com/articles/s41566-020-0677-y
+
+Sub-nanometre resolution in single-molecule photoluminescence imaging
+
+Ambitions to reach atomic resolution with light have been a major force in shaping nano-optics, whereby a central challenge is achieving highly localized optical fields. A promising approach employs plasmonic nanoantennas, but fluorescence quenching in the vicinity of metallic structures often imposes a strict limit on the attainable spatial resolution, and previous studies have reached only 8 nm resolution in fluorescence mapping. Here, we demonstrate spatially and spectrally resolved photoluminescence imaging of a single phthalocyanine molecule coupled to nanocavity plasmons in a tunnelling junction with a spatial resolution down to ∼8 Å and locally map the molecular exciton energy and linewidth at sub-molecular resolution. This remarkable resolution is achieved through an exquisite nanocavity control, including tip-apex engineering with an atomistic protrusion, quenching management through emitter–metal decoupling and sub-nanometre positioning precision. Our findings provide new routes to optical imaging, spectroscopy and engineering of light–matter interactions at sub-nanometre scales.
+
+亚纳米分辨率的单分子光致发光成像
+
+用光实现原子尺度空间分辨一直是纳米光学领域追求的终极目标之一，其中一个核心挑战是实现高度局域化的光场空间。一个很有希望成功的方法是使用等离子体纳米天线，分子荧光在金属结构非常靠近分子时会由于非辐射过程被放大并占主导而导致荧光信号被淬灭，这极大限制了近场荧光显微镜的分辨率发展，而且之前的研究在荧光映射中只能达到8nm的分辨率。本文展示了单个酞菁分子在隧道结中与纳米等离子体偶联的空间和光谱分辨光致发光成像，空间分辨率为约8 Å，并在亚分子分辨率下局部绘制了分子激子能量和线宽。这一出色的分辨率是通过精细的纳米密度控制实现的，包括采用原子探针的尖端设计，通过发射体-金属解耦的淬火操作和亚纳米的定位精度。该发现为光学成像、光谱学和亚纳米尺度的光物质相互作用工程提供了新的途径。
+
+
+------------
+
+https://www.nature.com/articles/s41566-020-0676-z
+
+Intense Brillouin amplification in gas using hollow-core waveguides
+
+Among all the nonlinear effects stimulated Brillouin scattering offers the highest gain in solid materials and has demonstrated advanced photonics functionalities in waveguides. The large compressibility of gases suggests that stimulated Brillouin scattering may gain in efficiency with respect to condensed materials. Here, by using a gas-filled hollow-core fibre at high pressure, we achieve a strong Brillouin amplification per unit length, exceeding by six times the gain observed in fibres with a solid silica core. This large amplification benefits from a higher molecular density and a lower acoustic attenuation at higher pressure, combined with a tight light confinement. Using this approach, we demonstrate the capability to perform large optical amplifications in hollow-core waveguides. The implementations of a low-threshold gas Brillouin fibre laser and a high-performance distributed temperature sensor, intrinsically free of strain cross-sensitivity, illustrate the potential for hollow-core fibres, paving the way to their integration into lasing, sensing and signal processing.
+
+基于气体布里渊效应的空芯波导光放大
+
+在众多非线性效应中，受激布里渊散射在固体材料中增益最高，并在波导中展示了先进的光子学功能。气体的可压缩性表明受激布里渊散射相对于凝聚态物质可以提高效率。本文通过在高压下使用充满气体的中空纤维，我们实现了每单位长度的强布里渊放大，比在固体硅纤维中观察到的增益多6倍。这种巨大的放大得益于较高的分子密度和较高压力下较低的声衰减，以及紧密的光约束。利用这种方法，我们演示了在空心波导中实现大光放大的能力。低阈值气体布里渊光纤激光器和高性能分布式温度传感器(本质上没有应变交叉灵敏度)的实现，说明了中空光纤的潜力，为它们集成到激光、传感和信号处理中铺平了道路。
+
+------------
